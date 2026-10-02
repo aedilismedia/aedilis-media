@@ -79,8 +79,8 @@ def head(hair='short', beard=False, female=False, cx=100, cy=38):
             f'C{cx+w} {cy+4} {cx+5} {cy+12} {cx} {cy+15}S{cx-w} {cy+4} {cx-w} {cy-6}Z" fill="{M}" stroke="{D}" stroke-width="1.1"/>'
             f'<path d="M{cx} {cy-18}C{cx+5} {cy-18} {cx+w} {cy-14} {cx+w} {cy-6}C{cx+w} {cy+4} {cx+5} {cy+12} {cx} {cy+15}Z" fill="{D}" opacity=".22"/>'
             f'<path d="M{cx-8} {cy-5}Q{cx-4} {cy-8} {cx-1} {cy-5}M{cx+1} {cy-5}Q{cx+4} {cy-8} {cx+8} {cy-5}" fill="none" stroke="{D}" stroke-width="1.3" stroke-linecap="round"/>'
-            f'<path d="M{cx} {cy-4}V{cy+4}M{cx-2.500} {cy+5}Q{cx} {cy+7} {cx+2.500} {cy+5}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>'
-            f'<path d="M{cx-3.500} {cy+9}Q{cx} {cy+10.500} {cx+3.500} {cy+9}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>')
+            f'<path d="M{cx} {cy-4}V{cy+4}M{cx-2.500} {cy+5.500}Q{cx} {cy+6.500} {cx+2.500} {cy+5.500}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>'
+            f'<path d="M{cx-3.500} {cy+9.500}H{cx+3.500}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>')
     neck = (f'<path d="M{cx-5} {cy+12}H{cx+5}V{cy+25}H{cx-5}Z" fill="{S}" stroke="{D}" stroke-width="1"/>')
     return neck, face
 
