@@ -310,8 +310,36 @@ def hades():
 
 
 
+import re
+
+DARK, CREAM = '#131313', '#d7ccb2'
+
+
+def lineart(svg):
+    """Mermer dolgulu çizimi, dolgusuz ince çizgi (line-art) stiline çevirir:
+    gölge katmanlarını siler, mermer tonlarını zemin rengi yapar (üst üste binen çizgiler kapansın),
+    koyu kontur rengini krem çizgi yapar."""
+    # gölge/yarı saydam kat (kontur renginde dolgu + opacity) ve uzuv gölge şeritleri
+    svg = re.sub(r'<(?:path|rect|ellipse|circle)[^>]*fill="#7c735b"[^>]*opacity="[^"]*"[^>]*/>', '', svg)
+    svg = re.sub(r'<path[^>]*stroke-opacity="\.18"[^>]*/>', '', svg)
+    # kırmızı disk: dolgu yerine ince kırmızı daire çizgisi
+    svg = svg.replace(f'<circle cx="100" cy="112" r="58" fill="{R}"/>', f'<circle cx="100" cy="112" r="58" fill="none" stroke="{R}" stroke-width="2"/>')
+    mapping = {M: DARK, L: DARK, S: DARK, D: CREAM}
+    svg = re.sub(r'#(?:d7ccb2|ece4cf|b3a98e|7c735b)', lambda m: mapping['#' + m.group(0)[1:]], svg)
+    # çizgileri incelt
+    def thin(m):
+        v = float(m.group(1))
+        # kalın (uzuv/sopa dolgusu) çizgilere dokunma; sadece ince kontur çizgilerini incelt
+        return m.group(0) if v > 3.6 else f'stroke-width="{max(0.9, v * 0.85):.2f}"'
+    svg = re.sub(r'stroke-width="([0-9.]+)"', thin, svg)
+    return svg
+
+
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
+    import sys
+    solid = '--solid' in sys.argv          # eski mermer dolgulu stil
     for name, fn in [('dionysos', dionysos), ('hermes', hermes), ('apollon', apollon), ('iris', iris), ('hades', hades)]:
-        open(os.path.join(OUT, f'{name}.svg'), 'w', encoding='utf8').write(fn())
+        svg = fn()
+        open(os.path.join(OUT, f'{name}.svg'), 'w', encoding='utf8').write(svg if solid else lineart(svg))
     print('5 heykel yazıldı ->', os.path.abspath(OUT))
