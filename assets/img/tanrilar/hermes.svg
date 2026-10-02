@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Hermes: kanatlı kerykeion">
+<circle cx="120" cy="120" r="114" fill="#101010" stroke="#b08a3e" stroke-width="2"/><circle cx="120" cy="120" r="106" fill="none" stroke="#b08a3e" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="1.5 7" stroke-linecap="round"/>
+<defs><g id="w"><path d="M113 70C90 48 56 48 30 64c28 1 58 7 83 24z"/><path d="M113 92C92 78 62 78 40 90c26 2 54 8 73 22z"/><path d="M113 114C96 104 74 105 56 114c20 2 40 8 57 18z"/></g></defs>
+<path d="M120 76V206" stroke="#d7ccb2" stroke-width="4.5" stroke-linecap="round"/>
+<g fill="#b08a3e" stroke="#d7ccb2" stroke-width="1.8" stroke-linejoin="round"><use href="#w"/><use href="#w" transform="translate(240 0) scale(-1 1)"/></g>
+<circle cx="120" cy="64" r="9" fill="#b08a3e" stroke="#d7ccb2" stroke-width="2"/>
+<g fill="none" stroke-linecap="round">
+<path d="M120 130C158 138 158 152 120 162C82 172 82 186 120 196" stroke="#8b0d0d" stroke-width="5"/>
+<path d="M120 130C82 138 82 152 120 162C158 172 158 186 120 196" stroke="#b08a3e" stroke-width="5"/>
+</g>
+<circle cx="104" cy="127" r="5" fill="#8b0d0d"/><circle cx="136" cy="127" r="5" fill="#b08a3e"/>
+</svg>

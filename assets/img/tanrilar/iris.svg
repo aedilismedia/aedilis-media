@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Iris: gökkuşağı">
+<circle cx="120" cy="120" r="114" fill="#101010" stroke="#b08a3e" stroke-width="2"/><circle cx="120" cy="120" r="106" fill="none" stroke="#b08a3e" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="1.5 7" stroke-linecap="round"/>
+<g fill="none" stroke-width="8" stroke-linecap="round">
+<path d="M42 156a78 78 0 0 1 156 0" stroke="#8b0d0d"/>
+<path d="M58 156a62 62 0 0 1 124 0" stroke="#b08a3e"/>
+<path d="M74 156a46 46 0 0 1 92 0" stroke="#d7ccb2"/>
+</g>
+<g fill="#d7ccb2"><path d="M28 168q8-16 24-8q8-14 24-2q10-8 16 10z"/><path d="M164 168q6-14 22-6q8-14 26 0q-2 12-10 14z"/></g>
+<path d="M120 34l4.500 10.500 10.500 4.500-10.500 4.500L120 64l-4.500-10.500L105 49l10.500-4.500z" fill="#b08a3e"/>
+<path d="M60 190h120" stroke="#b08a3e" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+</svg>

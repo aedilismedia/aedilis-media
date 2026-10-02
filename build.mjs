@@ -66,6 +66,7 @@ const divisions = await readJSON('data/divisions.json');
 const releases = (await readJSON('data/releases.json')).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 const videosData = await readJSON('data/videos.json');
 const dzs = await readJSON('data/dzs.json');
+const hub = await readJSON('data/hub.json');
 const basePath = site.basePath || '/';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
@@ -234,13 +235,58 @@ function journalCard(p, url) {
 }
 
 // ---------- sayfalar ----------
-function homePage() {
+// Ortak sayfa iskeleti: üst çubuk + içerik + (isteğe bağlı) dinleme penceresi + alt bilgi
+const LISTEN_DIALOG = `
+<dialog class="listen-dialog" id="listen-dialog" aria-labelledby="listen-title">
+  <div class="dialog-box">
+    <button class="dialog-close" type="button" data-close aria-label="Kapat">Kapat</button>
+    <p class="tag">Dinleme platformunu seç</p>
+    <h3 id="listen-title">Yayın</h3>
+    <p id="listen-meta" class="dialog-meta"></p>
+    <ul class="platform-links" id="listen-links"></ul>
+  </div>
+</dialog>
+`;
+
+const godOf = (id) => hub.gods.find((g) => g.id === id);
+
+// Bölüm sayfalarının üst alanı: tanrı amblemi + başlık
+function pageHero(depth, god, { title, lead }) {
+  const url = makeUrl(depth);
+  return `<section class="hero hero-sub">
+  <div class="wrap hero-grid hero-grid-sub">
+    <div class="hero-copy">
+      <p class="crumbs"><a href="${depth === 0 ? './' : relPrefix(depth)}">Ana sayfa</a></p>
+      <h1 class="page-title">${esc(title)}</h1>
+      <p class="motto motto-upper">${esc(god.tagline)}</p>
+      <p class="lead">${esc(lead)}</p>
+    </div>
+    <img class="sub-logo god-emblem" src="${esc(url(god.image))}" alt="" width="360" height="360">
+  </div>
+  <div class="frieze frieze-draw" aria-hidden="true"></div>
+</section>`;
+}
+
+function sectionHead(id, title, desc) {
+  return `<header class="section-head">
+      <h2 id="h-${id}" class="section-title">${esc(title)}</h2>
+      ${desc ? `<p class="section-desc">${esc(desc)}</p>` : ''}
+    </header>`;
+}
+
+function sectionVideolar() {
+  return `<section class="section section-alt" id="videolar" aria-labelledby="h-videolar">
+  <div class="wrap">
+    ${sectionHead('videolar', 'VİDEOLAR', `${videosData.channel.name} kanalında yayınlanan en güncel videolar, yol hikâyeleri ve kısa içerikler.`)}
+    <ul class="video-grid">${videosData.items.slice(0, 3).map(videoCard).join('')}</ul>
+    <p class="section-more"><a class="text-link" href="${esc(videosData.channel.url)}" target="_blank" rel="noopener">Tüm videolar için YouTube kanalı</a></p>
+  </div>
+</section>`;
+}
+
+function hubPage() {
   const depth = 0;
   const url = makeUrl(depth);
-  const latest = releases.find((r) => r.latest) || releases[0];
-  const dznRows = releases.filter((r) => r.project === 'dzs').map(releaseRow).join('');
-  const dnRows = releases.filter((r) => r.project === 'dn').map(releaseRow).join('');
-  const yt = site.hero.youtube;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -250,7 +296,17 @@ function homePage() {
     description: site.description,
     sameAs: site.contact.socials.map((s) => s.href),
   };
-
+  const gods = hub.gods
+    .map(
+      (g, i) => `<li class="god god-${i + 1}">
+      <a href="${esc(url(g.href))}" aria-label="${esc(g.label)}: ${esc(g.desc)}">
+        <img class="god-emblem" src="${esc(url(g.image))}" alt="" width="240" height="240" decoding="async">
+        <span class="god-label">${esc(g.label)}</span>
+        <span class="god-name">${esc(g.god)}</span>
+      </a>
+    </li>`
+    )
+    .join('\n    ');
   return (
     head({
       title: 'Aedilis Media: müzik, yol ve hikâye',
@@ -260,44 +316,57 @@ function homePage() {
       jsonLd,
     }) +
     `
+<body class="hub">
+<a class="skip-link" href="#icerik">İçeriğe geç</a>
+<div class="frieze frieze-draw" aria-hidden="true"></div>
+<main id="icerik" class="hub-main" tabindex="-1">
+  <h1 class="sr-only">${esc(site.name)}: ${esc(site.motto)}</h1>
+  <nav class="stage" aria-label="Ana menü">
+    <div class="stage-center">
+      <img class="stage-logo" src="${esc(url(hub.center.logo))}" alt="${esc(hub.center.alt)}" width="640" height="640" fetchpriority="high">
+      <p class="stage-motto">${esc(hub.center.caption)}</p>
+    </div>
+    <ul class="gods">
+    ${gods}
+    </ul>
+  </nav>
+</main>
+<footer class="hub-foot">
+  <div class="frieze" aria-hidden="true"></div>
+  <p>${esc(site.footer)}</p>
+</footer>
+<script src="${relPrefix(depth)}assets/js/main.js" defer></script>
+</body>
+</html>`
+  );
+}
+
+function muzikPage() {
+  const depth = 1;
+  const url = makeUrl(depth);
+  const god = godOf('muzik');
+  const latest = releases.find((r) => r.latest) || releases[0];
+  const dznRows = releases.filter((r) => r.project === 'dzs').map(releaseRow).join('');
+  const dnRows = releases.filter((r) => r.project === 'dn').map(releaseRow).join('');
+  const music = divisions.find((d) => d.id === 'music');
+  return (
+    head({ title: 'Müzik | Aedilis Media', description: god.desc, canonicalPath: 'muzik/', depth }) +
+    `
 <body>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
+${pageHero(depth, god, { title: 'Müzik', lead: 'Alternatif Türkçe şarkılardan gotik konsept albümlere uzanan bağımsız müzik yayınları.' })}
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1 class="wordmark" aria-label="Aedilis Media"><span aria-hidden="true">AEDILIS</span><span aria-hidden="true">MEDIA</span></h1>
-      <p class="motto">${esc(site.motto)}</p>
-      <p class="lead">${esc(site.hero.lead)}</p>
-      <div class="actions">
-        ${site.hero.actions.map((a) => `<a class="btn${a.primary ? ' btn-primary' : ''}" href="${esc(url(a.href))}">${esc(a.label)}</a>`).join('')}
-      </div>
-      <p class="yt-stat"><a href="${esc(yt.href)}" target="_blank" rel="noopener"><strong>${esc(yt.count)}</strong> ${esc(yt.label)}</a></p>
-    </div>
-    <ul class="pillars" aria-label="Marka özü">
-      ${site.manifesto.pillars.map((p) => `<li><span class="pillar-name">${esc(p.title)}</span><span class="pillar-text">${esc(p.text)}</span></li>`).join('')}
-    </ul>
-  </div>
-  <div class="frieze frieze-draw" aria-hidden="true"></div>
-</section>
-
-<section class="section" id="bolumler" aria-labelledby="h-bolumler">
+<section class="section" id="bolumler" aria-labelledby="h-bolum-muzik">
   <div class="wrap">
-    <header class="section-head">
-      <h2 id="h-bolumler" class="section-title">BÖLÜMLER</h2>
-      <p class="section-desc">Aedilis Media; müzik projelerini, yol hikâyelerini, sokak lezzetlerini ve tarih anlatılarını aynı yaratıcı kimlik altında toplar.</p>
-    </header>
-    ${divisions.map((d) => divisionBlock(d, url)).join('')}
+    <h2 id="h-bolum-muzik" class="sr-only">Aedilis Media Music</h2>
+    ${divisionBlock(music, url)}
   </div>
 </section>
 
-<section class="section section-alt" id="muzik" aria-labelledby="h-muzik">
+<section class="section section-alt" id="yayinlar" aria-labelledby="h-muzik">
   <div class="wrap">
-    <header class="section-head">
-      <h2 id="h-muzik" class="section-title">MÜZİK</h2>
-      <p class="section-desc">Alternatif Türkçe şarkılardan gotik konsept albümlere uzanan bağımsız müzik yayınları.</p>
-    </header>
+    ${sectionHead('muzik', 'YAYINLAR', '')}
 
     <article class="featured">
       <p class="tag">Son yayın</p>
@@ -319,45 +388,80 @@ ${header(depth)}
     </div>
   </div>
 </section>
+</main>
+${LISTEN_DIALOG}` +
+    footer(depth)
+  );
+}
 
-<section class="section manifesto" aria-label="Manifesto">
+function yapimPage() {
+  const depth = 1;
+  const url = makeUrl(depth);
+  const god = godOf('yapim');
+  const yapim = divisions.find((d) => d.id === 'yapim');
+  const yt = site.hero.youtube;
+  return (
+    head({ title: 'Yapım ve Videolar | Aedilis Media', description: god.desc, canonicalPath: 'yapim/', depth }) +
+    `
+<body>
+${header(depth)}
+<main id="icerik" tabindex="-1">
+${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve tarih hikâyelerini sinematik videolara dönüştüren yapım bölümü.' })}
+
+<section class="section" id="bolumler" aria-labelledby="h-bolum-yapim">
   <div class="wrap">
-    <blockquote class="manifesto-quote">
-      <p>${esc(site.manifesto.text)}</p>
-    </blockquote>
+    <h2 id="h-bolum-yapim" class="sr-only">Aedilis Media Yapım</h2>
+    ${divisionBlock(yapim, url)}
+    <p class="yt-stat"><a href="${esc(yt.href)}" target="_blank" rel="noopener"><strong>${esc(yt.count)}</strong> ${esc(yt.label)}</a></p>
   </div>
 </section>
 
-<section class="section" id="videolar" aria-labelledby="h-videolar">
-  <div class="wrap">
-    <header class="section-head">
-      <h2 id="h-videolar" class="section-title">VİDEOLAR</h2>
-      <p class="section-desc">${esc(videosData.channel.name)} kanalında yayınlanan en güncel videolar, yol hikâyeleri ve kısa içerikler.</p>
-    </header>
-    <ul class="video-grid">${videosData.items.slice(0, 3).map(videoCard).join('')}</ul>
-    <p class="section-more"><a class="text-link" href="${esc(videosData.channel.url)}" target="_blank" rel="noopener">Tüm videolar için YouTube kanalı</a></p>
-  </div>
-</section>
+${sectionVideolar()}
+</main>
+` +
+    footer(depth)
+  );
+}
 
-<section class="section section-alt" id="gunluk" aria-labelledby="h-gunluk">
+function gunlukPage() {
+  const depth = 1;
+  const url = makeUrl(depth);
+  const god = godOf('gunluk');
+  return (
+    head({ title: 'Günlük | Aedilis Media', description: god.desc, canonicalPath: 'gunluk/', depth }) +
+    `
+<body>
+${header(depth)}
+<main id="icerik" tabindex="-1">
+${pageHero(depth, god, { title: 'Günlük', lead: 'Şarkıların, yolların ve üretim süreçlerinin arkasındaki hikâyeler.' })}
+<section class="section" id="yazilar" aria-labelledby="h-gunluk">
   <div class="wrap">
-    <header class="section-head">
-      <h2 id="h-gunluk" class="section-title">GÜNLÜK</h2>
-      <p class="section-desc">Şarkıların, yolların ve üretim süreçlerinin arkasındaki hikâyeler.</p>
-    </header>
+    ${sectionHead('gunluk', 'YAZILAR', '')}
     <ul class="journal-list">${journal.map((p) => journalCard(p, url)).join('')}</ul>
   </div>
 </section>
+</main>
+` +
+    footer(depth)
+  );
+}
+
+function iletisimPage() {
+  const depth = 1;
+  const god = godOf('iletisim');
+  return (
+    head({ title: 'İletişim | Aedilis Media', description: god.desc, canonicalPath: 'iletisim/', depth }) +
+    `
+<body>
+${header(depth)}
+<main id="icerik" tabindex="-1">
+${pageHero(depth, god, { title: 'İletişim', lead: 'Marka iş birlikleri, yaratıcı projeler, müzik yayınları, video içerikleri ve medya talepleri için iletişim kanalı.' })}
 
 <section class="section" id="iletisim" aria-labelledby="h-iletisim">
   <div class="wrap">
-    <header class="section-head">
-      <h2 id="h-iletisim" class="section-title">İLETİŞİM</h2>
-      <p class="section-desc">Marka iş birlikleri, yaratıcı projeler, müzik yayınları, video içerikleri ve medya talepleri için iletişim kanalı.</p>
-    </header>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>${esc(site.contact.heading)}</h3>
+        <h2 id="h-iletisim">${esc(site.contact.heading)}</h2>
         <p>${esc(site.contact.text)}</p>
         <p><a class="mail-link" href="mailto:${esc(site.contact.email)}">${esc(site.contact.email)}</a></p>
         <ul class="social-list" aria-label="Sosyal medya ve platformlar">
@@ -378,17 +482,17 @@ ${header(depth)}
   </div>
 </section>
 
-</main>
-
-<dialog class="listen-dialog" id="listen-dialog" aria-labelledby="listen-title">
-  <div class="dialog-box">
-    <button class="dialog-close" type="button" data-close aria-label="Kapat">Kapat</button>
-    <p class="tag">Dinleme platformunu seç</p>
-    <h3 id="listen-title">Yayın</h3>
-    <p id="listen-meta" class="dialog-meta"></p>
-    <ul class="platform-links" id="listen-links"></ul>
+<section class="section section-alt" aria-label="Marka özü ve manifesto">
+  <div class="wrap">
+    <blockquote class="manifesto-quote">
+      <p>${esc(site.manifesto.text)}</p>
+    </blockquote>
+    <ul class="pillars pillars-wide" aria-label="Marka özü">
+      ${site.manifesto.pillars.map((p) => `<li><span class="pillar-name">${esc(p.title)}</span><span class="pillar-text">${esc(p.text)}</span></li>`).join('')}
+    </ul>
   </div>
-</dialog>
+</section>
+</main>
 ` +
     footer(depth)
   );
@@ -421,7 +525,7 @@ ${header(depth)}
 <section class="hero hero-sub">
   <div class="wrap hero-grid hero-grid-sub">
     <div class="hero-copy">
-      <p class="crumbs"><a href="${url('#muzik')}">Aedilis Media Music</a></p>
+      <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
       <h1 class="page-title">${esc(dzs.name)}</h1>
       <p class="motto motto-upper">${esc(dzs.tagline)}</p>
       <p class="lead">${esc(dzs.intro)}</p>
@@ -493,11 +597,11 @@ function postPage(p) {
 ${header(depth)}
 <main id="icerik" tabindex="-1">
 <article class="post wrap">
-  <p class="crumbs"><a href="${url('#gunluk')}">Günlük</a></p>
+  <p class="crumbs"><a href="${url('gunluk/')}">Günlük</a></p>
   <h1 class="page-title post-title">${esc(p.title)}</h1>
   <p class="post-meta">${esc(p.category || '')}${p.date ? `<span>${esc(formatDate(p.date))}</span>` : ''}</p>
   <div class="prose">${p.html}</div>
-  <p class="section-more"><a class="text-link" href="${url('#gunluk')}">Günlüğe dön</a></p>
+  <p class="section-more"><a class="text-link" href="${url('gunluk/')}">Günlüğe dön</a></p>
 </article>
 </main>
 ` +
@@ -574,9 +678,13 @@ async function build() {
     await writeFile(file, content);
   };
 
-  await write('index.html', homePage());
+  await write('index.html', hubPage());
+  await write('muzik/index.html', muzikPage());
+  await write('yapim/index.html', yapimPage());
+  await write('gunluk/index.html', gunlukPage());
+  await write('iletisim/index.html', iletisimPage());
   await write(`${dzs.slug}/index.html`, dzsPage());
-  const pages = [{ loc: '', pri: '1.0' }, { loc: `${dzs.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }];
   for (const p of journal.filter((x) => x.body)) {
     await write(`gunluk/${p.slug}/index.html`, postPage(p));
     pages.push({ loc: `gunluk/${p.slug}/`, pri: '0.6' });

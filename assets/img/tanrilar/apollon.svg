@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Apollon: lir ve güneş">
+<circle cx="120" cy="120" r="114" fill="#101010" stroke="#b08a3e" stroke-width="2"/><circle cx="120" cy="120" r="106" fill="none" stroke="#b08a3e" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="1.5 7" stroke-linecap="round"/>
+<g stroke="#b08a3e" stroke-width="3" stroke-linecap="round">
+<circle cx="120" cy="62" r="15" fill="#b08a3e"/>
+<path d="M120 32v-8M120 92v-6M90 62h-8M158 62h-8M99 41l-6-6M147 41l6-6"/>
+</g>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M90 156c-24-20-18-58 4-76" stroke="#d7ccb2" stroke-width="5"/>
+<path d="M150 156c24-20 18-58-4-76" stroke="#d7ccb2" stroke-width="5"/>
+<path d="M92 82h56" stroke="#b08a3e" stroke-width="6"/>
+<path d="M104 86v74M112 86v74M120 86v74M128 86v74M136 86v74" stroke="#d7ccb2" stroke-width="1.6"/>
+<path d="M82 150c0 44 76 44 76 0" fill="#1b1b1b" stroke="#d7ccb2" stroke-width="4"/>
+<path d="M96 168h48" stroke="#b08a3e" stroke-width="4"/>
+</g>
+</svg>

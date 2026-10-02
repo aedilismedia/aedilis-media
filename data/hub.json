@@ -1,0 +1,45 @@
+{
+  "center": {
+    "logo": "assets/img/aedilis-media-yapim.webp",
+    "alt": "Aedilis Media logosu: taçlı Zeus büstü, meander çerçeve ve defne dalı",
+    "caption": "Geçmişten ilham, geleceğe etki."
+  },
+  "gods": [
+    {
+      "id": "muzik",
+      "label": "Müzik",
+      "god": "Dionysos",
+      "href": "muzik/",
+      "image": "assets/img/tanrilar/dionysos.svg",
+      "desc": "Dördüncü Zamdan Sonra ve Demonium Nihil: bağımsız müzik yayınları.",
+      "tagline": "Dionysos'un sahnesi"
+    },
+    {
+      "id": "yapim",
+      "label": "Yapım",
+      "god": "Hermes",
+      "href": "yapim/",
+      "image": "assets/img/tanrilar/hermes.svg",
+      "desc": "Ondan Sonra, Aedilis Rides, Afiyets, Aedilis Cultura ve son videolar.",
+      "tagline": "Hermes, yolların ve hikâyelerin habercisi"
+    },
+    {
+      "id": "gunluk",
+      "label": "Günlük",
+      "god": "Apollon",
+      "href": "gunluk/",
+      "image": "assets/img/tanrilar/apollon.svg",
+      "desc": "Şarkıların, yolların ve üretim süreçlerinin arkasındaki hikâyeler.",
+      "tagline": "Apollon, söz ve ışığın tanrısı"
+    },
+    {
+      "id": "iletisim",
+      "label": "İletişim",
+      "god": "Iris",
+      "href": "iletisim/",
+      "image": "assets/img/tanrilar/iris.svg",
+      "desc": "İş birlikleri, medya talepleri ve genel iletişim.",
+      "tagline": "Iris, haber taşıyan gökkuşağı"
+    }
+  ]
+}

@@ -230,7 +230,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- İletişim ---------- */
 .contact-grid { display: grid; gap: clamp(2.2rem, 6vw, 5rem); grid-template-columns: 1fr; }
 @media (min-width: 58rem) { .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
-.contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+.contact-info h2, .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
 .contact-info p { color: var(--stone-muted); max-width: 48ch; }
 .contact-info p .mail-link { color: var(--stone); }
 .social-list { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 1.6rem; }
@@ -289,6 +289,62 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .footer-nav a { text-decoration: none; font-size: 0.875rem; color: var(--stone-muted); }
 .footer-nav a:hover { color: var(--stone); }
 .footer-copy { margin: 0; font-size: 0.82rem; color: var(--stone-muted); }
+
+/* ---------- Ana sayfa: tek ekranlık tanrılar menüsü ---------- */
+.pillars-wide { margin-top: clamp(2rem, 5vw, 3.2rem); }
+.god-emblem { border-radius: 50%; }
+.sub-logo.god-emblem { width: min(18rem, 62%); }
+
+.hub { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.hub > .frieze { flex: none; }
+.hub-main { flex: 1; display: grid; place-items: center; padding: clamp(0.5rem, 2svh, 1.5rem) var(--gutter); outline: none; }
+
+.stage { width: min(100%, 72rem); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: clamp(1rem, 5vw, 5rem); row-gap: clamp(1rem, 4svh, 3rem); }
+.gods { display: contents; }
+
+.stage-center { grid-column: 2; grid-row: 1 / span 2; text-align: center; }
+.stage-logo { width: min(58svh, 36vw, 30rem); aspect-ratio: 1; margin-inline: auto; }
+.stage-motto { margin: clamp(0.6rem, 2svh, 1.4rem) 0 0; font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; font-size: clamp(0.62rem, 1.3svh + 0.2rem, 0.85rem); color: var(--gold); line-height: 1.3; }
+
+.god a { display: grid; justify-items: center; gap: 0.3rem; text-decoration: none; text-align: center; padding: 0.4rem; }
+.god .god-emblem { width: min(24svh, 19vw, 11.5rem); aspect-ratio: 1; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.god-label { font-family: var(--display); font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; font-size: clamp(0.85rem, 1.6svh + 0.3rem, 1.15rem); color: var(--stone); line-height: 1.2; padding-bottom: 0.3rem; border-bottom: 1px solid transparent; transition: border-color 0.25s, color 0.25s; }
+.god-name { font-size: 0.78rem; line-height: 1.2; letter-spacing: 0.12em; color: var(--stone-muted); }
+.god a:hover .god-emblem, .god a:focus-visible .god-emblem { transform: scale(1.05); }
+.god a:hover .god-label, .god a:focus-visible .god-label { border-bottom-color: var(--gold); color: var(--gold); }
+
+.god-1 { grid-column: 1; grid-row: 1; justify-self: end; }
+.god-2 { grid-column: 1; grid-row: 2; justify-self: end; }
+.god-3 { grid-column: 3; grid-row: 1; justify-self: start; }
+.god-4 { grid-column: 3; grid-row: 2; justify-self: start; }
+/* yay etkisi: üstteki tanrılar logoya biraz daha yakın, alttakiler biraz uzak */
+@media (min-width: 52rem) {
+  .god-1, .god-3 { transform: translateX(var(--arc, 0)); }
+  .god-1 { --arc: clamp(0.5rem, 3vw, 2.5rem); }
+  .god-3 { --arc: calc(-1 * clamp(0.5rem, 3vw, 2.5rem)); }
+}
+
+.hub-foot { flex: none; text-align: center; padding-bottom: 0.6rem; }
+.hub-foot .frieze { opacity: 0.55; height: 14px; background-size: 14px 14px; margin-bottom: 0.4rem; }
+.hub-foot p { margin: 0; line-height: 1.3; font-size: 0.75rem; color: var(--stone-muted); letter-spacing: 0.04em; }
+
+@media (max-width: 51.99rem) {
+  .stage { grid-template-columns: 1fr 1fr; align-content: center; column-gap: 1rem; row-gap: clamp(0.4rem, 2svh, 1.2rem); }
+  .stage-center { grid-column: 1 / -1; grid-row: 1; }
+  .stage-logo { width: min(30svh, 60vw, 20rem); }
+  .god .god-emblem { width: min(13.5svh, 30vw, 9rem); }
+  .god-1 { grid-column: 1; grid-row: 2; justify-self: center; }
+  .god-2 { grid-column: 2; grid-row: 2; justify-self: center; }
+  .god-3 { grid-column: 1; grid-row: 3; justify-self: center; }
+  .god-4 { grid-column: 2; grid-row: 3; justify-self: center; }
+  .god-label { letter-spacing: 0.18em; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage-logo, .god { animation: hub-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .god-1 { animation-delay: 0.25s; } .god-2 { animation-delay: 0.35s; } .god-3 { animation-delay: 0.45s; } .god-4 { animation-delay: 0.55s; }
+}
+@keyframes hub-in { from { opacity: 0; } to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

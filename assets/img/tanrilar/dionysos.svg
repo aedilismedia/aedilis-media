@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Dionysos: thyrsos, üzüm salkımı ve sarmaşık">
+<circle cx="120" cy="120" r="114" fill="#101010" stroke="#b08a3e" stroke-width="2"/><circle cx="120" cy="120" r="106" fill="none" stroke="#b08a3e" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="1.5 7" stroke-linecap="round"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 204V84" stroke="#d7ccb2" stroke-width="4.5"/>
+<path d="M120 36c19 15 21 40 0 54-21-14-19-39 0-54z" fill="#b08a3e" stroke="#d7ccb2" stroke-width="2"/>
+<path d="M106 58q14 9 28 0M104 70q16 11 32 0M109 82q11 7 22 0" stroke="#101010" stroke-width="2"/>
+<path d="M120 92c-34 2-48 26-34 50M120 92c34 2 48 26 34 50" stroke="#8b0d0d" stroke-width="3.5"/>
+<path d="M120 112c-14 4-20 14-16 26M120 112c14 4 20 14 16 26" stroke="#8b0d0d" stroke-width="2.5" opacity=".8"/>
+<path d="M170 168c-22-6-34 12-24 28 9-5 17-4 24 7 7-11 15-12 24-7 10-16-2-34-24-28z" stroke="#b08a3e" stroke-width="3"/>
+<path d="M170 170v30" stroke="#b08a3e" stroke-width="2.5"/>
+</g>
+<g fill="#8b0d0d" stroke="#d7ccb2" stroke-width="1.6">
+<circle cx="64" cy="150" r="9.5"/><circle cx="83" cy="150" r="9.5"/><circle cx="102" cy="150" r="9.5"/>
+<circle cx="73.500" cy="167" r="9.5"/><circle cx="92.500" cy="167" r="9.5"/><circle cx="83" cy="184" r="9.5"/>
+</g>
+<path d="M83 140c0-8 6-12 14-13" fill="none" stroke="#b08a3e" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
