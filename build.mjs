@@ -300,7 +300,7 @@ function hubPage() {
     .map(
       (g, i) => `<li class="god god-${i + 1}">
       <a href="${esc(url(g.href))}" aria-label="${esc(g.label)}: ${esc(g.desc)}">
-        <img class="god-emblem" src="${esc(url(g.image))}" alt="" width="200" height="308" decoding="async">
+        <img class="god-emblem${g.shape === 'square' ? ' god-square' : ''}" src="${esc(url(g.image))}" alt="" width="${g.shape === 'square' ? 160 : 200}" height="${g.shape === 'square' ? 160 : 308}" decoding="async">
         <span class="god-label">${esc(g.label)}</span>
         <span class="god-name">${esc(g.god)}</span>
       </a>

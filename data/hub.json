@@ -44,11 +44,12 @@
     {
       "id": "kutmuhru",
       "label": "Kut Mührü",
-      "god": "Hades",
+      "god": "Roman",
       "href": "https://kutmuhru.aedilismedia.com",
-      "image": "assets/img/tanrilar/hades.svg",
+      "image": "assets/img/kut-muhru.svg",
       "desc": "Kut Mührü: roman.",
-      "tagline": "Mühürlerin ve eşiklerin efendisi"
+      "tagline": "Roman",
+      "shape": "square"
     }
   ]
 }
