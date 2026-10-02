@@ -309,27 +309,68 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .god a { display: grid; justify-items: center; gap: 0.3rem; text-decoration: none; text-align: center; padding: 0.4rem; }
 .god .god-emblem { height: min(24svh, 22rem); width: auto; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .god-label { font-family: var(--display); font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; font-size: clamp(0.85rem, 1.6svh + 0.3rem, 1.15rem); color: var(--stone); line-height: 1.2; padding-bottom: 0.3rem; border-bottom: 1px solid transparent; transition: border-color 0.25s, color 0.25s; }
-.god-name { font-size: 0.78rem; line-height: 1.2; letter-spacing: 0.12em; color: var(--stone-muted); }
 .god .god-emblem.god-square { aspect-ratio: 1; height: min(23svh, 20rem); }
 .god a:hover .god-emblem, .god a:focus-visible .god-emblem { transform: scale(1.05); }
 .god a:hover .god-label, .god a:focus-visible .god-label { border-bottom-color: var(--gold); color: var(--gold); }
 
-/* masaüstü: logo ortada, beş öğe etrafında beşgen düzende (üst, sağ üst, sağ alt, sol alt, sol üst); alt orta boş, slogan orada */
+/* masaüstü: logo ortada, beş öğe etrafında beşgen düzende (üst Kut Mührü, sağ üst Yapım, sağ alt Günlük, sol alt İletişim, sol üst Müzik); alt orta boş, slogan orada */
 @media (min-width: 52rem) {
   .stage { display: block; position: relative; height: 100%; align-self: stretch; }
   .stage-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
   .stage-logo { width: min(36svh, 30vw, 27rem); }
-  .stage-motto { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; margin: clamp(0.4rem, 1.5svh, 1rem) 0 0; }
+  .stage-motto { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 100%; text-wrap: balance; margin: clamp(0.4rem, 1.5svh, 1rem) 0 0; }
   .god { position: absolute; transform: translate(-50%, -50%); }
   .god .god-emblem { height: min(18svh, 17rem); }
   .god .god-emblem.god-square { height: min(17svh, 15rem); }
   .god-label { font-size: clamp(0.8rem, 1.3svh + 0.3rem, 1.05rem); }
-  .god-1 { left: 50%; top: 15%; }
+  .god-5 { left: 50%; top: 15%; }
   .god-2 { left: 85%; top: 39%; }
-  .god-3 { left: 71.5%; top: 78.3%; }
-  .god-4 { left: 28.5%; top: 78.3%; }
-  .god-5 { left: 15%; top: 39%; }
+  .god-3 { left: 64%; top: 78.3%; }
+  .god-4 { left: 36%; top: 78.3%; }
+  .god-1 { left: 15%; top: 39%; }
 }
+
+/* hover/odak animasyonları: her tanrının simgesi kendi hareketini yapar */
+.god-emblem .an { transform-box: fill-box; }
+@media (prefers-reduced-motion: no-preference) {
+  .god-emblem .an-wing { transform-origin: 50% 50%; }
+  .god-emblem .an-o-r { transform-origin: 100% 70%; --d: 1; }
+  .god-emblem .an-o-l { transform-origin: 0% 70%; --d: -1; }
+  .god-emblem .an-o-br { transform-origin: 100% 100%; --d: 1; }
+  .god-emblem .an-o-iris { transform-origin: 100% 25%; --d: 1; }
+  .god-emblem .an-ripple { opacity: 0; transform-origin: 50% 50%; }
+  .god-emblem .an-sun { transform-origin: 50% 50%; transform-box: view-box; transform-origin: 100px 38px; }
+  .god-emblem .an-lyre { transform-origin: 50% 90%; }
+  .god-emblem .an-spin, .god-emblem .an-spin-rev { transform-box: view-box; transform-origin: 80px 80px; }
+
+  .god a:hover .an-thump, .god a:focus-visible .an-thump { animation: god-thump 1.5s ease-in-out infinite; }
+  .god a:hover .an-ripple, .god a:focus-visible .an-ripple { animation: god-ripple 1.5s ease-out infinite; }
+  .god a:hover .an-wing, .god a:focus-visible .an-wing { animation: god-flap 0.7s ease-in-out infinite; }
+  .god a:hover .an-o-iris, .god a:focus-visible .an-o-iris { animation-name: god-flutter; animation-duration: 1.1s; }
+  .god a:hover .an-sun, .god a:focus-visible .an-sun { animation: god-sun 9s linear infinite; }
+  .god a:hover .an-lyre, .god a:focus-visible .an-lyre { animation: god-lyre 2.4s ease-in-out infinite; }
+  .god a:hover .an-strings, .god a:focus-visible .an-strings { animation: god-strings 0.14s linear infinite; }
+  .god a:hover .an-spin, .god a:focus-visible .an-spin { animation: god-spin 14s linear infinite; }
+  .god a:hover .an-spin-rev, .god a:focus-visible .an-spin-rev { animation: god-spin 18s linear infinite reverse; }
+}
+@keyframes god-thump {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(-11px); }
+  50% { transform: translateY(0); }
+  58% { transform: translateY(-2px); }
+  66% { transform: translateY(0); }
+}
+@keyframes god-ripple {
+  0%, 48% { opacity: 0; transform: scale(0.4); }
+  50% { opacity: 0.9; transform: scale(0.6); }
+  85%, 100% { opacity: 0; transform: scale(4); }
+}
+@keyframes god-flap { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(calc(24deg * var(--d, 1))); } }
+@keyframes god-flutter { 0%, 100% { transform: rotate(0) scaleX(1); } 50% { transform: rotate(calc(12deg * var(--d, 1))) scaleX(0.9); } }
+@keyframes god-sun { to { transform: rotate(360deg); } }
+@keyframes god-lyre { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-3deg); } 70% { transform: rotate(3deg); } }
+@keyframes god-strings { 0%, 100% { transform: translateX(-0.9px); } 50% { transform: translateX(0.9px); } }
+@keyframes god-spin { to { transform: rotate(360deg); } }
 
 .hub-foot { flex: none; text-align: center; padding-bottom: 0.6rem; }
 .hub-foot .frieze { opacity: 0.55; height: 14px; background-size: 14px 14px; margin-bottom: 0.4rem; }
@@ -351,7 +392,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .god .god-emblem { width: 100%; height: auto; max-height: 30svh; }
   .god .god-emblem.god-square { width: 100%; height: auto; aspect-ratio: 1; }
   .god-label { letter-spacing: 0.04em; font-size: clamp(0.46rem, 2vw, 0.8rem); white-space: nowrap; }
-  .god-name { font-size: 0.56rem; letter-spacing: 0.04em; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

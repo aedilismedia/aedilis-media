@@ -131,10 +131,12 @@ def feet(y=256):
 def dionysos():
     o = open_svg('Dionysos: sarmaşık taçlı, sakallı, thyrsos tutan mermer heykel') + niche()
     # thyrsos (çam kozalaklı değnek) sağda
+    o += '<g class="an an-thump">'
     o += limb([(152, 30), (152, 262)], 4)
     o += f'<path d="M152 8C160 16 160 28 152 36 144 28 144 16 152 8Z" fill="{M}" stroke="{D}" stroke-width="1.1"/>'
     o += f'<path d="M146 16Q152 21 158 16M145 23Q152 29 159 23M147 30Q152 34 157 30" fill="none" stroke="{D}" stroke-width=".9"/>'
     o += f'<path d="M152 38C140 44 138 56 146 64M152 38C164 44 166 56 158 64" fill="none" stroke="{D}" stroke-width="2" stroke-linecap="round"/>'
+    o += '</g>'
     # etek (uzun khiton)
     o += pleats(126, 256, 78, 122, 62, 138, n=10, wave=3)
     # gövde + geyik postu (nebris) çapraz
@@ -148,7 +150,7 @@ def dionysos():
         o += f'<circle cx="{58+dx}" cy="{128+dy}" r="3.4" fill="{M}" stroke="{D}" stroke-width=".9"/>'
     # sağ kol: thyrsos'u tutuyor
     o += limb([(128, 68), (142, 90), (150, 82)], 11)
-    o += f'<circle cx="152" cy="82" r="4.5" fill="{M}" stroke="{D}" stroke-width="1"/>'
+    o += f'<g class="an an-thump"><circle cx="152" cy="82" r="4.5" fill="{M}" stroke="{D}" stroke-width="1"/></g>'
     # baş: uzun lüleli saç, sakal, sarmaşık
     neck, face = head()
     hd = hair_back_long(drop=40) + neck + face + beard_curls() + hair_front()
@@ -157,6 +159,8 @@ def dionysos():
         hd += leaf(x, y, deg + 90 - 20, 1.0) + leaf(x, y, deg + 90 + 20, 1.0)
     o += HEAD(hd)
     o += feet() + plinth()
+    # asa yere vurunca yayılan halka
+    o += f'<ellipse class="an an-ripple" cx="152" cy="262" rx="8" ry="2.4" fill="none" stroke="{D}" stroke-width="1.4"/>'
     return o + '</svg>'
 
 
@@ -167,7 +171,7 @@ def hermes():
     o += limb([(152, 40), (152, 262)], 4)
     o += f'<circle cx="152" cy="34" r="5" fill="{M}" stroke="{D}" stroke-width="1"/>'
     wing = f'<path d="M150 42C140 34 130 34 122 38 130 40 136 44 140 48 132 50 128 54 124 58 134 56 142 54 150 54Z" fill="{M}" stroke="{D}" stroke-width="1"/>'
-    o += wing + f'<g transform="translate(304 0) scale(-1 1)">{wing}</g>'
+    o += f'<g class="an an-wing an-o-br">{wing}</g>' + f'<g transform="translate(304 0) scale(-1 1)"><g class="an an-wing an-o-br">{wing}</g></g>'
     o += (f'<path d="M152 70C140 78 140 90 152 98S164 118 152 126M152 70C164 78 164 90 152 98S140 118 152 126" fill="none" stroke="{D}" stroke-width="2.4" stroke-linecap="round"/>'
           f'<path d="M152 70C164 78 164 90 152 98" fill="none" stroke="{M}" stroke-width="1" stroke-linecap="round"/>')
     # bacaklar (kısa tunik altından)
@@ -175,7 +179,7 @@ def hermes():
     # kanatlı sandaletler
     for sx, cx0 in ((-1, 86), (1, 116)):
         w = (f'<path d="M{cx0} 238C{cx0+sx*12} 228 {cx0+sx*22} 230 {cx0+sx*28} 236 {cx0+sx*20} 238 {cx0+sx*14} 240 {cx0+sx*8} 244 {cx0+sx*18} 246 {cx0+sx*24} 246 {cx0+sx*28} 250 {cx0+sx*14} 252 {cx0+sx*6} 250 {cx0} 248Z" fill="{L}" stroke="{D}" stroke-width="1"/>')
-        o += w
+        o += f'<g class="an an-wing {"an-o-r" if sx < 0 else "an-o-l"}">{w}</g>'
     o += feet(256)
     # kısa tunik
     o += pleats(126, 172, 78, 122, 70, 130, n=8, wave=2)
@@ -198,7 +202,7 @@ def hermes():
           f'<path d="M80 29C92 24 108 24 120 29" fill="none" stroke="{D}" stroke-width="1.6" stroke-linecap="round"/>')
     pw = (f'<path d="M86 22C78 16 68 16 60 20 67 21 72 25 75 29 68 30 64 34 61 38 70 36 78 34 86 34Z" fill="{L}" stroke="{D}" stroke-width="1"/>'
           f'<path d="M84 24C76 21 70 21 65 23M84 30C76 28 70 29 66 31" fill="none" stroke="{D}" stroke-width=".7"/>')
-    hd += pw + f'<g transform="translate(200 0) scale(-1 1)">{pw}</g>'
+    hd += f'<g class="an an-wing an-o-r">{pw}</g>' + f'<g transform="translate(200 0) scale(-1 1)"><g class="an an-wing an-o-r">{pw}</g></g>'
     o += HEAD(hd)
     o += plinth()
     return o + '</svg>'
@@ -208,18 +212,22 @@ def hermes():
 def apollon():
     o = open_svg('Apollon: defne taçlı, lir tutan mermer heykel') + niche()
     # güneş halesi
+    o += '<g class="an an-sun">'
     o += f'<circle cx="100" cy="38" r="30" fill="none" stroke="{M}" stroke-opacity=".5" stroke-width="1.4"/>'
     for deg in range(0, 360, 20):
         x1, y1 = pol(100, 38, 33, deg); x2, y2 = pol(100, 38, 41, deg)
         o += f'<path d="M{x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}" stroke="{M}" stroke-opacity=".5" stroke-width="1.4" stroke-linecap="round"/>'
+    o += '</g>'
     # lir (sağ elde)
+    o += '<g class="an an-lyre">'
     o += (f'<path d="M142 120C128 108 130 82 142 70" fill="none" stroke="{D}" stroke-width="7" stroke-linecap="round"/>'
           f'<path d="M142 120C128 108 130 82 142 70" fill="none" stroke="{M}" stroke-width="5" stroke-linecap="round"/>'
           f'<path d="M168 120C182 108 180 82 168 70" fill="none" stroke="{D}" stroke-width="7" stroke-linecap="round"/>'
           f'<path d="M168 120C182 108 180 82 168 70" fill="none" stroke="{M}" stroke-width="5" stroke-linecap="round"/>'
           f'<path d="M138 72H172" stroke="{D}" stroke-width="7" stroke-linecap="round"/><path d="M138 72H172" stroke="{S}" stroke-width="5" stroke-linecap="round"/>'
-          f'<path d="M146 76V122M152 76V122M158 76V122M164 76V122" stroke="{D}" stroke-width="1"/>'
+          f'<g class="an an-strings"><path d="M146 76V122M152 76V122M158 76V122M164 76V122" stroke="{D}" stroke-width="1"/></g>'
           f'<path d="M136 118C136 140 174 140 174 118Z" fill="{M}" stroke="{D}" stroke-width="1.2"/>')
+    o += '</g>'
     # uzun khiton
     o += pleats(126, 256, 78, 122, 60, 140, n=11, wave=3)
     o += male_torso()
@@ -247,7 +255,7 @@ def iris():
     for i, (tipx, tipy) in enumerate([(14, 42), (8, 78), (10, 114), (18, 148), (32, 178)]):
         wing += (f'<path d="M78 76C60 {62+i*8} {tipx+14} {tipy-6} {tipx} {tipy} {tipx+16} {tipy+14} {52} {96+i*10} 78 {104+i*6}Z" '
                  f'fill="{TONES[min(i*2, 8)]}" stroke="{D}" stroke-width="1"/>')
-    o += wing + f'<g transform="translate(200 0) scale(-1 1)">{wing}</g>'
+    o += f'<g class="an an-wing an-o-iris">{wing}</g>' + f'<g transform="translate(200 0) scale(-1 1)"><g class="an an-wing an-o-iris">{wing}</g></g>'
     # uzun peplos
     o += pleats(112, 256, 80, 120, 62, 138, n=10, wave=3)
     # üst gövde (daha dar, kadın)

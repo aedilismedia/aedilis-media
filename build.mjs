@@ -284,7 +284,7 @@ function sectionVideolar() {
 </section>`;
 }
 
-function hubPage() {
+async function hubPage() {
   const depth = 0;
   const url = makeUrl(depth);
   const jsonLd = {
@@ -296,16 +296,24 @@ function hubPage() {
     description: site.description,
     sameAs: site.contact.socials.map((s) => s.href),
   };
-  const gods = hub.gods
-    .map(
-      (g, i) => `<li class="god god-${i + 1}">
+  const gods = (
+    await Promise.all(
+      hub.gods.map(async (g, i) => {
+        const square = g.shape === 'square';
+        let svg = (await readFile(path.join(ROOT, g.image), 'utf8')).trim();
+        svg = svg.replace(/<svg\b[^>]*>/, (open) => {
+          const vb = open.match(/viewBox="[^"]*"/)[0];
+          return `<svg class="god-emblem${square ? ' god-square' : ''}" xmlns="http://www.w3.org/2000/svg" ${vb} width="${square ? 160 : 200}" height="${square ? 160 : 308}" ${square ? 'fill="none" stroke="#b08a3e" ' : ''}aria-hidden="true" focusable="false">`;
+        });
+        return `<li class="god god-${i + 1}">
       <a href="${esc(url(g.href))}" aria-label="${esc(g.label)}: ${esc(g.desc)}">
-        <img class="god-emblem${g.shape === 'square' ? ' god-square' : ''}" src="${esc(url(g.image))}" alt="" width="${g.shape === 'square' ? 160 : 200}" height="${g.shape === 'square' ? 160 : 308}" decoding="async">
+        ${svg}
         <span class="god-label">${esc(g.label)}</span>
-        <span class="god-name">${esc(g.god)}</span>
       </a>
-    </li>`
+    </li>`;
+      })
     )
+  )
     .join('\n    ');
   return (
     head({
@@ -678,7 +686,7 @@ async function build() {
     await writeFile(file, content);
   };
 
-  await write('index.html', hubPage());
+  await write('index.html', await hubPage());
   await write('muzik/index.html', muzikPage());
   await write('yapim/index.html', yapimPage());
   await write('gunluk/index.html', gunlukPage());
