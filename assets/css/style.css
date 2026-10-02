@@ -315,18 +315,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* masaüstü: logo ortada, beş öğe etrafında beşgen düzende (üst Kut Mührü, sağ üst Yapım, sağ alt Günlük, sol alt İletişim, sol üst Müzik); alt orta boş, slogan orada */
 @media (min-width: 52rem) {
-  .stage { display: block; position: relative; height: 100%; align-self: stretch; }
+  .stage { --logo-w: min(36svh, 30vw, 27rem); --pair: calc(max(var(--logo-w) / 2, 7rem) + 8svh + 1.5rem); display: block; position: relative; height: 100%; align-self: stretch; }
   .stage-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-  .stage-logo { width: min(36svh, 30vw, 27rem); }
-  .stage-motto { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 100%; text-wrap: balance; margin: clamp(0.4rem, 1.5svh, 1rem) 0 0; }
+  .stage-logo { width: var(--logo-w); }
+  .stage-motto { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 15em; text-wrap: balance; text-align: center; margin: clamp(0.4rem, 1.5svh, 1rem) 0 0; }
   .god { position: absolute; transform: translate(-50%, -50%); }
   .god .god-emblem { height: min(18svh, 17rem); }
   .god .god-emblem.god-square { height: min(17svh, 15rem); }
   .god-label { font-size: clamp(0.8rem, 1.3svh + 0.3rem, 1.05rem); }
   .god-5 { left: 50%; top: 15%; }
   .god-2 { left: 85%; top: 39%; }
-  .god-3 { left: 69%; top: 78.3%; }
-  .god-4 { left: 31%; top: 78.3%; }
+  .god-3 { left: calc(50% + var(--pair)); top: 78.3%; }
+  .god-4 { left: calc(50% - var(--pair)); top: 78.3%; }
   .god-1 { left: 15%; top: 39%; }
 }
 
