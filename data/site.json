@@ -6,7 +6,7 @@
   "locale": "tr_TR",
   "motto": "Geçmişten ilham, geleceğe etki.",
   "description": "Aedilis Media; şarkıları, yolları ve hikâyeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı. Müzik projeleri, yol vlogları ve içerik serileri.",
-  "logo": "https://aedilismedia.com/wp-content/uploads/2025/05/cropped-Site-Icon-1.png",
+  "logo": "assets/img/site-icon.webp",
   "footer": "© 2026 Aedilis Media™",
   "nav": [
     {

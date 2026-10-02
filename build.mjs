@@ -29,6 +29,7 @@ const yearOf = (iso) => String(iso || '').slice(0, 4);
 const isExternal = (h) => /^(https?:|mailto:|tel:)/.test(h);
 
 // Sayfa derinliğine göre göreli yol öneki: kök "", /gunluk/x/ -> "../../"
+const absUrl = (p) => (/^https?:\/\//.test(p) ? p : new URL(p, site.url.replace(/\/?$/, '/')).href);
 const relPrefix = (depth) => '../'.repeat(depth);
 
 function makeUrl(depth) {
@@ -96,7 +97,7 @@ const PLATFORMS = [
 function head({ title, description, canonicalPath, depth, ogImage, jsonLd, noindex }) {
   const rel = relPrefix(depth);
   const canonical = new URL(canonicalPath, site.url.replace(/\/?$/, '/')).href;
-  const og = ogImage || site.logo;
+  const og = absUrl(ogImage || site.ogImage || site.logo);
   return `<!DOCTYPE html>
 <html lang="${site.lang}">
 <head>
@@ -115,7 +116,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <meta property="og:locale" content="${site.locale}">
 <meta property="og:image" content="${esc(og)}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="${esc(site.logo)}">
+<link rel="icon" href="${esc(/^https?:/.test(site.logo) ? site.logo : rel + site.logo)}">
 <link rel="preload" href="${rel}assets/fonts/cinzel-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${rel}assets/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel}assets/css/fonts.css">
@@ -134,7 +135,7 @@ function header(depth) {
   return `<a class="skip-link" href="#icerik">İçeriğe geç</a>
 <header class="topbar">
   <a class="brand" href="${home}" aria-label="${esc(site.name)} ana sayfa">
-    <img class="brand-mark" src="${esc(site.logo)}" alt="" width="36" height="36" onerror="this.remove()">
+    <img class="brand-mark" src="${esc(url(site.logo))}" alt="" width="36" height="36" onerror="this.remove()">
     <span class="brand-name">AEDILIS MEDIA</span>
   </a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="ana-menu">Menü</button>
@@ -245,7 +246,7 @@ function homePage() {
     '@type': 'Organization',
     name: site.name,
     url: site.url,
-    logo: site.logo,
+    logo: absUrl(site.logo),
     description: site.description,
     sameAs: site.contact.socials.map((s) => s.href),
   };
@@ -425,7 +426,7 @@ ${header(depth)}
       <p class="motto motto-upper">${esc(dzs.tagline)}</p>
       <p class="lead">${esc(dzs.intro)}</p>
     </div>
-    <img class="sub-logo" src="${esc(dzs.logo)}" alt="${esc(dzs.name)} logosu" width="360" height="360" onerror="this.remove()">
+    <img class="sub-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.name)} logosu" width="360" height="360" onerror="this.remove()">
   </div>
   <div class="frieze frieze-draw" aria-hidden="true"></div>
 </section>
