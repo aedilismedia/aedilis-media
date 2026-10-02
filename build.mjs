@@ -261,7 +261,7 @@ function pageHero(depth, god, { title, lead }) {
       <p class="motto motto-upper">${esc(god.tagline)}</p>
       <p class="lead">${esc(lead)}</p>
     </div>
-    <img class="sub-logo god-emblem" src="${esc(url(god.image))}" alt="" width="360" height="360">
+    <img class="sub-logo god-emblem" src="${esc(url(god.image))}" alt="" width="200" height="308">
   </div>
   <div class="frieze frieze-draw" aria-hidden="true"></div>
 </section>`;
@@ -300,7 +300,7 @@ function hubPage() {
     .map(
       (g, i) => `<li class="god god-${i + 1}">
       <a href="${esc(url(g.href))}" aria-label="${esc(g.label)}: ${esc(g.desc)}">
-        <img class="god-emblem" src="${esc(url(g.image))}" alt="" width="240" height="240" decoding="async">
+        <img class="god-emblem" src="${esc(url(g.image))}" alt="" width="200" height="308" decoding="async">
         <span class="god-label">${esc(g.label)}</span>
         <span class="god-name">${esc(g.god)}</span>
       </a>
