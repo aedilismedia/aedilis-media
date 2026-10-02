@@ -1,0 +1,99 @@
+{
+  "name": "Aedilis Media",
+  "url": "https://aedilismedia.com",
+  "basePath": "/",
+  "lang": "tr",
+  "locale": "tr_TR",
+  "motto": "Geçmişten ilham, geleceğe etki.",
+  "description": "Aedilis Media; şarkıları, yolları ve hikâyeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı. Müzik projeleri, yol vlogları ve içerik serileri.",
+  "logo": "https://aedilismedia.com/wp-content/uploads/2025/05/cropped-Site-Icon-1.png",
+  "footer": "© 2026 Aedilis Media™",
+  "nav": [
+    {
+      "label": "Bölümler",
+      "href": "#bolumler"
+    },
+    {
+      "label": "Müzik",
+      "href": "#muzik"
+    },
+    {
+      "label": "Videolar",
+      "href": "#videolar"
+    },
+    {
+      "label": "Günlük",
+      "href": "#gunluk"
+    },
+    {
+      "label": "İletişim",
+      "href": "#iletisim",
+      "cta": true
+    }
+  ],
+  "hero": {
+    "lead": "Şarkıları, yolları ve hikâyeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı.",
+    "actions": [
+      {
+        "label": "Bölümleri gör",
+        "href": "#bolumler",
+        "primary": true
+      },
+      {
+        "label": "Son yayınları dinle",
+        "href": "#muzik"
+      }
+    ],
+    "youtube": {
+      "label": "Ondan Sonra YouTube abonesi",
+      "count": "502",
+      "asOf": "2026-10-02",
+      "href": "https://www.youtube.com/@oondansonraa"
+    }
+  },
+  "manifesto": {
+    "text": "Aedilis Media; müzik, yol, lezzet ve hikâye anlatımını tek bir bağımsız yaratıcı evrende buluşturur. Her proje, bu evrenin kendine özgü bir sahnesidir.",
+    "pillars": [
+      {
+        "title": "Miras",
+        "text": "Klasik mirastan ilham alan zamansız bir kimlik. Geçmişin gücü, bugünün vizyonuyla buluşur."
+      },
+      {
+        "title": "Güç",
+        "text": "Cesur, kararlı ve etkileyici bir duruş. Her projede kalite, özgünlük ve güçlü bir etki."
+      },
+      {
+        "title": "Anlatı",
+        "text": "Her marka, proje ve yolculuğun bir hikâyesi var. Biz onları görünür ve unutulmaz kılarız."
+      },
+      {
+        "title": "Karakter",
+        "text": "Dürüst, özgün, disiplinli ve üretken. Stratejiyle üretir, karakterle iz bırakırız."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Birlikte hikâye üretelim",
+    "text": "Aedilis Media; müzik, video, yolculuk, lezzet ve alternatif kültür odaklı bağımsız projeler üretir. Marka iş birlikleri, sponsor görüşmeleri, medya talepleri ve yaratıcı projeler için bize yazabilirsiniz.",
+    "email": "ondansonra@aedilismedia.com",
+    "formEndpoint": "",
+    "socials": [
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@oondansonraa"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/oondansonraa"
+      },
+      {
+        "label": "TikTok",
+        "href": "https://www.tiktok.com/@oondansonraa"
+      },
+      {
+        "label": "Spotify",
+        "href": "https://open.spotify.com/artist/1V6WjzGdWUHLyHdrlOhwOM"
+      }
+    ]
+  }
+}

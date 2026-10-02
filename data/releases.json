@@ -1,0 +1,103 @@
+[
+  {
+    "slug": "yaz-bizi-yakar",
+    "title": "Yaz Bizi Yakar",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "EP",
+    "date": "2026-07-19",
+    "latest": true,
+    "links": {
+      "spotify": "https://open.spotify.com/album/6upXgcdixiHrsN2An8yqyI",
+      "apple": "https://music.apple.com/tr/album/yaz-bi-zi-yakar-ep/6790025330",
+      "youtube": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g",
+      "deezer": "https://www.deezer.com/tr/album/1027048772"
+    }
+  },
+  {
+    "slug": "dunya-duyacak-bizi",
+    "title": "Dünya Duyacak Bizi",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "Single",
+    "date": "2026-06-12",
+    "links": {
+      "spotify": "https://open.spotify.com/album/2mN0cWgSNFVGQN5rSYWdN1",
+      "apple": "https://music.apple.com/tr/album/d%C3%BCnya-duyacak-bizi-single/6776260562",
+      "youtube": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g",
+      "deezer": "https://www.deezer.com/tr/album/997427721"
+    }
+  },
+  {
+    "slug": "bir-daha-gom-beni",
+    "title": "Bir Daha Göm Beni",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "Single",
+    "date": "2026-05-15",
+    "note": "Şehirli melankoli, iç hesaplaşma ve güçlü nakarat enerjisi.",
+    "links": {
+      "spotify": "https://open.spotify.com/album/4H5W69aA1bYSbmBp0S2NYV",
+      "apple": "https://music.apple.com/tr/album/bir-daha-g%C3%B6m-beni-single/1896385301",
+      "youtube": "https://www.youtube.com/watch?v=GKVN3JcnRtA",
+      "deezer": "https://www.deezer.com/tr/album/975919791"
+    }
+  },
+  {
+    "slug": "delilik-serbest",
+    "title": "Delilik Serbest",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "Single",
+    "date": "2026-04-12",
+    "links": {
+      "spotify": "https://open.spotify.com/album/0RRQchoXF5aXyHiPjaUVGw",
+      "apple": "https://music.apple.com/tr/album/delilik-serbest-single/1892793396",
+      "youtube": "https://www.youtube.com/watch?v=0YYWccLyqnI&list=OLAK5uy_kFfPPNb-lpP3qFh_h6cm1PYzldOYUgTxA",
+      "deezer": "https://www.deezer.com/tr/album/957839631"
+    }
+  },
+  {
+    "slug": "duvar-kiriklari",
+    "title": "Duvar Kırıkları",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "EP",
+    "date": "2026-01-26",
+    "links": {
+      "spotify": "https://open.spotify.com/album/4mD2o6NP1ENmjS7yFPdoTu",
+      "apple": "https://music.apple.com/tr/album/duvar-k%C4%B1r%C4%B1klar%C4%B1-ep/1871332662",
+      "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_l5rluusL8yD4LSUn9nfJhVysMZmDzbck8",
+      "deezer": "https://www.deezer.com/tr/album/902870022"
+    }
+  },
+  {
+    "slug": "son-kat-melankolisi",
+    "title": "Son Kat Melankolisi",
+    "artist": "Dördüncü Zamdan Sonra",
+    "project": "dzs",
+    "type": "Albüm",
+    "date": "2025-11-01",
+    "links": {
+      "spotify": "https://open.spotify.com/album/6Iij2AQranvH9UHkU4CCMa",
+      "apple": "https://music.apple.com/tr/album/son-kat-melankolisi/1845027699",
+      "youtube": "https://www.youtube.com/playlist?list=OLAK5uy_kHQvXb-A7WnctJzQq8-AE3Bi4AktXWqsk",
+      "deezer": "https://www.deezer.com/tr/album/833510431"
+    }
+  },
+  {
+    "slug": "hell-is-a-stage",
+    "title": "Hell Is A Stage",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Albüm",
+    "date": "2025",
+    "note": "Gotik kabare sahnesi. Dokuz parça.",
+    "links": {
+      "spotify": "https://open.spotify.com/album/362q0zKC1Rlo61s0B9nk4E",
+      "apple": "https://music.apple.com/ph/album/hell-is-a-stage/1824987667",
+      "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kAx8_cj0qz9Cxdvgy5Ea7rkvGc-L5Gu1o",
+      "deezer": "https://www.deezer.com/tr/album/783418701"
+    }
+  }
+]

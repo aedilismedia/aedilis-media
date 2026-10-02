@@ -1,0 +1,32 @@
+{
+  "slug": "dorduncu-zamdan-sonra",
+  "name": "Dördüncü Zamdan Sonra",
+  "short": "DZS",
+  "tagline": "Sonrası Biziz",
+  "secondary": "Şehir. Ses. Hikâye.",
+  "logo": "https://aedilismedia.com/wp-content/uploads/2026/08/Dorduncu-Zamdan-Sonra-Temiz-Logo-opt.webp",
+  "intro": "Modern şehir yaşamını, içsel çatışmaları ve gündelik hayatın görünmeyen kırılma anlarını Türkçe alternatif müzikle anlatan, Aedilis Media bünyesindeki bağımsız sanal müzik projesi.",
+  "story": [
+    "Dördüncü Zamdan Sonra, modern şehir yaşamının insan üzerinde bıraktığı izleri, içsel çatışmaları, kırılgan ilişkileri ve gündelik hayatın çoğu zaman gözden kaçan anlarını Türkçe alternatif müzik aracılığıyla anlatan bağımsız bir müzik projesidir.",
+    "Alternatif rock, indie rock, pop-rock ve elektronik dokulardan beslenen proje; samimi söz yazımını güçlü melodiler, karanlık atmosferler ve yer yer ironik bir anlatımla bir araya getirir.",
+    "Anlatı dünyasında gece hayatı, yalnızlık, yabancılaşma, geçmişle hesaplaşma, şehir yorgunluğu, gençlik, kaçış ve yeniden başlama isteği önemli bir yer tutar. Şarkılar yalnızca kişisel duyguları aktarmakla kalmaz; iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ortak şehir deneyimine de bakar.",
+    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya kuran proje; müziği, kapak tasarımını, videoyu ve dijital hikâye anlatımını tek bir yaratıcı kimlik altında toplar."
+  ],
+  "ai": "Dördüncü Zamdan Sonra yapay zekâ destekli bir sanal müzik projesidir. Yapay zekâ üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
+  "facts": [
+    { "label": "Kurucu", "value": "Erkan Avcı" },
+    { "label": "Başlangıç", "value": "1 Kasım 2025" },
+    { "label": "Tür", "value": "Türkçe alternatif ve indie rock" },
+    { "label": "Bölüm", "value": "Aedilis Media Music" }
+  ],
+  "platforms": [
+    { "label": "Spotify", "href": "https://open.spotify.com/artist/1V6WjzGdWUHLyHdrlOhwOM" },
+    { "label": "Apple Music", "href": "https://music.apple.com/tr/artist/d%C3%B6rd%C3%BCnc%C3%BC-zamdan-sonra/1844449739" },
+    { "label": "YouTube Music", "href": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g" },
+    { "label": "Deezer", "href": "https://www.deezer.com/tr/artist/349575651" },
+    { "label": "YouTube", "href": "https://www.youtube.com/@dorduncuzamdansonra" },
+    { "label": "Genius", "href": "https://genius.com/artists/Dorduncu-zamdan-sonra" },
+    { "label": "Tüm bağlantılar", "href": "https://linktr.ee/dorduncuzamdansonra" }
+  ],
+  "email": "dorduncuzamdansonra@aedilismedia.com"
+}
