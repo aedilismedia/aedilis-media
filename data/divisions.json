@@ -10,21 +10,21 @@
       {
         "name": "Aedilis Rides",
         "text": "Motor üstünde biriken yol hikâyeleri, şehir rotaları, sürüş notları ve motovlog içerikleri.",
-        "logo": "https://aedilismedia.com/wp-content/uploads/2026/08/Aedilis-Rides-Logo-opt.webp",
+        "logo": "assets/img/aedilis-rides.webp",
         "href": "#videolar",
         "hrefLabel": "Videolara git"
       },
       {
         "name": "Afiyets",
         "text": "Sokak lezzetleri, büfeler, tostçular ve yol üstü yemek duraklarına odaklanan lezzet serisi.",
-        "logo": "https://aedilismedia.com/wp-content/uploads/2026/08/Afiyets-Logo-opt.webp",
+        "logo": "assets/img/afiyets.webp",
         "href": "#videolar",
         "hrefLabel": "Videolara git"
       },
       {
         "name": "Canımız Çekti Diye",
         "text": "Plan yapmadan çıkılan yollar, anlık hevesler ve “madem canımız çekti” diye başlayan küçük maceralar.",
-        "logo": "https://aedilismedia.com/wp-content/uploads/2026/08/Canimiz-Cekti-Diye-Logo-opt.webp",
+        "logo": "assets/img/canimiz-cekti-diye.webp",
         "href": "#videolar",
         "hrefLabel": "Videolara git"
       },
@@ -60,7 +60,7 @@
       {
         "name": "Demonium Nihil",
         "text": "Gotik atmosfer, teatral anlatım ve karanlık konsept albümler üzerine kurulu müzik evreni.",
-        "logo": "https://aedilismedia.com/wp-content/uploads/2026/08/Demonium-Nihil-Logo2-opt.webp",
+        "logo": "assets/img/demonium-nihil.webp",
         "href": "gunluk/demonium-nihil-sahnesi/",
         "hrefLabel": "Sahneyi oku"
       }
