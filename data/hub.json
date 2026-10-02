@@ -1,6 +1,6 @@
 {
   "center": {
-    "logo": "assets/img/aedilis-media-yapim.webp",
+    "logo": "assets/img/aedilis-media.webp",
     "alt": "Aedilis Media logosu: taçlı Zeus büstü, meander çerçeve ve defne dalı",
     "caption": "Geçmişten ilham, geleceğe etki."
   },
@@ -41,5 +41,11 @@
       "desc": "İş birlikleri, medya talepleri ve genel iletişim.",
       "tagline": "Iris, haber taşıyan gökkuşağı"
     }
-  ]
+  ],
+  "sideProject": {
+    "name": "Kut Mührü",
+    "text": "Roman",
+    "href": "https://kutmuhru.aedilismedia.com",
+    "image": "assets/img/kut-muhru.svg"
+  }
 }

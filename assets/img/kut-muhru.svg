@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" stroke="#b08a3e" role="img" aria-label="Kut Mührü">
+<circle cx="80" cy="80" r="74" stroke-width="1.4"/>
+<circle cx="80" cy="80" r="68" stroke-width="1" stroke-dasharray="1 6"/>
+<path d="M80 16 125 35 144 80 125 125 80 144 35 125 16 80 35 35Z" stroke-width="1.4"/>
+<path d="M80 34 126 80 80 126 34 80Z" stroke-width="1.6"/>
+<path d="M80 46v68M57 60v20l23 17 23-17V60M65 108l15-12 15 12M69 52l11-10 11 10" stroke-width="4" stroke-linecap="square"/>
+<path d="M80 8v10m0 124v10M8 80h10m124 0h10" stroke-width="1.6"/>
+</svg>

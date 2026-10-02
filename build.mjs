@@ -332,6 +332,11 @@ function hubPage() {
   </nav>
 </main>
 <footer class="hub-foot">
+  <a class="sideproject" href="${esc(hub.sideProject.href)}" aria-label="${esc(hub.sideProject.name)}: ${esc(hub.sideProject.text)}">
+    <img src="${esc(url(hub.sideProject.image))}" alt="" width="40" height="40" decoding="async">
+    <span class="sideproject-name">${esc(hub.sideProject.name)}</span>
+    <span class="sideproject-text">${esc(hub.sideProject.text)}</span>
+  </a>
   <div class="frieze" aria-hidden="true"></div>
   <p>${esc(site.footer)}</p>
 </footer>
