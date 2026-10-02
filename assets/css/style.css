@@ -314,18 +314,21 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .god a:hover .god-emblem, .god a:focus-visible .god-emblem { transform: scale(1.05); }
 .god a:hover .god-label, .god a:focus-visible .god-label { border-bottom-color: var(--gold); color: var(--gold); }
 
-.god-1 { grid-column: 1; grid-row: 1; justify-self: end; }
-.god-2 { grid-column: 1; grid-row: 2; justify-self: end; }
-.god-3 { grid-column: 3; grid-row: 1; justify-self: start; }
-.god-4 { grid-column: 3; grid-row: 2; justify-self: start; }
-.god-5 { grid-column: 2; grid-row: 2; justify-self: center; }
-.god-2, .god-4, .god-5 { align-self: end; }
-/* çapraz yerleşim: Müzik ile İletişim dışarıda, Günlük ile Yapım içeride (logo etrafında dönel simetri) */
+/* masaüstü: logo ortada, beş öğe etrafında beşgen düzende (üst, sağ üst, sağ alt, sol alt, sol üst); alt orta boş, slogan orada */
 @media (min-width: 52rem) {
-  .god-1 { transform: translate(-4.5vw, -2.5svh); }
-  .god-3 { transform: translate(-3.5vw, 3.5svh); }
-  .god-2 { transform: translate(3.5vw, -3.5svh); }
-  .god-4 { transform: translate(4.5vw, 2.5svh); }
+  .stage { display: block; position: relative; height: 100%; align-self: stretch; }
+  .stage-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .stage-logo { width: min(36svh, 30vw, 27rem); }
+  .stage-motto { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; margin: clamp(0.4rem, 1.5svh, 1rem) 0 0; }
+  .god { position: absolute; transform: translate(-50%, -50%); }
+  .god .god-emblem { height: min(18svh, 17rem); }
+  .god .god-emblem.god-square { height: min(17svh, 15rem); }
+  .god-label { font-size: clamp(0.8rem, 1.3svh + 0.3rem, 1.05rem); }
+  .god-1 { left: 50%; top: 15%; }
+  .god-2 { left: 85%; top: 39%; }
+  .god-3 { left: 71.5%; top: 78.3%; }
+  .god-4 { left: 28.5%; top: 78.3%; }
+  .god-5 { left: 15%; top: 39%; }
 }
 
 .hub-foot { flex: none; text-align: center; padding-bottom: 0.6rem; }
