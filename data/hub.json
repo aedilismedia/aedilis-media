@@ -40,12 +40,15 @@
       "image": "assets/img/tanrilar/iris.svg",
       "desc": "İş birlikleri, medya talepleri ve genel iletişim.",
       "tagline": "Iris, haber taşıyan gökkuşağı"
+    },
+    {
+      "id": "kutmuhru",
+      "label": "Kut Mührü",
+      "god": "Hades",
+      "href": "https://kutmuhru.aedilismedia.com",
+      "image": "assets/img/tanrilar/hades.svg",
+      "desc": "Kut Mührü: roman.",
+      "tagline": "Mühürlerin ve eşiklerin efendisi"
     }
-  ],
-  "sideProject": {
-    "name": "Kut Mührü",
-    "text": "Roman",
-    "href": "https://kutmuhru.aedilismedia.com",
-    "image": "assets/img/kut-muhru.svg"
-  }
+  ]
 }

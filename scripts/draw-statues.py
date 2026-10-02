@@ -78,7 +78,9 @@ def head(hair='short', beard=False, female=False, cx=100, cy=38):
     face = (f'<path d="M{cx-w} {cy-6}C{cx-w} {cy-14} {cx-5} {cy-18} {cx} {cy-18}S{cx+w} {cy-14} {cx+w} {cy-6}'
             f'C{cx+w} {cy+4} {cx+5} {cy+12} {cx} {cy+15}S{cx-w} {cy+4} {cx-w} {cy-6}Z" fill="{M}" stroke="{D}" stroke-width="1.1"/>'
             f'<path d="M{cx} {cy-18}C{cx+5} {cy-18} {cx+w} {cy-14} {cx+w} {cy-6}C{cx+w} {cy+4} {cx+5} {cy+12} {cx} {cy+15}Z" fill="{D}" opacity=".22"/>'
-            f'<path d="M{cx-8} {cy-5}Q{cx-4} {cy-8} {cx-1} {cy-5}M{cx+1} {cy-5}Q{cx+4} {cy-8} {cx+8} {cy-5}" fill="none" stroke="{D}" stroke-width="1.3" stroke-linecap="round"/>'
+            f'<path d="M{cx-8.5} {cy-6.5}L{cx-1.5} {cy-5}M{cx+1.5} {cy-5}L{cx+8.5} {cy-6.5}" fill="none" stroke="{D}" stroke-width="1.5" stroke-linecap="round"/>'
+            f'<path d="M{cx-8} {cy-1.5}H{cx-2}M{cx+2} {cy-1.5}H{cx+8}" fill="none" stroke="{D}" stroke-width="1.4" stroke-linecap="round"/>'
+            f'<path d="M{cx-7} {cy-0.5}H{cx-3}M{cx+3} {cy-0.5}H{cx+7}" fill="none" stroke="{D}" stroke-opacity=".45" stroke-width="1" stroke-linecap="round"/>'
             f'<path d="M{cx} {cy-4}V{cy+4}M{cx-2.500} {cy+5.500}Q{cx} {cy+6.500} {cx+2.500} {cy+5.500}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>'
             f'<path d="M{cx-3.500} {cy+9.500}H{cx+3.500}" fill="none" stroke="{D}" stroke-width="1" stroke-linecap="round"/>')
     neck = (f'<path d="M{cx-5} {cy+12}H{cx+5}V{cy+25}H{cx-5}Z" fill="{S}" stroke="{D}" stroke-width="1"/>')
@@ -274,8 +276,42 @@ def iris():
     return o + '</svg>'
 
 
+# ------------------------------------------------------------------ HADES (Kut Mührü)
+def hades():
+    o = open_svg('Hades: bident ve anahtar tutan, sakallı mermer heykel') + niche()
+    # bident (iki dişli mızrak)
+    o += limb([(152, 44), (152, 262)], 4)
+    o += (f'<path d="M142 12V32Q142 44 152 44Q162 44 162 32V12" fill="none" stroke="{D}" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>'
+          f'<path d="M142 12V32Q142 44 152 44Q162 44 162 32V12" fill="none" stroke="{M}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>'
+          f'<path d="M139 16L142 6L145 16ZM159 16L162 6L165 16Z" fill="{M}" stroke="{D}" stroke-width="1"/>')
+    # uzun khiton
+    o += pleats(126, 256, 78, 122, 60, 140, n=11, wave=3)
+    o += male_torso()
+    # sol omuzdan inen ağır himation
+    o += (f'<path d="M72 64C52 78 44 140 48 214L72 226L82 74Z" fill="{S}" stroke="{D}" stroke-width="1.1"/>'
+          f'<path d="M62 84C58 120 56 160 58 210M70 78C68 120 66 160 66 218" fill="none" stroke="{D}" stroke-width=".9" opacity=".7"/>')
+    o += f'<path d="M72 66L90 62L120 108L116 126L96 118Z" fill="{S}" stroke="{D}" stroke-width="1.1"/>'
+    # sol kol: anahtar tutuyor
+    o += limb([(72, 68), (62, 98), (66, 124)], 11)
+    o += (f'<circle cx="62" cy="130" r="3.4" fill="none" stroke="{D}" stroke-width="1.8"/>'
+          f'<circle cx="62" cy="130" r="3.4" fill="none" stroke="{M}" stroke-width=".9"/>'
+          f'<path d="M62 134V156M62 148H67M62 154H66" fill="none" stroke="{D}" stroke-width="2.6" stroke-linecap="round"/>'
+          f'<path d="M62 134V156M62 148H67M62 154H66" fill="none" stroke="{M}" stroke-width="1.2" stroke-linecap="round"/>')
+    # sağ kol: bident'i tutuyor
+    o += limb([(128, 68), (142, 90), (150, 82)], 11)
+    o += f'<circle cx="152" cy="82" r="4.5" fill="{M}" stroke="{D}" stroke-width="1"/>'
+    neck, face = head()
+    hd = hair_back_long(drop=40) + neck + face + beard_curls() + hair_front()
+    hd += f'<path d="M88 31Q100 24 112 31" fill="none" stroke="{D}" stroke-width="2.4" stroke-linecap="round"/>'
+    hd += f'<path d="M88 31Q100 24 112 31" fill="none" stroke="{L}" stroke-width="1" stroke-linecap="round"/>'
+    o += HEAD(hd)
+    o += feet() + plinth()
+    return o + '</svg>'
+
+
+
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
-    for name, fn in [('dionysos', dionysos), ('hermes', hermes), ('apollon', apollon), ('iris', iris)]:
+    for name, fn in [('dionysos', dionysos), ('hermes', hermes), ('apollon', apollon), ('iris', iris), ('hades', hades)]:
         open(os.path.join(OUT, f'{name}.svg'), 'w', encoding='utf8').write(fn())
-    print('4 heykel yazıldı ->', os.path.abspath(OUT))
+    print('5 heykel yazıldı ->', os.path.abspath(OUT))
