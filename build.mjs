@@ -67,6 +67,8 @@ const releases = (await readJSON('data/releases.json')).sort((a, b) => (b.date |
 const videosData = await readJSON('data/videos.json');
 const dzs = await readJSON('data/dzs.json');
 const dn = await readJSON('data/dn.json');
+// Proje adı artık DZS: metinlerde eski ad (ve ek alan hâli) kısaltmayla değişir
+const dzsShort = (t) => t.replace(/Dördüncü Zamdan Sonra'nın/g, `${dzs.shortName}'nin`).replace(/Dördüncü Zamdan Sonra/g, dzs.shortName);
 const hub = await readJSON('data/hub.json');
 const basePath = site.basePath || '/';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
@@ -449,8 +451,8 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <div>
         <h2 id="h-dzs" class="proj-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h2>
         <p class="proj-tag">${esc(dzs.tagline)}<span aria-hidden="true"> · </span>${esc(dzs.secondary)}</p>
-        <p class="proj-text">${esc(dzs.story[0].replace(/^Dördüncü Zamdan Sonra/, dzs.shortName))}</p>
-        <p class="proj-note">${esc(dzs.ai.replace(/^Dördüncü Zamdan Sonra/, dzs.shortName))}</p>
+        <p class="proj-text">${esc(dzsShort(dzs.story[0]))}</p>
+        <p class="proj-note">${esc(dzsShort(dzs.ai))}</p>
       </div>
     </header>
     ${factList(dzs.facts)}
@@ -604,10 +606,12 @@ ${pageHero(depth, god, { title: 'İletişim', lead: 'Marka iş birlikleri, yarat
 function dzsPage() {
   const depth = 1;
   const url = makeUrl(depth);
-  const rows = releases.filter((r) => r.project === 'dzs').map(releaseRow).join('');
+  const list = releases.filter((r) => r.project === 'dzs');
+  const trackCount = list.reduce((n, r) => n + r.tracks.length, 0);
+  const dn0 = dzsShort;
   return (
     head({
-      title: `${dzs.name} | Aedilis Media`,
+      title: `${dzs.shortName} (${dzs.formerName}) | Aedilis Media`,
       description: dzs.intro,
       canonicalPath: `${dzs.slug}/`,
       depth,
@@ -615,7 +619,8 @@ function dzsPage() {
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'MusicGroup',
-        name: dzs.name,
+        name: dzs.shortName,
+        alternateName: dzs.formerName,
         url: new URL(`${dzs.slug}/`, site.url.replace(/\/?$/, '/')).href,
         description: dzs.intro,
         sameAs: dzs.platforms.map((p) => p.href),
@@ -629,11 +634,11 @@ ${header(depth)}
   <div class="wrap hero-grid hero-grid-sub">
     <div class="hero-copy">
       <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
-      <h1 class="page-title">${esc(dzs.name)}</h1>
+      <h1 class="page-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h1>
       <p class="motto motto-upper">${esc(dzs.tagline)}</p>
       <p class="lead">${esc(dzs.intro)}</p>
     </div>
-    <img class="sub-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.name)} logosu" width="360" height="360" onerror="this.remove()">
+    <img class="sub-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="360" height="360" onerror="this.remove()">
   </div>
   <div class="frieze frieze-draw" aria-hidden="true"></div>
 </section>
@@ -642,10 +647,34 @@ ${header(depth)}
   <div class="wrap prose-grid">
     <h2 id="h-hikaye" class="section-title">HİKÂYE</h2>
     <div class="prose">
-      ${dzs.story.map((p) => `<p>${esc(p)}</p>`).join('')}
-      <p class="note">${esc(dzs.ai)}</p>
+      ${dzs.story.map((p) => `<p>${esc(dn0(p))}</p>`).join('')}
+      <p class="note">${esc(dn0(dzs.ai))}</p>
       <dl class="facts">${dzs.facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join('')}</dl>
+      <p class="roles">${esc(dzs.roles)}</p>
     </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="h-kimlik">
+  <div class="wrap prose-grid">
+    <h2 id="h-kimlik" class="section-title">KİMLİK</h2>
+    <div class="prose">
+      <p>${esc(dzs.identity.lead)}</p>
+      <h3 class="chips-title">Konumlandırma</h3>
+      <ul class="chips">${dzs.identity.positioning.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Anlatı dünyası</h3>
+      <ul class="chips">${dzs.identity.themes.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="h-sahne">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="h-sahne" class="section-title">SAHNE</h2>
+      <p class="section-desc">${esc(dzs.castNote)}</p>
+    </header>
+    <ul class="cast cast-lineup">${dzs.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h4>${esc(c.name)}</h4></li>`).join('')}</ul>
   </div>
 </section>
 
@@ -653,9 +682,9 @@ ${header(depth)}
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
-      <p class="section-desc">Altı yayın: bir albüm, iki EP ve üç single.</p>
+      <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}.</p>
     </header>
-    <ol class="release-list">${rows}</ol>
+    <ul class="rgrid">${list.map(releaseCard).join('')}</ul>
   </div>
 </section>
 

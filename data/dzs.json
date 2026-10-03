@@ -9,8 +9,11 @@
   "story": [
     "Dördüncü Zamdan Sonra, modern şehir yaşamının insan üzerinde bıraktığı izleri, içsel çatışmaları, kırılgan ilişkileri ve gündelik hayatın çoğu zaman gözden kaçan anlarını Türkçe alternatif müzik aracılığıyla anlatan bağımsız bir müzik projesidir.",
     "Alternatif rock, indie rock, pop-rock ve elektronik dokulardan beslenen proje; samimi söz yazımını güçlü melodiler, karanlık atmosferler ve yer yer ironik bir anlatımla bir araya getirir.",
-    "Anlatı dünyasında gece hayatı, yalnızlık, yabancılaşma, geçmişle hesaplaşma, şehir yorgunluğu, gençlik, kaçış ve yeniden başlama isteği önemli bir yer tutar. Şarkılar yalnızca kişisel duyguları aktarmakla kalmaz; iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ortak şehir deneyimine de bakar.",
-    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya kuran proje; müziği, kapak tasarımını, videoyu ve dijital hikâye anlatımını tek bir yaratıcı kimlik altında toplar."
+    "Projenin anlatı dünyasında gece hayatı, yalnızlık, yabancılaşma, geçmişle hesaplaşma, şehir yorgunluğu, gençlik, kaçış ve yeniden başlama isteği önemli bir yer tutar.",
+    "Şarkılar, yalnızca kişisel duyguları aktarmakla kalmaz; modern insanın iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ruh hâline de odaklanır. Bu nedenle Dördüncü Zamdan Sonra'nın müziği, bireysel hikâyeler ile ortak şehir deneyimleri arasında bir bağ kurmayı amaçlar.",
+    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya oluşturan proje; müzik, kapak tasarımı, video ve dijital hikâye anlatımını bütüncül bir yaratıcı kimlik altında değerlendirir.",
+    "Dördüncü Zamdan Sonra, dinleyiciye yalnızca bir şarkı değil, atmosferi ve hikâyesi olan eksiksiz bir deneyim sunmayı hedefler.",
+    "Aedilis Media bünyesinde geliştirilen Dördüncü Zamdan Sonra, bağımsız üretim anlayışını koruyarak Türkçe alternatif müzik sahnesinde özgün, tanınabilir ve kalıcı bir anlatı dili oluşturmayı amaçlamaktadır."
   ],
   "ai": "Dördüncü Zamdan Sonra yapay zekâ destekli bir sanal müzik projesidir. Yapay zekâ üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
   "facts": [
@@ -21,6 +24,10 @@
     {
       "label": "Başlangıç",
       "value": "1 Kasım 2025"
+    },
+    {
+      "label": "Proje türü",
+      "value": "Yapay zekâ destekli sanal müzik projesi"
     },
     {
       "label": "Tür",
@@ -63,5 +70,54 @@
   ],
   "email": "dorduncuzamdansonra@aedilismedia.com",
   "shortName": "DZS",
-  "formerName": "Dördüncü Zamdan Sonra"
+  "formerName": "Dördüncü Zamdan Sonra",
+  "roles": "Erkan Avcı: kurucu, yapımcı, söz yazarı ve direktör.",
+  "identity": {
+    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikâye.”",
+    "positioning": [
+      "Bağımsız alternatif Türkçe",
+      "Türkçe alternatif ve indie rock",
+      "Şehirli melankoli",
+      "Gündelik hikâyeler",
+      "Sessiz başkaldırı",
+      "İnsan duygusu ile yapay zekâ destekli üretimin birleşimi"
+    ],
+    "themes": [
+      "Gece hayatı",
+      "Yalnızlık",
+      "Yabancılaşma",
+      "Geçmişle hesaplaşma",
+      "Şehir yorgunluğu",
+      "Gençlik",
+      "Kaçış",
+      "Yeniden başlama"
+    ]
+  },
+  "castNote": "Sahne kadrosu kurgusaldır. Bu isimler gerçek grup üyeleri, gerçek müzisyenler ya da sahne sanatçıları değildir; projenin sanal dünyasının karakterleridir.",
+  "cast": [
+    {
+      "name": "Arda Lumen",
+      "role": "Vokal, frontman"
+    },
+    {
+      "name": "Lucerna",
+      "role": "Geri vokal topluluğu"
+    },
+    {
+      "name": "Eren Solis",
+      "role": "Lead gitar"
+    },
+    {
+      "name": "Selim Morvan",
+      "role": "Bas gitar"
+    },
+    {
+      "name": "Baran Vural",
+      "role": "Davul"
+    },
+    {
+      "name": "Kaan İleri",
+      "role": "Synthesizer ve klavye"
+    }
+  ]
 }

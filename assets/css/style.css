@@ -476,3 +476,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .proj-title .former { font-size: 0.4em; letter-spacing: 0.04em; }
 .status-badge { display: inline-block; margin-left: 0.6rem; padding: 0.05rem 0.55rem; border: 1px solid var(--stone-muted); color: var(--stone-muted); font-family: var(--text); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; vertical-align: 0.1em; }
 .proj-note + .proj-quote { margin-top: 1.4rem; }
+
+.roles { margin: 1.2rem 0 0; font-size: 0.9rem; color: var(--stone-muted); }
+.chips-title { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-family: var(--text); font-weight: 600; margin: 1.8rem 0 0.8rem; }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chips li { padding: 0.35rem 0.9rem; border: 1px solid var(--line); font-size: 0.88rem; }
+.cast-lineup { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.cast-lineup .cast-item { background: transparent; }
+.cast-lineup h4 { margin: 0.2rem 0 0; }
+.page-title .former { font-size: 0.2em; letter-spacing: 0.04em; display: block; margin-top: 0.5rem; text-transform: none; }
