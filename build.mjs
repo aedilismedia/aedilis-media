@@ -66,6 +66,7 @@ const divisions = await readJSON('data/divisions.json');
 const releases = (await readJSON('data/releases.json')).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 const videosData = await readJSON('data/videos.json');
 const dzs = await readJSON('data/dzs.json');
+const dn = await readJSON('data/dn.json');
 const hub = await readJSON('data/hub.json');
 const basePath = site.basePath || '/';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
@@ -173,6 +174,41 @@ function releaseRow(r) {
   <a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>
 </li>`;
 }
+
+// ---------- müzik sayfası yardımcıları ----------
+const toSec = (t) => { const [m, s] = t.split(':').map(Number); return m * 60 + s; };
+function totalLabel(tracks) {
+  const sec = tracks.reduce((a, t) => a + toSec(t[1]), 0);
+  const m = Math.floor(sec / 60), s = sec % 60;
+  return s ? `${m} dk ${String(s).padStart(2, '0')} sn` : `${m} dk`;
+}
+function listenButton(r) {
+  const links = Object.fromEntries(PLATFORMS.filter(([k]) => r.links?.[k]).map(([k, label]) => [label, r.links[k]]));
+  const first = Object.values(links)[0] || '#';
+  return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
+}
+function releaseCard(r) {
+  const n = r.tracks.length;
+  const meta = [/^\d{4}-/.test(r.date || '') ? formatDate(r.date) : '', `${n} parça`, totalLabel(r.tracks)].filter(Boolean).join(' · ');
+  const list = n > 1
+    ? `<details class="tracks"><summary>Parça listesi</summary><ol>${r.tracks.map((t) => `<li><span>${esc(t[0])}</span><time>${esc(t[1])}</time></li>`).join('')}</ol></details>`
+    : '';
+  return `<li class="rcard">
+  <p class="rcard-top"><span class="release-year">${esc(yearOf(r.date))}</span><span class="rcard-type">${esc(r.type)}</span></p>
+  <h4 class="rcard-title"${r.lang ? ` lang="${r.lang}"` : ''}>${esc(r.title)}</h4>
+  <p class="rcard-meta">${esc(meta)}</p>
+  ${list}
+  <div class="rcard-actions">${listenButton(r)}</div>
+</li>`;
+}
+const releaseGroup = (title, list) =>
+  list.length ? `<h3 class="rgroup-title">${esc(title)}</h3>\n    <ul class="rgrid">${list.map(releaseCard).join('')}</ul>` : '';
+const factList = (facts) => `<dl class="facts">${facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join('')}</dl>`;
+const countBy = (list, type) => list.filter((r) => r.type === type).length;
+const statLine = (list) => {
+  const parts = [['Albüm', 'albüm'], ['EP', 'EP'], ['Single', 'single']].map(([t, l]) => [countBy(list, t), l]).filter(([c]) => c);
+  return parts.map(([c, l]) => `${c} ${l}`).join(' · ');
+};
 
 function platformLinks(r) {
   return PLATFORMS.filter(([k]) => r.links?.[k])
@@ -354,46 +390,104 @@ function muzikPage() {
   const url = makeUrl(depth);
   const god = godOf('muzik');
   const latest = releases.find((r) => r.latest) || releases[0];
-  const dznRows = releases.filter((r) => r.project === 'dzs').map(releaseRow).join('');
-  const dnRows = releases.filter((r) => r.project === 'dn').map(releaseRow).join('');
+  const dzsList = releases.filter((r) => r.project === 'dzs');
+  const dnList = releases.filter((r) => r.project === 'dn');
+  const dzsTracks = dzsList.reduce((a, r) => a + r.tracks.length, 0);
   const music = divisions.find((d) => d.id === 'music');
+  const dzsPlatforms = dzs.platforms.map((p) => `<li><a class="btn btn-small" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.label)}</a></li>`).join('');
   return (
     head({ title: 'Müzik | Aedilis Media', description: god.desc, canonicalPath: 'muzik/', depth }) +
     `
 <body>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-${pageHero(depth, god, { title: 'Müzik', lead: 'Alternatif Türkçe şarkılardan gotik konsept albümlere uzanan bağımsız müzik yayınları.' })}
+${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı altında iki bağımsız müzik evreni: Türkçe alternatif şarkılar ve gotik konsept albümler.' })}
 
-<section class="section" id="bolumler" aria-labelledby="h-bolum-muzik">
+<section class="section" id="evrenler" aria-labelledby="h-evrenler">
   <div class="wrap">
-    <h2 id="h-bolum-muzik" class="sr-only">Aedilis Media Music</h2>
-    ${divisionBlock(music, url)}
-  </div>
-</section>
+    <h2 id="h-evrenler" class="sr-only">Müzik projeleri</h2>
+    <div class="music-intro">
+      <img class="music-intro-logo" src="${esc(url(music.logo))}" alt="${esc(music.logoAlt)}" width="360" height="360" loading="lazy" decoding="async">
+      <div>
+        <h3>${esc(music.name)}</h3>
+        <p>${esc(music.summary)} Her projenin kendi sesi, kendi görsel dünyası ve kendi hikâyesi var.</p>
+      </div>
+    </div>
 
-<section class="section section-alt" id="yayinlar" aria-labelledby="h-muzik">
-  <div class="wrap">
-    ${sectionHead('muzik', 'YAYINLAR', '')}
+    <ul class="universes">
+      <li class="universe">
+        <img class="universe-logo" src="${esc(url(dzs.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
+        <h3>${esc(dzs.name)}</h3>
+        <p class="universe-tag">${esc(dzs.tagline)}</p>
+        <p>${esc(dzs.intro)}</p>
+        <p class="universe-stats">${esc(statLine(dzsList))} · ${dzsTracks} parça</p>
+        <p class="universe-actions"><a class="btn btn-small" href="#dzs">Diskografi</a><a class="text-link" href="${url(dzs.slug + '/')}">Proje sayfası</a></p>
+      </li>
+      <li class="universe">
+        <img class="universe-logo" src="${esc(url(dn.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
+        <h3>${esc(dn.name)}</h3>
+        <p class="universe-tag">${esc(dn.tagline)}</p>
+        <p>${esc(dn.intro)}</p>
+        <p class="universe-stats">${esc(statLine(dnList))}</p>
+        <p class="universe-actions"><a class="btn btn-small" href="#dn">Diskografi</a><a class="text-link" href="${url(dn.post)}">Sahneyi oku</a></p>
+      </li>
+    </ul>
 
     <article class="featured">
       <p class="tag">Son yayın</p>
       <h3 class="featured-title"${latest.lang ? ` lang="${latest.lang}"` : ''}>${esc(latest.title)}</h3>
-      <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}.</p>
+      <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça, ${esc(totalLabel(latest.tracks))}.</p>
       <ul class="platform-links" aria-label="${esc(latest.title)} dinleme bağlantıları">${platformLinks(latest)}</ul>
     </article>
+  </div>
+</section>
 
-    <div class="catalog">
-      <h3 class="catalog-title">Dördüncü Zamdan Sonra</h3>
-      <p class="catalog-note">Şehirli melankoli ve alternatif Türkçe müzik. <a class="text-link" href="${url('dorduncu-zamdan-sonra/')}">Proje sayfası</a></p>
-      <ol class="release-list">${dznRows}</ol>
-    </div>
+<section class="section section-alt" id="dzs" aria-labelledby="h-dzs">
+  <div class="wrap">
+    <header class="proj-head">
+      <img class="proj-logo" src="${esc(url(dzs.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
+      <div>
+        <h2 id="h-dzs" class="proj-title">${esc(dzs.name)}</h2>
+        <p class="proj-tag">${esc(dzs.tagline)}<span aria-hidden="true"> · </span>${esc(dzs.secondary)}</p>
+        <p class="proj-text">${esc(dzs.story[0])}</p>
+        <p class="proj-note">${esc(dzs.ai)}</p>
+      </div>
+    </header>
+    ${factList(dzs.facts)}
+    <ul class="platform-links proj-platforms" aria-label="${esc(dzs.name)} platformları">${dzsPlatforms}</ul>
 
-    <div class="catalog">
-      <h3 class="catalog-title">Demonium Nihil</h3>
-      <p class="catalog-note">Gotik atmosfer ve teatral anlatım. <a class="text-link" href="https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q" target="_blank" rel="noopener">Tüm yayınlar</a></p>
-      <ol class="release-list">${dnRows}</ol>
-    </div>
+    <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
+    <ul class="rgrid">${dzsList.map(releaseCard).join('')}</ul>
+    <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
+  </div>
+</section>
+
+<section class="section" id="dn" aria-labelledby="h-dn">
+  <div class="wrap">
+    <header class="proj-head">
+      <img class="proj-logo" src="${esc(url(dn.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
+      <div>
+        <h2 id="h-dn" class="proj-title">${esc(dn.name)}</h2>
+        <p class="proj-tag">${esc(dn.tagline)}</p>
+        ${dn.about.map((t) => `<p class="proj-text">${esc(t)}</p>`).join('\n        ')}
+        <blockquote class="proj-quote" lang="la"><p>${esc(dn.motto)}</p><footer>${esc(dn.mottoTr)}</footer></blockquote>
+      </div>
+    </header>
+    ${factList(dn.facts)}
+    <ul class="platform-links proj-platforms" aria-label="${esc(dn.name)} platformları"><li><a class="btn btn-small" href="${esc(dn.channel)}" target="_blank" rel="noopener">YouTube Music</a></li></ul>
+
+    <h3 class="rgroup-title">Kurgusal kadro</h3>
+    <ul class="cast">${dn.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h4>${esc(c.name)}</h4><p>${esc(c.text)}</p></li>`).join('')}</ul>
+
+    ${releaseGroup('Albümler', dnList.filter((r) => r.type === 'Albüm'))}
+    ${releaseGroup('EP\'ler', dnList.filter((r) => r.type === 'EP'))}
+    ${releaseGroup('Single\'lar', dnList.filter((r) => r.type === 'Single'))}
+
+    <aside class="podcast">
+      <p class="cast-role">Podcast</p>
+      <h4>${esc(dn.podcast.name)}</h4>
+      <p>${esc(dn.podcast.text)}</p>
+    </aside>
   </div>
 </section>
 </main>

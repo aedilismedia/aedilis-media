@@ -12,7 +12,33 @@
       "apple": "https://music.apple.com/tr/album/yaz-bi-zi-yakar-ep/6790025330",
       "youtube": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g",
       "deezer": "https://www.deezer.com/tr/album/1027048772"
-    }
+    },
+    "tracks": [
+      [
+        "OTUZBEŞ YAŞ ÜSTÜ KADINLAR",
+        "4:53"
+      ],
+      [
+        "GECE BİZİ ÇAĞIRIR",
+        "4:34"
+      ],
+      [
+        "BİRAZ RÜZGAR",
+        "3:34"
+      ],
+      [
+        "GÜNEŞ BATMADAN",
+        "3:42"
+      ],
+      [
+        "ÇARKIN DIŞINDA",
+        "4:50"
+      ],
+      [
+        "FIKI FIKI",
+        "4:08"
+      ]
+    ]
   },
   {
     "slug": "dunya-duyacak-bizi",
@@ -26,7 +52,13 @@
       "apple": "https://music.apple.com/tr/album/d%C3%BCnya-duyacak-bizi-single/6776260562",
       "youtube": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g",
       "deezer": "https://www.deezer.com/tr/album/997427721"
-    }
+    },
+    "tracks": [
+      [
+        "Dünya Duyacak Bizi",
+        "4:54"
+      ]
+    ]
   },
   {
     "slug": "bir-daha-gom-beni",
@@ -41,7 +73,13 @@
       "apple": "https://music.apple.com/tr/album/bir-daha-g%C3%B6m-beni-single/1896385301",
       "youtube": "https://www.youtube.com/watch?v=GKVN3JcnRtA",
       "deezer": "https://www.deezer.com/tr/album/975919791"
-    }
+    },
+    "tracks": [
+      [
+        "Bir Daha Göm Beni",
+        "4:58"
+      ]
+    ]
   },
   {
     "slug": "delilik-serbest",
@@ -55,7 +93,13 @@
       "apple": "https://music.apple.com/tr/album/delilik-serbest-single/1892793396",
       "youtube": "https://www.youtube.com/watch?v=0YYWccLyqnI&list=OLAK5uy_kFfPPNb-lpP3qFh_h6cm1PYzldOYUgTxA",
       "deezer": "https://www.deezer.com/tr/album/957839631"
-    }
+    },
+    "tracks": [
+      [
+        "Delilik Serbest",
+        "3:49"
+      ]
+    ]
   },
   {
     "slug": "duvar-kiriklari",
@@ -69,7 +113,33 @@
       "apple": "https://music.apple.com/tr/album/duvar-k%C4%B1r%C4%B1klar%C4%B1-ep/1871332662",
       "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_l5rluusL8yD4LSUn9nfJhVysMZmDzbck8",
       "deezer": "https://www.deezer.com/tr/album/902870022"
-    }
+    },
+    "tracks": [
+      [
+        "Yalnız Uyandım",
+        "3:46"
+      ],
+      [
+        "Yarım Kalan Şehir",
+        "4:45"
+      ],
+      [
+        "Perde Kapandı",
+        "3:37"
+      ],
+      [
+        "Tek Kişilik Masa",
+        "5:04"
+      ],
+      [
+        "Dinlenme Tesisi Soğuğu",
+        "2:59"
+      ],
+      [
+        "Kavuşmak Gibi Bir Şey",
+        "4:24"
+      ]
+    ]
   },
   {
     "slug": "son-kat-melankolisi",
@@ -83,7 +153,41 @@
       "apple": "https://music.apple.com/tr/album/son-kat-melankolisi/1845027699",
       "youtube": "https://www.youtube.com/playlist?list=OLAK5uy_kHQvXb-A7WnctJzQq8-AE3Bi4AktXWqsk",
       "deezer": "https://www.deezer.com/tr/album/833510431"
-    }
+    },
+    "tracks": [
+      [
+        "İçeri Soğuk Giriyor",
+        "3:16"
+      ],
+      [
+        "Kaosmatik",
+        "3:58"
+      ],
+      [
+        "Kurumsal Mavi",
+        "3:29"
+      ],
+      [
+        "Paşa",
+        "5:01"
+      ],
+      [
+        "Mecidiyeköy'den Kalkan Son Minibüs",
+        "4:41"
+      ],
+      [
+        "Sorun Görmüyorum",
+        "4:04"
+      ],
+      [
+        "Faiz-i Borç Hükmü",
+        "5:28"
+      ],
+      [
+        "Biraz Daha Bekle",
+        "4:01"
+      ]
+    ]
   },
   {
     "slug": "hell-is-a-stage",
@@ -92,12 +196,316 @@
     "project": "dn",
     "type": "Albüm",
     "date": "2025",
-    "note": "Gotik kabare sahnesi. Dokuz parça.",
     "links": {
       "spotify": "https://open.spotify.com/album/362q0zKC1Rlo61s0B9nk4E",
       "apple": "https://music.apple.com/ph/album/hell-is-a-stage/1824987667",
       "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kAx8_cj0qz9Cxdvgy5Ea7rkvGc-L5Gu1o",
       "deezer": "https://www.deezer.com/tr/album/783418701"
-    }
+    },
+    "tracks": [
+      [
+        "Welcome To The Infernal Cabaret!",
+        "2:49"
+      ],
+      [
+        "The Devil (Won't Leave My Bathroom)",
+        "2:39"
+      ],
+      [
+        "Dinner With The Devil",
+        "3:17"
+      ],
+      [
+        "President Luci-fail",
+        "2:39"
+      ],
+      [
+        "Let There Be Darkness",
+        "4:01"
+      ],
+      [
+        "Supper With The Devil (feat. Lilith Astra)",
+        "3:57"
+      ],
+      [
+        "Hell Sent Me Back",
+        "3:45"
+      ],
+      [
+        "The Last Waltz of The World",
+        "2:42"
+      ],
+      [
+        "Bon Apetit!",
+        "3:45"
+      ]
+    ],
+    "lang": "en"
+  },
+  {
+    "slug": "reign-of-the-fallen-star",
+    "title": "Reign of The Fallen Star",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Albüm",
+    "date": "2025",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Reign of the Fallen Star",
+        "4:48"
+      ],
+      [
+        "The Savior of Corruption",
+        "4:12"
+      ],
+      [
+        "Clash of Eternities",
+        "4:02"
+      ],
+      [
+        "Shattered Grace",
+        "8:18"
+      ],
+      [
+        "The Blasphemer's Cry",
+        "4:01"
+      ],
+      [
+        "Beneath My Wrath",
+        "5:56"
+      ],
+      [
+        "Hymn to the Fallen Star",
+        "5:30"
+      ],
+      [
+        "Eclipse of Divine",
+        "3:49"
+      ]
+    ]
+  },
+  {
+    "slug": "demonium-nihil-album",
+    "title": "Demonium Nihil",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Albüm",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Demonium Nihil",
+        "3:06"
+      ],
+      [
+        "Chained Liberty",
+        "3:40"
+      ],
+      [
+        "Robots Alive",
+        "3:13"
+      ],
+      [
+        "Messiah",
+        "2:54"
+      ],
+      [
+        "Past Syntetic",
+        "3:40"
+      ],
+      [
+        "Feeling Numb",
+        "3:09"
+      ],
+      [
+        "Phone",
+        "3:17"
+      ],
+      [
+        "Outro",
+        "3:31"
+      ]
+    ]
+  },
+  {
+    "slug": "demonium-nihil-ep",
+    "title": "Demonium Nihil",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "EP",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Phone",
+        "3:16"
+      ],
+      [
+        "Feeling Numb",
+        "3:27"
+      ],
+      [
+        "Past Synthetic",
+        "3:23"
+      ],
+      [
+        "Messiah",
+        "2:54"
+      ],
+      [
+        "Outro (Remastered / Instrumental)",
+        "3:21"
+      ]
+    ]
+  },
+  {
+    "slug": "tales-from-wicked",
+    "title": "Tales From Wicked",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "EP",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Introduction",
+        "2:46"
+      ],
+      [
+        "Infernal Desires",
+        "2:43"
+      ],
+      [
+        "Bind By Chains",
+        "4:21"
+      ],
+      [
+        "Ritual",
+        "3:07"
+      ]
+    ]
+  },
+  {
+    "slug": "aeternus-amor",
+    "title": "Aeternus Amor",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Single",
+    "date": "2025",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Satan Hotline (feat. Lilith Astra)",
+        "3:27"
+      ],
+      [
+        "Satan's Response (feat. Princeps Lucius)",
+        "3:15"
+      ],
+      [
+        "Shadow & Flame (Bonus Track)",
+        "3:12"
+      ]
+    ]
+  },
+  {
+    "slug": "pumpkin-king",
+    "title": "Pumpkin King",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Single",
+    "date": "2025",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Pumpkin King",
+        "2:02"
+      ],
+      [
+        "Midnight Masquerade",
+        "3:00"
+      ],
+      [
+        "Pumpkin King, Pt. 2",
+        "3:45"
+      ]
+    ]
+  },
+  {
+    "slug": "ceremony-and-cohesion",
+    "title": "Ceremony and Cohesion",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Single",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Ceremony",
+        "4:48"
+      ],
+      [
+        "Cohesion",
+        "3:41"
+      ]
+    ]
+  },
+  {
+    "slug": "infernal-dance",
+    "title": "Infernal Dance",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Single",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Infernal Dance",
+        "3:23"
+      ]
+    ]
+  },
+  {
+    "slug": "phone-acoustic",
+    "title": "Phone (Acoustic Version)",
+    "artist": "Demonium Nihil",
+    "project": "dn",
+    "type": "Single",
+    "date": "2024",
+    "lang": "en",
+    "links": {
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    "tracks": [
+      [
+        "Phone (Acoustic Version)",
+        "3:11"
+      ]
+    ]
   }
 ]
