@@ -191,9 +191,9 @@ function listenButton(r, url) {
   const first = Object.values(links)[0] || '#';
   return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'${url && hasPage(r) ? ` data-page="${esc(url('muzik/' + r.slug + '/'))}"` : ''}>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
-const lockedCard = () => `<li class="rcard rcard-locked has-cover" lang="en">
+const lockedCard = (url) => `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-ghost" aria-hidden="true">
-    <div class="rcard-cover locked-cover"></div>
+    <img class="rcard-cover locked-cover" src="${esc(url(dzs.upcoming.cover))}" alt="" width="360" height="360" loading="lazy" decoding="async">
     <p class="rcard-top"><span class="release-year">2026</span><span class="rcard-type">Albüm</span></p>
     <h4 class="rcard-title">${esc(dzs.upcoming.title)}</h4>
     <p class="rcard-meta">${dzs.upcoming.tracks} parça</p>
@@ -483,7 +483,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <ul class="platform-links proj-platforms" aria-label="${esc(dzs.shortName)} platformları">${dzsPlatforms}</ul>
 
     <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
-    <ul class="rgrid">${lockedCard()}${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
+    <ul class="rgrid">${lockedCard(url)}${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
         <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
   </div>
 </section>
@@ -754,7 +754,7 @@ ${header(depth)}
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
       <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}.</p>
     </header>
-    <ul class="rgrid">${lockedCard()}${list.map((r) => releaseCard(r, url)).join('')}</ul>
+    <ul class="rgrid">${lockedCard(url)}${list.map((r) => releaseCard(r, url)).join('')}</ul>
       </div>
 </section>
 
