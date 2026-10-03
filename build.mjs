@@ -184,10 +184,11 @@ function totalLabel(tracks) {
   const m = Math.floor(sec / 60), s = sec % 60;
   return s ? `${m} dk ${String(s).padStart(2, '0')} sn` : `${m} dk`;
 }
-function listenButton(r) {
+const hasPage = (r) => r.project === 'dzs';
+function listenButton(r, url) {
   const links = Object.fromEntries(PLATFORMS.filter(([k]) => r.links?.[k]).map(([k, label]) => [label, r.links[k]]));
   const first = Object.values(links)[0] || '#';
-  return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
+  return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'${url && hasPage(r) ? ` data-page="${esc(url('muzik/' + r.slug + '/'))}"` : ''}>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
 const lockedCard = () => `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-ghost" aria-hidden="true">
@@ -216,7 +217,7 @@ function releaseCard(r, url) {
   <p class="rcard-meta">${esc(meta)}</p>
   ${r.note ? `<p class="rcard-note">${esc(r.note)}</p>` : ''}
   ${list}
-  <div class="rcard-actions">${listenButton(r)}</div>
+  <div class="rcard-actions">${listenButton(r, url)}</div>
 </li>`;
 }
 const releaseGroup = (title, list, url) =>
@@ -298,6 +299,7 @@ const LISTEN_DIALOG = `
     <h3 id="listen-title">Yayın</h3>
     <p id="listen-meta" class="dialog-meta"></p>
     <ul class="platform-links" id="listen-links"></ul>
+    <p class="dialog-more"><a class="text-link" id="listen-page" href="#" hidden>Yayın sayfasını aç</a></p>
   </div>
 </dialog>
 `;
@@ -414,7 +416,7 @@ function muzikPage() {
   const music = divisions.find((d) => d.id === 'music');
   const dzsPlatforms = dzs.platforms.map((p) => `<li><a class="btn btn-small" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.label)}</a></li>`).join('');
   return (
-    head({ title: 'Müzik | Aedilis Media', description: god.desc, canonicalPath: 'muzik/', depth }) +
+    head({ title: 'Müzik | Aedilis Media', description: god.desc, canonicalPath: 'muzik/', depth, ogImage: 'assets/img/og/muzik.jpg' }) +
     `
 <body>
 ${header(depth)}
@@ -646,7 +648,7 @@ function dzsPage() {
       description: dzs.intro,
       canonicalPath: `${dzs.slug}/`,
       depth,
-      ogImage: dzs.logo,
+      ogImage: 'assets/img/og/dzs.jpg',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'MusicGroup',
@@ -661,7 +663,9 @@ function dzsPage() {
 <body>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-<section class="hero hero-sub">
+<section class="hero hero-sub hero-vhs">
+  <span class="vhs-play" aria-hidden="true">PLAY ▶</span>
+  <span class="vhs-date" aria-hidden="true">SONRASI BİZİZ</span>
   <div class="wrap hero-grid hero-grid-sub">
     <div class="hero-copy">
       <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
@@ -770,8 +774,84 @@ ${header(depth)}
     <h3 id="listen-title">Yayın</h3>
     <p id="listen-meta" class="dialog-meta"></p>
     <ul class="platform-links" id="listen-links"></ul>
+    <p class="dialog-more"><a class="text-link" id="listen-page" href="#" hidden>Yayın sayfasını aç</a></p>
   </div>
 </dialog>
+` +
+    footer(depth)
+  );
+}
+
+const isoDur = (t) => { const s = toSec(t); return `PT${Math.floor(s / 60)}M${s % 60}S`; };
+const releaseKind = { Albüm: 'AlbumRelease', EP: 'EPRelease', Single: 'SingleRelease' };
+function releasePage(r, list) {
+  const depth = 2;
+  const url = makeUrl(depth);
+  const i = list.indexOf(r);
+  const newer = list[i - 1];
+  const older = list[i + 1];
+  const spotifyId = (r.links?.spotify || '').match(/album\/([A-Za-z0-9]+)/)?.[1];
+  const origin = site.url.replace(/\/?$/, '/');
+  const nav = (x, label) => x ? `<a class="rel-nav-link" href="${esc(url('muzik/' + x.slug + '/'))}"><span>${label}</span>${esc(x.title)}</a>` : '<span></span>';
+  return (
+    head({
+      title: `${r.title} | ${dzs.shortName} | Aedilis Media`,
+      description: `${dzs.shortName}: ${r.title}. ${r.type}, ${formatDate(r.date)}, ${r.tracks.length} parça.${r.note ? ' ' + r.note : ''}`,
+      canonicalPath: `muzik/${r.slug}/`,
+      depth,
+      ogImage: `assets/img/og/${r.slug}.jpg`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'MusicAlbum',
+        name: r.title,
+        url: `${origin}muzik/${r.slug}/`,
+        image: absUrl(r.cover),
+        datePublished: r.date,
+        albumReleaseType: `https://schema.org/${releaseKind[r.type] || 'AlbumRelease'}`,
+        byArtist: { '@type': 'MusicGroup', name: dzs.shortName, alternateName: dzs.formerName, url: `${origin}${dzs.slug}/` },
+        numTracks: r.tracks.length,
+        track: r.tracks.map((t, n) => ({ '@type': 'MusicRecording', position: n + 1, name: t[0], duration: isoDur(t[1]) })),
+        sameAs: PLATFORMS.filter(([k]) => r.links?.[k]).map(([k]) => r.links[k]),
+      },
+    }) +
+    `
+<body>
+${header(depth)}
+<main id="icerik" tabindex="-1">
+<section class="section rel-page">
+  <div class="wrap">
+    <p class="crumbs"><a href="${url('muzik/')}">Müzik</a> <span aria-hidden="true">/</span> <a href="${url(dzs.slug + '/')}">${esc(dzs.shortName)}</a></p>
+    <div class="rel-grid">
+      <img class="rel-cover" src="${esc(url(r.cover))}" alt="${esc(r.title)} kapağı" width="720" height="720" fetchpriority="high">
+      <div class="rel-info">
+        <p class="tag">${esc(r.type)}</p>
+        <h1 class="rel-title">${esc(r.title)}</h1>
+        <p class="rel-artist">${esc(dzs.shortName)} <span class="former">(${esc(dzs.formerName)})</span></p>
+        <p class="rel-meta">${esc(formatDate(r.date))} · ${r.tracks.length} parça</p>
+        ${r.note ? `<p class="rel-note">${esc(r.note)}</p>` : ''}
+        <h2 class="chips-title">Dinle</h2>
+        <ul class="platform-links">${platformLinks(r)}</ul>
+      </div>
+    </div>
+
+    <div class="rel-cols">
+      <div>
+        <h2 class="chips-title">Parça listesi</h2>
+        <ol class="rel-tracks">${r.tracks.map((t) => `<li><span>${esc(t[0])}</span><time>${esc(t[1])}</time></li>`).join('')}</ol>
+      </div>
+      ${spotifyId ? `<div>
+        <h2 class="chips-title">Önizleme</h2>
+        <div class="player" data-spotify="${esc(spotifyId)}">
+          <p>Oynatıcı Spotify'a ait. Yüklediğinde Spotify ile bağlantı kurulur.</p>
+          <button class="btn" type="button">Spotify oynatıcısını yükle</button>
+        </div>
+      </div>` : ''}
+    </div>
+
+    <nav class="rel-nav" aria-label="Diğer yayınlar">${nav(newer, 'Daha yeni')}${nav(older, 'Daha eski')}</nav>
+  </div>
+</section>
+</main>
 ` +
     footer(depth)
   );
@@ -879,7 +959,15 @@ async function build() {
   await write('gunluk/index.html', gunlukPage());
   await write('iletisim/index.html', iletisimPage());
   await write(`${dzs.slug}/index.html`, dzsPage());
+  // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
+  const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
+  await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
   const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }];
+  const dzsReleases = releases.filter((r) => hasPage(r));
+  for (const r of dzsReleases) {
+    await write(`muzik/${r.slug}/index.html`, releasePage(r, dzsReleases));
+    pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });
+  }
   for (const p of journal.filter((x) => x.body)) {
     await write(`gunluk/${p.slug}/index.html`, postPage(p));
     pages.push({ loc: `gunluk/${p.slug}/`, pri: '0.6' });

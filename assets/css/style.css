@@ -548,3 +548,43 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .locked-badge { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--gold); background: rgba(10, 10, 10, 0.35); }
 .locked-label { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.85rem; font-weight: 700; }
 .rcard-locked::after { display: none; }
+
+/* Yayın sayfaları */
+.rel-page { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.rel-grid { display: grid; gap: clamp(1.6rem, 5vw, 3.4rem); grid-template-columns: 1fr; align-items: center; margin-top: 1.4rem; }
+@media (min-width: 46rem) { .rel-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); } }
+.rel-cover { width: 100%; max-width: 24rem; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line); box-shadow: 0 0 2.4rem rgba(228, 176, 64, 0.12); }
+.rel-title { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.06em; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0.2rem 0 0.6rem; overflow-wrap: anywhere; }
+.rel-artist { margin: 0 0 0.4rem; font-weight: 600; letter-spacing: 0.04em; }
+.rel-meta { margin: 0 0 1rem; color: var(--stone-muted); font-size: 0.92rem; }
+.rel-note { margin: 0 0 1rem; color: var(--stone-muted); max-width: 52ch; }
+.rel-info .chips-title { margin-top: 1.4rem; }
+.rel-cols { display: grid; gap: clamp(1.6rem, 5vw, 3.4rem); grid-template-columns: 1fr; margin-top: clamp(2.4rem, 6vw, 4rem); }
+@media (min-width: 52rem) { .rel-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.rel-tracks { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+.rel-tracks li { counter-increment: t; display: flex; gap: 0.9rem; align-items: baseline; padding: 0.65rem 0; border-bottom: 1px dotted var(--line); }
+.rel-tracks li::before { content: counter(t); min-width: 1.6rem; color: var(--gold); font-variant-numeric: tabular-nums; font-size: 0.85rem; }
+.rel-tracks li span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.rel-tracks time { color: var(--stone-muted); font-variant-numeric: tabular-nums; font-size: 0.88rem; }
+.player { border: 1px dashed var(--line); padding: 1.4rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.player p { margin: 0; color: var(--stone-muted); font-size: 0.9rem; }
+.player iframe { display: block; border-radius: 12px; }
+.player:has(iframe) { padding: 0; border: 0; }
+.rel-nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: clamp(2.4rem, 6vw, 4rem); padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.rel-nav-link { display: flex; flex-direction: column; gap: 0.15rem; text-decoration: none; color: var(--stone); font-family: var(--display); letter-spacing: 0.04em; }
+.rel-nav-link span { font-family: var(--text); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.rel-nav-link:hover { color: var(--gold); }
+.dialog-more { margin: 1.2rem 0 0; }
+
+/* DZS hero: eski VHS kaydı hissi */
+.hero-vhs { position: relative; overflow: hidden; }
+.hero-vhs::before { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px); mix-blend-mode: screen; }
+.vhs-play, .vhs-date { position: absolute; z-index: 2; font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: clamp(0.72rem, 1.6vw, 0.95rem); letter-spacing: 0.12em; color: rgba(237, 237, 237, 0.82); text-shadow: 1px 0 rgba(255, 0, 0, 0.45), -1px 0 rgba(0, 180, 255, 0.4); }
+.vhs-play { top: 1rem; left: clamp(1rem, 3vw, 2rem); }
+.vhs-date { bottom: 1.4rem; right: clamp(1rem, 3vw, 2rem); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-vhs .sub-logo { animation: vhs-jitter 6s steps(1) infinite; }
+  .vhs-play { animation: vhs-blink 2.4s steps(1) infinite; }
+}
+@keyframes vhs-jitter { 0%, 93%, 100% { transform: none; filter: none; } 94% { transform: translateX(3px); filter: drop-shadow(-3px 0 rgba(255, 0, 0, 0.5)) drop-shadow(3px 0 rgba(0, 200, 255, 0.45)); } 96% { transform: translateX(-2px); } 97% { transform: none; filter: brightness(1.2); } }
+@keyframes vhs-blink { 0%, 80% { opacity: 1; } 81%, 100% { opacity: 0.35; } }

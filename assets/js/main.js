@@ -44,6 +44,12 @@
           return li;
         })
       );
+      const pageLink = dialog.querySelector('#listen-page');
+      if (pageLink) {
+        const page = trigger.dataset.page;
+        pageLink.hidden = !page;
+        if (page) pageLink.href = page;
+      }
       dialog.showModal();
     });
 
@@ -60,6 +66,23 @@
     });
     dialog.addEventListener('close', () => { if (opener) opener.focus(); });
   }
+
+  // Spotify oynatıcısı: tıklanana kadar üçüncü taraf içerik yüklenmez.
+  document.querySelectorAll('[data-spotify]').forEach((box) => {
+    const btn = box.querySelector('button');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = `https://open.spotify.com/embed/album/${box.dataset.spotify}?theme=0`;
+      frame.width = '100%';
+      frame.height = '352';
+      frame.title = 'Spotify oynatıcısı';
+      frame.allow = 'encrypted-media; clipboard-write; fullscreen';
+      frame.loading = 'lazy';
+      frame.style.border = '0';
+      box.replaceChildren(frame);
+    });
+  });
 
   // İletişim formu: uç nokta tanımlıysa JSON olarak gönderir, değilse e-posta uygulamasını açar.
   const form = document.getElementById('iletisim-formu');
