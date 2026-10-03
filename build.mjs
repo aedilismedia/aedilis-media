@@ -189,14 +189,22 @@ function listenButton(r) {
   const first = Object.values(links)[0] || '#';
   return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
-const upcomingBlock = () => `<aside class="upcoming" aria-label="Yaklaşan yayın">
-      <p class="tag">Yakında</p>
-      <h3 class="upcoming-title" lang="en">${esc(dzs.upcoming.title)}</h3>
-      <p>${esc(dzs.upcoming.type)}, ${dzs.upcoming.tracks} parça. ${esc(dzs.upcoming.text)}</p>
-    </aside>`;
+const lockedCard = () => `<li class="rcard rcard-locked has-cover" lang="en">
+  <div class="locked-ghost" aria-hidden="true">
+    <div class="rcard-cover locked-cover"></div>
+    <p class="rcard-top"><span class="release-year">2026</span><span class="rcard-type">Albüm</span></p>
+    <h4 class="rcard-title">${esc(dzs.upcoming.title)}</h4>
+    <p class="rcard-meta">${dzs.upcoming.tracks} parça</p>
+  </div>
+  <div class="locked-badge">
+    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1" fill="currentColor"/></svg>
+    <span class="locked-label">Yakında</span>
+    <span class="sr-only">${esc(dzs.upcoming.title)}: yeni albüm, çıkış tarihi henüz belli değil.</span>
+  </div>
+</li>`;
 function releaseCard(r, url) {
   const n = r.tracks.length;
-  const meta = [/^\d{4}-/.test(r.date || '') ? formatDate(r.date) : '', `${n} parça`, totalLabel(r.tracks)].filter(Boolean).join(' · ');
+  const meta = [/^\d{4}-/.test(r.date || '') ? formatDate(r.date) : '', `${n} parça`].filter(Boolean).join(' · ');
   const list = n > 1
     ? `<details class="tracks"><summary>Parça listesi</summary><ol>${r.tracks.map((t) => `<li><span>${esc(t[0])}</span><time>${esc(t[1])}</time></li>`).join('')}</ol></details>`
     : '';
@@ -448,7 +456,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <div class="featured-body">
         <p class="tag">Son yayın</p>
         <h3 class="featured-title"${latest.lang ? ` lang="${latest.lang}"` : ''}>${esc(latest.title)}</h3>
-        <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça, ${esc(totalLabel(latest.tracks))}.${latest.note ? ' ' + esc(latest.note) : ''}</p>
+        <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça.${latest.note ? ' ' + esc(latest.note) : ''}</p>
         <ul class="platform-links" aria-label="${esc(latest.title)} dinleme bağlantıları">${platformLinks(latest)}</ul>
       </div>
     </article>
@@ -470,9 +478,8 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <ul class="platform-links proj-platforms" aria-label="${esc(dzs.shortName)} platformları">${dzsPlatforms}</ul>
 
     <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
-    <ul class="rgrid">${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
-    ${upcomingBlock()}
-    <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
+    <ul class="rgrid">${lockedCard()}${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
+        <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
   </div>
 </section>
 
@@ -740,9 +747,8 @@ ${header(depth)}
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
       <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}.</p>
     </header>
-    <ul class="rgrid">${list.map((r) => releaseCard(r, url)).join('')}</ul>
-    ${upcomingBlock()}
-  </div>
+    <ul class="rgrid">${lockedCard()}${list.map((r) => releaseCard(r, url)).join('')}</ul>
+      </div>
 </section>
 
 <section class="section" aria-labelledby="h-dinle">

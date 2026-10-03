@@ -47,6 +47,13 @@
       dialog.showModal();
     });
 
+    // Yayın kartının herhangi bir yerine tıklamak da dinleme penceresini açar.
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.rcard:not(.rcard-locked)');
+      if (!card || e.target.closest('a, button, details, summary')) return;
+      card.querySelector('a.listen')?.click();
+    });
+
     dialog.addEventListener('click', (e) => {
       // Kutunun dışına (arka plana) ya da "Kapat" düğmesine tıklanınca kapat
       if (e.target === dialog || e.target.closest('[data-close]')) dialog.close();

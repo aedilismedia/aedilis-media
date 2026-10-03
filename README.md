@@ -9,7 +9,7 @@ Düz HTML üreten, GitHub'dan yönetilen statik site. İçerik JSON ve Markdown 
 | Yeni şarkı, EP ya da albüm | `data/releases.json` (en üste yeni bir blok ekle, `"latest": true` yalnızca son yayında kalsın) |
 | Bölümler, seriler, proje metinleri | `data/divisions.json` |
 | Slogan, hero metni, iletişim, sosyal bağlantılar, abone sayısı | `data/site.json` |
-| Dördüncü Zamdan Sonra sayfası | `data/dzs.json` |
+| DZS sayfası | `data/dzs.json` |
 | Günlük yazısı | `content/journal/yazi-adi.md` (Markdown; başlıkta `title`, `category`, `excerpt`, `order` alanları) |
 | Son videolar | Otomatik: her gün YouTube'dan çekilir. Elle düzenlemek için `data/videos.json` |
 

@@ -487,10 +487,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .page-title .former { font-size: 0.2em; letter-spacing: 0.04em; display: block; margin-top: 0.5rem; text-transform: none; }
 
 /* DZS yeni kimlik: logo, kapaklar, kadro fotoğrafları, görsel dünya */
-.universe-logo-wide { width: auto; height: 4.2rem; max-width: 100%; }
-.proj-head:has(.proj-logo-wide) { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); }
-.proj-logo-wide { max-width: 11rem; height: auto; }
-@media (max-width: 36rem) { .proj-head:has(.proj-logo-wide) { grid-template-columns: 1fr; } .proj-logo-wide { max-width: 9rem; } }
+.universe-logo, .universe-logo-wide { width: auto; height: 6rem; max-width: 100%; margin-bottom: 0.6rem; }
+.proj-head, .proj-head:has(.proj-logo-wide) { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); }
+.proj-logo, .proj-logo-wide { height: 7rem; width: auto; max-width: 100%; }
+@media (max-width: 36rem) { .proj-head, .proj-head:has(.proj-logo-wide) { grid-template-columns: 1fr; } .proj-logo, .proj-logo-wide { height: 5.5rem; } }
 .sub-logo-wide { width: min(26rem, 80%); height: auto; }
 
 .rcard.has-cover { padding-top: 0; }
@@ -527,3 +527,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cast-lead .cast-item { background: transparent; }
 .cast-tone span { display: block; min-width: 0; margin-bottom: 0.1rem; }
 .cast-lineup { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+
+/* Yayın kartları: tıklanabilir, hover'da parlama; kilitli (yakında) kart */
+.rcard:not(.rcard-locked) { cursor: pointer; position: relative; transition: border-color 0.25s, box-shadow 0.35s, transform 0.35s; }
+.rcard:not(.rcard-locked):hover, .rcard:not(.rcard-locked):focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(176, 138, 62, 0.35), 0 0 1.6rem rgba(228, 176, 64, 0.22), 0 0.8rem 2rem rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+.rcard-cover { transition: filter 0.35s, transform 0.5s; }
+.rcard:hover .rcard-cover { filter: brightness(1.12) saturate(1.08); }
+.rcard.has-cover { overflow: hidden; }
+.rcard::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(115deg, transparent 35%, rgba(255, 236, 190, 0.1) 50%, transparent 65%); transform: translateX(-60%); }
+.rcard:not(.rcard-locked):hover::after { opacity: 1; transform: translateX(60%); transition: transform 0.9s ease, opacity 0.3s; }
+@media (prefers-reduced-motion: reduce) { .rcard:not(.rcard-locked):hover { transform: none; } .rcard:hover::after { display: none; } }
+
+.rcard-locked { position: relative; cursor: default; border-style: dashed; border-color: var(--gold); }
+.locked-ghost { display: flex; flex-direction: column; gap: 0.35rem; filter: blur(4.5px) saturate(0.7); opacity: 0.85; user-select: none; pointer-events: none; flex: 1; }
+.locked-cover { background: radial-gradient(circle at 30% 25%, #3a2e12, #0b0b0b 70%); }
+.locked-badge { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--gold); background: rgba(10, 10, 10, 0.35); }
+.locked-label { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.85rem; font-weight: 700; }
+.rcard-locked::after { display: none; }
