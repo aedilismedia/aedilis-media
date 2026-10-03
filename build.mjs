@@ -126,6 +126,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <link rel="stylesheet" href="${rel}assets/css/fonts.css">
 <link rel="stylesheet" href="${rel}assets/css/style.css">
 <script>document.documentElement.classList.add('js')</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e50802e58b840188c1caa488af6b975"}'></script><!-- End Cloudflare Web Analytics -->
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 </head>`;
 }
@@ -200,7 +201,9 @@ const lockedCard = () => `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-badge">
     <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1" fill="currentColor"/></svg>
     <span class="locked-label">Yakında</span>
-    <span class="sr-only">${esc(dzs.upcoming.title)}: yeni albüm, çıkış tarihi henüz belli değil.</span>
+    <span class="locked-date">${esc(formatDate(dzs.upcoming.date))}</span>
+    <span class="locked-count" data-date="${esc(dzs.upcoming.date)}T00:00:00+03:00" hidden></span>
+    <span class="sr-only">${esc(dzs.upcoming.title)}: yeni albüm, çıkış tarihi ${esc(formatDate(dzs.upcoming.date))}.</span>
   </div>
 </li>`;
 function releaseCard(r, url) {

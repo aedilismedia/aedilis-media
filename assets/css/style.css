@@ -588,3 +588,5 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 @keyframes vhs-jitter { 0%, 93%, 100% { transform: none; filter: none; } 94% { transform: translateX(3px); filter: drop-shadow(-3px 0 rgba(255, 0, 0, 0.5)) drop-shadow(3px 0 rgba(0, 200, 255, 0.45)); } 96% { transform: translateX(-2px); } 97% { transform: none; filter: brightness(1.2); } }
 @keyframes vhs-blink { 0%, 80% { opacity: 1; } 81%, 100% { opacity: 0.35; } }
+.locked-date { font-size: 0.95rem; letter-spacing: 0.08em; color: var(--stone); }
+.locked-count { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-muted); }

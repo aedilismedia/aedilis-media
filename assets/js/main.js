@@ -67,6 +67,14 @@
     dialog.addEventListener('close', () => { if (opener) opener.focus(); });
   }
 
+  // Kilitli albüm kartı: çıkışa kalan gün.
+  document.querySelectorAll('.locked-count').forEach((el) => {
+    const left = Math.ceil((new Date(el.dataset.date) - Date.now()) / 86400000);
+    if (Number.isNaN(left) || left < 0) return;
+    el.textContent = left === 0 ? 'Bugün' : `${left} gün kaldı`;
+    el.hidden = false;
+  });
+
   // Spotify oynatıcısı: tıklanana kadar üçüncü taraf içerik yüklenmez.
   document.querySelectorAll('[data-spotify]').forEach((box) => {
     const btn = box.querySelector('button');
