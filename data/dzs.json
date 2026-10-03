@@ -14,19 +14,54 @@
   ],
   "ai": "Dördüncü Zamdan Sonra yapay zekâ destekli bir sanal müzik projesidir. Yapay zekâ üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
   "facts": [
-    { "label": "Kurucu", "value": "Erkan Avcı" },
-    { "label": "Başlangıç", "value": "1 Kasım 2025" },
-    { "label": "Tür", "value": "Türkçe alternatif ve indie rock" },
-    { "label": "Bölüm", "value": "Aedilis Media Music" }
+    {
+      "label": "Kurucu",
+      "value": "Erkan Avcı"
+    },
+    {
+      "label": "Başlangıç",
+      "value": "1 Kasım 2025"
+    },
+    {
+      "label": "Tür",
+      "value": "Türkçe alternatif ve indie rock"
+    },
+    {
+      "label": "Bölüm",
+      "value": "Aedilis Media Music"
+    }
   ],
   "platforms": [
-    { "label": "Spotify", "href": "https://open.spotify.com/artist/1V6WjzGdWUHLyHdrlOhwOM" },
-    { "label": "Apple Music", "href": "https://music.apple.com/tr/artist/d%C3%B6rd%C3%BCnc%C3%BC-zamdan-sonra/1844449739" },
-    { "label": "YouTube Music", "href": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g" },
-    { "label": "Deezer", "href": "https://www.deezer.com/tr/artist/349575651" },
-    { "label": "YouTube", "href": "https://www.youtube.com/@dorduncuzamdansonra" },
-    { "label": "Genius", "href": "https://genius.com/artists/Dorduncu-zamdan-sonra" },
-    { "label": "Tüm bağlantılar", "href": "https://linktr.ee/dorduncuzamdansonra" }
+    {
+      "label": "Spotify",
+      "href": "https://open.spotify.com/artist/1V6WjzGdWUHLyHdrlOhwOM"
+    },
+    {
+      "label": "Apple Music",
+      "href": "https://music.apple.com/tr/artist/d%C3%B6rd%C3%BCnc%C3%BC-zamdan-sonra/1844449739"
+    },
+    {
+      "label": "YouTube Music",
+      "href": "https://music.youtube.com/channel/UCUUlZPOEPYHxsGAfnmsgp8g"
+    },
+    {
+      "label": "Deezer",
+      "href": "https://www.deezer.com/tr/artist/349575651"
+    },
+    {
+      "label": "YouTube",
+      "href": "https://www.youtube.com/@dorduncuzamdansonra"
+    },
+    {
+      "label": "Genius",
+      "href": "https://genius.com/artists/Dorduncu-zamdan-sonra"
+    },
+    {
+      "label": "Tüm bağlantılar",
+      "href": "https://linktr.ee/dorduncuzamdansonra"
+    }
   ],
-  "email": "dorduncuzamdansonra@aedilismedia.com"
+  "email": "dorduncuzamdansonra@aedilismedia.com",
+  "shortName": "DZS",
+  "formerName": "Dördüncü Zamdan Sonra"
 }

@@ -10,19 +10,47 @@
     "Proje 2024'te başladı ve 2025 boyunca düzenli yayın yaptı. Kurgusal evreni, sahte haber formatındaki Satanic Rites Special Report podcast dizisiyle genişliyor."
   ],
   "facts": [
-    { "label": "Kurucu", "value": "Erkan Avcı" },
-    { "label": "Başlangıç", "value": "2024" },
-    { "label": "Tür", "value": "Gotik industrial, karanlık synthwave" },
-    { "label": "Bölüm", "value": "Aedilis Media Music" }
+    {
+      "label": "Kurucu",
+      "value": "Erkan Avcı"
+    },
+    {
+      "label": "Başlangıç",
+      "value": "2024"
+    },
+    {
+      "label": "Tür",
+      "value": "Gotik industrial, karanlık synthwave"
+    },
+    {
+      "label": "Bölüm",
+      "value": "Aedilis Media Music"
+    },
+    {
+      "label": "Durum",
+      "value": "Pasif"
+    }
   ],
   "cast": [
-    { "name": "Princeps Lucius", "role": "Kurgusal frontman", "text": "\"Gölgelerin efendisi\" (Sovereign of Shadows). Solgun yüzü, gözlerinden süzülen siyah gözyaşları ve uzun siyah pelerini ile projenin merkezindeki figür." },
-    { "name": "Lilith Astra", "role": "Kurgusal vokalist", "text": "Uzun platin sarı saçlı, siyah göz makyajlı, ritüelistik vokalleriyle sahneye çıkan karakter. Satan Hotline ve Supper With The Devil şarkılarında yer alır." }
+    {
+      "name": "Princeps Lucius",
+      "role": "Kurgusal frontman",
+      "text": "\"Gölgelerin efendisi\" (Sovereign of Shadows). Solgun yüzü, gözlerinden süzülen siyah gözyaşları ve uzun siyah pelerini ile projenin merkezindeki figür."
+    },
+    {
+      "name": "Lilith Astra",
+      "role": "Kurgusal vokalist",
+      "text": "Uzun platin sarı saçlı, siyah göz makyajlı, ritüelistik vokalleriyle sahneye çıkan karakter. Satan Hotline ve Supper With The Devil şarkılarında yer alır."
+    }
   ],
   "podcast": {
     "name": "Satanic Rites Special Report",
     "text": "Kurgusal evreni genişleten, sahte haber ve özel rapor formatında bir podcast dizisi. İki bölüm yayımlandı: Hell Is A Stage (19 Temmuz 2025) ve Dead Air: The Rise of Demonium Nihil (26 Temmuz 2025)."
   },
   "channel": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
-  "post": "gunluk/demonium-nihil-sahnesi/"
+  "post": "gunluk/demonium-nihil-sahnesi/",
+  "status": {
+    "label": "Pasif",
+    "text": "Proje uzun süredir pasif; yeni yayın yapılmıyor. Mevcut yayınlar YouTube Music'te dinlenebilir."
+  }
 }

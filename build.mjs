@@ -417,7 +417,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <ul class="universes">
       <li class="universe">
         <img class="universe-logo" src="${esc(url(dzs.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
-        <h3>${esc(dzs.name)}</h3>
+        <h3>${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h3>
         <p class="universe-tag">${esc(dzs.tagline)}</p>
         <p>${esc(dzs.intro)}</p>
         <p class="universe-stats">${esc(statLine(dzsList))} · ${dzsTracks} parça</p>
@@ -426,7 +426,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <li class="universe">
         <img class="universe-logo" src="${esc(url(dn.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
         <h3>${esc(dn.name)}</h3>
-        <p class="universe-tag">${esc(dn.tagline)}</p>
+        <p class="universe-tag">${esc(dn.tagline)} <span class="status-badge">${esc(dn.status.label)}</span></p>
         <p>${esc(dn.intro)}</p>
         <p class="universe-stats">${esc(statLine(dnList))}</p>
         <p class="universe-actions"><a class="btn btn-small" href="#dn">Diskografi</a><a class="text-link" href="${url(dn.post)}">Sahneyi oku</a></p>
@@ -447,14 +447,14 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <header class="proj-head">
       <img class="proj-logo" src="${esc(url(dzs.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
       <div>
-        <h2 id="h-dzs" class="proj-title">${esc(dzs.name)}</h2>
+        <h2 id="h-dzs" class="proj-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h2>
         <p class="proj-tag">${esc(dzs.tagline)}<span aria-hidden="true"> · </span>${esc(dzs.secondary)}</p>
-        <p class="proj-text">${esc(dzs.story[0])}</p>
-        <p class="proj-note">${esc(dzs.ai)}</p>
+        <p class="proj-text">${esc(dzs.story[0].replace(/^Dördüncü Zamdan Sonra/, dzs.shortName))}</p>
+        <p class="proj-note">${esc(dzs.ai.replace(/^Dördüncü Zamdan Sonra/, dzs.shortName))}</p>
       </div>
     </header>
     ${factList(dzs.facts)}
-    <ul class="platform-links proj-platforms" aria-label="${esc(dzs.name)} platformları">${dzsPlatforms}</ul>
+    <ul class="platform-links proj-platforms" aria-label="${esc(dzs.shortName)} platformları">${dzsPlatforms}</ul>
 
     <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
     <ul class="rgrid">${dzsList.map(releaseCard).join('')}</ul>
@@ -468,8 +468,9 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <img class="proj-logo" src="${esc(url(dn.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
       <div>
         <h2 id="h-dn" class="proj-title">${esc(dn.name)}</h2>
-        <p class="proj-tag">${esc(dn.tagline)}</p>
+        <p class="proj-tag">${esc(dn.tagline)} <span class="status-badge">${esc(dn.status.label)}</span></p>
         ${dn.about.map((t) => `<p class="proj-text">${esc(t)}</p>`).join('\n        ')}
+        <p class="proj-note">${esc(dn.status.text)}</p>
         <blockquote class="proj-quote" lang="la"><p>${esc(dn.motto)}</p><footer>${esc(dn.mottoTr)}</footer></blockquote>
       </div>
     </header>
