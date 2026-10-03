@@ -4,7 +4,7 @@
   "short": "DZS",
   "tagline": "Sonrası Biziz",
   "secondary": "Şehir. Ses. Hikâye.",
-  "logo": "assets/img/dorduncu-zamdan-sonra.webp",
+  "logo": "assets/img/dzs-logo.webp",
   "intro": "Modern şehir yaşamını, içsel çatışmaları ve gündelik hayatın görünmeyen kırılma anlarını Türkçe alternatif müzikle anlatan, Aedilis Media bünyesindeki bağımsız sanal müzik projesi.",
   "story": [
     "Dördüncü Zamdan Sonra, modern şehir yaşamının insan üzerinde bıraktığı izleri, içsel çatışmaları, kırılgan ilişkileri ve gündelik hayatın çoğu zaman gözden kaçan anlarını Türkçe alternatif müzik aracılığıyla anlatan bağımsız bir müzik projesidir.",
@@ -97,27 +97,123 @@
   "cast": [
     {
       "name": "Arda Lumen",
-      "role": "Vokal, frontman"
-    },
-    {
-      "name": "Lucerna",
-      "role": "Geri vokal topluluğu"
+      "role": "Vokal, frontman",
+      "tone": "Yorgun ama pes etmeyen",
+      "camera": "Merkez, hep önde"
     },
     {
       "name": "Eren Solis",
-      "role": "Lead gitar"
+      "role": "Lead gitar",
+      "tone": "Patlamaya hazır enerji",
+      "camera": "Arda’nın karşısında, dengeleyen",
+      "image": "assets/img/dzs/kadro/eren-solis.webp",
+      "alt": "Eren Solis sahnede Stratocaster çalıyor"
     },
     {
       "name": "Selim Morvan",
-      "role": "Bas gitar"
+      "role": "Bas gitar",
+      "tone": "Karanlık ve mesafeli",
+      "camera": "Gölgede, arka planda",
+      "image": "assets/img/dzs/kadro/selim-morvan.webp",
+      "alt": "Selim Morvan arnavut kaldırımlı bir sokakta"
     },
     {
       "name": "Baran Vural",
-      "role": "Davul"
+      "role": "Davul",
+      "tone": "Öfke ve şiddet",
+      "camera": "Nadiren görünür",
+      "image": "assets/img/dzs/kadro/baran-vural.webp",
+      "alt": "Baran Vural davul başında"
     },
     {
       "name": "Kaan İleri",
-      "role": "Synthesizer ve klavye"
+      "role": "Synthesizer ve klavye",
+      "tone": "Nostalji ve geçmiş",
+      "camera": "Nadiren görünür",
+      "image": "assets/img/dzs/kadro/kaan-ileri.webp",
+      "alt": "Kaan İleri bir çeşmenin yanında yürüyor"
+    },
+    {
+      "name": "Lucerna",
+      "role": "Geri vokal topluluğu",
+      "tone": "Kolektif ses, kalabalığın sesi",
+      "camera": "Siluet, yüzleri seçilmeyen"
     }
-  ]
+  ],
+  "music": {
+    "lead": "Türkçe alternatif ve indie rock zemininde post-punk ve yer yer synth dokularıyla şehirli bir ses.",
+    "genres": [
+      "Indie rock",
+      "Alternatif rock",
+      "Post-punk",
+      "Şehirli rock",
+      "Alternatif Türkçe"
+    ],
+    "sound": [
+      "Temiz ve loş gitar tonları",
+      "Lo-fi davullar",
+      "Yumuşak bas yürüyüşleri",
+      "Synth ve klavye dokuları",
+      "Şehir ve ortam sesleri"
+    ],
+    "vocal": "Yarı konuşur, anlatır gibi ilerleyen; samimi, hafif alaycı ve içten bir vokal.",
+    "tones": [
+      "İroni",
+      "Öfke",
+      "İçsel direnç",
+      "Yaşamaya ve üretmeye devam etme",
+      "Enerjisini tamamen kaybetmeyen melankoli"
+    ],
+    "lyrics": [
+      "Şehir hayatının yorgunluğu",
+      "Zamlar ve geçim derdi",
+      "Ertelenen hayaller",
+      "Apartman ve oda yalnızlığı",
+      "Soğuk evler",
+      "İş hayatı ve kurumsal düzen",
+      "Kırık ilişkiler",
+      "Gece yolculukları",
+      "İstanbul ve toplu taşıma",
+      "İç hesaplaşma",
+      "Sessiz isyan"
+    ]
+  },
+  "visual": {
+    "lead": "Yeni kimlik altın ve siyah üzerine kurulu: benekli, aşınmış altın harfler; arkasında yörünge halkası, yıldız ve küçük bir gezegen. Görsel dil, eski bir VHS kamera kaydının dokusunu taşır: “PLAY ▶” yazısı, tarih damgası, tarama çizgileri ve renk sızması. Ev odaları, küçük sahneler, Marshall amfiler ve kozmik imgeler bu dünyanın parçasıdır.",
+    "palette": [
+      [
+        "Altın",
+        "#E4B040"
+      ],
+      [
+        "Siyah",
+        "#0A0A00"
+      ]
+    ],
+    "note": "Altın ve siyah ana kimliği taşır. Sahne ışıkları ve VHS renk derecelendirmesi amber, mor ve yeşil tonlar getirir. Karelerdeki zaman damgaları estetik bir öğedir, gerçek çekim tarihi değildir.",
+    "images": [
+      [
+        "assets/img/dzs/gorsel/ref-03.webp",
+        "Küçük bir sahnede Marshall amfi ve spot ışıkları önünde gitar çalan boynuzlu maskeli figür"
+      ],
+      [
+        "assets/img/dzs/gorsel/ref-04.webp",
+        "VHS ekran yazılı karede dumanlı bir odada maskeli gitarist"
+      ],
+      [
+        "assets/img/dzs/gorsel/ref-05.webp",
+        "Samanyolu önünde gitarla havada asılı duran maskeli figür"
+      ],
+      [
+        "assets/img/dzs/gorsel/ref-07.webp",
+        "Altın renkli boynuzlu maske portresi, arkada prizmatik desen"
+      ]
+    ]
+  },
+  "upcoming": {
+    "title": "The Last Normal Broadcast",
+    "type": "Albüm",
+    "tracks": 11,
+    "text": "Yeni albüm yolda. Sözler İngilizce; çıkış tarihi henüz belli değil."
+  }
 }

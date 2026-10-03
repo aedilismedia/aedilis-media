@@ -1,12 +1,66 @@
 [
   {
+    "slug": "benay",
+    "title": "BENAY",
+    "artist": "DZS",
+    "project": "dzs",
+    "type": "Albüm",
+    "date": "2026-09-21",
+    "latest": true,
+    "cover": "assets/img/dzs/kapaklar/benay.webp",
+    "note": "Mizahi ve kişisel bir hediye albümü.",
+    "links": {
+      "spotify": "https://open.spotify.com/album/7zIJfg79e7AcFIngWQwsFR",
+      "apple": "https://music.apple.com/tr/album/benay/6806900725",
+      "youtube": "https://www.youtube.com/playlist?list=OLAK5uy_n_7iP0FDOzACEgkGgIvnmB6Fzs2ME4Arc",
+      "deezer": "https://www.deezer.com/tr/album/1066821001"
+    },
+    "tracks": [
+      [
+        "ŞIP ŞIP ŞIPLATMAK",
+        "2:11"
+      ],
+      [
+        "AYAK UCUNLA BAS",
+        "3:11"
+      ],
+      [
+        "GÖZLÜK",
+        "3:08"
+      ],
+      [
+        "BENAY SUSMUYOR",
+        "3:15"
+      ],
+      [
+        "BENAY NE DİYOR",
+        "3:33"
+      ],
+      [
+        "KLİMA SAVAŞI",
+        "3:10"
+      ],
+      [
+        "BENAY'IN BİYOLOJİK SAATİ",
+        "3:30"
+      ],
+      [
+        "İYİ Kİ BENAY",
+        "3:27"
+      ],
+      [
+        "İYİ Kİ DOĞDUN",
+        "4:00"
+      ]
+    ]
+  },
+  {
     "slug": "yaz-bizi-yakar",
     "title": "Yaz Bizi Yakar",
     "artist": "DZS",
     "project": "dzs",
     "type": "EP",
     "date": "2026-07-19",
-    "latest": true,
     "links": {
       "spotify": "https://open.spotify.com/album/6upXgcdixiHrsN2An8yqyI",
       "apple": "https://music.apple.com/tr/album/yaz-bi-zi-yakar-ep/6790025330",
@@ -38,7 +92,8 @@
         "FIKI FIKI",
         "4:08"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/yaz-bizi-yakar.webp"
   },
   {
     "slug": "dunya-duyacak-bizi",
@@ -58,7 +113,8 @@
         "Dünya Duyacak Bizi",
         "4:54"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/dunya-duyacak-bizi.webp"
   },
   {
     "slug": "bir-daha-gom-beni",
@@ -79,7 +135,8 @@
         "Bir Daha Göm Beni",
         "4:58"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/bir-daha-gom-beni.webp"
   },
   {
     "slug": "delilik-serbest",
@@ -99,7 +156,8 @@
         "Delilik Serbest",
         "3:49"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/delilik-serbest.webp"
   },
   {
     "slug": "duvar-kiriklari",
@@ -139,7 +197,8 @@
         "Kavuşmak Gibi Bir Şey",
         "4:24"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/duvar-kiriklari.webp"
   },
   {
     "slug": "son-kat-melankolisi",
@@ -187,7 +246,8 @@
         "Biraz Daha Bekle",
         "4:01"
       ]
-    ]
+    ],
+    "cover": "assets/img/dzs/kapaklar/son-kat-melankolisi.webp"
   },
   {
     "slug": "hell-is-a-stage",

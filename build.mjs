@@ -189,22 +189,30 @@ function listenButton(r) {
   const first = Object.values(links)[0] || '#';
   return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
-function releaseCard(r) {
+const upcomingBlock = () => `<aside class="upcoming" aria-label="Yaklaşan yayın">
+      <p class="tag">Yakında</p>
+      <h3 class="upcoming-title" lang="en">${esc(dzs.upcoming.title)}</h3>
+      <p>${esc(dzs.upcoming.type)}, ${dzs.upcoming.tracks} parça. ${esc(dzs.upcoming.text)}</p>
+    </aside>`;
+function releaseCard(r, url) {
   const n = r.tracks.length;
   const meta = [/^\d{4}-/.test(r.date || '') ? formatDate(r.date) : '', `${n} parça`, totalLabel(r.tracks)].filter(Boolean).join(' · ');
   const list = n > 1
     ? `<details class="tracks"><summary>Parça listesi</summary><ol>${r.tracks.map((t) => `<li><span>${esc(t[0])}</span><time>${esc(t[1])}</time></li>`).join('')}</ol></details>`
     : '';
-  return `<li class="rcard">
+  const cover = r.cover ? `<img class="rcard-cover" src="${esc(url(r.cover))}" alt="${esc(r.title)} kapağı" width="360" height="360" loading="lazy" decoding="async">` : '';
+  return `<li class="rcard${cover ? ' has-cover' : ''}">
+  ${cover}
   <p class="rcard-top"><span class="release-year">${esc(yearOf(r.date))}</span><span class="rcard-type">${esc(r.type)}</span></p>
   <h4 class="rcard-title"${r.lang ? ` lang="${r.lang}"` : ''}>${esc(r.title)}</h4>
   <p class="rcard-meta">${esc(meta)}</p>
+  ${r.note ? `<p class="rcard-note">${esc(r.note)}</p>` : ''}
   ${list}
   <div class="rcard-actions">${listenButton(r)}</div>
 </li>`;
 }
-const releaseGroup = (title, list) =>
-  list.length ? `<h3 class="rgroup-title">${esc(title)}</h3>\n    <ul class="rgrid">${list.map(releaseCard).join('')}</ul>` : '';
+const releaseGroup = (title, list, url) =>
+  list.length ? `<h3 class="rgroup-title">${esc(title)}</h3>\n    <ul class="rgrid">${list.map((r) => releaseCard(r, url)).join('')}</ul>` : '';
 const factList = (facts) => `<dl class="facts">${facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join('')}</dl>`;
 const countBy = (list, type) => list.filter((r) => r.type === type).length;
 const statLine = (list) => {
@@ -418,7 +426,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
 
     <ul class="universes">
       <li class="universe">
-        <img class="universe-logo" src="${esc(url(dzs.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
+        <img class="universe-logo universe-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
         <h3>${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h3>
         <p class="universe-tag">${esc(dzs.tagline)}</p>
         <p>${esc(dzs.intro)}</p>
@@ -435,11 +443,14 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       </li>
     </ul>
 
-    <article class="featured">
-      <p class="tag">Son yayın</p>
-      <h3 class="featured-title"${latest.lang ? ` lang="${latest.lang}"` : ''}>${esc(latest.title)}</h3>
-      <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça, ${esc(totalLabel(latest.tracks))}.</p>
-      <ul class="platform-links" aria-label="${esc(latest.title)} dinleme bağlantıları">${platformLinks(latest)}</ul>
+    <article class="featured${latest.cover ? ' has-cover' : ''}">
+      ${latest.cover ? `<img class="featured-cover" src="${esc(url(latest.cover))}" alt="${esc(latest.title)} kapağı" width="360" height="360" decoding="async">` : ''}
+      <div class="featured-body">
+        <p class="tag">Son yayın</p>
+        <h3 class="featured-title"${latest.lang ? ` lang="${latest.lang}"` : ''}>${esc(latest.title)}</h3>
+        <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça, ${esc(totalLabel(latest.tracks))}.${latest.note ? ' ' + esc(latest.note) : ''}</p>
+        <ul class="platform-links" aria-label="${esc(latest.title)} dinleme bağlantıları">${platformLinks(latest)}</ul>
+      </div>
     </article>
   </div>
 </section>
@@ -447,7 +458,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
 <section class="section section-alt" id="dzs" aria-labelledby="h-dzs">
   <div class="wrap">
     <header class="proj-head">
-      <img class="proj-logo" src="${esc(url(dzs.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
+      <img class="proj-logo proj-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
       <div>
         <h2 id="h-dzs" class="proj-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h2>
         <p class="proj-tag">${esc(dzs.tagline)}<span aria-hidden="true"> · </span>${esc(dzs.secondary)}</p>
@@ -459,7 +470,8 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <ul class="platform-links proj-platforms" aria-label="${esc(dzs.shortName)} platformları">${dzsPlatforms}</ul>
 
     <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
-    <ul class="rgrid">${dzsList.map(releaseCard).join('')}</ul>
+    <ul class="rgrid">${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
+    ${upcomingBlock()}
     <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
   </div>
 </section>
@@ -482,9 +494,9 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     <h3 class="rgroup-title">Kurgusal kadro</h3>
     <ul class="cast">${dn.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h4>${esc(c.name)}</h4><p>${esc(c.text)}</p></li>`).join('')}</ul>
 
-    ${releaseGroup('Albümler', dnList.filter((r) => r.type === 'Albüm'))}
-    ${releaseGroup('EP\'ler', dnList.filter((r) => r.type === 'EP'))}
-    ${releaseGroup('Single\'lar', dnList.filter((r) => r.type === 'Single'))}
+    ${releaseGroup('Albümler', dnList.filter((r) => r.type === 'Albüm'), url)}
+    ${releaseGroup('EP\'ler', dnList.filter((r) => r.type === 'EP'), url)}
+    ${releaseGroup('Single\'lar', dnList.filter((r) => r.type === 'Single'), url)}
 
     <aside class="podcast">
       <p class="cast-role">Podcast</p>
@@ -603,6 +615,18 @@ ${pageHero(depth, god, { title: 'İletişim', lead: 'Marka iş birlikleri, yarat
   );
 }
 
+function castItem(c) {
+  const url = makeUrl(1);
+  return `<li class="cast-item${c.image ? ' has-photo' : ''}">
+      ${c.image ? `<img class="cast-photo" src="${esc(url(c.image))}" alt="${esc(c.alt || c.name)}" width="900" height="506" loading="lazy" decoding="async">` : ''}
+      <div class="cast-body">
+        <p class="cast-role">${esc(c.role)}</p>
+        <h4>${esc(c.name)}</h4>
+        <p class="cast-tone"><span>Ton</span>${esc(c.tone)}</p>
+        <p class="cast-tone"><span>Kadraj</span>${esc(c.camera)}</p>
+      </div>
+    </li>`;
+}
 function dzsPage() {
   const depth = 1;
   const url = makeUrl(depth);
@@ -638,7 +662,7 @@ ${header(depth)}
       <p class="motto motto-upper">${esc(dzs.tagline)}</p>
       <p class="lead">${esc(dzs.intro)}</p>
     </div>
-    <img class="sub-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="360" height="360" onerror="this.remove()">
+    <img class="sub-logo sub-logo-wide" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1000" height="588" onerror="this.remove()">
   </div>
   <div class="frieze frieze-draw" aria-hidden="true"></div>
 </section>
@@ -668,13 +692,45 @@ ${header(depth)}
   </div>
 </section>
 
-<section class="section" aria-labelledby="h-sahne">
+<section class="section" aria-labelledby="h-ses">
+  <div class="wrap prose-grid">
+    <h2 id="h-ses" class="section-title">SES</h2>
+    <div class="prose">
+      <p>${esc(dzs.music.lead)}</p>
+      <h3 class="chips-title">Türler</h3>
+      <ul class="chips">${dzs.music.genres.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Ses dünyası</h3>
+      <ul class="chips">${dzs.music.sound.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Vokal</h3>
+      <p>${esc(dzs.music.vocal)}</p>
+      <h3 class="chips-title">Duygusal ton</h3>
+      <ul class="chips">${dzs.music.tones.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Sözlerde</h3>
+      <ul class="chips">${dzs.music.lyrics.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="h-sahne">
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-sahne" class="section-title">SAHNE</h2>
       <p class="section-desc">${esc(dzs.castNote)}</p>
     </header>
-    <ul class="cast cast-lineup">${dzs.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h4>${esc(c.name)}</h4></li>`).join('')}</ul>
+    <ul class="cast cast-lead">${dzs.cast.filter((c) => !c.image).map(castItem).join('')}</ul>
+    <ul class="cast cast-lineup">${dzs.cast.filter((c) => c.image).map(castItem).join('')}</ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="h-gorsel">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="h-gorsel" class="section-title">GÖRSEL DÜNYA</h2>
+      <p class="section-desc">${esc(dzs.visual.lead)}</p>
+    </header>
+    <ul class="swatches" aria-label="Marka renkleri">${dzs.visual.palette.map(([n, c]) => `<li><span class="swatch" style="background:${esc(c)}" aria-hidden="true"></span>${esc(n)} <code>${esc(c)}</code></li>`).join('')}</ul>
+    <p class="visual-note">${esc(dzs.visual.note)}</p>
+    <ul class="gallery">${dzs.visual.images.map(([src, alt]) => `<li><img src="${esc(url(src))}" alt="${esc(alt)}" width="1100" height="825" loading="lazy" decoding="async"></li>`).join('')}</ul>
   </div>
 </section>
 
@@ -684,7 +740,8 @@ ${header(depth)}
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
       <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}.</p>
     </header>
-    <ul class="rgrid">${list.map(releaseCard).join('')}</ul>
+    <ul class="rgrid">${list.map((r) => releaseCard(r, url)).join('')}</ul>
+    ${upcomingBlock()}
   </div>
 </section>
 

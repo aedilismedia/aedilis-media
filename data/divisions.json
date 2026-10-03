@@ -56,9 +56,9 @@
     "logoAlt": "Aedilis Media Music logosu: lir çalan, asma yapraklı taçlı tanrı figürü",
     "projects": [
       {
-        "name": "Dördüncü Zamdan Sonra",
+        "name": "DZS",
         "text": "Şehirli melankoli, gündelik hikâyeler ve alternatif Türkçe müziğin samimi enerjisi. Yapay zekâ destekli bağımsız bir sanal müzik projesi.",
-        "logo": "assets/img/dorduncu-zamdan-sonra.webp",
+        "logo": "assets/img/dzs-logo.webp",
         "href": "dorduncu-zamdan-sonra/",
         "hrefLabel": "Proje sayfası"
       },
