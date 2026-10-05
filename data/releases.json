@@ -332,7 +332,8 @@
         "3:45"
       ]
     ],
-    "lang": "en"
+    "lang": "en",
+    "cover": "assets/img/dn/kapaklar/hell-is-a-stage.webp"
   },
   {
     "slug": "reign-of-the-fallen-star",
@@ -343,7 +344,10 @@
     "date": "2025",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/0Cr557Y0L7iIbPFfR3logG",
+      "apple": "https://music.apple.com/tr/album/reign-of-the-fallen-star/1793751247",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/705006041"
     },
     "tracks": [
       [
@@ -378,7 +382,8 @@
         "Eclipse of Divine",
         "3:49"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/reign-of-the-fallen-star.webp"
   },
   {
     "slug": "demonium-nihil-album",
@@ -389,7 +394,9 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "apple": "https://music.apple.com/tr/album/demonium-nihil/1762445141",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/628085381"
     },
     "tracks": [
       [
@@ -424,7 +431,8 @@
         "Outro",
         "3:31"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/demonium-nihil-album.webp"
   },
   {
     "slug": "demonium-nihil-ep",
@@ -435,7 +443,10 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/0n0kQ5g1mHuc4AvvJ6eLc5",
+      "apple": "https://music.apple.com/tr/album/demonium-nihil-remastered-ep/1784855701",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/682747131"
     },
     "tracks": [
       [
@@ -458,7 +469,8 @@
         "Outro (Remastered / Instrumental)",
         "3:21"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/demonium-nihil-ep.webp"
   },
   {
     "slug": "tales-from-wicked",
@@ -469,7 +481,10 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/09fBzoVph4A48HKof93Y0w",
+      "apple": "https://music.apple.com/tr/album/tales-from-wicked-ep/1784386287",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/681417171"
     },
     "tracks": [
       [
@@ -488,7 +503,8 @@
         "Ritual",
         "3:07"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/tales-from-wicked.webp"
   },
   {
     "slug": "aeternus-amor",
@@ -499,7 +515,10 @@
     "date": "2025",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/7dw4eiq4UWLONotyZH14Uh",
+      "apple": "https://music.apple.com/tr/album/aeternus-amor-single/1795081619",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/707894601"
     },
     "tracks": [
       [
@@ -514,7 +533,8 @@
         "Shadow & Flame (Bonus Track)",
         "3:12"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/aeternus-amor.webp"
   },
   {
     "slug": "pumpkin-king",
@@ -525,7 +545,10 @@
     "date": "2025",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/1B054Lc1PTqDWZe3e4xlJ9",
+      "apple": "https://music.apple.com/tr/album/pumpkin-king-single/1846526725",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/837286322"
     },
     "tracks": [
       [
@@ -540,7 +563,8 @@
         "Pumpkin King, Pt. 2",
         "3:45"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/pumpkin-king.webp"
   },
   {
     "slug": "ceremony-and-cohesion",
@@ -551,7 +575,10 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/2KpVgVnKPdd2AaChJqnexi",
+      "apple": "https://music.apple.com/tr/album/ceremony-and-cohesion-single/1782170221",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/675908441"
     },
     "tracks": [
       [
@@ -562,7 +589,8 @@
         "Cohesion",
         "3:41"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/ceremony-and-cohesion.webp"
   },
   {
     "slug": "infernal-dance",
@@ -573,14 +601,18 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/0ew5mPe6s0zeaR8moMyoCZ",
+      "apple": "https://music.apple.com/tr/album/infernal-dance-single/1775442510",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/661409001"
     },
     "tracks": [
       [
         "Infernal Dance",
         "3:23"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/infernal-dance.webp"
   },
   {
     "slug": "phone-acoustic",
@@ -591,13 +623,17 @@
     "date": "2024",
     "lang": "en",
     "links": {
-      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+      "spotify": "https://open.spotify.com/album/2abpvYHzo0TJbkb5Rxpe7c",
+      "apple": "https://music.apple.com/tr/album/phone-acoustic-version-single/1769106478",
+      "youtube": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q",
+      "deezer": "https://www.deezer.com/tr/album/644509481"
     },
     "tracks": [
       [
         "Phone (Acoustic Version)",
         "3:11"
       ]
-    ]
+    ],
+    "cover": "assets/img/dn/kapaklar/phone-acoustic.webp"
   }
 ]
