@@ -67,3 +67,7 @@ build.mjs        tüm HTML'i üreten tek betik
 ## Paylaşım önizleme görselleri
 
 `assets/img/og/` içindeki 1200x630 görseller `python3 scripts/make-og.py` ile üretilir (önce `npm run build`). Yeni bir DZS yayını eklediğinde (`cover` alanıyla) bu komutu çalıştırıp çıkan dosyayı commit et. Her yayının (DZS ve Demonium Nihil) kendi sayfası (`/muzik/<slug>/`) otomatik oluşur. `/muzik/` iki projeye giden bir landing sayfasıdır; DZS `/dzs/`, Demonium Nihil `/demonium-nihil/` adresindedir. Demonium Nihil sayfaları gotik temayı (`body.theme-dn`, New Rocker yazı tipi) kullanır.
+
+## Ondan Sonra haritası (`/yapim/harita/`)
+
+Videolarda gidilen yerler `data/places.json` içinde tutulur (`videos`, `places`, `routes`). Yeni bir yer ya da video eklemek için bu dosyaya satır eklemek yeterlidir; harita ve liste derlemede kendiliğinden güncellenir. Konumlar yaklaşıktır. Harita Leaflet (npm) ve OpenStreetMap karolarıyla çalışır; `assets/js/harita.js` yalnızca bu sayfada yüklenir.
