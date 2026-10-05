@@ -946,3 +946,12 @@ body.theme-dzs {
 .place-read .btn { margin-top: 0.2rem; }
 
 .dzs-tag-tr { margin: -0.7rem 0 1.2rem; font-size: 0.95rem; letter-spacing: 0.12em; color: var(--stone-muted); }
+
+.era-current { margin: 1.4rem 0 1.6rem; }
+.archive { margin: 1.6rem 0 0; border: 1px solid var(--line); background: rgba(8, 5, 24, 0.5); }
+.archive summary { cursor: pointer; padding: 0.9rem 1.2rem; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.archive summary::-webkit-details-marker { display: none; }
+.archive summary::after { content: '+'; color: #2de2e6; font-size: 1.3rem; line-height: 1; }
+.archive[open] summary::after { content: '\2212'; }
+.archive summary:focus-visible { outline: 2px solid #2de2e6; outline-offset: 2px; }
+.archive p { margin: 0; padding: 0 1.2rem 1rem; font-size: 0.95rem; color: var(--stone-muted); }

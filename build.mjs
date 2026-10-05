@@ -960,11 +960,10 @@ ${SYNTH_RULE}
     <h2 id="h-kimlik" class="section-title">KİMLİK</h2>
     <div class="prose">
       <p>${esc(dzs.identity.lead)}</p>
-      <ul class="eras">${dzs.identity.eras.map((e) => `<li class="era"><p class="era-label">${esc(e.label)}</p><h3 class="era-title">${esc(e.title)}</h3><p>${esc(e.text)}</p></li>`).join('')}</ul>
-      <h3 class="chips-title">Konumlandırma</h3>
-      <ul class="chips">${dzs.identity.positioning.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Anlatı dünyası</h3>
-      <ul class="chips">${dzs.identity.themes.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <div class="era era-current"><h3 class="era-title">${esc(dzs.identity.current.title)}</h3><p>${esc(dzs.identity.current.text)}</p></div>
+      <p>${esc(dzs.identity.positioningText)}</p>
+      <p>${esc(dzs.identity.themesText)}</p>
+      <details class="archive"><summary>${esc(dzs.archive.summary)}</summary>${dzs.archive.paragraphs.map((t) => `<p>${esc(t)}</p>`).join('')}</details>
     </div>
   </div>
 </section>
@@ -975,22 +974,13 @@ ${SYNTH_RULE}
     <h2 id="h-ses" class="section-title">SES</h2>
     <div class="prose">
       <p>${esc(dzs.music.lead)}</p>
-      <h3 class="chips-title">Türler</h3>
-      <ul class="chips">${dzs.music.genres.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Eski çizgi, nadiren</h3>
-      <ul class="chips">${dzs.music.genresOld.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Ses dünyası</h3>
-      <ul class="chips">${dzs.music.sound.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <p>${esc(dzs.music.soundText)}</p>
       <h3 class="chips-title">Vokal</h3>
       <p>${esc(dzs.music.vocal)}</p>
       <h3 class="chips-title">Duygusal ton</h3>
-      <ul class="chips">${dzs.music.tones.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Sözlerde, eski dönem</h3>
-      <ul class="chips">${dzs.music.lyrics.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Sözlerde, Static Era</h3>
-      <ul class="chips">${dzs.music.lyricsNew.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Tekrarlanan imgeler</h3>
-      <ul class="chips">${dzs.music.imagery.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <p>${esc(dzs.music.tonesText)}</p>
+      <h3 class="chips-title">Sözlerde</h3>
+      <p>${esc(dzs.music.lyricsText)}</p>
     </div>
   </div>
 </section>

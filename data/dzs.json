@@ -77,98 +77,26 @@
   "formerName": "Dördüncü Zamdan Sonra",
   "roles": "Erkan Avcı: kurucu, yapımcı, söz yazarı ve direktör.",
   "identity": {
-    "lead": "Ana slogan “Signal got wider” (Sinyal genişledi). İkincil slogan “Signal. Static. Story.” (Sinyal. Parazit. Hikaye.) DZS iki dönem olarak okunur: eski dönemin Türkçe şehir hikayeleri ve The Last Normal Broadcast ile açılan Static Era.",
-    "eras": [
-      {
-        "label": "Eski dönem",
-        "title": "Dördüncü Zamdan Sonra",
-        "text": "1 Kasım 2025 – 21 Eylül 2026. Türkçe şehir hikayeleri: şehir yorgunluğu, gece yolculukları, kırık ilişkiler ve sessiz isyan; indie rock ve post-punk zemininde. O dönemin sloganı “Sonrası Biziz” idi. Kapanış sahnesi BENAY albümü."
-      },
-      {
-        "label": "Güncel dönem",
-        "title": "Static Era (Parazit Dönemi)",
-        "text": "The Last Normal Broadcast ile açılıyor. İngilizce ağırlıklı; kaset paraziti, VHS dokusu ve analog synth katmanları. Albüm, adın DZS’ye dönüştüğü ve projenin daha geniş bir dinleyiciye açıldığı eşik. Sinyal genişledi."
-      }
-    ],
-    "positioning": [
-      "Sanal müzik projesi",
-      "Türkçe ve İngilizce, ağırlık İngilizce",
-      "Darkwave",
-      "New wave dream pop",
-      "Alternatif electro-pop",
-      "Kaset ve VHS paraziti",
-      "Analog synth dokusu",
-      "İnsan duygusu ile dijital üretimin birleşimi"
-    ],
-    "themes": [
-      "Analog nostalji",
-      "Gece radyosu, kaset ve VHS",
-      "Geçici şöhret ve algoritma",
-      "Komplo tavşan delikleri",
-      "Kayıp ve bekleyiş",
-      "Masalsı hüzün",
-      "Neşeli kabullenme",
-      "Yıldızlar ve kuyruklu yıldız"
-    ]
+    "lead": "Ana slogan “Signal got wider” (Sinyal genişledi). İkincil slogan “Signal. Static. Story.” (Sinyal. Parazit. Hikaye.) Güncel dönem Static Era; eski dönemin kaydı aşağıdaki kapalı kutuda duruyor.",
+    "current": {
+      "title": "Static Era (Parazit Dönemi)",
+      "text": "The Last Normal Broadcast ile açılıyor. İngilizce ağırlıklı; kaset paraziti, VHS dokusu ve analog synth katmanları. Albüm, adın DZS’ye dönüştüğü ve projenin daha geniş bir dinleyiciye açıldığı eşik. Sinyal genişledi."
+    },
+    "positioningText": "Sanal müzik projesi; Türkçe ve İngilizce, ağırlık İngilizce. Darkwave, new wave dream pop ve alternatif electro-pop; kaset paraziti ve analog synth dokusu. İnsan duygusu ile dijital üretimin birleşimi.",
+    "themesText": "Anlatı dünyasında analog nostalji (gece radyosu, kaset, VHS), geçici şöhret ve algoritma, komplo tavşan delikleri, kayıp ve bekleyiş, masalsı hüzün, neşeli kabullenme ve yıldızlar yer alıyor."
   },
   "castNote": "Sahne kurgusaldır. Bu isim gerçek bir müzisyen ya da sahne sanatçısı değildir; projenin sanal dünyasının karakteridir. Static Era’da sahnede tek bir figür var: altın maskeli sunucu.",
   "music": {
-    "lead": "Static Era darkwave, new wave dream pop ve alternatif electro-pop ile açılıyor: analog synth katmanları, kaset sarkması ve VHS paraziti gibi kayıt dokuları. Dil ağırlıklı İngilizce; Türkçe şarkılar da sürüyor.",
+    "lead": "Static Era darkwave, new wave dream pop ve alternatif electro-pop ile açılıyor. Dil ağırlıklı İngilizce; Türkçe şarkılar da sürüyor.",
     "genres": [
       "Darkwave",
       "New wave dream pop",
-      "Alternatif electro-pop",
-      "Funk etkisi"
+      "Alternatif electro-pop"
     ],
-    "sound": [
-      "Analog synth katmanları",
-      "Kaset sarkması",
-      "VHS paraziti",
-      "Organik kusurlar",
-      "Sıcak ve loş atmosfer",
-      "Sakin ve yakın vokalden melodik rap-şarkıya geçişler"
-    ],
-    "vocal": "Vokal, yeni dönemin sunucusu Vesper Aurum’un sesi: tüm şarkılarda, ağırlıkla İngilizce. Bazen tek başına, bazen Lucerna eşliğinde. Parçaya göre sakin ve yakın, parçaya göre melodik rap-şarkı.",
-    "tones": [
-      "İroni",
-      "Kara mizah",
-      "Tatlı hüzün",
-      "Melankolik kahramanlık",
-      "Öz-alaycı özgürleşme"
-    ],
-    "lyrics": [
-      "Şehir hayatının yorgunluğu",
-      "Zamlar ve geçim derdi",
-      "Ertelenen hayaller",
-      "Apartman ve oda yalnızlığı",
-      "Soğuk evler",
-      "İş hayatı ve kurumsal düzen",
-      "Kırık ilişkiler",
-      "Gece yolculukları",
-      "İstanbul ve toplu taşıma",
-      "İç hesaplaşma",
-      "Sessiz isyan"
-    ],
-    "lyricsNew": [
-      "Gece radyosu, kaset, VHS ve video dükkanı nostaljisi",
-      "Geçici şöhret ve algoritma",
-      "Komplo teorisi tavşan delikleri",
-      "Kuyruklu yıldızla evlenen adam, zamanda koşan trençkotlu kahraman",
-      "Havalı görünmeyi bırakmak"
-    ],
-    "genresOld": [
-      "Indie rock",
-      "Alternatif rock",
-      "Post-punk",
-      "Alternatif Türkçe"
-    ],
-    "imagery": [
-      "Gece sürüşü ve radyo",
-      "Kaset, VHS ve sinema",
-      "Ekranlar ve algoritma",
-      "Yıldızlar ve kuyruklu yıldız",
-      "Sokak ışıkları ve yağmur"
-    ]
+    "vocal": "Vokal, yeni dönemin sunucusu Vesper Aurum’un sesi: tüm şarkılarda, ağırlıkla İngilizce. Bazen tek başına, bazen Lucerna eşliğinde.",
+    "soundText": "Analog synth katmanları, kaset sarkması ve VHS paraziti; organik kusurlar, sıcak ve loş bir atmosfer. Funk etkili bölümler var. Vokal parçaya göre sakin ve yakın, parçaya göre melodik rap-şarkı.",
+    "tonesText": "İroni, kara mizah, tatlı hüzün, melankolik kahramanlık ve öz-alaycı özgürleşme.",
+    "lyricsText": "Gece radyosu, kaset, VHS ve video dükkanı nostaljisi; geçici şöhret ve algoritma; komplo teorisi tavşan delikleri; kuyruklu yıldızla evlenen adam ve zamanda koşan trençkotlu kahraman; havalı görünmeyi bırakmak. Tekrarlayan imgeler: gece sürüşü ve radyo, kaset ve sinema, ekranlar, yıldızlar ve kuyruklu yıldız, sokak ışıkları ve yağmur."
   },
   "visual": {
     "lead": "Yeni kimlik altın ve siyah üzerine kurulu: benekli, aşınmış altın harfler; arkasında yörünge halkası, yıldız ve küçük bir gezegen. Görsel dil, eski bir VHS kamera kaydının dokusunu taşır: “PLAY ▶” yazısı, tarih damgası, tarama çizgileri ve renk sızması. Ev odaları, küçük sahneler, Marshall amfiler ve kozmik imgeler bu dünyanın parçasıdır.",
@@ -274,5 +202,15 @@
     "voice": "Vesper söyler, sesi Arda Lumen’in sesidir"
   },
   "taglineTr": "Sinyal genişledi.",
-  "secondaryTr": "Sinyal. Parazit. Hikaye."
+  "secondaryTr": "Sinyal. Parazit. Hikaye.",
+  "archive": {
+    "summary": "Eski era: Dördüncü Zamdan Sonra dönemi (arşiv)",
+    "paragraphs": [
+      "1 Kasım 2025 – 21 Eylül 2026. Slogan “Sonrası Biziz”, ikincil slogan “Şehir. Ses. Hikaye.” Kapanış sahnesi BENAY albümü. Bu dönemin 7 yayını aşağıdaki Yayınlar bölümünde.",
+      "Bağımsız, Türkçe alternatif müzik: indie rock, alternatif rock ve post-punk zemininde, yer yer synth dokularıyla. Şehirli melankoli, gündelik hikayeler ve sessiz başkaldırı.",
+      "Ses: temiz ve loş gitar tonları, lo-fi davullar, yumuşak bas yürüyüşleri, synth ve klavye dokuları, şehir sesleri. Vokal yarı konuşur, anlatır gibi; samimi ve hafif alaycı. Ton: ironi, öfke, içsel direnç, enerjisini tamamen kaybetmeyen melankoli.",
+      "Sözler: şehir yorgunluğu, zamlar ve geçim derdi, ertelenen hayaller, apartman ve oda yalnızlığı, soğuk evler, iş hayatı, kırık ilişkiler, gece yolculukları, İstanbul ve toplu taşıma, iç hesaplaşma, sessiz isyan.",
+      "Bu çizgi Static Era’da nadiren kullanılacak. Eski logo, kırmızı taç ve 16.00 saat simgesi emekli edildi; yeni kimlik altın ve siyah."
+    ]
+  }
 }
