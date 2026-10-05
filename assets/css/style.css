@@ -861,3 +861,25 @@ body.theme-dzs {
 .cast-feature-body .cast-tone { color: var(--stone-muted); font-size: 0.9rem; margin: 0.2rem 0 0; }
 .theme-dzs .cast-feature-img { border-color: #ff3cac; box-shadow: 0 0 2.4rem rgba(255, 60, 172, 0.3), 0 0 4rem rgba(45, 226, 230, 0.12); }
 @media (prefers-reduced-motion: no-preference) { .theme-dzs .cast-feature-img { animation: vhs-jitter 7s steps(1) infinite; } }
+
+/* TLNB çıkış (hyperfollow) sayfası */
+.locked-link { position: relative; z-index: 2; margin-top: 0.5rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #2de2e6; text-underline-offset: 3px; }
+.rcard-locked { cursor: pointer; }
+.tlnb { --dzs-floor: clamp(7rem, 16vw, 11rem); position: relative; overflow: hidden; isolation: isolate; padding: clamp(2.5rem, 6vw, 4.5rem) 0 calc(var(--dzs-floor) + 3rem); min-height: calc(100vh - 4.5rem); }
+.tlnb-grid { position: relative; z-index: 4; display: grid; gap: clamp(1.8rem, 5vw, 4rem); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 56rem) { .tlnb-grid { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); } }
+.tlnb-cover { width: 100%; max-width: 28rem; aspect-ratio: 1; object-fit: cover; border: 1px solid #ff3cac; box-shadow: 0 0 3rem rgba(255, 60, 172, 0.4), 0 0 6rem rgba(45, 226, 230, 0.16); margin-inline: auto; }
+.tlnb-info > * + * { margin-top: 1rem; }
+.tlnb-logo { height: 4.2rem; width: auto; filter: drop-shadow(0 0 1rem rgba(255, 60, 172, 0.4)); }
+.tlnb-state { margin: 0; }
+.tlnb-title { font-size: clamp(1.9rem, 5vw, 3.3rem); margin: 0; background: linear-gradient(180deg, #fff 30%, #ff9ee6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 1.2rem rgba(255, 60, 172, 0.5)); text-transform: none; }
+.tlnb-meta { margin: 0; color: var(--stone-muted); letter-spacing: 0.04em; }
+.tlnb-count { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+.tlnb-count > div { min-width: 4.6rem; padding: 0.7rem 0.6rem 0.5rem; text-align: center; border: 1px solid rgba(45, 226, 230, 0.5); background: rgba(8, 5, 24, 0.7); }
+.tlnb-count b { display: block; font-family: 'Audiowide', var(--display); font-weight: 400; font-size: 1.9rem; line-height: 1; color: #fff; text-shadow: 0 0 1rem rgba(45, 226, 230, 0.7); font-variant-numeric: tabular-nums; }
+.tlnb-count span { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone-muted); }
+.tlnb-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 0 0 0.4rem; }
+.tlnb-note { margin: 0.8rem 0 0; font-size: 0.9rem; color: var(--stone-muted); }
+.tlnb [hidden] { display: none !important; }
+.tlnb-info, .tlnb-info h1, .tlnb-info p { text-align: left; }
+.tlnb-info .tlnb-logo, .tlnb-info > img { margin-bottom: 0.6rem; }

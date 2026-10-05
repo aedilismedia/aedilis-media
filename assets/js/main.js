@@ -75,6 +75,33 @@
     el.hidden = false;
   });
 
+  // Çıkış sayfası: geri sayım; tarih gelince "yayında" durumuna geçer
+  document.querySelectorAll('[data-release]').forEach((root) => {
+    const target = new Date(root.dataset.release);
+    const set = (sel, v) => { const el = root.querySelector(sel); if (el) el.textContent = String(v).padStart(2, '0'); };
+    const tick = () => {
+      let ms = target - Date.now();
+      const live = ms <= 0;
+      root.querySelectorAll('[data-before]').forEach((el) => { el.hidden = live; });
+      root.querySelectorAll('[data-after]').forEach((el) => { el.hidden = !live; });
+      if (live) return true;
+      ms = Math.floor(ms / 1000);
+      set('[data-d]', Math.floor(ms / 86400)); set('[data-h]', Math.floor(ms % 86400 / 3600)); set('[data-m]', Math.floor(ms % 3600 / 60)); set('[data-s]', ms % 60);
+      return false;
+    };
+    if (Number.isNaN(target.getTime()) || tick()) return;
+    const timer = setInterval(() => { if (tick()) clearInterval(timer); }, 1000);
+  });
+  document.querySelectorAll('[data-share]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const data = { title: btn.dataset.title, url: btn.dataset.url };
+      try {
+        if (navigator.share) await navigator.share(data);
+        else { await navigator.clipboard.writeText(data.url); btn.textContent = 'Bağlantı kopyalandı'; }
+      } catch (_) { /* paylaşım iptal edildi */ }
+    });
+  });
+
   // Spotify oynatıcısı: tıklanana kadar üçüncü taraf içerik yüklenmez.
   document.querySelectorAll('[data-spotify]').forEach((box) => {
     const btn = box.querySelector('button');

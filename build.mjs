@@ -202,6 +202,7 @@ const lockedCard = (url) => `<li class="rcard rcard-locked has-cover" lang="en">
     <span class="locked-label">Yakında</span>
     <span class="locked-date">${esc(formatDate(dzs.upcoming.date))}</span>
     <span class="locked-count" data-date="${esc(dzs.upcoming.date)}T00:00:00+03:00" hidden></span>
+    <a class="locked-link" href="${esc(url(dzs.upcoming.slug + '/'))}">Yayın sayfası</a>
     <span class="sr-only">${esc(dzs.upcoming.title)}: yeni albüm, çıkış tarihi ${esc(formatDate(dzs.upcoming.date))}.</span>
   </div>
 </li>`;
@@ -698,6 +699,77 @@ function castItem(c) {
       </div>
     </li>`;
 }
+function tlnbPage() {
+  const depth = 1;
+  const url = makeUrl(depth);
+  const u = dzs.upcoming;
+  const origin = site.url.replace(/\/?$/, '/');
+  const pageUrl = `${origin}${u.slug}/`;
+  const live = Object.fromEntries(PLATFORMS.filter(([k]) => u.links?.[k]).map(([k, label]) => [label, u.links[k]]));
+  const hasLive = Object.keys(live).length > 0;
+  const follow = dzs.platforms.filter((p) => ['Spotify', 'Apple Music', 'YouTube Music', 'Deezer'].includes(p.label));
+  const btns = (list) => list.map(([label, href]) => `<li><a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a></li>`).join('');
+  return (
+    head({
+      title: `${u.title} | ${dzs.shortName} | Aedilis Media`,
+      description: `${dzs.shortName}: ${u.title}. ${u.type}, ${u.tracks} parça, ${formatDate(u.date)}. ${u.text}`,
+      canonicalPath: `${u.slug}/`,
+      depth,
+      ogImage: `assets/img/og/${u.slug}.jpg`,
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'MusicAlbum',
+        name: u.title,
+        url: pageUrl,
+        image: absUrl(u.cover),
+        datePublished: u.date,
+        numTracks: u.tracks,
+        inLanguage: 'en',
+        byArtist: { '@type': 'MusicGroup', name: dzs.shortName, alternateName: dzs.formerName, url: `${origin}${dzs.slug}/` },
+      },
+    }) +
+    `
+<body class="theme-dzs tlnb-page">
+${header(depth)}
+<main id="icerik" tabindex="-1">
+<section class="tlnb hero-dzs" data-release="${esc(u.date)}T00:00:00+03:00">
+  <div class="dzs-sky" aria-hidden="true"><span class="shooting-star"></span><span class="shooting-star s2"></span></div>
+  <div class="dzs-floor" aria-hidden="true"><div></div></div>
+  <div class="wrap tlnb-grid">
+    <img class="tlnb-cover" src="${esc(url(u.cover))}" alt="${esc(u.title)} albüm kapağı" width="720" height="720" fetchpriority="high">
+    <div class="tlnb-info" lang="en">
+      <img class="tlnb-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)}" width="1000" height="588">
+      <p class="dzs-tag tlnb-state"><span data-before>Yakında</span><span data-after hidden>Yayında</span></p>
+      <h1 class="page-title tlnb-title">${esc(u.title)}</h1>
+      <p class="tlnb-meta" lang="tr">${esc(u.type)} · ${u.tracks} parça · ${esc(formatDate(u.date))} · Sözler İngilizce</p>
+      <div class="tlnb-count" data-before lang="tr" aria-live="off"><div><b data-d>--</b><span>gün</span></div><div><b data-h>--</b><span>saat</span></div><div><b data-m>--</b><span>dk</span></div><div><b data-s>--</b><span>sn</span></div></div>
+      <div lang="tr">
+        ${hasLive ? `<div data-after hidden><h2 class="chips-title">Dinle</h2><ul class="platform-links">${btns(Object.entries(live))}</ul></div>` : ''}
+        <div ${hasLive ? 'data-before' : ''}>
+          <p class="tlnb-actions"><a class="btn btn-primary" href="${esc(u.slug)}.ics" download>Takvime ekle</a><button class="btn" type="button" data-share data-url="${esc(pageUrl)}" data-title="${esc(u.title)}">Paylaş</button></p>
+          <h2 class="chips-title">${esc(dzs.shortName)}'yi şimdiden takip et</h2>
+          <ul class="platform-links">${btns(follow.map((p) => [p.label, p.href]))}</ul>
+          <p class="tlnb-note">${hasLive ? '' : 'Yayın gününde dinleme bağlantıları bu sayfada olacak.'}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+` +
+    footer(depth)
+  );
+}
+
+const tlnbIcs = () => {
+  const u = dzs.upcoming;
+  const d = u.date.replace(/-/g, '');
+  const next = new Date(Date.UTC(+u.date.slice(0, 4), +u.date.slice(5, 7) - 1, +u.date.slice(8, 10) + 1)).toISOString().slice(0, 10).replace(/-/g, '');
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+  const pageUrl = `${site.url.replace(/\/?$/, '/')}${u.slug}/`;
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Aedilis Media//TLNB//TR', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT', `UID:${u.slug}-${d}@aedilismedia.com`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${next}`, `SUMMARY:${dzs.shortName}: ${u.title} yayında`, `DESCRIPTION:${u.title} bugün yayında. ${pageUrl}`, `URL:${pageUrl}`, 'END:VEVENT', 'END:VCALENDAR', ''].join('\r\n');
+};
+
 const SYNTH_RULE = `<div class="dzs-rule" aria-hidden="true"><svg viewBox="0 0 40 40" width="22" height="22"><path d="M20 0C21.5 12 28 18.5 40 20 28 21.5 21.5 28 20 40 18.5 28 12 21.5 0 20 12 18.5 18.5 12 20 0Z" fill="currentColor"/></svg></div>`;
 
 function dzsPage() {
@@ -1061,10 +1133,12 @@ async function build() {
   await write('iletisim/index.html', iletisimPage());
   await write(`${dzs.slug}/index.html`, dzsPage());
   await write(`${dn.slug}/index.html`, dnPage());
+  await write(`${dzs.upcoming.slug}/index.html`, tlnbPage());
+  await write(`${dzs.upcoming.slug}/${dzs.upcoming.slug}.ics`, tlnbIcs());
   // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
-  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
   for (const r of releases) {
     await write(`muzik/${r.slug}/index.html`, releasePage(r, releases.filter((x) => x.project === r.project)));
     pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });
