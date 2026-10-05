@@ -457,7 +457,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
 
     <ul class="universes">
       <li class="universe universe-dzs">
-        <img class="universe-logo universe-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
+        <img class="universe-logo universe-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1200" height="712" loading="lazy" decoding="async">
         <h3>${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h3>
         <p class="universe-tag" lang="en">${esc(dzs.tagline)}</p>
         <p>${esc(dzs.intro)}</p>
@@ -932,7 +932,7 @@ ${header(depth)}
   <div class="dzs-floor" aria-hidden="true"><div></div></div>
   <div class="wrap dzs-hero-inner">
     <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
-    <img class="dzs-hero-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1000" height="588" fetchpriority="high" onerror="this.remove()">
+    <img class="dzs-hero-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1200" height="712" fetchpriority="high" onerror="this.remove()">
     <h1 class="page-title dzs-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h1>
     <p class="dzs-tag" lang="en">${esc(dzs.tagline)}</p>
     <p class="dzs-tag-tr">${esc(dzs.taglineTr)}</p>
