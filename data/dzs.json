@@ -11,7 +11,7 @@
     "Albümün şarkıları, çağlar arasında kayan bir yayın sinyali gibi ilerler: gece radyosundan kasete, video kiralama dükkanı cumalarından geçici şöhrete. Bir yanda geri dönmek istemeyen ama o hissi bir kez daha duymak isteyen bir nostalji vardır; öte yanda ekranların, algoritmaların ve komplo teorilerinin absürtlüğü, iç çekmeyle karışık bir kahkahayla anlatılır. Yolda bir kuyruklu yıldızla evlenen bir adamın, zamanda koşan trençkotlu bir kahramanın ve çocukluk krallıklarının hikayeleri vardır.",
     "Ağırlıklı olarak İngilizce, Türkçe şarkılarla süren DZS, müziği, kapağı ve görsel dünyayı tek bir atmosfer olarak kurar. Sinyal genişledi."
   ],
-  "ai": "DZS yapay zeka destekli bir sanal müzik projesidir. Yapay zeka üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
+  "ai": "DZS bir sanal müzik projesidir. Üretim sürecinde dijital araçlardan yararlanılır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
   "facts": [
     {
       "label": "Kurucu",
@@ -23,7 +23,7 @@
     },
     {
       "label": "Proje türü",
-      "value": "Yapay zeka destekli sanal müzik projesi"
+      "value": "Sanal müzik projesi"
     },
     {
       "label": "Güncel dönem",
@@ -98,7 +98,7 @@
       "Alternatif electro-pop",
       "Kaset ve VHS paraziti",
       "Analog synth dokusu",
-      "İnsan duygusu ile yapay zeka destekli üretimin birleşimi"
+      "İnsan duygusu ile dijital üretimin birleşimi"
     ],
     "themes": [
       "Analog nostalji",
