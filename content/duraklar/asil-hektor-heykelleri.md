@@ -4,33 +4,33 @@ place: asil-hektor-heykelleri
 video: AsjLriBmEjs
 t: 1009
 order: 3
-excerpt: Köşkten sonra Troya Savaşı'nın iki kahramanının heykellerinin bulunduğu köy girişi. Savaşın kısa hikayesi ve tümülüs söylentileri.
+excerpt: Köşkten sonra Troya Savaşı'nın iki kahramanı Aşil ve Hektor'un heykellerinin olduğu köy girişine geldim. Savaşın hikayesini orada anlattım, burada biraz daha açıyorum.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Köşkten sonra, "Osmanlı paşasının köşkünden iki mitolojik figürün heykeline" gidiyoruz. Kötü toprak yoldan sonra düz bir yola çıkıp köy girişindeki Aşil ve Hektor heykellerine geldik. Bu iki isim için burada bir mezar yok, heykeller sadece onları tasvir ediyor.
+Köşkten çıkınca "Osmanlı paşasının köşkünden iki mitolojik figürün heykeline gidiyoruz" dedim kendi kendime; bu bölge gerçekten hem mitolojik hem tarihi hem kültürel açıdan zengin. Birkaç kilometre kötü toprak yoldan sonra düz bir yola çıkınca motor bir rahatladı, ben de. Kısa süre sonra köy girişindeki Aşil ve Hektor heykellerindeydim.
 
-Videoda anlatılan özet şöyle: Efsaneye göre savaş, Troya Prensi Paris'in Sparta Kraliçesi Helen'i Troya'ya getirmesiyle başlar. Yunan krallarının topladığı büyük ordu şehri on yıl kuşatır. Aşil Yunan ordusunun, Hektor ise Troya ordusunun en güçlü savaşçısıdır ve Kral Priamos'un oğludur. Hektor, Aşil'in yakın dostu Patroklos'u öldürür; savaştan çekilmiş olan Aşil geri döner ve Hektor'u düelloda öldürür. Priamos oğlunun cesedini geri almak için Aşil'in karşısına çıkar, Aşil onun acısına saygı göstererek bedeni geri verir. Savaşın sonunda ise Yunanlılar büyük bir tahta at yapıp geri çekilmiş gibi davranır, Troyalılar atı şehre alır ve geceleyin atın içinden çıkanlar şehri içeriden ele geçirir.
+Burada bu iki isim için bir mezar yok, heykeller sadece onları tasvir ediyor. Yine de dururken savaşın kısa hikayesini anlatmadan edemedim: Efsaneye göre savaş, Troya Prensi Paris'in Sparta Kraliçesi Helena'yı Troya'ya getirmesiyle başlıyor. Yunan kralları büyük bir ordu toplayıp şehri on yıl kuşatıyor. Aşil Yunan ordusunun, Hektor ise Troya ordusunun en güçlü savaşçısı; üstelik Kral Priamos'un oğlu. Hektor, Aşil'in en yakın dostu Patroklos'u öldürüyor, savaştan çekilmiş olan Aşil geri dönüyor ve Hektor'la birebir düello yapıyor. Hektor ölüyor. Babası Priamos oğlunun bedenini almak için Aşil'in karşısına çıkıyor, Aşil onun acısına saygı göstererek bedeni geri veriyor. Sonrası malum: Yunanlılar büyük bir tahta at yapıp geri çekilmiş gibi yapıyor, Troyalılar atı şehre alıyor ve gecenin bir vakti içeriden çıkıp şehri ele geçiriyorlar. Çanakkale kordonundaki ata benzer bir yapı yani.
 
-Bölgede Aşil ve Hektor'un tümülüsünün olduğu söylentisi de dolaşıyor. Videoda, yılı tam hatırlanamayan bir dönemde yabancı bir arkeoloğun bu çevrede araştırma ve kazı yaptığı söyleniyor; yıl ve kişi bu yazıda teyit edilemedi.
+Bu çevrede Aşil ile Hektor'un tümülüsünün olduğuna dair söylentiler de dolaşıyor. Tam hatırlamıyorum ama bir dönemde yabancı bir arkeoloğun buralarda araştırma ve kazı yaptığını duymuştum; kimdi, hangi yıldı, bunu kaynaklarla teyit edemedim.
 
-## Biraz daha derinlemesine
+## Bilmeye değer
 
-**Savaşın kaynağı ne?** Troya Savaşı'nın anlatıldığı en eski metin Homeros'un İlyada'sıdır, ama İlyada savaşın yalnızca onuncu yılındaki yaklaşık 51 günü anlatır ve konusu Aşil'in öfkesidir. Briseis'in Agamemnon tarafından alınması, Patroklos'un ölümü, Aşil-Hektor düellosu ve Priamos'un oğlunun cesedini geri alması İlyada'dadır; şiir Hektor'un cenaze töreniyle biter.
+**Savaşın kaynağı ne?** Troya Savaşı'nın anlatıldığı en eski metin Homeros'un İlyada'sı, ama İlyada savaşın yalnızca onuncu yılındaki yaklaşık 51 günü anlatıyor ve konusu Aşil'in öfkesi. Briseis'in Agamemnon tarafından alınması, Patroklos'un ölümü, Aşil-Hektor düellosu ve Priamos'un oğlunun cesedini geri alması İlyada'da; şiir Hektor'un cenaze töreniyle bitiyor.
 
-Tahta at ise İlyada'da geçmez. Odysseia'da kısaca anılır; ayrıntılı anlatımı Epik Çevrim'in kaybolmuş parçalarında, Vergilius'un Aeneis'inin ikinci kitabında ve Quintus Smyrnaeus'un anlatısında bulunur. Aşil'in ölümü de İlyada'nın kapsamı dışındadır. Savaşın tarihsel gerçekliği ayrı bir tartışma konusudur; anlatı Homeros'a ve sonrasına dayanır.
+Tahta at ise İlyada'da yok. Odysseia'da kısaca anılıyor; ayrıntılı anlatımı Epik Çevrim'in kaybolmuş parçalarında, Vergilius'un Aeneis'inin ikinci kitabında ve Quintus Smyrnaeus'un anlatısında. Aşil'in ölümü de İlyada'nın kapsamı dışında. Savaşın tarihsel gerçekliği ayrı bir tartışma; anlatı Homeros'a ve sonrasına dayanıyor.
 
-**Aşil'in mezarı nerede?** Antik çağda Aşil'in mezarı sayılan bir höyük Troas kıyısında gösterilirdi, ama hangi höyük olduğu kaynaklara göre değişir. Beşik Burnu'ndaki Beşiktepe (Yeniköy'ün yaklaşık 2 km güneyi) Aşil'in mezarı olarak anılır; Büyük İskender'in MÖ 334'te ve imparator Caracalla'nın MS 216'da buraya gelip saygı sunduğu aktarılır. Livius'un derlemesine göre Kesik Tepe, Sivritepe ve Kum Tepe de aday gösterilen höyükler arasındadır; Schliemann Kum Tepe'yi Aşil'in mezarı saymıştır. Yani "Aşil Tümülüsü şurada" demek mümkün değil; antik ve modern yazarlar farklı höyükleri gösteriyor.
+**Aşil'in mezarı nerede?** Antik çağda Aşil'in mezarı sayılan bir höyük Troas kıyısında gösterilirdi ama hangi höyük olduğu kaynaklara göre değişiyor. Beşik Burnu'ndaki Beşiktepe (Yeniköy'ün yaklaşık 2 km güneyi) Aşil'in mezarı olarak anılıyor; Büyük İskender'in MÖ 334'te ve imparator Caracalla'nın MS 216'da buraya gelip saygı sunduğu aktarılıyor. Livius'un derlemesine göre Kesik Tepe, Sivritepe ve Kum Tepe de aday; Schliemann Kum Tepe'yi Aşil'in mezarı saymış. Yani "Aşil Tümülüsü tam şurada" demek mümkün değil.
 
-**Hektor'un mezarı nerede?** Pausanias, Hektor'un mezarının Boiotia'daki Thebai'de olduğunu yazar; kemiklerinin bir kehanet üzerine Asya'dan getirildiğini anlatır. Bir skolyona göre kemikler Troas'taki Ophrynion'dan alınmıştır. Ophrynion, Troas'ta Hektor kültünün merkeziydi ve buranın sikkelerinde Hektor başı basılmıştır. Troas'ta bugün "Hektor tümülüsü" diye kanıtlanmış bir yer yoktur.
+**Hektor'un mezarı nerede?** Pausanias, Hektor'un mezarının Boiotia'daki Thebai'de olduğunu yazıyor ve kemiklerinin bir kehanet üzerine Asya'dan getirildiğini anlatıyor. Bir skolyona göre kemikler Troas'taki Ophrynion'dan alınmış. Ophrynion, Troas'ta Hektor kültünün merkeziydi ve sikkelerinde Hektor başı basılmıştı. Troas'ta bugün "Hektor tümülüsü" diye kanıtlanmış bir yer yok.
 
-**Başka Hektor ve Aşil heykelleri.** Bölgede Troya kahramanlarına ait birden fazla heykel ve büst var, karıştırılmamaları gerekir. Tevfikiye köyünde (Troya Müzesi'ne yaklaşık 1 km) Aşil, Hektor, Priamos, Paris, Helena, Agamemnon gibi figürlerin büstlerinden oluşan bir "tema köy" düzenlemesi bulunuyor; köy 2017'de Çanakkale Valiliği ile tema köy protokolü imzaladı. 2018 "Troia Yılı" için Çanakkale şehir girişinde Hektor, Fatih Sultan Mehmed, Atatürk ve Homeros'tan oluşan bir kompozisyon yapıldı. İntepe'de 2009'da mermer bir Hektor heykeli yapımı için çalışma başlatılmıştı.
+**Başka Hektor ve Aşil heykelleri.** Bölgede Troya kahramanlarına ait birden fazla heykel ve büst var, karıştırmamak lazım. Tevfikiye köyünde (Troya Müzesi'ne yaklaşık 1 km) Aşil, Hektor, Priamos, Paris, Helena, Agamemnon gibi figürlerin büstlerinden oluşan bir "tema köy" düzenlemesi var; köy 2017'de Çanakkale Valiliği ile tema köy protokolü imzalamış. 2018 "Troia Yılı" için Çanakkale şehir girişinde Hektor, Fatih Sultan Mehmed, Atatürk ve Homeros'tan oluşan bir kompozisyon yapılmış. İntepe'de 2009'da mermer bir Hektor heykeli için çalışma başlatılmıştı.
 
-## Doğrulanamayanlar
+## Emin olamadıklarım
 
-- Videoda köyün adı net anlaşılmıyor; altyazıda "Uluova" olarak geçiyor, sonradan "Üvecik'ten çıktık" deniyor. Kaynaklarda bu adla bir köyde Aşil ve Hektor heykellerini doğrulayamadık. Tevfikiye'deki büstler ayrı bir düzenleme. Heykellerin tam yeri, yapımcısı ve yapım yılı bu yüzden yazıya eklenmedi; harita işareti yaklaşıktır ve konum netleşince güncellenecek.
-- Videoda söz edilen yabancı arkeolog ve kazı yılı doğrulanamadı.
+- Köyün adından emin değilim. Orada "Uluova köyünün girişi" demişim, sonra "Üvecik'ten çıktık" demişim; kaynaklarda bu adla bir köyde Aşil ve Hektor heykellerini doğrulayamadım. Tevfikiye'deki büstler ayrı bir düzenleme. Heykellerin tam yeri, yapımcısı ve yapım yılı bu yüzden yazıda yok; haritadaki işaret yaklaşık, doğru köyü netleştirince güncelleyeceğim.
+- Anlattığım yabancı arkeolog ve kazı yılı doğrulanamadı.
 
 ## Kaynaklar
 

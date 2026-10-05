@@ -921,7 +921,20 @@ body.theme-dzs {
 /* Ondan Sonra durak yazıları */
 .durak .durak-lead { max-width: var(--measure); color: var(--stone-muted); font-size: 1.15rem; margin: 0 0 1.4rem; }
 .durak .durak-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.6rem; margin: 0 0 0.8rem; }
-.durak .durak-video { color: var(--stone-muted); font-size: 0.9rem; margin: 0 0 2rem; }
+/* Yazı + sağda gömülü videolar */
+.durak-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 3rem; grid-template-areas: "head" "media" "text"; }
+.durak-head { grid-area: head; }
+.durak-text { grid-area: text; min-width: 0; }
+.durak-media { grid-area: media; display: flex; flex-direction: column; gap: 1.4rem; margin: 0 0 2rem; }
+.durak .embed { margin: 0; }
+.durak .embed-frame { position: relative; aspect-ratio: 16 / 9; background: var(--charcoal); border: 1px solid rgba(215, 204, 178, 0.18); }
+.durak .embed-short .embed-frame { aspect-ratio: 9 / 16; max-width: 260px; }
+.durak .embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.durak .embed figcaption { margin-top: 0.5rem; font-size: 0.84rem; color: var(--stone-muted); }
+@media (min-width: 62rem) {
+  .durak-grid { grid-template-columns: minmax(0, 1fr) 24rem; grid-template-areas: "head media" "text media"; align-items: start; }
+  .durak-media { position: sticky; top: 5.5rem; margin: 0; max-height: calc(100vh - 7rem); overflow-y: auto; padding-right: 0.2rem; }
+}
 .durak .prose ul { padding-left: 1.2rem; }
 .durak .prose li { margin-bottom: 0.4rem; }
 .durak .durak-note { max-width: var(--measure); margin-top: 2.4rem; padding: 1rem 1.2rem; border-left: 2px solid var(--gold); background: var(--charcoal); font-size: 0.92rem; color: var(--stone-muted); }
@@ -929,3 +942,5 @@ body.theme-dzs {
 .durak .durak-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 1.6rem; margin-top: 2rem; }
 .place-read { margin: 0.4rem 0 0; }
 .harita .pop p a { color: var(--gold); }
+.harita .pop p a.btn-primary { color: var(--obsidian); }
+.place-read .btn { margin-top: 0.2rem; }

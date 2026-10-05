@@ -4,25 +4,27 @@ place: canakkale
 video: yYTnbXHAHQk
 t: 1616
 order: 15
-excerpt: Boğaz kıyısındaki şehir. Lapseki-Çardak yolundan gelip kordon, Truva Atı ve 1915 Çanakkale Köprüsü'ne bakan bir uğrak.
+excerpt: Parion'dan sonra Marmara kıyısından Şevketiye ve Çardak üzerinden memleketim Çanakkale'ye geçtim; kordon, Truva Atı ve 1915 Çanakkale Köprüsü.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Parion'dan sonra Marmara kıyısından Şevketiye ve Çardak üzerinden Çanakkale'ye geçtik. Yolda, Şevketiye'ye bir kilometre kala manzarasıyla unutulmaz bir benzin istasyonu-kafe var; masa sayısı sınırlı ama sürekli dolu. Buradan Boğaz'a ve bütün heybetiyle 1915 Çanakkale Köprüsü'ne bakıyorsunuz. Çardak'tan çıkmadan Lapseki'ye giriyorsunuz; feribotun hemen yanında minik bir otogar var.
+Parion'dan sonra Marmara kıyısı boyunca Çanakkale'ye sürdüm. Yolda, Şevketiye'ye bir kilometre kala hayatımda gördüğüm en güzel manzaralı benzinliğe denk geldim; kafe gibi işletiyorlar, bahçede beş altı masa var ve sürekli dolu. Boğaz'ın güzelliğine, karşıda bütün heybetiyle 1915 Çanakkale Köprüsü'ne bakarak yola devam ettim: "Abi gerçek değil gibi." Çardak'ta çocukluğumda dondurma yemeye geldiğimizi hayal meyal hatırladım; Çardak'tan çıkmadan Lapseki'ye girdim, feribotun hemen yanında minnacık bir otogar var, tatlı.
 
-Çanakkale kordonunda, 2018-2022 yıllarında üniversite için taşınıp yaşadığımız şehrin yeni mekanlarına baktık; yeni açılan kafeler ve yürüme alanları var. Kordonun altyapısı yetersiz; özellikle bayramlarda feribot kuyrukları çok uzuyor. Sağ tarafta Brad Pitt'in filminde kullanılan Truva Atı duruyor. Videoyu iki bölüme ayırdık: ikinci bölümde Cezayirli Hasan Paşa Köşkü, Alexandria Troas ve dönüş yolundaki duraklara gidiyoruz (TroasRoute #2).
+"Çanakkale'ye hoş geldiniz" tabelasının orada çıkartmamı da yapıştırdım. Aslında ailemi sürprizle ziyarete gelmiştim, video bahane oldu. 2018'de üniversite için taşınıp 2022'ye kadar kaldığım bu şehirde yıllardır aynı iki mekanda kahve içerim: Troya AVM'deki Pablo Artisan Coffee ve kordonda yıllardır duran The Bigfoot Cafe Company. Yolunuz düşerse tavsiye ederim; Barış Abi'ye selam söyleyin.
 
-## Biraz daha derinlemesine
+Kordon boyunca yürürken yeni açılmış yerler gördüm. Kordonun altyapısı yetersiz, bayramlarda feribot kuyrukları çok uzuyor. Biraz daha ağaç, biraz daha yeşil olsa keşke diyorum. Sağ tarafta Brad Pitt'in filminde kullanılan Truva Atı duruyor. Ertesi gün şehirden çıkıp Boğaz'a bakan bir durma noktasına geldim ve videoyu ikiye bölmeye karar verdim: ikinci bölümde Cezayirli Hasan Paşa Köşkü, Alexandria Troas ve dönüş yolundaki duraklar var (TroasRoute #2).
 
-**Çanakkale kordonundaki Truva Atı.** Çanakkale kordonundaki Truva Atı heykeli, "Troy" (Truva) filminde kullanıldıktan sonra Warner Bros. tarafından Türkiye'ye bağışlanmış ve 13 Eylül 2004'ten beri kordonda sergileniyor. Demir iskelet üzerine fiberglasla kaplı; yaklaşık 12,4 metre yüksekliğinde, 10 metre uzunluğunda, 6 metre genişliğinde ve yaklaşık 12 ton ağırlığında. 2018 "Troia Yılı" için kapsamlı bakım gördü; iç iskeleti sağlamlaştırıldı, halatlar yenilendi ve yeniden boyandı.
+## Bilmeye değer
 
-**1915 Çanakkale Köprüsü.** 18 Mart 2022'de açıldı; Çanakkale Boğazı'nı Lapseki (Asya) ile Gelibolu (Avrupa) arasında geçiyor. Orta açıklığı 2.023 metreyle dünyanın en uzun asma köprüsü, kule yüksekliği 318 metre, toplam uzunluğu 4.608 metre. Limak, Yapı Merkezi, DL E&C ve SK Ecoplant ortaklığı inşa etti; yap-işlet-devret modeliyle yapıldı. Adı ve açılış tarihi, Birinci Dünya Savaşı'nda Çanakkale Cephesi'nde gösterilen direnişe ithaf edilmiştir (1915 ve 18 Mart 1915).
+**Çanakkale kordonundaki Truva Atı.** "Troy" (Truva) filminde kullanıldıktan sonra Warner Bros. tarafından Türkiye'ye bağışlanmış ve 13 Eylül 2004'ten beri kordonda sergileniyor. Demir iskelet üzerine fiberglasla kaplı; yaklaşık 12,4 metre yüksekliğinde, 10 metre uzunluğunda, 6 metre genişliğinde ve yaklaşık 12 ton ağırlığında. 2018 "Troia Yılı" için kapsamlı bakım görmüş; iç iskeleti sağlamlaştırılmış, halatlar yenilenmiş ve yeniden boyanmış.
 
-## Doğrulanamayanlar
+**1915 Çanakkale Köprüsü.** 18 Mart 2022'de açıldı; Çanakkale Boğazı'nı Lapseki (Asya) ile Gelibolu (Avrupa) arasında geçiyor. Orta açıklığı 2.023 metreyle dünyanın en uzun asma köprüsü, kule yüksekliği 318 metre, toplam uzunluğu 4.608 metre. Limak, Yapı Merkezi, DL E&C ve SK Ecoplant ortaklığı inşa etti; yap-işlet-devret modeliyle yapıldı. Adı ve açılış tarihi, Birinci Dünya Savaşı'nda Çanakkale Cephesi'nde gösterilen direnişe ithaf edilmiş (1915 ve 18 Mart).
 
-- Videoda bahsedilen benzin istasyonu-kafe için isim ve konum teyit edilmedi.
-- Kordondaki "yetersiz altyapı" ve feribot kuyrukları anlatıcının gözlemidir.
+## Emin olamadıklarım
+
+- Yolda gördüğüm manzaralı benzinlik-kafenin adını ve yerini teyit etmedim.
+- Kordondaki "yetersiz altyapı" ve feribot kuyrukları benim gözlemim.
 
 ## Kaynaklar
 

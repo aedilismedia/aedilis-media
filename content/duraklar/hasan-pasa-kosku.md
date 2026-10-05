@@ -4,34 +4,36 @@ place: hasan-pasa-kosku
 video: AsjLriBmEjs
 t: 762
 order: 2
-excerpt: Ezine'de, Mahmudiye ile Üvecik köyleri arasında, ovanın ortasında tek başına duran 18. yüzyıl kule-konağı. Kazı çalışmaları sürüyor.
+excerpt: Ezine'de, Mahmudiye ile Üvecik köyleri arasında, ovanın ortasında tek başına duran 18. yüzyıl kule-konağına taşlı bir yoldan gittim. Kazı çalışmaları sürüyor.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Kumkale'den sonra köy yollarından, yaklaşık yarım saatlik bir köy yolu sürüşüyle Cezayirli Hasan Paşa Köşkü'ne geldik. Köşke giden son kilometreler beyaz topraklı, taşlı bir yol; bir tarihi esere giden yolun biraz daha düzgün olmasını beklerdim. Ana yoldan ayrılırken tabelalar yönü net gösteriyor, bu Çanakkale'nin güzel bir yanı.
+Kumkale'den sonra köy yollarından yaklaşık yarım saat sürdüm. Navigasyon 15 kilometre diyordu ama hep köy yolu olduğu için bomboş, sakin, kafa rahat bir sürüştü. Çanakkale'nin hoşuma giden bir yanı da şu: ana yoldan ayrılırken kocaman tabelalar "Cezayirli Hasan Paşa Köşkü" diyerek yönü net gösteriyor. Hiç "doğru yolda mıyım" şüphesi kalmıyor.
 
-Köşk, Mahmudiye ve Üvecik köyleri arasında, ovaya hakim hafif yüksek bir noktada, etrafında neredeyse hiçbir şey yokken yükselen taş bir yapı. Yeri eskiden "Yerkesik" diye anılıyormuş. Videoda anlatıldığına göre yapı eskiden tek başına değildi: arkasında avlu, çiftlik ve ahır bölümleri vardı. Kazılarda duvar kalıntıları, sikkeler, seramikler ve taş yollar bulunduğu söyleniyor, kalıntıların bir kısmı işaretlenmiş durumda. Köşelerdeki sekizgen bölümler yapının en dikkat çeken yanı. "Köşk" denince akla gelen gösterişli saraydan çok, savunmalı bir kule eve benziyor.
+Son kilometreler ise beyaz topraklı, taşlı bir yol. Tarihi bir esere giden yolun biraz daha yapılı olmasını beklerdim; iki metrelik bir kısmını düzeltmişler, gerisi toz toprak. Ama motorun hakkını vermek için buraya gelmiştim, ADV'ye biraz adventure yaşattım.
 
-## Biraz daha derinlemesine
+Sonra ovanın ortasında, hiçbir şey yokken tek başına yükselen taş bir yapı çıktı karşıma. Çok mistik duruyor. Mahmudiye ile Üvecik köyleri arasında, ovaya hakim hafif yüksek bir noktada. Buraya eskiden "Yerkesik" deniyormuş. Bana anlatıldığına göre yapı eskiden tek başına değildi; arkasında avlu, çiftlik ve ahır bölümleri varmış. Kazılarda duvar kalıntıları, sikkeler, seramikler ve taş yollar çıkmış, kalıntıların bir kısmı işaretlenmiş. Köşelerindeki sekizgen bölümler en dikkat çeken yanı. "Köşk" deyince akla gösterişli bir saray geliyor ama burası daha çok savunmalı bir kule eve, Avrupa'daki Orta Çağ yapılarına benziyor.
 
-**Hasan Paşa kimdir?** Yaklaşık 1713-1790 yılları arasında yaşayan Cezayirli Gazi Hasan Paşa, Kafkas (Gürcü) kökenli, küçük yaşta köle olarak satılan, sonra denizciliğe yönelen bir Osmanlı devlet adamıdır. "Cezayirli" lakabı Cezayir'deki korsan ocaklarında yetişmesinden gelir, Cezayir doğumlu değildir. Deniz Ejderi anlamında "Ejder-i Bahri" lakabıyla da anılır. 1770'ten itibaren kaptan-ı derya oldu, Aralık 1789'da kısa bir süre sadrazamlık ve başkomutanlık yaptı, 1790'da Şumnu'da öldü. 6 Temmuz 1770'teki Çeşme baskınından sağ kurtuldu; aynı yıl Limni'yi savunmasıyla "gazi" unvanını aldı. 1773'te Mühendishane-i Bahri-i Hümayun'u kurdu; bu okul Deniz Harp Okulu'nun kökenlerinden sayılır.
+## Bilmeye değer
 
-**Çanakkale bağlantısı.** Paşa'nın Çanakkale çevresinde Nara Burnu'nda cami, tekke, hamam ve çeşmeler, Çanakkale ve Kilitbahir'de çeşmeler, Ezine'de bir cami yaptırdığı bilinir. Bunlardan günümüze yalnızca Yerkesik'teki harap konak ile Nara Burnu'ndaki yazıtlı çeşmeler ulaşmıştır.
+**Hasan Paşa kimdi?** Yaklaşık 1713-1790 arasında yaşamış. Kafkas (Gürcü) kökenli, küçük yaşta köle olarak satılmış, sonra denizciliğe yönelmiş. "Cezayirli" lakabı Cezayir'deki korsan ocaklarında yetişmesinden geliyor, Cezayir doğumlu değil. "Ejder-i Bahri" (Deniz Ejderi) diye de anılır. 1770'ten itibaren kaptan-ı derya oldu, Aralık 1789'da kısa bir süre sadrazam ve başkomutan oldu, 1790'da Şumnu'da öldü. 6 Temmuz 1770'teki Çeşme baskınından sağ kurtuldu; aynı yıl Limni'yi savunmasıyla "gazi" unvanını aldı. 1773'te Mühendishane-i Bahri-i Hümayun'u kurdu; bu okul Deniz Harp Okulu'nun kökenlerinden sayılıyor.
 
-**Yapı.** Kule-konak yaklaşık 10x10 metre planlı, yüksekliği 11-12 metre arasında. Bodrum, zemin, birinci kat ve teras olmak üzere dört katlı. Köşelerinde sekizgen gözetleme mevzileri ve barok etkili silmeler var; araştırmacılara göre ikamet işlevi savunma işlevinden ağır basıyor. Avlu duvarının temel izleri, güneyinde tonozlu küçük bir yapı ve bir hamamın bazı kalıntıları bugün de seçilebiliyor. Kompleks başlangıçta bir değirmen, cami, hamam ve çiftlik yapıları da içeriyormuş; çoğu yıkılmış.
+**Çanakkale'deki izi.** Nara Burnu'nda cami, tekke, hamam ve çeşmeler, Çanakkale ile Kilitbahir'de çeşmeler, Ezine'de bir cami yaptırmış. Bunlardan bugüne yalnızca Yerkesik'teki harap konak ile Nara Burnu'ndaki yazıtlı çeşmeler ulaşmış.
 
-**Ne zaman yapıldı?** Net bir tarih yok. Fransız seyyah Choiseul-Gouffier 1776'da yapıyı bir çiftlik ya da kır evi olarak anlatmış; yani yapı 1776'da zaten vardı. Kuledeki ahşaplar üzerinde yapılan tarihleme 1783'ü veriyor. Paşa'nın yapıyı 1785'te onarttığı belirtiliyor. Videodaki "1785" büyük olasılıkla bu onarım tarihi. Bu yüzden "1785'te yapıldı" yerine "1770'ler-1780'ler" ya da "1785'te onarıldı" demek daha doğru.
+**Yapı.** Kule-konak yaklaşık 10x10 metre planlı, 11-12 metre yüksekliğinde; bodrum, zemin, birinci kat ve teras olmak üzere dört katlı. Köşelerde sekizgen gözetleme mevzileri ve barok etkili silmeler var. Araştırmacılara göre ikamet işlevi savunma işlevinden ağır basıyor. Avlu duvarının temel izleri, güneyinde tonozlu küçük bir yapı ve bir hamamın bazı kalıntıları hala seçilebiliyor. Kompleks başlangıçta değirmen, cami, hamam ve çiftlik yapılarını da içeriyormuş; çoğu yıkılmış.
 
-**Av köşkü mü?** Videoda ve bazı ikincil kaynaklarda "av köşkü" deniyor. Yapıyı inceleyen akademik çalışma ise ikamet işlevini öne çıkarıyor ve paşanın zaman zaman burada kaldığını yazıyor; av vurgusu yok. Bu yüzden "av köşkü" tanımını kesin değil, yaygın bir anlatım olarak okumak gerekir.
+**Ne zaman yapıldı?** Net bir tarih yok. Fransız seyyah Choiseul-Gouffier 1776'da burayı çiftlik ya da kır evi olarak anlatmış, yani yapı o tarihte vardı. Kuledeki ahşaplar üzerinde yapılan tarihleme 1783'ü veriyor, paşa yapıyı 1785'te onarttığı belirtiliyor. Ben yerinde "1785'te yapılmış" demiştim; büyük ihtimalle bu onarım tarihiymiş.
 
-**Kazı.** Bilimsel yürütücü Prof. Dr. Ali Osman Uysal (ÇOMÜ Sanat Tarihi); uygulama Troya Müzesi uzmanlarıyla yürüyor. Haberlere göre kazı Kasım 2025 başında başladı ve Çanakkale Valiliği/İl Özel İdaresi desteğiyle sürüyor. Kulenin güneyindeki alanlarda duvarlar, doğudaki çevre duvarının tamamı, kulenin önünde tonozlu bir yapı, taş döşeli yürüme yolları ve birbirine bağlı odalar ortaya çıktı. Buluntular arasında Osmanlı dönemi seramikleri, ithal seramikler, demir aksam, sikkeler ve devşirme mimari parçalar var. Çalışmaların ertesi yıl da süreceği açıklandı; yani nihai sonuç henüz yayımlanmış değil.
+**Av köşkü mü?** Bazı kaynaklarda "av köşkü" deniyor, ben de öyle duymuştum. Yapıyı inceleyen akademik çalışma ise ikamet işlevini öne çıkarıyor ve paşanın zaman zaman burada kaldığını yazıyor; av vurgusu yok. Yani "av köşkü" kesin değil, yaygın bir anlatım.
 
-## Doğrulanamayanlar
+**Kazı.** Bilimsel yürütücü Prof. Dr. Ali Osman Uysal (ÇOMÜ Sanat Tarihi); uygulama Troya Müzesi uzmanlarıyla yürüyor. Haberlere göre kazı Kasım 2025 başında başladı ve Çanakkale Valiliği/İl Özel İdaresi desteğiyle sürüyor. Kulenin güneyinde duvarlar, doğudaki çevre duvarının tamamı, kulenin önünde tonozlu bir yapı, taş döşeli yürüme yolları ve birbirine bağlı odalar ortaya çıkmış. Buluntular arasında Osmanlı dönemi seramikleri, ithal seramikler, demir aksam, sikkeler ve devşirme mimari parçalar var. Çalışmaların ertesi yıl da süreceği açıklandı; yani son söz henüz söylenmedi.
 
-- Videoda anılan ahır ve köpek bölümleri için kaynaklarda bir bulgu yok.
-- Yapının tam koordinatı resmi bir kaynaktan teyit edilmedi; haritadaki işaret yaklaşıktır.
-- Kazı alanına giriş koşulları (açık saatler, izin) için güncel bir resmi bilgi bulunamadı; kazı sürerken ziyaret öncesi Çanakkale Valiliği ya da Troya Müzesi'ne sormak iyi olur.
+## Emin olamadıklarım
+
+- Ahır ve köpek bölümleri için kaynaklarda bir bulgu yok; bunu orada bana anlatılan haliyle aktardım.
+- Yapının tam koordinatını resmi bir kaynaktan teyit edemedim, haritadaki işaret yaklaşık.
+- Kazı sürerken ziyaret koşulları değişebilir; gitmeden Çanakkale Valiliği ya da Troya Müzesi'ne sormak iyi olur.
 
 ## Kaynaklar
 

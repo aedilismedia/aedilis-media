@@ -644,14 +644,12 @@ function haritaPage() {
   const god = godOf('yapim');
   const { videos, places, routes } = placesData;
   const vById = Object.fromEntries(videos.map((v) => [v.id, v]));
-  const watch = (id) => `https://www.youtube.com/watch?v=${id}`;
-  const payload = { places: places.map((p) => ({ ...p, article: durakByPlace[p.id] ? `${durakByPlace[p.id].slug}/` : undefined })), routes: routes.map((r) => ({ ...r, title: vById[r.video].title })), videos: videos.map((v) => ({ id: v.id, title: v.title })) };
+  const payload = { places: places.map((p) => ({ id: p.id, name: p.name, area: p.area, note: p.note, lat: p.lat, lng: p.lng, article: durakByPlace[p.id] ? `${durakByPlace[p.id].slug}/` : undefined })), routes: routes.map((r) => ({ ...r, title: vById[r.video].title })), videos: videos.map((v) => ({ id: v.id, title: v.title })) };
   const placeCard = (p) => `<li class="place" data-place="${esc(p.id)}">
     <button type="button" class="place-name" data-focus="${esc(p.id)}">${esc(p.name)}</button>
     <p class="place-area">${esc(p.area)}</p>
     ${p.note ? `<p class="place-note">${esc(p.note)}</p>` : ''}
-    ${durakByPlace[p.id] ? `<p class="place-read"><a class="text-link" href="${esc(durakByPlace[p.id].slug)}/">Yazıyı oku</a></p>` : ''}
-    <ul class="place-videos">${p.videos.map((id) => `<li><a href="${watch(id)}" target="_blank" rel="noopener">${esc(vById[id].title)}</a></li>`).join('')}</ul>
+    ${durakByPlace[p.id] ? `<p class="place-read"><a class="btn btn-primary btn-small" href="${esc(durakByPlace[p.id].slug)}/">Yazıyı Oku</a></p>` : ''}
   </li>`;
   return (
     head({ title: 'Ondan Sonra Haritası | Aedilis Media', description: 'Ondan Sonra kanalında gittiğimiz yerler, videolarıyla birlikte haritada: Balıkesir, Çanakkale, Babakale, Troya ve daha fazlası.', canonicalPath: 'yapim/harita/', depth }).replace('</head>', `<link rel="stylesheet" href="${relPrefix(depth)}assets/vendor/leaflet/leaflet.css">\n</head>`) +
@@ -659,7 +657,7 @@ function haritaPage() {
 <body class="harita-page">
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-${pageHero(depth, god, { title: 'Ondan Sonra Haritası', lead: 'Ondan Sonra kanalında gittiğimiz yerler, videolarıyla birlikte haritada. Bir işarete dokun, o yerin videolarını aç.' })}
+${pageHero(depth, god, { title: 'Ondan Sonra Haritası', lead: 'Ondan Sonra kanalında gittiğimiz yerler haritada. Bir işarete dokun, yazıyı aç; videolar yazının yanında.' })}
 
 <section class="section" aria-labelledby="h-harita">
   <div class="wrap">
@@ -695,7 +693,16 @@ function durakPage(a, i) {
   const video = placesData.videos.find((v) => v.id === a.video);
   const t = Number(a.t) || 0;
   const stamp = `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
-  const ytUrl = `https://www.youtube.com/watch?v=${a.video}${t ? `&t=${t}s` : ''}`;
+  const vids = [a.video, ...((place && place.videos) || []).filter((id) => id !== a.video)];
+  const embeds = vids
+    .map((id) => {
+      const v = placesData.videos.find((x) => x.id === id);
+      if (!v) return '';
+      const isShort = v.kind === 'short';
+      const start = id === a.video && t ? `?start=${t}&rel=0` : '?rel=0';
+      return `<figure class="embed${isShort ? ' embed-short' : ''}"><div class="embed-frame"><iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}${start}" title="${esc(v.title)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption>${esc(v.title)}${isShort ? ' (Shorts)' : id === a.video && t ? ` (${esc(stamp)}'dan başlar)` : ''}</figcaption></figure>`;
+    })
+    .join('');
   const prev = duraklar[i - 1];
   const next = duraklar[i + 1];
   const nav = [prev ? `<a class="text-link" href="${esc(url(`yapim/harita/${prev.slug}/`))}">&larr; ${esc(prev.title)}</a>` : '', next ? `<a class="text-link" href="${esc(url(`yapim/harita/${next.slug}/`))}">${esc(next.title)} &rarr;</a>` : ''].filter(Boolean).join('');
@@ -708,14 +715,22 @@ ${header(depth)}
 <article class="post wrap durak">
   <p class="crumbs"><a href="${url('yapim/')}">Yapım</a> / <a href="${url('yapim/harita/')}">Ondan Sonra Haritası</a></p>
   <h1 class="page-title post-title">${esc(a.title)}</h1>
+  <div class="durak-grid">
+  <header class="durak-head">
   <p class="post-meta">${esc(place ? place.area : '')}</p>
   ${a.excerpt ? `<p class="lead durak-lead">${esc(a.excerpt)}</p>` : ''}
-  <p class="durak-actions"><a class="btn btn-primary" href="${esc(ytUrl)}" target="_blank" rel="noopener">Videoda izle (${esc(stamp)})</a> <a class="text-link" href="${esc(url('yapim/harita/'))}?yer=${esc(a.place)}">Haritada göster</a></p>
-  ${video ? `<p class="durak-video">Video: ${esc(video.title)}</p>` : ''}
+  <p class="durak-actions"><a class="text-link" href="${esc(url('yapim/harita/'))}?yer=${esc(a.place)}">Haritada göster</a></p>
+  </header>
+  <aside class="durak-media" aria-label="Bu durağın videoları">
+    ${embeds}
+  </aside>
+  <div class="durak-text">
   <div class="prose">${a.html}</div>
   <p class="durak-note">Bu yazı, videodaki anlatımın kısa bir derlemesine araştırılıp doğrulanabilen bilgileri ekler. Videoda söylenip kaynaklarla teyit edilemeyen bilgiler ayrıca belirtilir. Bir hata görürsen <a href="${esc(url('iletisim/'))}">iletişim sayfasından</a> yaz.</p>
   ${nav ? `<p class="durak-nav">${nav}</p>` : ''}
   <p class="section-more"><a class="text-link" href="${esc(url('yapim/harita/'))}">Haritaya dön</a></p>
+  </div>
+  </div>
 </article>
 </main>
 ` +

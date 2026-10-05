@@ -4,41 +4,38 @@ place: parion
 video: yYTnbXHAHQk
 t: 980
 order: 14
-excerpt: Biga'nın Kemer köyünde, Marmara kıyısında, yaklaşık 2700 yıllık bir Yunan, Roma ve Bizans kenti. Kazılar Ondokuz Mayıs Üniversitesi önderliğinde sürüyor.
+excerpt: Bandırma'dan geçip Biga'nın Kemer köyünde, Marmara kıyısındaki yaklaşık 2700 yıllık Parion Antik Kenti'ne vardım. Kazı alanında çekim yasaktı, bu yüzden çok az görüntüm var.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Bandırma'dan geçip Kemer köyüne, Parion Antik Kenti'ne geldik. Kazı alanında çekim yapmanın kesinlikle yasak olduğunu ve kazı başkanı Prof. Dr. Vedat Keleş'ten izin alınması gerektiğini ekipten öğrendik; bu yüzden videoda alandan çok az görüntü var ve bilgilerin büyük kısmını sonradan derlediğimiz kaynaklardan anlatıyoruz.
+Kuş Cenneti'nden sonra Bandırma'dan geçtim. Bandırma'ya geldiğinizi iki şeyden anlarsınız: tırlar (büyük bir sanayi ve liman kenti) ve tavuk fabrikalarının kokusu. Çoğu insanın midesi bulanır ama benim çocukluğum bu yollarda geçtiği için bağışıklık geliştirdim; bana tanıdık bir his veriyor. Bandırmalıların Balıkesirspor maçları gibi bir derdi de var, ama o başka bir yazının konusu. Bandırma, Kapıdağ Yarımadası'nın anakarayla buluştuğu yerde doğal bir koy ve liman; Roma döneminde adı Panormos olması gerekiyor, hemen kuzeyinde de Kyzikos Antik Kenti var.
 
-Videoda anlatıldığına göre:
+Sonra Kemer köyüne, Parion'a vardım. Kazı alanında çekim yapmanın kesinlikle yasak olduğunu, kazı başkanı Vedat Keleş Hoca'dan izin alınması gerektiğini ekipten öğrendim. Yani aklımdaki "orada çalışan birinden kentin tarihini dinleyip çekeyim" planı olmadı; o yüzden videoda alandan çok az görüntü var ve aşağıdakiler benim sonradan toparladıklarım.
 
-- Kentin kuruluşu MÖ 709 civarına dayanıyor. Adının, Paros adasından gelen kolonistlerin kurduğu için Parios adlı mitolojik bir kişiden geldiği söyleniyor; Troya Prensi Paris'le bağlantılı olabileceğine dair farklı görüşler de var.
-- Kent konumu sayesinde Çanakkale Boğazı ile Marmara arasındaki deniz yollarını denetleyebiliyordu. Pers egemenliğine girdi, İskender'in zaferinden sonra Yunan dünyasının parçası oldu, Bergama Krallığı'na bağlandı, ardından Roma yönetimine geçip koloni statüsü kazandı.
-- İlk kapsamlı yüzey araştırmalarını Prof. Dr. Cevat Başaran yaptı; sistematik kazılar 2005'te Güney Nekropolü'nde başladı. İlk on yılı Başaran yönetti, 2015'ten itibaren Vedat Keleş devraldı. Kazı, Ondokuz Mayıs Üniversitesi'nin öncülüğünde sürüyor; stratigrafik inceleme, mimari çizim, fotoğraflama, mezarlardan çıkan insan kalıntılarının analizi ve yapıların konservasyonu birlikte yürütülüyor.
-- En önemli bölümler: farklı dönemlere ait lahitlerin, taş sandık ve gömme mezarların bulunduğu Güney Nekropolü; kabartmalı süslemeleriyle Roma tiyatrosu; Roma hamamı; aşağıda agora ve dükkanların bulunduğu ticaret merkezi.
-- 2005'te Güney Nekropolü'nde bulunan, MÖ 4. yüzyılın ikinci yarısına ait bronz bir amfora: üzerinde Dionysos törenine dans eden satir ve bakkhante figürleri, kulpların altında Eros figürleri ve gümüş ayrıntılar var.
-- Son yıllarda bilinen limanın dışında ikinci, daha küçük bir liman bulundu; kazı ekibi bunun Roma döneminde askeri amaçla kullanılmış olabileceğini düşünüyor.
+Orada anlattığım özet şuydu: Kentin kuruluşu MÖ 709 civarına dayanıyor. Adı, Paros adasından gelen kolonistlerin kurduğu için Parios adlı mitolojik bir kişiden geliyor deniyor; Troya Prensi Paris'le bağlantılı olabileceğine dair farklı görüşler de var. Kent, Çanakkale Boğazı ile Marmara arasındaki deniz yollarını denetleyebilen bir konumda; Pers egemenliğine girmiş, İskender'in zaferinden sonra Yunan dünyasının parçası olmuş, Bergama Krallığı'na bağlanmış, ardından Roma yönetiminde koloni statüsü kazanmış. İlk kapsamlı yüzey araştırmalarını Prof. Dr. Cevat Başaran yapmış, sistematik kazılar 2005'te Güney Nekropolü'nde başlamış; 2015'ten itibaren Vedat Keleş devralmış ve kazı Ondokuz Mayıs Üniversitesi'nin öncülüğünde sürüyor. Stratigrafik inceleme, mimari çizim, fotoğraflama, mezarlardan çıkan insan kalıntılarının analizi ve yapıların konservasyonu birlikte yürütülüyor.
 
-## Biraz daha derinlemesine
+En önemli bölümler: farklı dönemlere ait lahitlerin, taş sandık ve gömme mezarların bulunduğu Güney Nekropolü; kabartmalı süslemeleriyle Roma tiyatrosu; Roma hamamı; aşağıda agora ve dükkanlar. En dikkat çekici buluntulardan biri de 2005'te Güney Nekropolü'nde bulunan, MÖ 4. yüzyılın ikinci yarısına ait bronz bir amfora: üzerinde Dionysos törenine dans eden satir ve bakkhante figürleri, kulpların altında Eros figürleri ve gümüş ayrıntılar var. Son yıllarda bilinen limanın dışında ikinci, daha küçük bir liman bulunmuş; kazı ekibi bunun Roma döneminde askeri amaçla kullanılmış olabileceğini düşünüyor.
 
-**Kuruluş ve tarih.** Parion, Biga'nın Kemer köyünde (Bodrum Burnu), Propontis'in (Marmara) Anadolu yakasında. Ondokuz Mayıs Üniversitesi'nin kazı sayfasına göre kuruluş MÖ 709 civarında "olabilir"; kolonistler Miletos, Erythrai ve Paros'tan gelmiş. Kaynaklarda kentin yaşı için farklı değerler (yaklaşık 2600-3000 yıl) geçiyor. Roma döneminde kent, Julius Caesar zamanında Colonia Iulia Pariana adıyla koloni oldu. İki limanı vardı ve Ephesos'ta bulunan bir yazıta dayanarak bir gümrük istasyonu olduğu söylenir.
+## Bilmeye değer
 
-**Kazı.** Cevat Başaran 1999-2002 arasında yüzey araştırması yaptı; 2004'te Çanakkale Arkeoloji Müzesi Güney Nekropolü'nde kurtarma kazısı gerçekleştirdi; sistematik kazı 2005'te Başaran başkanlığında başladı. 2015'ten beri kazı başkanı Prof. Dr. Vedat Keleş (OMÜ).
+**Kuruluş ve tarih.** Parion, Biga'nın Kemer köyünde (Bodrum Burnu), Propontis'in (Marmara) Anadolu yakasında. Ondokuz Mayıs Üniversitesi'nin kazı sayfasına göre kuruluş MÖ 709 civarında "olabilir"; kolonistler Miletos, Erythrai ve Paros'tan gelmiş. Kaynaklarda kentin yaşı için farklı değerler (yaklaşık 2600-3000 yıl) geçiyor. Roma döneminde kent, Julius Caesar zamanında Colonia Iulia Pariana adıyla koloni olmuş. İki limanı varmış ve Ephesos'ta bulunan bir yazıta dayanarak bir gümrük istasyonu olduğu söyleniyor.
 
-**Yapılar.** Odeon MS 135-150 arasına, Roma hamamı (thermae) MS 2. yüzyılın ikinci yarısına tarihleniyor; odeonda 2020'de bir belediye meclisi toplantısı yapıldı. Videodaki "Roma tiyatrosu MS 2. yüzyılın ikinci yarısı" ifadesi için bir ayrım gerekiyor: yayımlanmış bir çalışmaya göre tiyatronun yapımı Vespasianus döneminde (MS 69-79) başlamış, Commodus döneminde (180-192) gladyatör gösterileri için değiştirilmiş; 2. yüzyıl daha çok odeon ve hamam için geçerli. Bu bilgi tek makaleye dayanıyor. Agora sektörü ise büyük ölçüde açılmamış; "araştırılıyor" demek daha doğru.
+**Kazı.** Cevat Başaran 1999-2002 arasında yüzey araştırması yapmış; 2004'te Çanakkale Arkeoloji Müzesi Güney Nekropolü'nde kurtarma kazısı gerçekleştirmiş; sistematik kazı 2005'te Başaran başkanlığında başlamış. 2015'ten beri kazı başkanı Prof. Dr. Vedat Keleş (OMÜ).
 
-**Güney Nekropolü.** MÖ 4. yüzyıldan MS 2. yüzyıla uzanan mezar alanı; 2005 sezonunda 68 mezar bulundu.
+**Yapılar.** Odeon MS 135-150 arasına, Roma hamamı (thermae) MS 2. yüzyılın ikinci yarısına tarihleniyor; odeonda 2020'de bir belediye meclisi toplantısı yapılmış. Ben "Roma tiyatrosu MS 2. yüzyılın ikinci yarısı" demiştim; bir ayrım gerekiyor: yayımlanmış bir çalışmaya göre tiyatronun yapımı Vespasianus döneminde (MS 69-79) başlamış, Commodus döneminde (180-192) gladyatör gösterileri için değiştirilmiş; 2. yüzyıl daha çok odeon ve hamam için geçerli. Bu bilgi tek makaleye dayanıyor. Agora sektörü ise büyük ölçüde açılmamış; "araştırılıyor" demek daha doğru.
+
+**Güney Nekropolü.** MÖ 4. yüzyıldan MS 2. yüzyıla uzanan mezar alanı; 2005 sezonunda 68 mezar bulunmuş.
 
 **Bronz amfora.** Başaran, Keleş ve Çelikbaş'ın 2021 tarihli "Parion Bronz Amphora Situlası" kitabına konu olan eser; Eros betimleri ve Dionysos alayı unsurları taşıyor. Buluntuların Çanakkale müzelerinde sergilendiği belirtiliyor.
 
-**İkinci liman.** Temmuz 2024'te su altı kazısında bulundu. Kuzeyde, güney ticaret limanından küçük, içi derenin alüvyonuyla dolmuş; kazı başkanı askeri liman olabileceğini söylüyor. 2025'te Osmanlı seramikleri ve olası tersane izleri de bulundu; bu ayrı bir bulgu.
+**İkinci liman.** Temmuz 2024'te su altı kazısında bulunmuş. Kuzeyde, güney ticaret limanından küçük, içi derenin alüvyonuyla dolmuş; kazı başkanı askeri liman olabileceğini söylüyor. 2025'te Osmanlı seramikleri ve olası tersane izleri de bulunmuş; bu ayrı bir bulgu.
 
-## Doğrulanamayanlar
+## Emin olamadıklarım
 
-- Amforanın Troya Müzesi'nde sergilendiği bilgisi videodaki beyandır; müze ve kazı ekibiyle teyit edilmeden kesin yazılmadı.
-- Parion'un İskender'le ilişkisi için bir kaynak bulamadık.
-- Videoda kentin taşlarının sonraki dönemde bir savunma duvarında kullanıldığı söyleniyor; bu bilgiyi kaynaklarla teyit edemedik.
+- Amforanın Troya Müzesi'nde sergilendiğini söylemiştim; müze ve kazı ekibiyle teyit edemediğim için kesin yazmıyorum.
+- Parion'un İskender'le ilişkisi için bir kaynak bulamadım.
+- Kentin taşlarının sonraki dönemde bir savunma duvarında kullanıldığını söylemiştim; bunu kaynaklarla teyit edemedim.
 - Alan çekim izni gerektiriyor; ziyaret ve çekim için doğrudan kazı ekibine sorulmalı.
 
 ## Kaynaklar

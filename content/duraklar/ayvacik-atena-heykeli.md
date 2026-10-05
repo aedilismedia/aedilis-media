@@ -4,23 +4,25 @@ place: ayvacik-atena-heykeli
 video: AsjLriBmEjs
 t: 2115
 order: 5
-excerpt: Ayvacık kent meydanında, belediyenin işlettiği bir dinlenme alanının önünde duran Atena heykeli. Açıklama levhası yok.
+excerpt: Alexandria Troas'tan sonra Ayvacık'a, kent meydanında olduğunu duyduğum Atena heykelini görmeye gittim. Yanında hiçbir açıklama yok.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Alexandria Troas'tan sonra Ayvacık'a, kent meydanında olduğunu duyduğumuz Atena heykelini görmeye geldik. Heykel, belediyeye ait bir dinlenme alanının tam önünde; gölgesi ve oturacak yeri bol. Heykelin yanında bir açıklama ya da levha yok: kim yaptı, ne zaman yapıldı, neden Atena? Bunları buradan öğrenemiyorsunuz; yalnızca Atena heykeli yapılmış. Buradan Küçükkuyu'ya doğru devam ettik.
+Alexandria Troas'tan çıkıp Ayvacık'a doğru yola koyuldum; yaklaşık 40 kilometre, büyük kısmı kıvrımlı köy yolları. Ayvacık'ta kent meydanında bir Atena heykeli olduğunu duymuştum, onu görmek istiyordum. Üstelik acıkmıştım, mola da lazımdı.
 
-## Biraz daha derinlemesine
+Bulması kolaydı: heykel belediyeye ait bir dinlenme alanının tam önünde. Gölge, oturacak yer, serinlik, her şey güzeldi. Ama heykelin yanında bir açıklama, bir levha, hiçbir şey yok. Kim yapmış, ne zaman yapılmış, neden Atena? Bunları buradan öğrenemiyorsunuz; sadece "Atena heykeli yapmışlar buraya". Ben de orada tostumu yedim, limonatamı içtim ve Küçükkuyu'ya doğru devam ettim.
 
-**Ayvacık.** Çanakkale'nin Marmara bölgesindeki ilçesi, deniz seviyesinden yaklaşık 250 metre yükseklikte. Çevresi ağırlıklı olarak yerleşik Yörüklerce iskan edilmiş; Birinci Dünya Savaşı'nda Çanakkale Cephesi sırasında İtilaf saldırılarının hedefi olmuş. Assos antik kenti ilçe sınırları içinde; ilçede ayrıca Gülpınar köyünde Apollon Smintheus Tapınağı, Küçükkuyu ve Kadırga Koyu gibi sahiller var.
+## Bilmeye değer
 
-**Atena ve bölge.** Heykelin kimin eseri olduğunu bulamadık ama bölgenin en bilinen Athena yapısı Assos'taki Athena Tapınağı. MÖ 530 civarında yapılan tapınak, Dor düzeninde inşa edilmiş ve Anadolu'daki tek Dor tapınağı olarak anılıyor. Kabartmalı frizinde atlılar, av sahneleri ve mitolojik figürler var; bugün birkaç sütunu ayakta. Ayvacık'taki heykelin Assos'la bağlantısı olup olmadığını kaynaklarla gösteremiyoruz.
+**Ayvacık.** Çanakkale'nin Marmara bölgesindeki ilçesi, deniz seviyesinden yaklaşık 250 metre yükseklikte. Çevresi ağırlıklı olarak yerleşik Yörüklerce iskan edilmiş; Birinci Dünya Savaşı'nda Çanakkale Cephesi sırasında İtilaf saldırılarının hedefi olmuş. Assos antik kenti ilçe sınırları içinde; ayrıca Gülpınar köyünde Apollon Smintheus Tapınağı, Küçükkuyu ve Kadırga Koyu gibi sahiller var.
 
-## Doğrulanamayanlar
+**Atena ve bölge.** Heykelin kimin eseri olduğunu bulamadım ama bölgenin en bilinen Athena yapısı Assos'taki Athena Tapınağı. MÖ 530 civarında Dor düzeninde yapılmış; Anadolu'daki tek Dor tapınağı olarak anılıyor. Kabartmalı frizinde atlılar, av sahneleri ve mitolojik figürler var; bugün birkaç sütunu ayakta. Ayvacık'taki heykelin Assos'la bağlantısı olup olmadığını kaynaklarla gösteremiyorum.
 
-- Heykelin yapımcısı, yapım yılı ve tam konumu için belediye ve kaymakamlık sitelerinde bilgi bulamadık. Tripadvisor'da "Athena Heykeli, Ayvacık" adıyla bir kayıt var, ama o da ayrıntı vermiyor.
-- İnternette "Athena Heykeli" ile bulunan başka yer sonuçları (örneğin Silifke'deki bir kabartma) bu heykelle ilgisizdir.
+## Emin olamadıklarım
+
+- Heykelin yapımcısı, yapım yılı ve tam konumu için belediye ve kaymakamlık sitelerinde bilgi bulamadım. Tripadvisor'da "Athena Heykeli, Ayvacık" adıyla bir kayıt var ama o da ayrıntı vermiyor.
+- İnternette "Athena Heykeli" diye bulunan başka yerler (örneğin Silifke'deki bir kabartma) bu heykelle ilgisiz.
 
 ## Kaynaklar
 

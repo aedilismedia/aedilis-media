@@ -37,23 +37,12 @@
     if (p.article) {
       var r = document.createElement('p');
       var ra = document.createElement('a');
+      ra.className = 'btn btn-primary btn-small';
       ra.href = p.article;
-      ra.textContent = 'Yazıyı oku';
+      ra.textContent = 'Yazıyı Oku';
       r.appendChild(ra);
       box.appendChild(r);
     }
-    var ul = document.createElement('ul');
-    p.videos.forEach(function (id) {
-      var li = document.createElement('li');
-      var l = document.createElement('a');
-      l.href = 'https://www.youtube.com/watch?v=' + id;
-      l.target = '_blank';
-      l.rel = 'noopener';
-      l.textContent = vTitle[id];
-      li.appendChild(l);
-      ul.appendChild(li);
-    });
-    box.appendChild(ul);
     return box;
   }
   data.places.forEach(function (p) {

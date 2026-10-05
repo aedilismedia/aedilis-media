@@ -4,32 +4,30 @@ place: kumkale-seyir-terasi
 video: AsjLriBmEjs
 t: 63
 order: 1
-excerpt: Çanakkale Boğazı'nın girişine bakan, köy yolundan ulaşılan bir seyir noktası. TroasRoute #2'nin ilk durağı.
+excerpt: Çanakkale'den çıkıp Kumkale tarafında Boğaz'ın girişine bakan seyir terasına, köy yolundan tırmandım. TroasRoute #2'nin ilk durağı.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-TroasRoute #2, Çanakkale'den çıkıp Kumkale tarafına geçerek başlıyor. İlk mola, Kumkale köyü yakınındaki seyir terası. Navigasyon beni buraya getirdi; terasa dair bir tabela ya da belirgin bir giriş göremedim, ana yoldan ayrılıp yaklaşık 5-6 kilometrelik bir köy yoluyla ulaşıldı.
+Çanakkale'den çıkıp Kumkale tarafına sürdüm. Daha ilk kilometrelerde Boğaz'ın tamamı ayaklarımın altına serildi; uzakta, en uçta Şehitler Abidesi vardı. Navigasyon beni "seyir terası" diye bir yere getirdi ama ilk bakışta terasa dair bir şey göremedim; ana yoldan ayrılıp yaklaşık 5-6 kilometrelik bir köy yolundan geldim ve bir önceki sapağı kaçırsam buraya hiç girmezdim. Yeşil, sarı ve mavi bir aradaydı, hatta bir bisiklet yolu bile yapmışlar, ama biraz bakıma ihtiyacı var.
 
-Terastan bakınca Boğaz'ın girişi ayaklarının altında açılıyor: iki burun, uzakta Gelibolu Yarımadası'nın ucu ve videoda anlatıldığına göre en uçta Şehitler Abidesi. Aşağıda Kumkale Tabyası olması gereken bir yapı ve bir deniz feneri görünüyor. Yeşil, sarı ve mavinin bir arada olduğu bu manzara videonun en çok övülen karelerinden biri.
+Asıl manzara terasa çıkınca açılıyor: iki burun, bütün Boğaz, aşağıda Kumkale Tabyası olması gereken bir yapı ve bir de deniz feneri. Aşağıda otların içinde piknik yapanlar bile vardı. Ama şunu da söylemeden geçmeyeceğim: yer bakımsız. Otlar boy atmış, masalar çürümeye başlamış, yürüme platformunun bazı tahtaları basınca güven vermiyor. Kimin yaptığını bilmiyorum, Kumkale Muhtarlığı mı, belediye mi, başka bir kurum mu. Ama kim yaptıysa buradan seslenmiş olayım: bu manzara daha derli toplu bir teras hak ediyor.
 
-Teras bakımsız görünüyordu: otlar uzamış, masalar çürümeye başlamış, yürüme platformundaki tahtaların bir kısmı güven vermiyor. Piknik yapan ziyaretçiler de vardı. Terası kimin yaptırdığını ve kimin bakımından sorumlu olduğunu bilmediğimiz için videoda "yetkili mercilere" seslendik; bu yazıda da aynı soru açık duruyor.
+## Bilmeye değer
 
-## Biraz daha derinlemesine
+**Kumkale köyü.** Çanakkale'ye yaklaşık 27 kilometre uzaklıkta, Troya Tarihi Milli Parkı sınırları içinde. Bugünkü yerleşim, Birinci Dünya Savaşı sırasında boşaltılan eski köyün doğusunda, 1920'lerin sonlarına doğru kurulmuş. Domates en önemli ürün, pamuk ve ayçiçeği de yetişiyor. Troya Antik Kenti köye yaklaşık 1,5 kilometre.
 
-**Kumkale köyü.** Çanakkale'ye yaklaşık 27 kilometre uzaklıktaki köy, Troya Tarihi Milli Parkı sınırları içinde. Bugünkü yerleşim, Birinci Dünya Savaşı sırasında boşaltılan eski köyün doğusunda, 1920'lerin sonlarına doğru kuruldu. Domates en önemli tarım ürünü; pamuk ve ayçiçeği de yetiştiriliyor. Troya Antik Kenti köye yaklaşık 1,5 kilometre uzaklıkta.
+**Kumkale Kalesi.** Boğaz girişinin Anadolu yakasındaki Kumkale Kalesi, Gelibolu tarafındaki Seddülbahir Kalesi'nin tam karşısında. İkiz kaleler sayılıyorlar; 17. yüzyılın ortasında IV. Mehmed'in annesi Valide Turhan Sultan, Venedik donanmasına karşı Boğaz girişini korumak için yaptırmış. 19 Şubat 1915'te İtilaf donanmasının bombardımanında hasar görmüş.
 
-**Kumkale Kalesi.** Boğaz girişinin Anadolu yakasındaki Kumkale Kalesi, Gelibolu tarafındaki Seddülbahir Kalesi'nin tam karşısında yer alır. İkiz kaleler olarak anılan bu yapılar 17. yüzyılın ortasında, IV. Mehmed'in annesi Valide Turhan Sultan tarafından Venedik donanmasına karşı Boğaz girişini korumak için yaptırıldı. Kumkale, 19 Şubat 1915'te İtilaf donanmasının Boğaz girişini bombardımanında hasar gördü.
+**Kumkale Çıkarması.** 25 Nisan 1915'te, Gelibolu'daki asıl çıkarmayla aynı gün, Fransız 6. Karma Sömürge Alayı Kumkale'ye çıktı. Osmanlı tarafında 39. Alay karşı koydu; sokak çatışmaları ve süngü hücumları yaşandı. Fransızlar 26-27 Nisan gecesi çekildi. Amaç, Seddülbahir'deki çıkarmayı desteklemek ve Osmanlı topçusunu oyalamaktı. Kayıp sayıları kaynaktan kaynağa değiştiği için rakam yazmıyorum.
 
-**Kumkale Çıkarması.** 25 Nisan 1915'te, Gelibolu'daki asıl çıkarmayla aynı gün, Fransız 6. Karma Sömürge Alayı Kumkale'ye çıktı. Osmanlı tarafında 39. Alay karşı koydu; sokak çatışmaları ve süngü hücumları yaşandı. Fransızlar 26-27 Nisan gecesi çekildi. Çıkarmanın amacı, Seddülbahir'deki çıkarmayı desteklemek ve Osmanlı topçusunu oyalamaktı. Kayıp sayıları kaynaklara göre değişiyor, bu yüzden burada rakam vermiyoruz.
+## Emin olamadıklarım
 
-## Doğrulanamayanlar
+- Terasın yapım yılı, yaptıran kurum ve işletmecisi için resmi ya da güvenilir bir kaynak bulamadım.
+- Şehitler Abidesi'nin terastan görünüp görünmediği ve aşağıdaki deniz fenerinin geçmişi benim gözlemim; kaynakla teyit edemedim.
+- Çanakkale Seyir Terası (Güzelyalı-Erenköy arası tepede) ve Yat Limanı'ndaki seyir terasları bu teras değil, karıştırmayın.
 
-- Terasın yapım yılı, yaptıran kurum ve işletmecisi için resmi ya da güvenilir bir kaynak bulamadık.
-- Şehitler Abidesi'nin terastan görünüp görünmediği ve aşağıdaki deniz fenerinin geçmişi teyit edilemedi; bunlar videodaki gözlemdir.
-- Çanakkale Seyir Terası (Güzelyalı-Erenköy arası tepede) ve Yat Limanı'ndaki seyir terasları bu terasla karıştırılmamalı; farklı yerlerdir.
-
-Kumkale Seyir Terası hakkında kesin bilgisi olan varsa [iletişim sayfasından](../../../iletisim/) yazabilir.
+Kumkale Seyir Terası hakkında kesin bilgisi olan varsa [bana yazsın](../../../iletisim/).
 
 ## Kaynaklar
 

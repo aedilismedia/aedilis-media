@@ -4,41 +4,41 @@ place: alexandria-troas
 video: AsjLriBmEjs
 t: 1292
 order: 4
-excerpt: Ezine'de, Dalyan köyü yakınında, yaklaşık 390 hektarlık bir alana yayılan Hellenistik ve Roma dönemi liman kenti.
+excerpt: Ezine'de, Dalyan köyü yakınında, yaklaşık 390 hektarlık bir alana yayılan Hellenistik ve Roma dönemi liman kentini, alandaki ekibin anlattıklarıyla gezdim.
 ---
 
-## Videoda anlatılan
+## Yolda
 
-Geyikli ve Dalyan köylerinin yanından geçen güzel bir yolla Alexandria Troas Örenyeri'ne geldik. Girişte internette gördüğüm yorumlar "kalıntı çok yok, özellikle liman tarafında iki sütun görmek istiyorsanız gidin" yönündeydi. Alanda kazı ekibinden biriyle karşılaşıp gezdik; aşağıdaki bilgiler onun anlattıklarından, videoda "anlatıldığına göre" notuyla aktarılıyor.
+Geyikli ve Dalyan köylerinin yanından geçen güzel bir yolla Alexandria Troas'a geldim; köy yolu olduğuna bakmayın, kaliteli bir yoldu. Gelmeden önce internette yorumlara bakmıştım: "kalıntı çok yok, özellikle liman tarafında, iki sütun görmek istiyorsanız gidin" diyorlardı. İçeri girince alandaki ekipten biriyle karşılaştım ve işler değişti; olmasa muhtemelen internette gördüklerimi çekip geçecektim. Aşağıdakiler onun bana anlattıkları, yanına sonradan okuduklarımı ekledim.
 
-- **Kuruluş:** Kent MÖ 310'da, İskender'in generali Antigonos tarafından kuruldu ve ilk başta Antigoneia adını aldı. Generaller arasındaki savaştan sonra el değiştirdi; yeni hakim kentin adını İskender'in anısına Alexandria Troas yaptı. Troya ise çok daha eski; MÖ 3500'lere uzanıyor. Yani iki kent arasında büyük bir zaman farkı var.
-- **"Troas" ne demek?** Troas, kentin değil bölgenin adı. Lapseki ve Biga'dan başlayıp Ege'ye doğru uzanan geniş bir alan; Lampsakos ve Parion gibi kentler de bu bölgenin içinde.
-- **Büyüklük:** Yaklaşık 8 kilometrelik sur ve yaklaşık 400 hektarlık alan. Anlatıldığına göre döneminde 100-130 bin kişi yaşamış; çevredeki küçük yerleşimlerin nüfusu da bir iskan politikasıyla buraya toplanmış. Görünen kısım kentin yalnızca yüzde 1-2'lik bölümü.
-- **Yönetim ve sikke:** Roma'ya bağlı ama kendi işlerinde özgür bir şehir devleti; kendi sikkelerini basmış. Buluntuların Troya Müzesi'nin birinci katındaki Alexandria Troas bölümünde olduğu söylendi; alanın kendisinde sergilenen eser yok, yalnızca taşınmaz mimari elemanlar ve onurlandırma yazıtları görülüyor.
-- **Gezi duraklarında görülenler:** kamusal yapıların bulunduğu alan (belediye meclisi gibi kullanılmış olabilir), küçük tiyatro olan odeon (çalışma sürüyor, sahne binasının bir kısmı açığa çıkmış, tonozlu geçidiyle birlikte), künk hatları (temiz ve kirli su kanalları), çok köşeli bir yapı, tonozlu galerili ve bosajlı taşlarıyla Hellenistik bir stoa ve yan yana dizili dükkanlar. Dükkanlar sütunlu, üstü kapalı bir galerinin kenarında sıralanıyormuş. Alanda restorasyon yok; taşlar çıktığı gibi, yalnızca daha iyi okunması için temizlenmiş.
-- **Taşlar nereye gitti?** Anlatıldığına göre depremler yıkımın başlıca sebebi; ayrıca Konstantin'in İstanbul'u başkent seçmesinden sonra çevredeki terk edilmiş kentlerden büyük taş blokları İstanbul'a taşınmış.
-- **Kazının yaşı:** Anlatıldığına göre kazı 1990'ların sonunda yüzey araştırmasıyla başlıyor.
+Önce kuruluş: Kent MÖ 310'da, İskender'in generali Antigonos tarafından kurulmuş ve generalin kendi adıyla Antigoneia diye başlamış. Generaller arasındaki savaştan sonra el değiştirmiş; yeni hakim kentin adını İskender'in anısına Alexandria Troas yapmış. Troya ise çok daha eski, MÖ 3500'lere uzanıyor; yani iki kent arasında büyük bir zaman farkı var. "Troas" da kentin değil bölgenin adı: Lapseki ve Biga'dan başlayıp Ege'ye doğru uzanan geniş bir alan; Lampsakos ve Parion gibi kentler de bu bölgenin içinde.
 
-## Biraz daha derinlemesine
+Büyüklüğüne hala şaşırıyorum: yaklaşık 8 kilometre sur, yaklaşık 400 hektarlık alan, döneminde 100-130 bin kişi. Çevredeki küçük yerleşimlerin nüfusu iskan politikasıyla buraya toplanmış; Roma'ya bağlı ama kendi işlerinde özgür bir şehir devleti olmuş, kendi sikkelerini basmış. Şu an gördüğümüz kısım kentin yalnızca yüzde 1-2'si. Buluntuların Troya Müzesi'nin birinci katındaki Alexandria Troas bölümünde olduğunu söylediler; alanın kendisinde sergilenen eser yok, sadece taşınmaz mimari elemanlar ve onurlandırma yazıtları görülüyor.
 
-**Kuruluş ve ad.** Kültür ve Turizm Bakanlığı ile Küre Ansiklopedisi kuruluşu MÖ 310 olarak verir; Vikipedi MÖ 306 diyor, yani kaynaklarda küçük bir fark var. Kent daha sonra Lysimakhos tarafından Alexandria Troas adını aldı. Augustus döneminde Roma kolonisi oldu (Colonia Alexandria Augusta Troas). İmparator Hadrianus ve zengin hatip Herodes Atticus kenti büyük ölçüde güzelleştirdi; su kemerinin Herodes Atticus'a ait olduğu söylenir. 3. yüzyıldaki Got akınları ve 5-6. yüzyıllardaki depremler kenti zayıflattı.
+Gezerken gördüklerim: kamusal yapıların olduğu alan (belediye meclisi gibi kullanılmış olabilir), küçük tiyatro olan odeon (çalışma sürüyor, sahne binasının bir kısmı açığa çıkmış, tonozlu geçidiyle birlikte), temiz ve kirli su kanalları olan künk hatları, çok köşeli bir yapı, bosajlı taşlarıyla heybetli Hellenistik bir stoa ve yan yana dizili dükkanlar. Dükkanlar sütunlu, üstü kapalı bir galerinin kenarına sıralanmış; galeride yürürken kapılar yan tarafınızda açılıyor, istediğiniz dükkana girip alışveriş yapıyorsunuz. Alanda restorasyon yok, taşlar çıktığı gibi duruyor; sadece daha iyi okunsun diye temizlenmiş. Mimarların hazırladığı üç boyutlu canlandırmanın tabletle gösterilmesi de çok hoştu: tableti nereye çevirirseniz o yer renkli kubbesiyle birlikte ayağa kalkıyor.
 
-**Rakamlar.** Kültür Bakanlığı kaynakları yaklaşık 390 hektar ve 8 kilometre sur diyor; Vikipedi 400 hektar ve 10 kilometre çevre veriyor. Nüfus için kazı başkanı Erhan Öztepe'nin 100 bin dolayında bir tahmini var; kesin bir sayı değil.
+Taşlar nereye gitti diye sordum. Depremler başlıca sebep, bir de Konstantin'in İstanbul'u başkent seçmesinden sonra çevredeki terk edilmiş kentlerden büyük taş blokları İstanbul'a taşınmış, dediler. Kazının yaşını sorduğumda "90'ların sonunda yüzey araştırmasıyla başladı" dediler.
 
-**Kazı.** 1990'lardan beri Münster Üniversitesi Küçük Asya Araştırma Merkezi sistematik araştırma yaptı (Prof. Hans Wiegartz, sonra Prof. Elmar Schwertheim). 2010 ya da 2011'den beri Ankara Üniversitesi'nden Prof. Dr. Erhan Öztepe başkanlığında kazı sürüyor; kaynaklar başlangıç yılında 2010 ve 2011 arasında ayrışıyor. Son yıllarda 2.200 yıllık Hellenistik çarşı yapısının kuzey kapıları ve limanın dış kısmında yaklaşık 2.000 yıllık Roma dönemi mendirek bulundu. İç liman, "Pembe Göl" olarak bilinen kalp biçimli göl.
+## Bilmeye değer
 
-**Herodes Atticus Hamamı.** Videoda gezilmeyen ama kentin en bilinen yapısı. Kazı başkanına göre 123x84 metre ölçüleriyle o dönemin Anadolu'sundaki en büyük hamam; MS 135 civarında yapıldığı belirtiliyor, 1809-1810 kışındaki depremde büyük ölçüde çökmüş. Büyüklük iddiası kazı başkanının beyanıdır.
+**Kuruluş ve ad.** Kültür ve Turizm Bakanlığı ile Küre Ansiklopedisi kuruluşu MÖ 310 olarak veriyor; Vikipedi MÖ 306 diyor, küçük bir fark. Kent sonradan Lysimakhos tarafından Alexandria Troas adını almış. Augustus döneminde Roma kolonisi olmuş (Colonia Alexandria Augusta Troas). İmparator Hadrianus ve zengin hatip Herodes Atticus kenti büyük ölçüde güzelleştirmiş; su kemerinin Herodes Atticus'a ait olduğu söylenir. 3. yüzyıldaki Got akınları ve 5-6. yüzyıllardaki depremler kenti zayıflatmış.
 
-**Konstantinopolis ve taşlar.** Anlatılanın doğrulanabilen kısmı Osmanlı dönemine ait: kazı başkanına göre mimari parçalar İstanbul'daki Yeni Valide ve Piyale Paşa camileri için kullanıldı, Piri Reis de bunu yazmış. Antik Konstantinopolis'in inşası için buradan taş götürüldüğüne dair bir kaynak bulamadık. Konstantin'in (ve Julius Caesar'ın) kenti başkent yapmayı düşündüğü anlatısı yaygın ama kaynaksız bir gelenek olarak aktarılır.
+**Rakamlar.** Kültür Bakanlığı kaynakları yaklaşık 390 hektar ve 8 kilometre sur diyor; Vikipedi 400 hektar ve 10 kilometre çevre veriyor. Nüfus için kazı başkanı Erhan Öztepe'nin 100 bin dolayında bir tahmini var, kesin sayı değil.
 
-**Aziz Pavlus.** Elçilerin İşleri'nde Pavlus'un Troas'ta Makedonyalı bir adamı rüyasında görüp Avrupa'ya geçtiği ve bir sonraki yolculuğunda burada bir hafta kaldığı anlatılır.
+**Kazı.** 1990'lardan beri Münster Üniversitesi Küçük Asya Araştırma Merkezi sistematik araştırma yapmış (Prof. Hans Wiegartz, sonra Prof. Elmar Schwertheim). 2010 ya da 2011'den beri Ankara Üniversitesi'nden Prof. Dr. Erhan Öztepe başkanlığında kazı sürüyor; kaynaklar başlangıç yılında ayrışıyor. Son yıllarda 2.200 yıllık Hellenistik çarşı yapısının kuzey kapıları ve limanın dış kısmında yaklaşık 2.000 yıllık Roma dönemi mendirek bulunmuş. İç liman, "Pembe Göl" denen kalp biçimli göl.
 
-**Ziyaret.** Kültür Bakanlığı'nın sayfasında örenyeri ücretsiz görünüyor; saatler mevsime göre değişir, gitmeden önce güncel sayfaya bakmak iyi olur. Alanın büyük kısmı bitki örtüsüyle kaplı; yaz öğlen sıcağında gezmek zor.
+**Herodes Atticus Hamamı.** Benim gezmediğim ama kentin en bilinen yapısı. Kazı başkanına göre 123x84 metre ölçüleriyle o dönemin Anadolu'sundaki en büyük hamam; MS 135 civarında yapılmış, 1809-1810 kışındaki depremde büyük ölçüde çökmüş. Büyüklük iddiası kazı başkanının beyanı.
 
-## Doğrulanamayanlar
+**Konstantinopolis ve taşlar.** Doğrulayabildiğim kısım Osmanlı dönemine ait: kazı başkanına göre mimari parçalar İstanbul'daki Yeni Valide ve Piyale Paşa camileri için kullanılmış, Piri Reis de bunu yazmış. Antik Konstantinopolis'in inşası için buradan taş götürüldüğüne dair bir kaynak bulamadım. Konstantin'in (ve Julius Caesar'ın) kenti başkent yapmayı düşündüğü anlatısı yaygın ama kaynaksız bir gelenek.
 
-- Troya Müzesi'nde Alexandria Troas'a ayrılmış bir bölüm olduğu müzeye sorulmadan kesin yazılamaz; videoda bu söyleniyor.
-- Kazının "90'ların sonunda başladığı" bilgisi videodaki anlatımdır; kaynaklarda Münster kazıları 1993'ten başlıyor.
+**Aziz Pavlus.** Elçilerin İşleri'nde Pavlus'un Troas'ta Makedonyalı bir adamı rüyasında görüp Avrupa'ya geçtiği ve sonraki yolculuğunda burada bir hafta kaldığı anlatılıyor.
+
+**Ziyaret.** Kültür Bakanlığı'nın sayfasında örenyeri ücretsiz görünüyor; saatler mevsime göre değişiyor, gitmeden güncel sayfaya bakın. Alanın büyük kısmı bitki örtüsüyle kaplı, yaz öğlen sıcağında gezmek zor; ben temmuzun öğlen sıcağında gittim ve başımdan aşağı bir litre su döktüm.
+
+## Emin olamadıklarım
+
+- Troya Müzesi'nde Alexandria Troas'a ayrılmış bir bölüm olduğunu orada duydum; müzeye sorulmadan kesin yazamam.
+- Kazının "90'ların sonunda başladığını" orada duydum; kaynaklarda Münster kazıları 1993'ten başlıyor.
 
 ## Kaynaklar
 
