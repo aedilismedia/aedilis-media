@@ -944,3 +944,5 @@ body.theme-dzs {
 .harita .pop p a { color: var(--gold); }
 .harita .pop p a.btn-primary { color: var(--obsidian); }
 .place-read .btn { margin-top: 0.2rem; }
+
+.dzs-tag-tr { margin: -0.7rem 0 1.2rem; font-size: 0.95rem; letter-spacing: 0.12em; color: var(--stone-muted); }

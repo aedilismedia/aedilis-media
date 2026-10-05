@@ -459,7 +459,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <li class="universe universe-dzs">
         <img class="universe-logo universe-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
         <h3>${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h3>
-        <p class="universe-tag">${esc(dzs.tagline)}</p>
+        <p class="universe-tag" lang="en">${esc(dzs.tagline)}</p>
         <p>${esc(dzs.intro)}</p>
         <p class="universe-stats">${esc(statLine(dzsList))} · ${dzsTracks} parça</p>
         <p class="universe-actions"><a class="btn btn-small stretch" href="${url(dzs.slug + '/')}">${esc(dzs.shortName)} evrenine gir</a></p>
@@ -926,7 +926,7 @@ ${header(depth)}
 <main id="icerik" tabindex="-1">
 <section class="hero hero-dzs hero-vhs">
   <span class="vhs-play" aria-hidden="true">PLAY ▶</span>
-  <span class="vhs-date" aria-hidden="true">SONRASI BİZİZ</span>
+  <span class="vhs-date" lang="en" aria-hidden="true">SIGNAL GOT WIDER</span>
   <div class="dzs-sky" aria-hidden="true"><span class="shooting-star"></span><span class="shooting-star s2"></span></div>
   <div class="dzs-sun" aria-hidden="true"></div>
   <div class="dzs-floor" aria-hidden="true"><div></div></div>
@@ -934,7 +934,8 @@ ${header(depth)}
     <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
     <img class="dzs-hero-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1000" height="588" fetchpriority="high" onerror="this.remove()">
     <h1 class="page-title dzs-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h1>
-    <p class="dzs-tag">${esc(dzs.tagline)}</p>
+    <p class="dzs-tag" lang="en">${esc(dzs.tagline)}</p>
+    <p class="dzs-tag-tr">${esc(dzs.taglineTr)}</p>
     <p class="lead dzs-lead">${esc(dzs.intro)}</p>
     <p class="dzs-actions"><a class="btn btn-primary" href="#yayinlar">Yayınlara git</a><a class="btn" href="#dinle">Dinle</a></p>
   </div>
@@ -945,8 +946,8 @@ ${SYNTH_RULE}
   <div class="wrap prose-grid">
     <h2 id="h-hikaye" class="section-title">HİKAYE</h2>
     <div class="prose">
-      ${dzs.story.map((p) => `<p>${esc(dn0(p))}</p>`).join('')}
-      <p class="note">${esc(dn0(dzs.ai))}</p>
+      ${dzs.story.map((p) => `<p>${esc(p)}</p>`).join('')}
+      <p class="note">${esc(dzs.ai)}</p>
       <dl class="facts">${dzs.facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join('')}</dl>
       <p class="roles">${esc(dzs.roles)}</p>
     </div>
@@ -976,16 +977,20 @@ ${SYNTH_RULE}
       <p>${esc(dzs.music.lead)}</p>
       <h3 class="chips-title">Türler</h3>
       <ul class="chips">${dzs.music.genres.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Eski çizgi, nadiren</h3>
+      <ul class="chips">${dzs.music.genresOld.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       <h3 class="chips-title">Ses dünyası</h3>
       <ul class="chips">${dzs.music.sound.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       <h3 class="chips-title">Vokal</h3>
       <p>${esc(dzs.music.vocal)}</p>
       <h3 class="chips-title">Duygusal ton</h3>
       <ul class="chips">${dzs.music.tones.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Sözlerde, ilk dönem</h3>
+      <h3 class="chips-title">Sözlerde, eski dönem</h3>
       <ul class="chips">${dzs.music.lyrics.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Sözlerde, yeni dönem</h3>
+      <h3 class="chips-title">Sözlerde, Static Era</h3>
       <ul class="chips">${dzs.music.lyricsNew.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Tekrarlanan imgeler</h3>
+      <ul class="chips">${dzs.music.imagery.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
     </div>
   </div>
 </section>
@@ -1005,6 +1010,7 @@ ${SYNTH_RULE}
         ${dzs.featuredCast.text.map((t) => `<p>${esc(t)}</p>`).join('')}
         <p class="cast-tone"><span>Ton</span>${esc(dzs.featuredCast.tone)}</p>
         <p class="cast-tone"><span>Kadraj</span>${esc(dzs.featuredCast.camera)}</p>
+        <p class="cast-tone"><span>Ses</span>${esc(dzs.featuredCast.voice)}</p>
       </div>
     </article>
   </div>
@@ -1028,7 +1034,7 @@ ${SYNTH_RULE}
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
-      <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}.</p>
+      <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}. Static Era, The Last Normal Broadcast ile ${esc(formatDate(dzs.upcoming.date))} tarihinde açılıyor.</p>
     </header>
     <ul class="rgrid">${lockedCard(url)}${list.map((r) => releaseCard(r, url)).join('')}</ul>
       </div>
@@ -1039,9 +1045,10 @@ ${SYNTH_RULE}
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-dinle" class="section-title">DİNLE</h2>
-      <p class="section-desc">${esc(dzs.secondary)}</p>
+      <p class="section-desc"><span lang="en">${esc(dzs.secondary)}</span> ${esc(dzs.secondaryTr)}</p>
     </header>
     <ul class="platform-links">${dzs.platforms.map((p) => `<li><a class="btn" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.label)}</a></li>`).join('')}</ul>
+    <p class="section-more">Dinleme platformlarında proje hala eski adıyla, “${esc(dzs.formerName)}” olarak listeleniyor.</p>
     <p class="section-more">İletişim: <a class="mail-link" href="mailto:${esc(dzs.email)}">${esc(dzs.email)}</a></p>
   </div>
 </section>

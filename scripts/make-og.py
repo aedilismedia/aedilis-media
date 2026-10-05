@@ -51,7 +51,7 @@ def psynth(body): return BASE + SYNTH + body
 jobs = {}
 jobs['home'] = page('<div class="c"><img src="/assets/img/aedilis-media.webp" height="360"><div class="t" style="font-size:46px">Aedilis Media</div><div class="g">Geçmişten ilham, geleceğe etki</div></div>')
 jobs['muzik'] = page('<div class="c"><img src="/assets/img/aedilis-media-music.webp" height="360"><div class="t" style="font-size:46px">Aedilis Media Music</div><div class="g">DZS · Demonium Nihil</div></div>')
-jobs['dzs'] = psynth(f'<div class="c"><img src="/assets/img/dzs-logo.webp" height="340"><div class="g">{dzs["tagline"]}</div><div style="font-size:24px;color:#a99f88">{dzs["secondary"]}</div></div>')
+jobs['dzs'] = psynth(f'<div class="c"><img src="/assets/img/dzs-logo.webp" height="340"><div class="g" lang="en">{dzs["tagline"]}</div><div lang="en" style="font-size:24px;color:#a99f88">{dzs["secondary"]}</div></div>')
 dn = json.load(open(ROOT / 'data/dn.json'))
 jobs['tlnb'] = psynth(f'<div class="rel"><img class="cv" src="/{dzs["upcoming"]["cover"]}"><div class="tx"><h1 class="long">{dzs["upcoming"]["title"]}</h1><p>Yakında · {fmt(dzs["upcoming"]["date"])} · {dzs["upcoming"]["tracks"]} parça</p></div></div>')
 jobs['dn'] = page(f'<div class="c"><img src="/{dn["logo"]}" height="340"><div class="g" style="color:#d94a4a">{dn["tagline"]}</div><div style="font-size:24px;color:#a99f88">Gotik industrial · karanlık synthwave</div></div>')

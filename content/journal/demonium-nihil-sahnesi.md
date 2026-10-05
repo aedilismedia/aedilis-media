@@ -8,7 +8,7 @@ Demonium Nihil, Aedilis Media Music çatısı altında yürüyen karanlık ve go
 
 ## Adın anlamı
 
-Ad Latince kökenli. *Demonium* şeytanî olana, *Nihil* hiçliğe işaret eder. Birlikte “hiçliğin şeytanı” ya da “şeytanî yokluk” gibi bir şey söyler. Proje de tam bunu yapar: varoluşun boşluğuna tiyatro sahnesi kurar.
+Ad Latince kökenli. *Demonium* şeytani olana, *Nihil* hiçliğe işaret eder. Birlikte “hiçliğin şeytanı” ya da “şeytani yokluk” gibi bir şey söyler. Proje de tam bunu yapar: varoluşun boşluğuna tiyatro sahnesi kurar.
 
 ## Ses ve tema
 

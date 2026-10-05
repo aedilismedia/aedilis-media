@@ -2,18 +2,14 @@
   "slug": "dzs",
   "name": "Dördüncü Zamdan Sonra",
   "short": "DZS",
-  "tagline": "Sonrası Biziz",
-  "secondary": "Şehir. Ses. Hikaye.",
+  "tagline": "Signal got wider",
+  "secondary": "Signal. Static. Story.",
   "logo": "assets/img/dzs-logo.webp",
-  "intro": "Modern şehir yaşamını, içsel çatışmaları ve gündelik hayatın görünmeyen kırılma anlarını Türkçe alternatif müzikle anlatan, Aedilis Media bünyesindeki bağımsız sanal müzik projesi.",
+  "intro": "Aedilis Media'nın sanal müzik projesi. Static Era, The Last Normal Broadcast ile başlıyor: kaset paraziti ve VHS dokusuna sarılı darkwave, new wave dream pop ve electro-pop. Sinyal genişledi.",
   "story": [
-    "DZS, modern şehir yaşamının insan üzerinde bıraktığı izleri, içsel çatışmaları, kırılgan ilişkileri ve gündelik hayatın çoğu zaman gözden kaçan anlarını Türkçe alternatif müzik aracılığıyla anlatan bağımsız bir müzik projesidir.",
-    "Alternatif rock, indie rock, pop-rock ve elektronik dokulardan beslenen proje; samimi söz yazımını güçlü melodiler, karanlık atmosferler ve yer yer ironik bir anlatımla bir araya getirir.",
-    "Projenin anlatı dünyasında gece hayatı, yalnızlık, yabancılaşma, geçmişle hesaplaşma, şehir yorgunluğu, gençlik, kaçış ve yeniden başlama isteği önemli bir yer tutar.",
-    "Şarkılar, yalnızca kişisel duyguları aktarmakla kalmaz; modern insanın iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ruh haline de odaklanır. Bu nedenle DZS'nin müziği, bireysel hikayeler ile ortak şehir deneyimleri arasında bir bağ kurmayı amaçlar.",
-    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya oluşturan proje; müzik, kapak tasarımı, video ve dijital hikaye anlatımını bütüncül bir yaratıcı kimlik altında değerlendirir.",
-    "DZS, dinleyiciye yalnızca bir şarkı değil, atmosferi ve hikayesi olan eksiksiz bir deneyim sunmayı hedefler.",
-    "Aedilis Media bünyesinde geliştirilen DZS, bağımsız üretim anlayışını koruyarak Türkçe alternatif müzik sahnesinde özgün, tanınabilir ve kalıcı bir anlatı dili oluşturmayı amaçlamaktadır."
+    "DZS (eski adıyla Dördüncü Zamdan Sonra), Aedilis Media bünyesinde geliştirilen bir sanal müzik projesidir. Static Era, The Last Normal Broadcast albümüyle başlar: darkwave, new wave dream pop ve alternatif electro-pop; kaset paraziti, VHS dokusu ve analog synth katmanlarıyla.",
+    "Albümün şarkıları, çağlar arasında kayan bir yayın sinyali gibi ilerler: gece radyosundan kasete, video kiralama dükkanı cumalarından geçici şöhrete. Bir yanda geri dönmek istemeyen ama o hissi bir kez daha duymak isteyen bir nostalji vardır; öte yanda ekranların, algoritmaların ve komplo teorilerinin absürtlüğü, iç çekmeyle karışık bir kahkahayla anlatılır. Yolda bir kuyruklu yıldızla evlenen bir adamın, zamanda koşan trençkotlu bir kahramanın ve çocukluk krallıklarının hikayeleri vardır.",
+    "Ağırlıklı olarak İngilizce, Türkçe şarkılarla süren DZS, müziği, kapağı ve görsel dünyayı tek bir atmosfer olarak kurar. Sinyal genişledi."
   ],
   "ai": "DZS yapay zeka destekli bir sanal müzik projesidir. Yapay zeka üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
   "facts": [
@@ -30,8 +26,16 @@
       "value": "Yapay zeka destekli sanal müzik projesi"
     },
     {
+      "label": "Güncel dönem",
+      "value": "Static Era (Parazit Dönemi)"
+    },
+    {
       "label": "Tür",
-      "value": "Türkçe alternatif ve indie rock"
+      "value": "Darkwave, new wave dream pop, alternatif electro-pop"
+    },
+    {
+      "label": "Dil",
+      "value": "Türkçe ve İngilizce, ağırlık İngilizce"
     },
     {
       "label": "Bölüm",
@@ -73,68 +77,64 @@
   "formerName": "Dördüncü Zamdan Sonra",
   "roles": "Erkan Avcı: kurucu, yapımcı, söz yazarı ve direktör.",
   "identity": {
-    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikaye.” DZS iki dönem olarak okunur: Türkçe şehir hikayeleri ve yeni dönemin analog synth dokulu, İngilizce yayını.",
+    "lead": "Ana slogan “Signal got wider” (Sinyal genişledi). İkincil slogan “Signal. Static. Story.” (Sinyal. Parazit. Hikaye.) DZS iki dönem olarak okunur: eski dönemin Türkçe şehir hikayeleri ve The Last Normal Broadcast ile açılan Static Era.",
     "eras": [
       {
-        "label": "Birinci dönem",
-        "title": "Türkçe şehir hikayeleri",
-        "text": "Şehir yorgunluğu, gece yolculukları, kırık ilişkiler ve sessiz isyan; indie rock ve post-punk zemininde, yer yer synth dokularıyla."
+        "label": "Eski dönem",
+        "title": "Dördüncü Zamdan Sonra",
+        "text": "1 Kasım 2025 – 21 Eylül 2026. Türkçe şehir hikayeleri: şehir yorgunluğu, gece yolculukları, kırık ilişkiler ve sessiz isyan; indie rock ve post-punk zemininde. O dönemin sloganı “Sonrası Biziz” idi. Kapanış sahnesi BENAY albümü."
       },
       {
-        "label": "Yeni dönem",
-        "title": "The Last Normal Broadcast",
-        "text": "İngilizce sözler, analog synth, kaset ve VHS cızırtısı. Geçmişin gecelerine duyulan özlem ile ekran, şöhret ve algoritma çağının ironisi yan yana. Albüm, DZS adına geçişin ve daha geniş bir dinleyiciye açılmanın eşiği."
+        "label": "Güncel dönem",
+        "title": "Static Era (Parazit Dönemi)",
+        "text": "The Last Normal Broadcast ile açılıyor. İngilizce ağırlıklı; kaset paraziti, VHS dokusu ve analog synth katmanları. Albüm, adın DZS’ye dönüştüğü ve projenin daha geniş bir dinleyiciye açıldığı eşik. Sinyal genişledi."
       }
     ],
     "positioning": [
-      "Bağımsız alternatif müzik",
-      "Türkçe ve İngilizce",
-      "Indie rock tabanlı synth dokuları",
-      "80’ler esintili retro atmosfer",
-      "Şehirli melankoli",
-      "Sessiz başkaldırı",
+      "Sanal müzik projesi",
+      "Türkçe ve İngilizce, ağırlık İngilizce",
+      "Darkwave",
+      "New wave dream pop",
+      "Alternatif electro-pop",
+      "Kaset ve VHS paraziti",
+      "Analog synth dokusu",
       "İnsan duygusu ile yapay zeka destekli üretimin birleşimi"
     ],
     "themes": [
-      "Gece hayatı",
-      "Yalnızlık",
-      "Yabancılaşma",
-      "Geçmişle hesaplaşma",
-      "Şehir yorgunluğu",
-      "Yeniden başlama",
-      "Nostalji ve analog dünya",
-      "Kaset ve VHS geceleri",
-      "Şöhret, ekran ve algoritma"
+      "Analog nostalji",
+      "Gece radyosu, kaset ve VHS",
+      "Geçici şöhret ve algoritma",
+      "Komplo tavşan delikleri",
+      "Kayıp ve bekleyiş",
+      "Masalsı hüzün",
+      "Neşeli kabullenme",
+      "Yıldızlar ve kuyruklu yıldız"
     ]
   },
-  "castNote": "Sahne kurgusaldır. Bu isim gerçek bir müzisyen ya da sahne sanatçısı değildir; projenin sanal dünyasının karakteridir. Yeni dönemde sahnede tek bir figür var: altın maskeli sunucu.",
+  "castNote": "Sahne kurgusaldır. Bu isim gerçek bir müzisyen ya da sahne sanatçısı değildir; projenin sanal dünyasının karakteridir. Static Era’da sahnede tek bir figür var: altın maskeli sunucu.",
   "music": {
-    "lead": "Indie rock tabanı korunuyor; üzerine analog synth, kaset ve VHS dokusu ile gece gökyüzünün kozmik atmosferi ekleniyor. İlk dönem Türkçe, yeni dönem İngilizce.",
+    "lead": "Static Era darkwave, new wave dream pop ve alternatif electro-pop ile açılıyor: analog synth katmanları, kaset sarkması ve VHS paraziti gibi kayıt dokuları. Dil ağırlıklı İngilizce; Türkçe şarkılar da sürüyor.",
     "genres": [
-      "Indie rock",
-      "Alternatif rock",
-      "Post-punk",
-      "Synth dokulu indie rock",
-      "Şehirli rock",
-      "Alternatif Türkçe"
+      "Darkwave",
+      "New wave dream pop",
+      "Alternatif electro-pop",
+      "Funk etkisi"
     ],
     "sound": [
-      "Temiz ve loş gitar tonları",
-      "Lo-fi davullar",
-      "Yumuşak bas yürüyüşleri",
-      "Analog synth ve klavye katmanları",
-      "Kaset ve VHS cızırtısı",
-      "Araba radyosu ve şehir sesleri",
-      "Gece gökyüzü ve uzay atmosferi"
+      "Analog synth katmanları",
+      "Kaset sarkması",
+      "VHS paraziti",
+      "Organik kusurlar",
+      "Sıcak ve loş atmosfer",
+      "Sakin ve yakın vokalden melodik rap-şarkıya geçişler"
     ],
-    "vocal": "Yarı konuşur, anlatır gibi ilerleyen; samimi, hafif alaycı ve içten bir vokal. İlk dönemde Türkçe, yeni dönemde İngilizce.",
+    "vocal": "Vokal, yeni dönemin sunucusu Vesper Aurum’un sesi: tüm şarkılarda, ağırlıkla İngilizce. Bazen tek başına, bazen Lucerna eşliğinde. Parçaya göre sakin ve yakın, parçaya göre melodik rap-şarkı.",
     "tones": [
       "İroni",
-      "Öfke",
-      "İçsel direnç",
-      "Nostalji",
       "Kara mizah",
-      "Enerjisini tamamen kaybetmeyen melankoli"
+      "Tatlı hüzün",
+      "Melankolik kahramanlık",
+      "Öz-alaycı özgürleşme"
     ],
     "lyrics": [
       "Şehir hayatının yorgunluğu",
@@ -150,10 +150,24 @@
       "Sessiz isyan"
     ],
     "lyricsNew": [
-      "Geçici şöhret ve yorum kültürü",
-      "Algoritma ve tavşan deliği geceleri",
-      "Kaset, radyo ve ankesörlü telefon özlemi",
-      "Gökyüzüne ve yıldızlara bakan masallar"
+      "Gece radyosu, kaset, VHS ve video dükkanı nostaljisi",
+      "Geçici şöhret ve algoritma",
+      "Komplo teorisi tavşan delikleri",
+      "Kuyruklu yıldızla evlenen adam, zamanda koşan trençkotlu kahraman",
+      "Havalı görünmeyi bırakmak"
+    ],
+    "genresOld": [
+      "Indie rock",
+      "Alternatif rock",
+      "Post-punk",
+      "Alternatif Türkçe"
+    ],
+    "imagery": [
+      "Gece sürüşü ve radyo",
+      "Kaset, VHS ve sinema",
+      "Ekranlar ve algoritma",
+      "Yıldızlar ve kuyruklu yıldız",
+      "Sokak ışıkları ve yağmur"
     ]
   },
   "visual": {
@@ -172,15 +186,15 @@
     "images": [
       [
         "assets/img/dzs/gorsel/ref-03.webp",
-        "Küçük bir sahnede Marshall amfi ve spot ışıkları önünde gitar çalan boynuzlu maskeli figür"
+        "Küçük bir sahnede Marshall amfi ve spot ışıkları önünde gitar çalan boynuzlu maskeli Vesper Aurum"
       ],
       [
         "assets/img/dzs/gorsel/ref-04.webp",
-        "VHS ekran yazılı karede dumanlı bir odada maskeli gitarist"
+        "VHS ekran yazılı karede dumanlı bir odada maskeli Vesper Aurum"
       ],
       [
         "assets/img/dzs/gorsel/ref-05.webp",
-        "Samanyolu önünde gitarla havada asılı duran maskeli figür"
+        "Samanyolu önünde gitarla havada asılı duran maskeli Vesper Aurum"
       ],
       [
         "assets/img/dzs/gorsel/ref-07.webp",
@@ -192,7 +206,7 @@
     "title": "The Last Normal Broadcast",
     "type": "Albüm",
     "tracks": 11,
-    "text": "Yeni albüm yolda. Sözler İngilizce.",
+    "text": "Static Era’yı açan albüm. Sözler İngilizce.",
     "date": "2026-10-15",
     "cover": "assets/img/dzs/kapaklar/the-last-normal-broadcast.webp",
     "slug": "tlnb",
@@ -249,11 +263,16 @@
     "role": "Maskeli sunucu, yeni dönemin yüzü",
     "text": [
       "Vesper Aurum, yeni dönemin tek sahne figürü. Altın bir maskenin arkasından, gece yarısı frekansında yayına giren sessiz bir sunucu. Yüzünü gören yok; elimizdeki tek iz, bir VHS kasetine düşmüş bulanık bir kayıt.",
-      "Maskenin boynuzları yıldızlara uzanan antenler gibi durur, kulağından sarkan madalyon bir gece vardiyasının kimlik rozetini andırır. Kasetin tarih damgası 12 Haziran 2026, 23.37: normal bir akşamın son saati."
+      "Maskenin boynuzları yıldızlara uzanan antenler gibi durur, kulağından sarkan madalyon bir gece vardiyasının kimlik rozetini andırır. Kasetin tarih damgası 12 Haziran 2026, 23.37: normal bir akşamın son saati.",
+      "Vesper söyler: yayının sesi onun sesidir. Bu ses, eski dönemin vokali Arda Lumen’in sesi; bu kez İngilizce. Bazen tek başına, bazen Lucerna’nın koro gibi katmanlanan sesiyle.",
+      "Eski kadro Static Era’da görünmüyor. 12 Haziran 2026, 23.37’de son normal yayın kesildiğinde sahneden değil sinyalden düştüler: yayın eski kanalın dar bandına sığmayacak kadar genişledi, onlardan geriye yayının arkasındaki cızırtı, kaset hışırtısı ve VHS paraziti kaldı. Yayını, vardiyada kalan tek sunucu Vesper Aurum açık tutuyor."
     ],
     "tone": "Soğukkanlı, gizemli",
-    "camera": "Yalnızca VHS kaydında görünür",
+    "camera": "Her yerde görünebilir; ana çerçevesi VHS kaydı",
     "image": "assets/img/dzs/kadro/vesper-aurum.webp",
-    "alt": "Altın boynuzlu bir maske takan Vesper Aurum, renkli parazitli bir VHS kaydında; köşede PLAY ve 12 Haziran 2026 tarih damgası"
-  }
+    "alt": "Altın boynuzlu bir maske takan Vesper Aurum, renkli parazitli bir VHS kaydında; köşede PLAY ve 12 Haziran 2026 tarih damgası",
+    "voice": "Vesper söyler, sesi Arda Lumen’in sesidir"
+  },
+  "taglineTr": "Sinyal genişledi.",
+  "secondaryTr": "Sinyal. Parazit. Hikaye."
 }
