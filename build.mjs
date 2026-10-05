@@ -762,6 +762,7 @@ ${SYNTH_RULE}
     <h2 id="h-kimlik" class="section-title">KİMLİK</h2>
     <div class="prose">
       <p>${esc(dzs.identity.lead)}</p>
+      <ul class="eras">${dzs.identity.eras.map((e) => `<li class="era"><p class="era-label">${esc(e.label)}</p><h3 class="era-title">${esc(e.title)}</h3><p>${esc(e.text)}</p></li>`).join('')}</ul>
       <h3 class="chips-title">Konumlandırma</h3>
       <ul class="chips">${dzs.identity.positioning.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
       <h3 class="chips-title">Anlatı dünyası</h3>
@@ -784,8 +785,10 @@ ${SYNTH_RULE}
       <p>${esc(dzs.music.vocal)}</p>
       <h3 class="chips-title">Duygusal ton</h3>
       <ul class="chips">${dzs.music.tones.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <h3 class="chips-title">Sözlerde</h3>
+      <h3 class="chips-title">Sözlerde, ilk dönem</h3>
       <ul class="chips">${dzs.music.lyrics.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+      <h3 class="chips-title">Sözlerde, yeni dönem</h3>
+      <ul class="chips">${dzs.music.lyricsNew.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
     </div>
   </div>
 </section>

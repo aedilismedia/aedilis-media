@@ -841,3 +841,13 @@ body.theme-dzs {
 .dzs-rule { display: flex; align-items: center; gap: 1.2rem; width: min(100% - 2 * var(--gutter), 52rem); margin: 0 auto; color: #2de2e6; }
 .dzs-rule::before, .dzs-rule::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, transparent, #ff3cac 35%, #2de2e6 70%, transparent); box-shadow: 0 0 10px rgba(255, 60, 172, 0.5); }
 .dzs-rule svg { flex: none; filter: drop-shadow(0 0 7px rgba(45, 226, 230, 0.9)); }
+
+/* Kimlik: iki dönem */
+.eras { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); margin: 1.4rem 0 0.4rem; }
+.era { border: 1px solid var(--line); padding: 1.1rem 1.2rem 0.4rem; }
+.era-label { margin: 0 0 0.2rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.era-title { font-size: 1.15rem; margin: 0 0 0.5rem; }
+.era p:last-child { font-size: 0.95rem; color: var(--stone-muted); }
+.theme-dzs .era { background: linear-gradient(180deg, rgba(60, 30, 140, 0.25), rgba(8, 5, 24, 0.6)); }
+.theme-dzs .era:last-child { border-color: #ff3cac; box-shadow: 0 0 1.6rem rgba(255, 60, 172, 0.15); }
+.theme-dzs .era-label { color: #2de2e6; }

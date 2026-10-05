@@ -73,12 +73,25 @@
   "formerName": "Dördüncü Zamdan Sonra",
   "roles": "Erkan Avcı: kurucu, yapımcı, söz yazarı ve direktör.",
   "identity": {
-    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikâye.”",
+    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikâye.” DZS iki dönem olarak okunur: Türkçe şehir hikâyeleri ve yeni dönemin analog synth dokulu, İngilizce yayını.",
+    "eras": [
+      {
+        "label": "Birinci dönem",
+        "title": "Türkçe şehir hikâyeleri",
+        "text": "Şehir yorgunluğu, gece yolculukları, kırık ilişkiler ve sessiz isyan; indie rock ve post-punk zemininde, yer yer synth dokularıyla."
+      },
+      {
+        "label": "Yeni dönem",
+        "title": "The Last Normal Broadcast",
+        "text": "İngilizce sözler, analog synth, kaset ve VHS cızırtısı. Geçmişin gecelerine duyulan özlem ile ekran, şöhret ve algoritma çağının ironisi yan yana. Albüm, DZS adına geçişin ve daha geniş bir dinleyiciye açılmanın eşiği."
+      }
+    ],
     "positioning": [
-      "Bağımsız alternatif Türkçe",
-      "Türkçe alternatif ve indie rock",
+      "Bağımsız alternatif müzik",
+      "Türkçe ve İngilizce",
+      "Indie rock tabanlı synth dokuları",
+      "80’ler esintili retro atmosfer",
       "Şehirli melankoli",
-      "Gündelik hikâyeler",
       "Sessiz başkaldırı",
       "İnsan duygusu ile yapay zekâ destekli üretimin birleşimi"
     ],
@@ -88,12 +101,13 @@
       "Yabancılaşma",
       "Geçmişle hesaplaşma",
       "Şehir yorgunluğu",
-      "Gençlik",
-      "Kaçış",
-      "Yeniden başlama"
+      "Yeniden başlama",
+      "Nostalji ve analog dünya",
+      "Kaset ve VHS geceleri",
+      "Şöhret, ekran ve algoritma"
     ]
   },
-  "castNote": "Sahne kadrosu kurgusaldır. Bu isimler gerçek grup üyeleri, gerçek müzisyenler ya da sahne sanatçıları değildir; projenin sanal dünyasının karakterleridir.",
+  "castNote": "Sahne kadrosu kurgusaldır. Bu isimler gerçek grup üyeleri, gerçek müzisyenler ya da sahne sanatçıları değildir; projenin sanal dünyasının karakterleridir. Yeni dönemde kadro, gece yarısı frekansından yayın yapan bir ekip gibi çizilir: kaset, VHS cızırtısı ve analog synth arasında.",
   "cast": [
     {
       "name": "Arda Lumen",
@@ -141,11 +155,12 @@
     }
   ],
   "music": {
-    "lead": "Türkçe alternatif ve indie rock zemininde post-punk ve yer yer synth dokularıyla şehirli bir ses.",
+    "lead": "Indie rock tabanı korunuyor; üzerine analog synth, kaset ve VHS dokusu ile gece gökyüzünün kozmik atmosferi ekleniyor. İlk dönem Türkçe, yeni dönem İngilizce.",
     "genres": [
       "Indie rock",
       "Alternatif rock",
       "Post-punk",
+      "Synth dokulu indie rock",
       "Şehirli rock",
       "Alternatif Türkçe"
     ],
@@ -153,15 +168,18 @@
       "Temiz ve loş gitar tonları",
       "Lo-fi davullar",
       "Yumuşak bas yürüyüşleri",
-      "Synth ve klavye dokuları",
-      "Şehir ve ortam sesleri"
+      "Analog synth ve klavye katmanları",
+      "Kaset ve VHS cızırtısı",
+      "Araba radyosu ve şehir sesleri",
+      "Gece gökyüzü ve uzay atmosferi"
     ],
-    "vocal": "Yarı konuşur, anlatır gibi ilerleyen; samimi, hafif alaycı ve içten bir vokal.",
+    "vocal": "Yarı konuşur, anlatır gibi ilerleyen; samimi, hafif alaycı ve içten bir vokal. İlk dönemde Türkçe, yeni dönemde İngilizce.",
     "tones": [
       "İroni",
       "Öfke",
       "İçsel direnç",
-      "Yaşamaya ve üretmeye devam etme",
+      "Nostalji",
+      "Kara mizah",
       "Enerjisini tamamen kaybetmeyen melankoli"
     ],
     "lyrics": [
@@ -176,6 +194,12 @@
       "İstanbul ve toplu taşıma",
       "İç hesaplaşma",
       "Sessiz isyan"
+    ],
+    "lyricsNew": [
+      "Geçici şöhret ve yorum kültürü",
+      "Algoritma ve tavşan deliği geceleri",
+      "Kaset, radyo ve ankesörlü telefon özlemi",
+      "Gökyüzüne ve yıldızlara bakan masallar"
     ]
   },
   "visual": {
