@@ -415,8 +415,8 @@ function muzikPage() {
   const dzsList = releases.filter((r) => r.project === 'dzs');
   const dnList = releases.filter((r) => r.project === 'dn');
   const dzsTracks = dzsList.reduce((a, r) => a + r.tracks.length, 0);
+  const dnTracks = dnList.reduce((a, r) => a + r.tracks.length, 0);
   const music = divisions.find((d) => d.id === 'music');
-  const dzsPlatforms = dzs.platforms.map((p) => `<li><a class="btn btn-small" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.label)}</a></li>`).join('');
   return (
     head({ title: 'Müzik | Aedilis Media', description: god.desc, canonicalPath: 'muzik/', depth, ogImage: 'assets/img/og/muzik.jpg' }) +
     `
@@ -443,15 +443,15 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
         <p class="universe-tag">${esc(dzs.tagline)}</p>
         <p>${esc(dzs.intro)}</p>
         <p class="universe-stats">${esc(statLine(dzsList))} · ${dzsTracks} parça</p>
-        <p class="universe-actions"><a class="btn btn-small" href="#dzs">Diskografi</a><a class="text-link" href="${url(dzs.slug + '/')}">Proje sayfası</a></p>
+        <p class="universe-actions"><a class="btn btn-small stretch" href="${url(dzs.slug + '/')}">${esc(dzs.shortName)} evrenine gir</a></p>
       </li>
-      <li class="universe">
+      <li class="universe universe-dn">
         <img class="universe-logo" src="${esc(url(dn.logo))}" alt="" width="96" height="96" loading="lazy" decoding="async">
         <h3>${esc(dn.name)}</h3>
         <p class="universe-tag">${esc(dn.tagline)} <span class="status-badge">${esc(dn.status.label)}</span></p>
         <p>${esc(dn.intro)}</p>
-        <p class="universe-stats">${esc(statLine(dnList))}</p>
-        <p class="universe-actions"><a class="btn btn-small" href="#dn">Diskografi</a><a class="text-link" href="${url(dn.post)}">Sahneyi oku</a></p>
+        <p class="universe-stats">${esc(statLine(dnList))} · ${dnTracks} parça</p>
+        <p class="universe-actions"><a class="btn btn-small stretch" href="${url(dn.slug + '/')}">Karanlığa gir</a></p>
       </li>
     </ul>
 
@@ -462,61 +462,118 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
         <h3 class="featured-title"${latest.lang ? ` lang="${latest.lang}"` : ''}>${esc(latest.title)}</h3>
         <p class="featured-meta">${esc(latest.artist)}. ${esc(latest.type)}, ${esc(formatDate(latest.date))}. ${latest.tracks.length} parça.${latest.note ? ' ' + esc(latest.note) : ''}</p>
         <ul class="platform-links" aria-label="${esc(latest.title)} dinleme bağlantıları">${platformLinks(latest)}</ul>
+        <p class="featured-more"><a class="text-link" href="${url('muzik/' + latest.slug + '/')}">Yayın sayfası</a></p>
       </div>
     </article>
   </div>
 </section>
+</main>
+` +
+    footer(depth)
+  );
+}
 
-<section class="section section-alt" id="dzs" aria-labelledby="h-dzs">
-  <div class="wrap">
-    <header class="proj-head">
-      <img class="proj-logo proj-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
-      <div>
-        <h2 id="h-dzs" class="proj-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h2>
-        <p class="proj-tag">${esc(dzs.tagline)}<span aria-hidden="true"> · </span>${esc(dzs.secondary)}</p>
-        <p class="proj-text">${esc(dzsShort(dzs.story[0]))}</p>
-        <p class="proj-note">${esc(dzsShort(dzs.ai))}</p>
-      </div>
-    </header>
-    ${factList(dzs.facts)}
-    <ul class="platform-links proj-platforms" aria-label="${esc(dzs.shortName)} platformları">${dzsPlatforms}</ul>
+const EMBERS = Array.from({ length: 16 }, (_, i) => {
+  const left = (i * 37 + 11) % 100;
+  const size = 2 + (i % 4);
+  const dur = 9 + ((i * 5) % 9);
+  const delay = -((i * 7) % 14);
+  const drift = ((i % 5) - 2) * 18;
+  return `<span style="left:${left}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s;--drift:${drift}px"></span>`;
+}).join('');
+const THORN = `<div class="dn-rule" aria-hidden="true"><svg viewBox="0 0 64 80" width="26" height="32"><path d="M32 2v76M18 58h28" stroke="currentColor" stroke-width="5" stroke-linecap="square" fill="none"/></svg></div>`;
 
-    <h3 class="rgroup-title">Diskografi <span>${dzsList.length} yayın, ${dzsTracks} parça</span></h3>
-    <ul class="rgrid">${lockedCard(url)}${dzsList.map((r) => releaseCard(r, url)).join('')}</ul>
-        <p class="section-more"><a class="text-link" href="${url(dzs.slug + '/')}">Hikâye, kimlik ve ayrıntılar için proje sayfası</a></p>
+function dnPage() {
+  const depth = 1;
+  const url = makeUrl(depth);
+  const list = releases.filter((r) => r.project === 'dn');
+  const tracks = list.reduce((n, r) => n + r.tracks.length, 0);
+  const origin = site.url.replace(/\/?$/, '/');
+  const platforms = dn.platforms.map((p) => `<li><a class="btn btn-small" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.label)}</a></li>`).join('');
+  return (
+    head({
+      title: `${dn.name} | Aedilis Media`,
+      description: `${dn.name}: ${dn.tagline}. ${dn.intro}`,
+      canonicalPath: `${dn.slug}/`,
+      depth,
+      ogImage: 'assets/img/og/dn.jpg',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'MusicGroup',
+        name: dn.name,
+        url: `${origin}${dn.slug}/`,
+        description: dn.intro,
+        sameAs: dn.platforms.map((p) => p.href),
+      },
+    }) +
+    `
+<body class="theme-dn">
+${header(depth)}
+<main id="icerik" tabindex="-1">
+<section class="hero hero-dn">
+  <div class="embers" aria-hidden="true">${EMBERS}</div>
+  <svg class="dn-star" viewBox="-100 -100 200 200" aria-hidden="true" focusable="false"><circle r="92" fill="none" stroke="currentColor" stroke-width="1.2"/><circle r="84" fill="none" stroke="currentColor" stroke-width="0.5"/><path d="M0-90 52.9 72.8-85.6-27.8H85.6L-52.9 72.8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="miter"/></svg>
+  <div class="wrap dn-hero-inner">
+    <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
+    <img class="dn-sigil" src="${esc(url(dn.logo))}" alt="" width="640" height="640" fetchpriority="high">
+    <h1 class="page-title dn-title">${esc(dn.name)}</h1>
+    <p class="dn-tag">${esc(dn.tagline)} <span class="status-badge">${esc(dn.status.label)}</span></p>
+    <p class="lead dn-lead">${esc(dn.intro)}</p>
+    <blockquote class="dn-motto" lang="la"><p>${esc(dn.motto)}</p><footer>${esc(dn.mottoTr)}</footer></blockquote>
+    <p class="dn-actions"><a class="btn btn-primary" href="#diskografi">Diskografiye in</a><a class="btn" href="${esc(dn.channel)}" target="_blank" rel="noopener">YouTube Music</a></p>
   </div>
 </section>
+${THORN}
 
-<section class="section" id="dn" aria-labelledby="h-dn">
+<section class="section dn-section" aria-labelledby="h-hikaye">
+  <div class="wrap prose-grid">
+    <h2 id="h-hikaye" class="section-title">Hikâye</h2>
+    <div class="prose">
+      ${dn.about.map((t) => `<p>${esc(t)}</p>`).join('\n      ')}
+      <p class="dn-status">${esc(dn.status.text)}</p>
+    </div>
+  </div>
+  <div class="wrap">${factList(dn.facts)}</div>
+</section>
+${THORN}
+
+<section class="section dn-section" aria-labelledby="h-kadro">
   <div class="wrap">
-    <header class="proj-head">
-      <img class="proj-logo" src="${esc(url(dn.logo))}" alt="" width="120" height="120" loading="lazy" decoding="async">
-      <div>
-        <h2 id="h-dn" class="proj-title">${esc(dn.name)}</h2>
-        <p class="proj-tag">${esc(dn.tagline)} <span class="status-badge">${esc(dn.status.label)}</span></p>
-        ${dn.about.map((t) => `<p class="proj-text">${esc(t)}</p>`).join('\n        ')}
-        <p class="proj-note">${esc(dn.status.text)}</p>
-        <blockquote class="proj-quote" lang="la"><p>${esc(dn.motto)}</p><footer>${esc(dn.mottoTr)}</footer></blockquote>
-      </div>
-    </header>
-    ${factList(dn.facts)}
-    <ul class="platform-links proj-platforms" aria-label="${esc(dn.name)} platformları"><li><a class="btn btn-small" href="${esc(dn.channel)}" target="_blank" rel="noopener">YouTube Music</a></li></ul>
+    <h2 id="h-kadro" class="section-title">Kurgusal kadro</h2>
+    <ul class="cast">${dn.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h3>${esc(c.name)}</h3><p>${esc(c.text)}</p></li>`).join('')}</ul>
+  </div>
+</section>
+${THORN}
 
-    <h3 class="rgroup-title">Kurgusal kadro</h3>
-    <ul class="cast">${dn.cast.map((c) => `<li class="cast-item"><p class="cast-role">${esc(c.role)}</p><h4>${esc(c.name)}</h4><p>${esc(c.text)}</p></li>`).join('')}</ul>
+<section class="section dn-section" id="diskografi" aria-labelledby="h-disko">
+  <div class="wrap">
+    <h2 id="h-disko" class="section-title">Diskografi <span class="section-count">${list.length} yayın, ${tracks} parça</span></h2>
+    ${releaseGroup('Albümler', list.filter((r) => r.type === 'Albüm'), url)}
+    ${releaseGroup('EP\'ler', list.filter((r) => r.type === 'EP'), url)}
+    ${releaseGroup('Single\'lar', list.filter((r) => r.type === 'Single'), url)}
+  </div>
+</section>
+${THORN}
 
-    ${releaseGroup('Albümler', dnList.filter((r) => r.type === 'Albüm'), url)}
-    ${releaseGroup('EP\'ler', dnList.filter((r) => r.type === 'EP'), url)}
-    ${releaseGroup('Single\'lar', dnList.filter((r) => r.type === 'Single'), url)}
-
+<section class="section dn-section" aria-labelledby="h-podcast">
+  <div class="wrap">
+    <h2 id="h-podcast" class="section-title">Podcast</h2>
     <aside class="podcast">
       ${dn.podcast.logo ? `<img class="podcast-logo" src="${esc(url(dn.podcast.logo))}" alt="${esc(dn.podcast.name)} logosu" width="368" height="450" loading="lazy" decoding="async">` : ''}
       <div>
-        <p class="cast-role">Podcast</p>
-        <h4>${esc(dn.podcast.name)}</h4>
+        <h3>${esc(dn.podcast.name)}</h3>
         <p>${esc(dn.podcast.text)}</p>
       </div>
     </aside>
+  </div>
+</section>
+${THORN}
+
+<section class="section dn-section" aria-labelledby="h-dinle">
+  <div class="wrap">
+    <h2 id="h-dinle" class="section-title">Dinle</h2>
+    <ul class="platform-links" aria-label="${esc(dn.name)} platformları">${platforms}</ul>
+    <p class="section-more"><a class="text-link" href="${url(dn.post)}">Sahnenin hikâyesini oku</a></p>
   </div>
 </section>
 </main>
@@ -798,7 +855,7 @@ function releasePage(r, list) {
   const isDzs = r.project === 'dzs';
   const proj = isDzs
     ? { name: dzs.shortName, former: dzs.formerName, href: url(dzs.slug + '/'), url: `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`, crumb: dzs.shortName }
-    : { name: dn.name, former: '', href: url('muzik/#dn'), url: `${site.url.replace(/\/?$/, '/')}muzik/#dn`, crumb: dn.name };
+    : { name: dn.name, former: '', href: url(dn.slug + '/'), url: `${site.url.replace(/\/?$/, '/')}${dn.slug}/`, crumb: dn.name };
   const dateLabel = /^\d{4}-/.test(r.date || '') ? formatDate(r.date) : String(r.date || '');
   const spotifyId = (r.links?.spotify || '').match(/album\/([A-Za-z0-9]+)/)?.[1];
   const origin = site.url.replace(/\/?$/, '/');
@@ -825,7 +882,7 @@ function releasePage(r, list) {
       },
     }) +
     `
-<body>
+<body${isDzs ? '' : ' class="theme-dn"'}>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
 <section class="section rel-page">
@@ -932,17 +989,23 @@ const FONT_FILES = [
   ['@fontsource-variable/cinzel', 'cinzel-latin-ext-wght-normal.woff2'],
   ['@fontsource-variable/montserrat', 'montserrat-latin-wght-normal.woff2'],
   ['@fontsource-variable/montserrat', 'montserrat-latin-ext-wght-normal.woff2'],
+  ['@fontsource/new-rocker', 'new-rocker-latin-400-normal.woff2'],
+  ['@fontsource/new-rocker', 'new-rocker-latin-ext-400-normal.woff2'],
 ];
 const LATIN = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
 const LATIN_EXT = 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF';
 function fontsCss() {
-  const face = (family, file, range, w) =>
-    `@font-face{font-family:'${family}';font-style:normal;font-display:swap;font-weight:${w};src:url('../fonts/${file}') format('woff2-variations');unicode-range:${range}}`;
+  const face = (family, file, range, w) => {
+    const fmt = w === '400' ? 'woff2' : 'woff2-variations';
+    return `@font-face{font-family:'${family}';font-style:normal;font-display:swap;font-weight:${w};src:url('../fonts/${file}') format('${fmt}');unicode-range:${range}}`;
+  };
   return [
     face('Cinzel', 'cinzel-latin-ext-wght-normal.woff2', LATIN_EXT, '400 900'),
     face('Cinzel', 'cinzel-latin-wght-normal.woff2', LATIN, '400 900'),
     face('Montserrat', 'montserrat-latin-ext-wght-normal.woff2', LATIN_EXT, '100 900'),
     face('Montserrat', 'montserrat-latin-wght-normal.woff2', LATIN, '100 900'),
+    face('New Rocker', 'new-rocker-latin-ext-400-normal.woff2', LATIN_EXT, '400'),
+    face('New Rocker', 'new-rocker-latin-400-normal.woff2', LATIN, '400'),
   ].join('\n');
 }
 
@@ -972,10 +1035,11 @@ async function build() {
   await write('gunluk/index.html', gunlukPage());
   await write('iletisim/index.html', iletisimPage());
   await write(`${dzs.slug}/index.html`, dzsPage());
+  await write(`${dn.slug}/index.html`, dnPage());
   // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
-  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }];
   for (const r of releases) {
     await write(`muzik/${r.slug}/index.html`, releasePage(r, releases.filter((x) => x.project === r.project)));
     pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });

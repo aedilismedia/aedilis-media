@@ -12,7 +12,10 @@
   "dependencies": {
     "@fontsource-variable/cinzel": "^5.1.0",
     "@fontsource-variable/montserrat": "^5.1.0",
+    "@fontsource/new-rocker": "^5.3.0",
     "marked": "^15.0.0"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

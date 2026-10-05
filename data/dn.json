@@ -53,5 +53,24 @@
   "status": {
     "label": "Pasif",
     "text": "Proje uzun süredir pasif; yeni yayın yapılmıyor. Mevcut yayınlar YouTube Music'te dinlenebilir."
-  }
+  },
+  "slug": "demonium-nihil",
+  "platforms": [
+    {
+      "label": "Spotify",
+      "href": "https://open.spotify.com/artist/42NzHQFIMAMkr0i8PHHQOd"
+    },
+    {
+      "label": "Apple Music",
+      "href": "https://music.apple.com/tr/artist/demonium-nihil/1762210091"
+    },
+    {
+      "label": "YouTube Music",
+      "href": "https://music.youtube.com/channel/UCw-kFfzMi7bCFa63q4fgf6Q"
+    },
+    {
+      "label": "Deezer",
+      "href": "https://www.deezer.com/tr/artist/277436791"
+    }
+  ]
 }

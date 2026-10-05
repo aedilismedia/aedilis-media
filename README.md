@@ -66,4 +66,4 @@ build.mjs        tüm HTML'i üreten tek betik
 
 ## Paylaşım önizleme görselleri
 
-`assets/img/og/` içindeki 1200x630 görseller `python3 scripts/make-og.py` ile üretilir (önce `npm run build`). Yeni bir DZS yayını eklediğinde (`cover` alanıyla) bu komutu çalıştırıp çıkan dosyayı commit et. Her DZS yayınının kendi sayfası (`/muzik/<slug>/`) otomatik oluşur.
+`assets/img/og/` içindeki 1200x630 görseller `python3 scripts/make-og.py` ile üretilir (önce `npm run build`). Yeni bir DZS yayını eklediğinde (`cover` alanıyla) bu komutu çalıştırıp çıkan dosyayı commit et. Her yayının (DZS ve Demonium Nihil) kendi sayfası (`/muzik/<slug>/`) otomatik oluşur. `/muzik/` iki projeye giden bir landing sayfasıdır; DZS `/dzs/`, Demonium Nihil `/demonium-nihil/` adresindedir. Demonium Nihil sayfaları gotik temayı (`body.theme-dn`, New Rocker yazı tipi) kullanır.

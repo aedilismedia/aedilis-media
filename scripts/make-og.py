@@ -39,6 +39,7 @@ jobs['home'] = page('<div class="c"><img src="/assets/img/aedilis-media.webp" he
 jobs['muzik'] = page('<div class="c"><img src="/assets/img/aedilis-media-music.webp" height="360"><div class="t" style="font-size:46px">Aedilis Media Music</div><div class="g">DZS · Demonium Nihil</div></div>')
 jobs['dzs'] = page(f'<div class="c"><img src="/assets/img/dzs-logo.webp" height="340"><div class="g">{dzs["tagline"]}</div><div style="font-size:24px;color:#a99f88">{dzs["secondary"]}</div></div>')
 dn = json.load(open(ROOT / 'data/dn.json'))
+jobs['dn'] = page(f'<div class="c"><img src="/{dn["logo"]}" height="340"><div class="g" style="color:#d94a4a">{dn["tagline"]}</div><div style="font-size:24px;color:#a99f88">Gotik industrial · karanlık synthwave</div></div>')
 for r in rel:
     if not r.get('cover'): continue
     logo = '/assets/img/dzs-logo.webp' if r['project'] == 'dzs' else '/' + dn['logo']
