@@ -800,8 +800,16 @@ ${SYNTH_RULE}
       <h2 id="h-sahne" class="section-title">SAHNE</h2>
       <p class="section-desc">${esc(dzs.castNote)}</p>
     </header>
-    <ul class="cast cast-lead">${dzs.cast.filter((c) => !c.image).map(castItem).join('')}</ul>
-    <ul class="cast cast-lineup">${dzs.cast.filter((c) => c.image).map(castItem).join('')}</ul>
+    <article class="cast-feature">
+      <img class="cast-feature-img" src="${esc(url(dzs.featuredCast.image))}" alt="${esc(dzs.featuredCast.alt)}" width="1100" height="825" loading="lazy" decoding="async">
+      <div class="cast-feature-body">
+        <p class="cast-role">${esc(dzs.featuredCast.role)}</p>
+        <h3 class="cast-feature-name">${esc(dzs.featuredCast.name)}</h3>
+        ${dzs.featuredCast.text.map((t) => `<p>${esc(t)}</p>`).join('')}
+        <p class="cast-tone"><span>Ton</span>${esc(dzs.featuredCast.tone)}</p>
+        <p class="cast-tone"><span>Kadraj</span>${esc(dzs.featuredCast.camera)}</p>
+      </div>
+    </article>
   </div>
 </section>
 ${SYNTH_RULE}

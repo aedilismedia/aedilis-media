@@ -107,53 +107,7 @@
       "Şöhret, ekran ve algoritma"
     ]
   },
-  "castNote": "Sahne kadrosu kurgusaldır. Bu isimler gerçek grup üyeleri, gerçek müzisyenler ya da sahne sanatçıları değildir; projenin sanal dünyasının karakterleridir. Yeni dönemde kadro, gece yarısı frekansından yayın yapan bir ekip gibi çizilir: kaset, VHS cızırtısı ve analog synth arasında.",
-  "cast": [
-    {
-      "name": "Arda Lumen",
-      "role": "Vokal, frontman",
-      "tone": "Yorgun ama pes etmeyen",
-      "camera": "Merkez, hep önde"
-    },
-    {
-      "name": "Eren Solis",
-      "role": "Lead gitar",
-      "tone": "Patlamaya hazır enerji",
-      "camera": "Arda’nın karşısında, dengeleyen",
-      "image": "assets/img/dzs/kadro/eren-solis.webp",
-      "alt": "Eren Solis sahnede Stratocaster çalıyor"
-    },
-    {
-      "name": "Selim Morvan",
-      "role": "Bas gitar",
-      "tone": "Karanlık ve mesafeli",
-      "camera": "Gölgede, arka planda",
-      "image": "assets/img/dzs/kadro/selim-morvan.webp",
-      "alt": "Selim Morvan arnavut kaldırımlı bir sokakta"
-    },
-    {
-      "name": "Baran Vural",
-      "role": "Davul",
-      "tone": "Öfke ve şiddet",
-      "camera": "Nadiren görünür",
-      "image": "assets/img/dzs/kadro/baran-vural.webp",
-      "alt": "Baran Vural davul başında"
-    },
-    {
-      "name": "Kaan İleri",
-      "role": "Synthesizer ve klavye",
-      "tone": "Nostalji ve geçmiş",
-      "camera": "Nadiren görünür",
-      "image": "assets/img/dzs/kadro/kaan-ileri.webp",
-      "alt": "Kaan İleri bir çeşmenin yanında yürüyor"
-    },
-    {
-      "name": "Lucerna",
-      "role": "Geri vokal topluluğu",
-      "tone": "Kolektif ses, kalabalığın sesi",
-      "camera": "Siluet, yüzleri seçilmeyen"
-    }
-  ],
+  "castNote": "Sahne kurgusaldır. Bu isim gerçek bir müzisyen ya da sahne sanatçısı değildir; projenin sanal dünyasının karakteridir. Yeni dönemde sahnede tek bir figür var: altın maskeli sunucu.",
   "music": {
     "lead": "Indie rock tabanı korunuyor; üzerine analog synth, kaset ve VHS dokusu ile gece gökyüzünün kozmik atmosferi ekleniyor. İlk dönem Türkçe, yeni dönem İngilizce.",
     "genres": [
@@ -241,5 +195,63 @@
     "text": "Yeni albüm yolda. Sözler İngilizce.",
     "date": "2026-10-15",
     "cover": "assets/img/dzs/kapaklar/the-last-normal-broadcast.webp"
+  },
+  "castFormer": [
+    {
+      "name": "Arda Lumen",
+      "role": "Vokal, frontman",
+      "tone": "Yorgun ama pes etmeyen",
+      "camera": "Merkez, hep önde"
+    },
+    {
+      "name": "Eren Solis",
+      "role": "Lead gitar",
+      "tone": "Patlamaya hazır enerji",
+      "camera": "Arda’nın karşısında, dengeleyen",
+      "image": "assets/img/dzs/kadro/eren-solis.webp",
+      "alt": "Eren Solis sahnede Stratocaster çalıyor"
+    },
+    {
+      "name": "Selim Morvan",
+      "role": "Bas gitar",
+      "tone": "Karanlık ve mesafeli",
+      "camera": "Gölgede, arka planda",
+      "image": "assets/img/dzs/kadro/selim-morvan.webp",
+      "alt": "Selim Morvan arnavut kaldırımlı bir sokakta"
+    },
+    {
+      "name": "Baran Vural",
+      "role": "Davul",
+      "tone": "Öfke ve şiddet",
+      "camera": "Nadiren görünür",
+      "image": "assets/img/dzs/kadro/baran-vural.webp",
+      "alt": "Baran Vural davul başında"
+    },
+    {
+      "name": "Kaan İleri",
+      "role": "Synthesizer ve klavye",
+      "tone": "Nostalji ve geçmiş",
+      "camera": "Nadiren görünür",
+      "image": "assets/img/dzs/kadro/kaan-ileri.webp",
+      "alt": "Kaan İleri bir çeşmenin yanında yürüyor"
+    },
+    {
+      "name": "Lucerna",
+      "role": "Geri vokal topluluğu",
+      "tone": "Kolektif ses, kalabalığın sesi",
+      "camera": "Siluet, yüzleri seçilmeyen"
+    }
+  ],
+  "featuredCast": {
+    "name": "Vesper Aurum",
+    "role": "Maskeli sunucu, yeni dönemin yüzü",
+    "text": [
+      "Vesper Aurum, yeni dönemin tek sahne figürü. Altın bir maskenin arkasından, gece yarısı frekansında yayına giren sessiz bir sunucu. Yüzünü gören yok; elimizdeki tek iz, bir VHS kasetine düşmüş bulanık bir kayıt.",
+      "Maskenin boynuzları yıldızlara uzanan antenler gibi durur, kulağından sarkan madalyon bir gece vardiyasının kimlik rozetini andırır. Kasetin tarih damgası 12 Haziran 2026, 23.37: normal bir akşamın son saati."
+    ],
+    "tone": "Soğukkanlı, gizemli",
+    "camera": "Yalnızca VHS kaydında görünür",
+    "image": "assets/img/dzs/kadro/vesper-aurum.webp",
+    "alt": "Altın boynuzlu bir maske takan Vesper Aurum, renkli parazitli bir VHS kaydında; köşede PLAY ve 12 Haziran 2026 tarih damgası"
   }
 }

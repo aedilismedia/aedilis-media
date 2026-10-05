@@ -851,3 +851,13 @@ body.theme-dzs {
 .theme-dzs .era { background: linear-gradient(180deg, rgba(60, 30, 140, 0.25), rgba(8, 5, 24, 0.6)); }
 .theme-dzs .era:last-child { border-color: #ff3cac; box-shadow: 0 0 1.6rem rgba(255, 60, 172, 0.15); }
 .theme-dzs .era-label { color: #2de2e6; }
+
+/* Sahne: tek figür */
+.cast-feature { display: grid; gap: clamp(1.4rem, 4vw, 2.8rem); grid-template-columns: 1fr; align-items: center; margin-top: 1.6rem; }
+@media (min-width: 52rem) { .cast-feature { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+.cast-feature-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--line); }
+.cast-feature-name { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.1rem 0 1rem; }
+.cast-feature-body p { font-size: 1rem; color: var(--stone); }
+.cast-feature-body .cast-tone { color: var(--stone-muted); font-size: 0.9rem; margin: 0.2rem 0 0; }
+.theme-dzs .cast-feature-img { border-color: #ff3cac; box-shadow: 0 0 2.4rem rgba(255, 60, 172, 0.3), 0 0 4rem rgba(45, 226, 230, 0.12); }
+@media (prefers-reduced-motion: no-preference) { .theme-dzs .cast-feature-img { animation: vhs-jitter 7s steps(1) infinite; } }
