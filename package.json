@@ -14,6 +14,7 @@
     "@fontsource-variable/montserrat": "^5.1.0",
     "@fontsource/audiowide": "^5.3.0",
     "@fontsource/new-rocker": "^5.3.0",
+    "leaflet": "^1.9.4",
     "marked": "^15.0.0"
   },
   "engines": {

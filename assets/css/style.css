@@ -883,3 +883,37 @@ body.theme-dzs {
 .tlnb [hidden] { display: none !important; }
 .tlnb-info, .tlnb-info h1, .tlnb-info p { text-align: left; }
 .tlnb-info .tlnb-logo, .tlnb-info > img { margin-bottom: 0.6rem; }
+
+/* Ondan Sonra haritası */
+.harita-cta p { margin-top: 1.4rem; }
+.harita { height: clamp(26rem, 68vh, 40rem); border: 1px solid var(--gold); background: #11100d; z-index: 0; }
+.harita .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.82) contrast(0.92) saturate(0.55) sepia(0.35); }
+.harita .leaflet-container { font-family: inherit; }
+.harita-note { margin-top: 0.9rem; font-size: 0.82rem; color: var(--stone-muted); }
+.harita-routes { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.chip-btn { font: inherit; font-size: 0.84rem; color: var(--stone); background: transparent; border: 1px solid var(--line); padding: 0.45rem 1rem; cursor: pointer; }
+.chip-btn:hover { border-color: var(--gold); }
+.chip-btn[aria-pressed='true'] { background: var(--gold); border-color: var(--gold); color: var(--obsidian); font-weight: 600; }
+.pin { background: none; border: 0; }
+.pin span { display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); border: 3px solid #0a0a0a; box-shadow: 0 0 0 2px var(--gold), 0 0 14px rgba(228, 176, 64, 0.6); transition: opacity 0.2s, transform 0.2s; }
+.pin:hover span { transform: scale(1.2); }
+.pin.dim span { opacity: 0.25; box-shadow: none; }
+.harita .leaflet-popup-content-wrapper, .harita .leaflet-popup-tip { background: #14110c; color: var(--stone); border: 1px solid var(--gold); border-radius: 0; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6); }
+.harita .leaflet-popup-content { margin: 0.9rem 1.1rem; font-size: 0.88rem; line-height: 1.45; }
+.harita .leaflet-popup-content .pop strong { font-family: var(--display); letter-spacing: 0.06em; color: var(--gold); }
+.harita .leaflet-popup-content p { margin: 0.2rem 0 0; }
+.harita .leaflet-popup-content .pop-area { color: var(--stone-muted); font-size: 0.8rem; }
+.harita .leaflet-popup-content ul { margin: 0.6rem 0 0; padding-left: 1.1rem; }
+.harita .leaflet-popup-content a { color: var(--gold); }
+.harita .leaflet-container a.leaflet-popup-close-button { color: var(--stone-muted); }
+.harita .leaflet-control-attribution { background: rgba(10, 10, 10, 0.75) !important; color: var(--stone-muted) !important; }
+.harita .leaflet-control-attribution a { color: var(--stone) !important; }
+.places { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.place { border: 1px solid var(--line); padding: 1.1rem 1.2rem; background: var(--obsidian); }
+.place-name { font: inherit; font-family: var(--display); font-size: 1.05rem; letter-spacing: 0.06em; color: var(--gold); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+.place-name:hover { color: var(--stone); }
+.place-area { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--stone-muted); }
+.place-note { margin: 0.5rem 0 0; font-size: 0.88rem; }
+.place-videos { margin: 0.7rem 0 0; padding-left: 1.1rem; font-size: 0.86rem; }
+.place-videos a { color: var(--stone); }
+.section-more .text-link + .text-link { margin-left: 1.4rem; }

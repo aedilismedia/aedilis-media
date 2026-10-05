@@ -65,6 +65,7 @@ const site = await readJSON('data/site.json');
 const divisions = await readJSON('data/divisions.json');
 const releases = (await readJSON('data/releases.json')).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 const videosData = await readJSON('data/videos.json');
+const placesData = await readJSON('data/places.json');
 const dzs = await readJSON('data/dzs.json');
 const dn = await readJSON('data/dn.json');
 // Proje adı artık DZS: metinlerde eski ad (ve ek alan hali) kısaltmayla değişir
@@ -605,8 +606,64 @@ ${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve t
   </div>
 </section>
 
+<section class="section" aria-labelledby="h-harita-link">
+  <div class="wrap harita-cta">
+    ${sectionHead('harita-link', 'Ondan Sonra Haritası', 'Videolarda gittiğimiz yerleri haritada gör: Balıkesir, Çanakkale, Babakale, Troya ve daha fazlası.')}
+    <p><a class="btn btn-primary" href="${esc(url('yapim/harita/'))}">Haritayı aç</a></p>
+  </div>
+</section>
+
 ${sectionVideolar()}
 </main>
+` +
+    footer(depth)
+  );
+}
+
+// Ondan Sonra haritası: videolarda gidilen yerler
+function haritaPage() {
+  const depth = 2;
+  const url = makeUrl(depth);
+  const god = godOf('yapim');
+  const { videos, places, routes } = placesData;
+  const vById = Object.fromEntries(videos.map((v) => [v.id, v]));
+  const watch = (id) => `https://www.youtube.com/watch?v=${id}`;
+  const payload = { places, routes: routes.map((r) => ({ ...r, title: vById[r.video].title })), videos: videos.map((v) => ({ id: v.id, title: v.title })) };
+  const placeCard = (p) => `<li class="place" data-place="${esc(p.id)}">
+    <button type="button" class="place-name" data-focus="${esc(p.id)}">${esc(p.name)}</button>
+    <p class="place-area">${esc(p.area)}</p>
+    ${p.note ? `<p class="place-note">${esc(p.note)}</p>` : ''}
+    <ul class="place-videos">${p.videos.map((id) => `<li><a href="${watch(id)}" target="_blank" rel="noopener">${esc(vById[id].title)}</a></li>`).join('')}</ul>
+  </li>`;
+  return (
+    head({ title: 'Ondan Sonra Haritası | Aedilis Media', description: 'Ondan Sonra kanalında gittiğimiz yerler, videolarıyla birlikte haritada: Balıkesir, Çanakkale, Babakale, Troya ve daha fazlası.', canonicalPath: 'yapim/harita/', depth }).replace('</head>', `<link rel="stylesheet" href="${relPrefix(depth)}assets/vendor/leaflet/leaflet.css">\n</head>`) +
+    `
+<body class="harita-page">
+${header(depth)}
+<main id="icerik" tabindex="-1">
+${pageHero(depth, god, { title: 'Ondan Sonra Haritası', lead: 'Ondan Sonra kanalında gittiğimiz yerler, videolarıyla birlikte haritada. Bir işarete dokun, o yerin videolarını aç.' })}
+
+<section class="section" aria-labelledby="h-harita">
+  <div class="wrap">
+    <h2 id="h-harita" class="sr-only">Harita</h2>
+    <div class="harita-routes" id="harita-routes" role="group" aria-label="Rota seç"></div>
+    <div id="harita" class="harita" role="region" aria-label="Ondan Sonra videolarında gidilen yerlerin haritası"></div>
+    <noscript><p class="harita-note">Harita için JavaScript gerekir. Yerlerin listesi aşağıda.</p></noscript>
+    <p class="harita-note">Konumlar yaklaşık: köy, ilçe ya da yapının bulunduğu bölgeyi gösterir. Rota çizgileri durakların sırasını gösterir, gerçek yolu değil.</p>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="h-duraklar">
+  <div class="wrap">
+    ${sectionHead('duraklar', 'Duraklar', `${places.length} yer, ${videos.length} video.`)}
+    <ul class="places">${places.map(placeCard).join('')}</ul>
+    <p class="section-more"><a class="text-link" href="${esc(url('yapim/'))}">Yapım sayfasına dön</a> <a class="text-link" href="${esc(videosData.channel.url)}" target="_blank" rel="noopener">Ondan Sonra YouTube kanalı</a></p>
+  </div>
+</section>
+</main>
+<script type="application/json" id="harita-data">${JSON.stringify(payload).replace(/</g, '\\u003c')}</script>
+<script src="${relPrefix(depth)}assets/vendor/leaflet/leaflet.js" defer></script>
+<script src="${relPrefix(depth)}assets/js/harita.js" defer></script>
 ` +
     footer(depth)
   );
@@ -1116,6 +1173,9 @@ async function build() {
   for (const [pkg, file] of FONT_FILES) {
     await cp(path.join(ROOT, 'node_modules', pkg, 'files', file), path.join(DIST, 'assets/fonts', file));
   }
+  await cp(path.join(ROOT, 'node_modules/leaflet/dist/leaflet.css'), path.join(DIST, 'assets/vendor/leaflet/leaflet.css'));
+  await cp(path.join(ROOT, 'node_modules/leaflet/dist/leaflet.js'), path.join(DIST, 'assets/vendor/leaflet/leaflet.js'));
+  await cp(path.join(ROOT, 'node_modules/leaflet/dist/images'), path.join(DIST, 'assets/vendor/leaflet/images'), { recursive: true });
   await writeFile(path.join(DIST, 'assets/css/fonts.css'), fontsCss());
   await writeFile(path.join(DIST, '.nojekyll'), '');
 
@@ -1128,6 +1188,7 @@ async function build() {
   await write('index.html', await hubPage());
   await write('muzik/index.html', muzikPage());
   await write('yapim/index.html', yapimPage());
+  await write('yapim/harita/index.html', haritaPage());
   await write('gunluk/index.html', gunlukPage());
   await write('iletisim/index.html', iletisimPage());
   await write(`${dzs.slug}/index.html`, dzsPage());
@@ -1137,7 +1198,7 @@ async function build() {
   // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
-  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
   for (const r of releases) {
     await write(`muzik/${r.slug}/index.html`, releasePage(r, releases.filter((x) => x.project === r.project)));
     pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });

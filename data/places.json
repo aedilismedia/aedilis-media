@@ -1,0 +1,287 @@
+{
+  "updated": "2026-10-05",
+  "note": "Konumlar yaklaşık: köy, ilçe veya yapının bulunduğu bölgeye işaret eder.",
+  "videos": [
+    {
+      "id": "26nUOu0kl1E",
+      "title": "Batılı anlamda ilk motovlog denemesi!",
+      "date": "2026-04-27",
+      "kind": "video"
+    },
+    {
+      "id": "lkHaHaoh1rc",
+      "title": "İlk konuşmalı motovlog",
+      "kind": "video"
+    },
+    {
+      "id": "yxWwQc6uWU0",
+      "title": "İşten çıkıp mangala kaçtım",
+      "kind": "video"
+    },
+    {
+      "id": "osI2Vt8DJIw",
+      "title": "Yemyeşil manzaraya karşı sürüş",
+      "kind": "short"
+    },
+    {
+      "id": "CnAnuYgXO-U",
+      "title": "Kim bu Erkan Avcı",
+      "kind": "short"
+    },
+    {
+      "id": "g9vR14ZpBkA",
+      "title": "Bir tost için şehir değiştirdik!",
+      "kind": "short"
+    },
+    {
+      "id": "_tppyQ1ynyc",
+      "title": "Bir tost için şehir değiştirdik (gerçek vlog)",
+      "kind": "short"
+    },
+    {
+      "id": "vh1YeiqNeVQ",
+      "title": "Babakale'ye giderken Koca Seyit'in torunuyla tanıştık!",
+      "date": "2026-07-08",
+      "kind": "video"
+    },
+    {
+      "id": "fVkYbxoWw8I",
+      "title": "Seyit Onbaşı'nı bir de torunundan dinleyin",
+      "date": "2026-07-10",
+      "kind": "short"
+    },
+    {
+      "id": "Y7rWWmae5vc",
+      "title": "Kimsenin bilmediği Gelin Deresi efsanesi",
+      "date": "2026-07-15",
+      "kind": "short"
+    },
+    {
+      "id": "XnSkdE0V04s",
+      "title": "Babakale'ye gelene sertifika veriyorlar!",
+      "date": "2026-07-18",
+      "kind": "short"
+    },
+    {
+      "id": "yYTnbXHAHQk",
+      "title": "2700 yıllık antik kente gittim! | TroasRoute #1",
+      "date": "2026-07-22",
+      "kind": "video"
+    },
+    {
+      "id": "CIuQoNfi-w4",
+      "title": "Kuş Cenneti Milli Parkı",
+      "date": "2026-07-28",
+      "kind": "short"
+    },
+    {
+      "id": "AsjLriBmEjs",
+      "title": "Truva Savaşı'nın izinde 390 hektarlık şehir! | TroasRoute #2",
+      "date": "2026-08-06",
+      "kind": "video"
+    },
+    {
+      "id": "FjD8p-9sDso",
+      "title": "Bir kralın karısını kaçırırsan ne olur?",
+      "date": "2026-08-07",
+      "kind": "short"
+    },
+    {
+      "id": "UoQfkhi8L90",
+      "title": "Çanakkale'de unutulmuş 250 yıllık köşk! | Cezayirli Hasan Paşa Köşkü",
+      "date": "2026-08-17",
+      "kind": "short"
+    }
+  ],
+  "places": [
+    {
+      "id": "balikesir",
+      "name": "Balıkesir",
+      "area": "Balıkesir",
+      "lat": 39.6484,
+      "lng": 27.8826,
+      "videos": [
+        "26nUOu0kl1E",
+        "lkHaHaoh1rc",
+        "yxWwQc6uWU0",
+        "osI2Vt8DJIw",
+        "CnAnuYgXO-U"
+      ],
+      "note": "Motovlogların çıkış noktası."
+    },
+    {
+      "id": "ayvalik",
+      "name": "Ayvalık",
+      "area": "Balıkesir",
+      "lat": 39.3181,
+      "lng": 26.6917,
+      "videos": [
+        "g9vR14ZpBkA",
+        "_tppyQ1ynyc"
+      ]
+    },
+    {
+      "id": "susurluk",
+      "name": "Susurluk",
+      "area": "Balıkesir",
+      "lat": 39.9184,
+      "lng": 28.1532,
+      "videos": [
+        "yYTnbXHAHQk"
+      ],
+      "note": "TroasRoute #1 rotasının ilk durağı."
+    },
+    {
+      "id": "kus-cenneti",
+      "name": "Kuş Cenneti Milli Parkı",
+      "area": "Manyas, Balıkesir",
+      "lat": 40.2294,
+      "lng": 28.0542,
+      "videos": [
+        "CIuQoNfi-w4",
+        "yYTnbXHAHQk"
+      ]
+    },
+    {
+      "id": "parion",
+      "name": "Parion Antik Kenti",
+      "area": "Biga, Çanakkale",
+      "lat": 40.4237,
+      "lng": 27.0725,
+      "videos": [
+        "yYTnbXHAHQk"
+      ],
+      "note": "Yaklaşık 2.700 yıllık eski liman kenti."
+    },
+    {
+      "id": "canakkale",
+      "name": "Çanakkale",
+      "area": "Çanakkale",
+      "lat": 40.1553,
+      "lng": 26.4142,
+      "videos": [
+        "yYTnbXHAHQk"
+      ],
+      "note": "TroasRoute #1 rotasının varış noktası."
+    },
+    {
+      "id": "gelin-deresi",
+      "name": "Gelin Deresi (Havran Barajı)",
+      "area": "Havran, Balıkesir",
+      "lat": 39.5745,
+      "lng": 27.1713,
+      "videos": [
+        "Y7rWWmae5vc",
+        "vh1YeiqNeVQ"
+      ]
+    },
+    {
+      "id": "koca-seyit",
+      "name": "Koca Seyit Anıt Mezarı",
+      "area": "Havran, Balıkesir",
+      "lat": 39.6139,
+      "lng": 27.1856,
+      "videos": [
+        "fVkYbxoWw8I",
+        "vh1YeiqNeVQ"
+      ]
+    },
+    {
+      "id": "akcay",
+      "name": "Akçay",
+      "area": "Edremit, Balıkesir",
+      "lat": 39.5837,
+      "lng": 26.9231,
+      "videos": [
+        "vh1YeiqNeVQ"
+      ]
+    },
+    {
+      "id": "kucukkuyu",
+      "name": "Küçükkuyu",
+      "area": "Ayvacık, Çanakkale",
+      "lat": 39.5465,
+      "lng": 26.6045,
+      "videos": [
+        "vh1YeiqNeVQ"
+      ],
+      "note": "Gözleme molası."
+    },
+    {
+      "id": "babakale",
+      "name": "Babakale",
+      "area": "Ayvacık, Çanakkale",
+      "lat": 39.4798,
+      "lng": 26.0649,
+      "videos": [
+        "vh1YeiqNeVQ",
+        "XnSkdE0V04s"
+      ],
+      "note": "Asya kıtasının en batı ucu sertifikası."
+    },
+    {
+      "id": "hasan-pasa-kosku",
+      "name": "Cezayirli Hasan Paşa Köşkü",
+      "area": "Ezine, Çanakkale",
+      "lat": 39.881,
+      "lng": 26.2093,
+      "videos": [
+        "UoQfkhi8L90",
+        "AsjLriBmEjs"
+      ],
+      "note": "Troya Tarihi Milli Park sınırları içinde."
+    },
+    {
+      "id": "alexandria-troas",
+      "name": "Alexandria Troas Antik Kenti",
+      "area": "Ezine, Çanakkale",
+      "lat": 39.7519,
+      "lng": 26.1583,
+      "videos": [
+        "AsjLriBmEjs"
+      ],
+      "note": "390 hektarlık alanı ve 8 km’lik surlarıyla Anadolu’nun en büyük antik kentlerinden biri."
+    },
+    {
+      "id": "troya",
+      "name": "Troya Antik Kenti",
+      "area": "Çanakkale",
+      "lat": 39.9574,
+      "lng": 26.238,
+      "videos": [
+        "FjD8p-9sDso"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "video": "vh1YeiqNeVQ",
+      "label": "Balıkesir'den Babakale'ye",
+      "stops": [
+        "gelin-deresi",
+        "koca-seyit",
+        "akcay",
+        "kucukkuyu",
+        "babakale"
+      ]
+    },
+    {
+      "video": "yYTnbXHAHQk",
+      "label": "TroasRoute #1: Balıkesir'den Çanakkale'ye",
+      "stops": [
+        "susurluk",
+        "kus-cenneti",
+        "parion",
+        "canakkale"
+      ]
+    },
+    {
+      "video": "AsjLriBmEjs",
+      "label": "TroasRoute #2: Ezine",
+      "stops": [
+        "hasan-pasa-kosku",
+        "alexandria-troas"
+      ]
+    }
+  ]
+}
