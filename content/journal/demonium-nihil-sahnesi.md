@@ -22,7 +22,7 @@ Evrenin merkezinde iki kurgusal figür durur.
 
 **Lilith Astra**, ritüelistik vokallerin sahibi. Platin sarı saçları ve siyah göz makyajıyla Princeps Lucius'a düetlerde eşlik eder. İkisi, *Aeternus Amor* single'ında ve *Hell Is A Stage* albümünde feat. kredisiyle de yer alır.
 
-Her ikisi de kurgusal karakterlerdir. Demonium Nihil gerçek bir müzik grubu değil, yapay zekâ destekli bir sanal müzik projesidir.
+Her ikisi de kurgusal karakterlerdir. Demonium Nihil gerçek bir müzik grubu değil, yapay zeka destekli bir sanal müzik projesidir.
 
 ## Yayınlar
 

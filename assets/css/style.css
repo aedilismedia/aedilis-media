@@ -593,7 +593,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .locked-date { font-size: 0.95rem; letter-spacing: 0.08em; color: var(--stone); }
 .locked-count { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-muted); }
 
-/* Şarkı hikâyeleri */
+/* Şarkı hikayeleri */
 .rel-tracks li { align-items: flex-start; }
 .rel-tracks li::before { padding-top: 0.15rem; }
 .track-story, .track-plain { flex: 1; min-width: 0; }

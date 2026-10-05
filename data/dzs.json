@@ -3,19 +3,19 @@
   "name": "Dördüncü Zamdan Sonra",
   "short": "DZS",
   "tagline": "Sonrası Biziz",
-  "secondary": "Şehir. Ses. Hikâye.",
+  "secondary": "Şehir. Ses. Hikaye.",
   "logo": "assets/img/dzs-logo.webp",
   "intro": "Modern şehir yaşamını, içsel çatışmaları ve gündelik hayatın görünmeyen kırılma anlarını Türkçe alternatif müzikle anlatan, Aedilis Media bünyesindeki bağımsız sanal müzik projesi.",
   "story": [
     "DZS, modern şehir yaşamının insan üzerinde bıraktığı izleri, içsel çatışmaları, kırılgan ilişkileri ve gündelik hayatın çoğu zaman gözden kaçan anlarını Türkçe alternatif müzik aracılığıyla anlatan bağımsız bir müzik projesidir.",
     "Alternatif rock, indie rock, pop-rock ve elektronik dokulardan beslenen proje; samimi söz yazımını güçlü melodiler, karanlık atmosferler ve yer yer ironik bir anlatımla bir araya getirir.",
     "Projenin anlatı dünyasında gece hayatı, yalnızlık, yabancılaşma, geçmişle hesaplaşma, şehir yorgunluğu, gençlik, kaçış ve yeniden başlama isteği önemli bir yer tutar.",
-    "Şarkılar, yalnızca kişisel duyguları aktarmakla kalmaz; modern insanın iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ruh hâline de odaklanır. Bu nedenle DZS'nin müziği, bireysel hikâyeler ile ortak şehir deneyimleri arasında bir bağ kurmayı amaçlar.",
-    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya oluşturan proje; müzik, kapak tasarımı, video ve dijital hikâye anlatımını bütüncül bir yaratıcı kimlik altında değerlendirir.",
-    "DZS, dinleyiciye yalnızca bir şarkı değil, atmosferi ve hikâyesi olan eksiksiz bir deneyim sunmayı hedefler.",
+    "Şarkılar, yalnızca kişisel duyguları aktarmakla kalmaz; modern insanın iş hayatı, ilişkiler, ekonomik baskılar ve toplumsal beklentiler arasında sıkışan ruh haline de odaklanır. Bu nedenle DZS'nin müziği, bireysel hikayeler ile ortak şehir deneyimleri arasında bir bağ kurmayı amaçlar.",
+    "Her çalışmada kendine özgü bir görsel ve anlatısal dünya oluşturan proje; müzik, kapak tasarımı, video ve dijital hikaye anlatımını bütüncül bir yaratıcı kimlik altında değerlendirir.",
+    "DZS, dinleyiciye yalnızca bir şarkı değil, atmosferi ve hikayesi olan eksiksiz bir deneyim sunmayı hedefler.",
     "Aedilis Media bünyesinde geliştirilen DZS, bağımsız üretim anlayışını koruyarak Türkçe alternatif müzik sahnesinde özgün, tanınabilir ve kalıcı bir anlatı dili oluşturmayı amaçlamaktadır."
   ],
-  "ai": "DZS yapay zekâ destekli bir sanal müzik projesidir. Yapay zekâ üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
+  "ai": "DZS yapay zeka destekli bir sanal müzik projesidir. Yapay zeka üretim sürecinin bir aracıdır; projenin yaratıcı yönünü, temalarını, şarkı dünyasını ve marka kararlarını Erkan Avcı belirler.",
   "facts": [
     {
       "label": "Kurucu",
@@ -27,7 +27,7 @@
     },
     {
       "label": "Proje türü",
-      "value": "Yapay zekâ destekli sanal müzik projesi"
+      "value": "Yapay zeka destekli sanal müzik projesi"
     },
     {
       "label": "Tür",
@@ -73,11 +73,11 @@
   "formerName": "Dördüncü Zamdan Sonra",
   "roles": "Erkan Avcı: kurucu, yapımcı, söz yazarı ve direktör.",
   "identity": {
-    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikâye.” DZS iki dönem olarak okunur: Türkçe şehir hikâyeleri ve yeni dönemin analog synth dokulu, İngilizce yayını.",
+    "lead": "Ana slogan “Sonrası Biziz”. İkincil slogan “Şehir. Ses. Hikaye.” DZS iki dönem olarak okunur: Türkçe şehir hikayeleri ve yeni dönemin analog synth dokulu, İngilizce yayını.",
     "eras": [
       {
         "label": "Birinci dönem",
-        "title": "Türkçe şehir hikâyeleri",
+        "title": "Türkçe şehir hikayeleri",
         "text": "Şehir yorgunluğu, gece yolculukları, kırık ilişkiler ve sessiz isyan; indie rock ve post-punk zemininde, yer yer synth dokularıyla."
       },
       {
@@ -93,7 +93,7 @@
       "80’ler esintili retro atmosfer",
       "Şehirli melankoli",
       "Sessiz başkaldırı",
-      "İnsan duygusu ile yapay zekâ destekli üretimin birleşimi"
+      "İnsan duygusu ile yapay zeka destekli üretimin birleşimi"
     ],
     "themes": [
       "Gece hayatı",

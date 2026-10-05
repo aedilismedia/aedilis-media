@@ -67,7 +67,7 @@ const releases = (await readJSON('data/releases.json')).sort((a, b) => (b.date |
 const videosData = await readJSON('data/videos.json');
 const dzs = await readJSON('data/dzs.json');
 const dn = await readJSON('data/dn.json');
-// Proje adı artık DZS: metinlerde eski ad (ve ek alan hâli) kısaltmayla değişir
+// Proje adı artık DZS: metinlerde eski ad (ve ek alan hali) kısaltmayla değişir
 const dzsShort = (t) => t.replace(/Dördüncü Zamdan Sonra'nın/g, `${dzs.shortName}'nin`).replace(/Dördüncü Zamdan Sonra/g, dzs.shortName);
 const hub = await readJSON('data/hub.json');
 const basePath = site.basePath || '/';
@@ -336,7 +336,7 @@ function sectionHead(id, title, desc) {
 function sectionVideolar() {
   return `<section class="section section-alt" id="videolar" aria-labelledby="h-videolar">
   <div class="wrap">
-    ${sectionHead('videolar', 'VİDEOLAR', `${videosData.channel.name} kanalında yayınlanan en güncel videolar, yol hikâyeleri ve kısa içerikler.`)}
+    ${sectionHead('videolar', 'VİDEOLAR', `${videosData.channel.name} kanalında yayınlanan en güncel videolar, yol hikayeleri ve kısa içerikler.`)}
     <ul class="video-grid">${videosData.items.slice(0, 3).map(videoCard).join('')}</ul>
     <p class="section-more"><a class="text-link" href="${esc(videosData.channel.url)}" target="_blank" rel="noopener">Tüm videolar için YouTube kanalı</a></p>
   </div>
@@ -376,7 +376,7 @@ async function hubPage() {
     .join('\n    ');
   return (
     head({
-      title: 'Aedilis Media: müzik, yol ve hikâye',
+      title: 'Aedilis Media: müzik, yol ve hikaye',
       description: site.description,
       canonicalPath: './',
       depth,
@@ -433,7 +433,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
       <img class="music-intro-logo" src="${esc(url(music.logo))}" alt="${esc(music.logoAlt)}" width="360" height="360" loading="lazy" decoding="async">
       <div>
         <h3>${esc(music.name)}</h3>
-        <p>${esc(music.summary)} Her projenin kendi sesi, kendi görsel dünyası ve kendi hikâyesi var.</p>
+        <p>${esc(music.summary)} Her projenin kendi sesi, kendi görsel dünyası ve kendi hikayesi var.</p>
       </div>
     </div>
 
@@ -528,7 +528,7 @@ ${THORN}
 
 <section class="section dn-section" aria-labelledby="h-hikaye">
   <div class="wrap prose-grid">
-    <h2 id="h-hikaye" class="section-title">Hikâye</h2>
+    <h2 id="h-hikaye" class="section-title">Hikaye</h2>
     <div class="prose">
       ${dn.about.map((t) => `<p>${esc(t)}</p>`).join('\n      ')}
       <p class="dn-status">${esc(dn.status.text)}</p>
@@ -574,7 +574,7 @@ ${THORN}
   <div class="wrap">
     <h2 id="h-dinle" class="section-title">Dinle</h2>
     <ul class="platform-links" aria-label="${esc(dn.name)} platformları">${platforms}</ul>
-    <p class="section-more"><a class="text-link" href="${url(dn.post)}">Sahnenin hikâyesini oku</a></p>
+    <p class="section-more"><a class="text-link" href="${url(dn.post)}">Sahnenin hikayesini oku</a></p>
   </div>
 </section>
 </main>
@@ -595,7 +595,7 @@ function yapimPage() {
 <body>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve tarih hikâyelerini sinematik videolara dönüştüren yapım bölümü.' })}
+${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve tarih hikayelerini sinematik videolara dönüştüren yapım bölümü.' })}
 
 <section class="section" id="bolumler" aria-labelledby="h-bolum-yapim">
   <div class="wrap">
@@ -622,7 +622,7 @@ function gunlukPage() {
 <body>
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-${pageHero(depth, god, { title: 'Günlük', lead: 'Şarkıların, yolların ve üretim süreçlerinin arkasındaki hikâyeler.' })}
+${pageHero(depth, god, { title: 'Günlük', lead: 'Şarkıların, yolların ve üretim süreçlerinin arkasındaki hikayeler.' })}
 <section class="section" id="yazilar" aria-labelledby="h-gunluk">
   <div class="wrap">
     ${sectionHead('gunluk', 'YAZILAR', '')}
@@ -738,7 +738,6 @@ ${header(depth)}
   <div class="wrap tlnb-grid">
     <img class="tlnb-cover" src="${esc(url(u.cover))}" alt="${esc(u.title)} albüm kapağı" width="720" height="720" fetchpriority="high">
     <div class="tlnb-info" lang="en">
-      <img class="tlnb-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)}" width="1000" height="588">
       <p class="dzs-tag tlnb-state"><span data-before>Yakında</span><span data-after hidden>Yayında</span></p>
       <h1 class="page-title tlnb-title">${esc(u.title)}</h1>
       <p class="tlnb-meta" lang="tr">${esc(u.type)} · ${u.tracks} parça · ${esc(formatDate(u.date))} · Sözler İngilizce</p>
@@ -818,7 +817,7 @@ ${SYNTH_RULE}
 
 <section class="section" aria-labelledby="h-hikaye">
   <div class="wrap prose-grid">
-    <h2 id="h-hikaye" class="section-title">HİKÂYE</h2>
+    <h2 id="h-hikaye" class="section-title">HİKAYE</h2>
     <div class="prose">
       ${dzs.story.map((p) => `<p>${esc(dn0(p))}</p>`).join('')}
       <p class="note">${esc(dn0(dzs.ai))}</p>
@@ -996,11 +995,11 @@ ${header(depth)}
 
     <div class="rel-cols">
       <div>
-        <h2 class="chips-title">Parça listesi${r.tracks.some((t) => t[2]) ? ' ve hikâyeler' : ''}</h2>
+        <h2 class="chips-title">Parça listesi${r.tracks.some((t) => t[2]) ? ' ve hikayeler' : ''}</h2>
         <ol class="rel-tracks">${r.tracks.map((t) => t[2]
           ? `<li><details class="track-story"${r.tracks.length === 1 ? ' open' : ''}><summary><span>${esc(t[0])}</span><time>${esc(t[1])}</time></summary><p>${esc(t[2])}</p></details></li>`
           : `<li><div class="track-plain"><span>${esc(t[0])}</span><time>${esc(t[1])}</time></div></li>`).join('')}</ol>
-        ${r.tracks.some((t) => t[2]) ? '<p class="story-note">Hikâyeler, şarkı sözlerinden yola çıkılarak yazılmış kısa anlatılardır. Bir parçaya tıklayarak hikâyesini okuyabilirsin.</p>' : ''}
+        ${r.tracks.some((t) => t[2]) ? '<p class="story-note">Hikayeler, şarkı sözlerinden yola çıkılarak yazılmış kısa anlatılardır. Bir parçaya tıklayarak hikayesini okuyabilirsin.</p>' : ''}
       </div>
       ${spotifyId ? `<div>
         <h2 class="chips-title">Önizleme</h2>

@@ -2,19 +2,19 @@
   {
     "id": "yapim",
     "name": "Aedilis Media Yapım",
-    "summary": "Yolculuk, kültür, lezzet ve tarih hikâyelerini sinematik videolara dönüştüren yapım bölümü.",
+    "summary": "Yolculuk, kültür, lezzet ve tarih hikayelerini sinematik videolara dönüştüren yapım bölümü.",
     "logo": "assets/img/aedilis-media-yapim.webp",
     "logoAlt": "Aedilis Media Yapım logosu: taçlı Zeus büstü, meander çerçeve ve defne dalı",
     "parent": {
       "name": "Ondan Sonra",
-      "text": "Yol biter, hikâye ondan sonra başlar. Türkiye'nin unutulmuş rotalarını, yerel kültürünü ve sessiz kalmış hikâyelerini motosikletle ve sinematik bir anlatımla belgeleyen proje.",
+      "text": "Yol biter, hikaye ondan sonra başlar. Türkiye'nin unutulmuş rotalarını, yerel kültürünü ve sessiz kalmış hikayelerini motosikletle ve sinematik bir anlatımla belgeleyen proje.",
       "href": "https://www.youtube.com/@oondansonraa",
       "hrefLabel": "YouTube kanalı"
     },
     "projects": [
       {
         "name": "Aedilis Rides",
-        "text": "Motor üstünde biriken yol hikâyeleri, şehir rotaları, sürüş notları ve motovlog içerikleri.",
+        "text": "Motor üstünde biriken yol hikayeleri, şehir rotaları, sürüş notları ve motovlog içerikleri.",
         "logo": "assets/img/aedilis-rides.webp",
         "href": "yapim/#videolar",
         "hrefLabel": "Videolara git"
@@ -57,7 +57,7 @@
     "projects": [
       {
         "name": "DZS",
-        "text": "Şehirli melankoli, gündelik hikâyeler ve alternatif Türkçe müziğin samimi enerjisi. Yapay zekâ destekli bağımsız bir sanal müzik projesi.",
+        "text": "Şehirli melankoli, gündelik hikayeler ve alternatif Türkçe müziğin samimi enerjisi. Yapay zeka destekli bağımsız bir sanal müzik projesi.",
         "logo": "assets/img/dzs-logo.webp",
         "href": "dzs/",
         "hrefLabel": "Proje sayfası"

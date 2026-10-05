@@ -5,7 +5,7 @@
   "lang": "tr",
   "locale": "tr_TR",
   "motto": "Geçmişten ilham, geleceğe etki.",
-  "description": "Aedilis Media; şarkıları, yolları ve hikâyeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı. Müzik projeleri, yol vlogları ve içerik serileri.",
+  "description": "Aedilis Media; şarkıları, yolları ve hikayeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı. Müzik projeleri, yol vlogları ve içerik serileri.",
   "logo": "assets/img/site-icon.webp",
   "footer": "© 2026 Aedilis Media™",
   "nav": [
@@ -28,7 +28,7 @@
     }
   ],
   "hero": {
-    "lead": "Şarkıları, yolları ve hikâyeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı.",
+    "lead": "Şarkıları, yolları ve hikayeleri tek bir yaratıcı evrende buluşturan bağımsız bir medya çatısı.",
     "actions": [
       {
         "label": "Bölümleri gör",
@@ -48,7 +48,7 @@
     }
   },
   "manifesto": {
-    "text": "Aedilis Media; müzik, yol, lezzet ve hikâye anlatımını tek bir bağımsız yaratıcı evrende buluşturur. Her proje, bu evrenin kendine özgü bir sahnesidir.",
+    "text": "Aedilis Media; müzik, yol, lezzet ve hikaye anlatımını tek bir bağımsız yaratıcı evrende buluşturur. Her proje, bu evrenin kendine özgü bir sahnesidir.",
     "pillars": [
       {
         "title": "Miras",
@@ -60,7 +60,7 @@
       },
       {
         "title": "Anlatı",
-        "text": "Her marka, proje ve yolculuğun bir hikâyesi var. Biz onları görünür ve unutulmaz kılarız."
+        "text": "Her marka, proje ve yolculuğun bir hikayesi var. Biz onları görünür ve unutulmaz kılarız."
       },
       {
         "title": "Karakter",
@@ -69,7 +69,7 @@
     ]
   },
   "contact": {
-    "heading": "Birlikte hikâye üretelim",
+    "heading": "Birlikte hikaye üretelim",
     "text": "Aedilis Media; müzik, video, yolculuk, lezzet ve alternatif kültür odaklı bağımsız projeler üretir. Marka iş birlikleri, sponsor görüşmeleri, medya talepleri ve yaratıcı projeler için bize yazabilirsiniz.",
     "email": "ondansonra@aedilismedia.com",
     "formEndpoint": "",
