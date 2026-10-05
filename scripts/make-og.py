@@ -38,10 +38,13 @@ jobs = {}
 jobs['home'] = page('<div class="c"><img src="/assets/img/aedilis-media.webp" height="360"><div class="t" style="font-size:46px">Aedilis Media</div><div class="g">Geçmişten ilham, geleceğe etki</div></div>')
 jobs['muzik'] = page('<div class="c"><img src="/assets/img/aedilis-media-music.webp" height="360"><div class="t" style="font-size:46px">Aedilis Media Music</div><div class="g">DZS · Demonium Nihil</div></div>')
 jobs['dzs'] = page(f'<div class="c"><img src="/assets/img/dzs-logo.webp" height="340"><div class="g">{dzs["tagline"]}</div><div style="font-size:24px;color:#a99f88">{dzs["secondary"]}</div></div>')
+dn = json.load(open(ROOT / 'data/dn.json'))
 for r in rel:
-    if r['project'] != 'dzs' or not r.get('cover'): continue
-    kind = f'{r["type"]} · {fmt(r["date"])}'
-    jobs[r['slug']] = page(f'<div class="rel"><img class="cv" src="/{r["cover"]}"><div class="tx"><img class="lg" src="/assets/img/dzs-logo.webp"><h1 class="{'long' if len(r['title'])>14 else ''}">{r["title"]}</h1><p>{kind} · {len(r["tracks"])} parça</p></div></div>')
+    if not r.get('cover'): continue
+    logo = '/assets/img/dzs-logo.webp' if r['project'] == 'dzs' else '/' + dn['logo']
+    when = fmt(r['date']) if len(r['date']) > 4 else r['date']
+    kind = f'{r["type"]} · {when}'
+    jobs[r['slug']] = page(f'<div class="rel"><img class="cv" src="/{r["cover"]}"><div class="tx"><img class="lg" src="{logo}"><h1 class="{'long' if len(r['title'])>14 else ''}">{r["title"]}</h1><p>{kind} · {len(r["tracks"])} parça</p></div></div>')
 
 srv = subprocess.Popen(['python3', '-m', 'http.server', '4181', '-d', str(DIST)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 time.sleep(1.2)

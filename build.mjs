@@ -185,11 +185,10 @@ function totalLabel(tracks) {
   const m = Math.floor(sec / 60), s = sec % 60;
   return s ? `${m} dk ${String(s).padStart(2, '0')} sn` : `${m} dk`;
 }
-const hasPage = (r) => r.project === 'dzs';
 function listenButton(r, url) {
   const links = Object.fromEntries(PLATFORMS.filter(([k]) => r.links?.[k]).map(([k, label]) => [label, r.links[k]]));
   const first = Object.values(links)[0] || '#';
-  return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'${url && hasPage(r) ? ` data-page="${esc(url('muzik/' + r.slug + '/'))}"` : ''}>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
+  return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'${url ? ` data-page="${esc(url('muzik/' + r.slug + '/'))}"` : ''}>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
 const lockedCard = (url) => `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-ghost" aria-hidden="true">
@@ -511,9 +510,12 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     ${releaseGroup('Single\'lar', dnList.filter((r) => r.type === 'Single'), url)}
 
     <aside class="podcast">
-      <p class="cast-role">Podcast</p>
-      <h4>${esc(dn.podcast.name)}</h4>
-      <p>${esc(dn.podcast.text)}</p>
+      ${dn.podcast.logo ? `<img class="podcast-logo" src="${esc(url(dn.podcast.logo))}" alt="${esc(dn.podcast.name)} logosu" width="368" height="450" loading="lazy" decoding="async">` : ''}
+      <div>
+        <p class="cast-role">Podcast</p>
+        <h4>${esc(dn.podcast.name)}</h4>
+        <p>${esc(dn.podcast.text)}</p>
+      </div>
     </aside>
   </div>
 </section>
@@ -793,13 +795,18 @@ function releasePage(r, list) {
   const i = list.indexOf(r);
   const newer = list[i - 1];
   const older = list[i + 1];
+  const isDzs = r.project === 'dzs';
+  const proj = isDzs
+    ? { name: dzs.shortName, former: dzs.formerName, href: url(dzs.slug + '/'), url: `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`, crumb: dzs.shortName }
+    : { name: dn.name, former: '', href: url('muzik/#dn'), url: `${site.url.replace(/\/?$/, '/')}muzik/#dn`, crumb: dn.name };
+  const dateLabel = /^\d{4}-/.test(r.date || '') ? formatDate(r.date) : String(r.date || '');
   const spotifyId = (r.links?.spotify || '').match(/album\/([A-Za-z0-9]+)/)?.[1];
   const origin = site.url.replace(/\/?$/, '/');
   const nav = (x, label) => x ? `<a class="rel-nav-link" href="${esc(url('muzik/' + x.slug + '/'))}"><span>${label}</span>${esc(x.title)}</a>` : '<span></span>';
   return (
     head({
-      title: `${r.title} | ${dzs.shortName} | Aedilis Media`,
-      description: `${dzs.shortName}: ${r.title}. ${r.type}, ${formatDate(r.date)}, ${r.tracks.length} parça.${r.note ? ' ' + r.note : ''}`,
+      title: `${r.title} | ${proj.name} | Aedilis Media`,
+      description: `${proj.name}: ${r.title}. ${r.type}, ${dateLabel}, ${r.tracks.length} parça.${r.note ? ' ' + r.note : ''}`,
       canonicalPath: `muzik/${r.slug}/`,
       depth,
       ogImage: `assets/img/og/${r.slug}.jpg`,
@@ -811,7 +818,7 @@ function releasePage(r, list) {
         image: absUrl(r.cover),
         datePublished: r.date,
         albumReleaseType: `https://schema.org/${releaseKind[r.type] || 'AlbumRelease'}`,
-        byArtist: { '@type': 'MusicGroup', name: dzs.shortName, alternateName: dzs.formerName, url: `${origin}${dzs.slug}/` },
+        byArtist: { '@type': 'MusicGroup', name: proj.name, ...(proj.former ? { alternateName: proj.former } : {}), url: proj.url },
         numTracks: r.tracks.length,
         track: r.tracks.map((t, n) => ({ '@type': 'MusicRecording', position: n + 1, name: t[0], duration: isoDur(t[1]) })),
         sameAs: PLATFORMS.filter(([k]) => r.links?.[k]).map(([k]) => r.links[k]),
@@ -823,14 +830,14 @@ ${header(depth)}
 <main id="icerik" tabindex="-1">
 <section class="section rel-page">
   <div class="wrap">
-    <p class="crumbs"><a href="${url('muzik/')}">Müzik</a> <span aria-hidden="true">/</span> <a href="${url(dzs.slug + '/')}">${esc(dzs.shortName)}</a></p>
+    <p class="crumbs"><a href="${url('muzik/')}">Müzik</a> <span aria-hidden="true">/</span> <a href="${proj.href}">${esc(proj.crumb)}</a></p>
     <div class="rel-grid">
       <img class="rel-cover" src="${esc(url(r.cover))}" alt="${esc(r.title)} kapağı" width="720" height="720" fetchpriority="high">
       <div class="rel-info">
         <p class="tag">${esc(r.type)}</p>
         <h1 class="rel-title">${esc(r.title)}</h1>
-        <p class="rel-artist">${esc(dzs.shortName)} <span class="former">(${esc(dzs.formerName)})</span></p>
-        <p class="rel-meta">${esc(formatDate(r.date))} · ${r.tracks.length} parça</p>
+        <p class="rel-artist">${esc(proj.name)}${proj.former ? ` <span class="former">(${esc(proj.former)})</span>` : ''}</p>
+        <p class="rel-meta">${esc(dateLabel)} · ${r.tracks.length} parça</p>
         ${r.note ? `<p class="rel-note">${esc(r.note)}</p>` : ''}
         <h2 class="chips-title">Dinle</h2>
         <ul class="platform-links">${platformLinks(r)}</ul>
@@ -969,9 +976,8 @@ async function build() {
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
   const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }];
-  const dzsReleases = releases.filter((r) => hasPage(r));
-  for (const r of dzsReleases) {
-    await write(`muzik/${r.slug}/index.html`, releasePage(r, dzsReleases));
+  for (const r of releases) {
+    await write(`muzik/${r.slug}/index.html`, releasePage(r, releases.filter((x) => x.project === r.project)));
     pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });
   }
   for (const p of journal.filter((x) => x.body)) {

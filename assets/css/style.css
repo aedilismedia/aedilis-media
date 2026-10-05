@@ -470,7 +470,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cast-item h4, .podcast h4 { font-size: 1.15rem; margin: 0.1rem 0 0.5rem; }
 .cast-item p:last-child, .podcast p:last-child { margin: 0; font-size: 0.92rem; color: var(--stone-muted); }
 .cast-role { margin: 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-.podcast { margin-top: clamp(2.4rem, 5vw, 3.4rem); max-width: 46rem; }
+.podcast { margin-top: clamp(2.4rem, 5vw, 3.4rem); max-width: 46rem; display: flex; align-items: center; gap: 1.4rem; }
+.podcast-logo { flex: none; width: clamp(6.5rem, 22vw, 9rem); height: auto; mix-blend-mode: lighten; }
+@media (max-width: 30rem) { .podcast { flex-direction: column; align-items: flex-start; } }
 
 .former { font-family: var(--text); font-size: 0.62em; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--stone-muted); white-space: nowrap; }
 .proj-title .former { font-size: 0.4em; letter-spacing: 0.04em; }
