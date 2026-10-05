@@ -590,3 +590,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @keyframes vhs-blink { 0%, 80% { opacity: 1; } 81%, 100% { opacity: 0.35; } }
 .locked-date { font-size: 0.95rem; letter-spacing: 0.08em; color: var(--stone); }
 .locked-count { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-muted); }
+
+/* Şarkı hikâyeleri */
+.rel-tracks li { align-items: flex-start; }
+.rel-tracks li::before { padding-top: 0.15rem; }
+.track-story, .track-plain { flex: 1; min-width: 0; }
+.track-story summary, .track-plain { display: flex; gap: 0.9rem; align-items: baseline; }
+.track-story summary { cursor: pointer; list-style: none; }
+.track-story summary::-webkit-details-marker { display: none; }
+.track-story summary span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.track-story summary::after { content: '+'; color: var(--gold); font-size: 1.1rem; line-height: 1; order: 3; width: 1rem; text-align: center; }
+.track-story[open] summary::after { content: '–'; }
+.track-story summary:hover span { color: var(--gold); }
+.track-story p { margin: 0.7rem 0 0.4rem; padding-left: 0.9rem; border-left: 2px solid var(--gold); color: var(--stone-muted); font-size: 0.93rem; line-height: 1.65; max-width: 62ch; }
+.track-story summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.story-note { margin: 1rem 0 0; font-size: 0.8rem; color: var(--stone-muted); }

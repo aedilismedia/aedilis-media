@@ -839,8 +839,11 @@ ${header(depth)}
 
     <div class="rel-cols">
       <div>
-        <h2 class="chips-title">Parça listesi</h2>
-        <ol class="rel-tracks">${r.tracks.map((t) => `<li><span>${esc(t[0])}</span><time>${esc(t[1])}</time></li>`).join('')}</ol>
+        <h2 class="chips-title">Parça listesi${r.tracks.some((t) => t[2]) ? ' ve hikâyeler' : ''}</h2>
+        <ol class="rel-tracks">${r.tracks.map((t) => t[2]
+          ? `<li><details class="track-story"${r.tracks.length === 1 ? ' open' : ''}><summary><span>${esc(t[0])}</span><time>${esc(t[1])}</time></summary><p>${esc(t[2])}</p></details></li>`
+          : `<li><div class="track-plain"><span>${esc(t[0])}</span><time>${esc(t[1])}</time></div></li>`).join('')}</ol>
+        ${r.tracks.some((t) => t[2]) ? '<p class="story-note">Hikâyeler, şarkı sözlerinden yola çıkılarak yazılmış kısa anlatılardır. Bir parçaya tıklayarak hikâyesini okuyabilirsin.</p>' : ''}
       </div>
       ${spotifyId ? `<div>
         <h2 class="chips-title">Önizleme</h2>
