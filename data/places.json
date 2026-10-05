@@ -165,6 +165,62 @@
       "note": "TroasRoute #1 rotasının varış noktası."
     },
     {
+      "id": "kumkale-seyir-terasi",
+      "name": "Kumkale Seyir Terası",
+      "area": "Kumkale, Çanakkale",
+      "lat": 39.9816,
+      "lng": 26.237,
+      "videos": [
+        "AsjLriBmEjs"
+      ],
+      "note": "Boğaz girişine bakan seyir terası. İşaret Kumkale köyünü gösterir."
+    },
+    {
+      "id": "hasan-pasa-kosku",
+      "name": "Cezayirli Hasan Paşa Köşkü",
+      "area": "Ezine, Çanakkale",
+      "lat": 39.9217,
+      "lng": 26.1979,
+      "videos": [
+        "UoQfkhi8L90",
+        "AsjLriBmEjs"
+      ],
+      "note": "Troya Tarihi Milli Park sınırları içinde."
+    },
+    {
+      "id": "asil-hektor-heykelleri",
+      "name": "Aşil ve Hektor Heykelleri",
+      "area": "Ezine, Çanakkale (köy girişi; konum doğrulanmadı)",
+      "lat": 39.881,
+      "lng": 26.2093,
+      "videos": [
+        "AsjLriBmEjs",
+        "FjD8p-9sDso"
+      ],
+      "note": "Köy girişindeki Aşil ve Hektor heykelleri. Videoda köyün adı net anlaşılmıyor, işaret yaklaşıktır."
+    },
+    {
+      "id": "alexandria-troas",
+      "name": "Alexandria Troas Antik Kenti",
+      "area": "Ezine, Çanakkale",
+      "lat": 39.7519,
+      "lng": 26.1583,
+      "videos": [
+        "AsjLriBmEjs"
+      ],
+      "note": "390 hektarlık alanı ve 8 km’lik surlarıyla Anadolu’nun en büyük antik kentlerinden biri."
+    },
+    {
+      "id": "ayvacik-atena-heykeli",
+      "name": "Ayvacık Atena Heykeli",
+      "area": "Ayvacık, Çanakkale",
+      "lat": 39.6012,
+      "lng": 26.4031,
+      "videos": [
+        "AsjLriBmEjs"
+      ]
+    },
+    {
       "id": "gelin-deresi",
       "name": "Gelin Deresi (Havran Barajı)",
       "area": "Havran, Balıkesir",
@@ -203,9 +259,21 @@
       "lat": 39.5465,
       "lng": 26.6045,
       "videos": [
+        "vh1YeiqNeVQ",
+        "AsjLriBmEjs"
+      ],
+      "note": "Gözleme ve kahve molası, Assos ve Troya tünellerinin çıkışı."
+    },
+    {
+      "id": "behramkale",
+      "name": "Behramkale (Assos)",
+      "area": "Ayvacık, Çanakkale",
+      "lat": 39.492,
+      "lng": 26.3369,
+      "videos": [
         "vh1YeiqNeVQ"
       ],
-      "note": "Gözleme molası."
+      "note": "Antik Assos'un üzerinde kurulu taş köy."
     },
     {
       "id": "babakale",
@@ -218,39 +286,6 @@
         "XnSkdE0V04s"
       ],
       "note": "Asya kıtasının en batı ucu sertifikası."
-    },
-    {
-      "id": "hasan-pasa-kosku",
-      "name": "Cezayirli Hasan Paşa Köşkü",
-      "area": "Ezine, Çanakkale",
-      "lat": 39.881,
-      "lng": 26.2093,
-      "videos": [
-        "UoQfkhi8L90",
-        "AsjLriBmEjs"
-      ],
-      "note": "Troya Tarihi Milli Park sınırları içinde."
-    },
-    {
-      "id": "alexandria-troas",
-      "name": "Alexandria Troas Antik Kenti",
-      "area": "Ezine, Çanakkale",
-      "lat": 39.7519,
-      "lng": 26.1583,
-      "videos": [
-        "AsjLriBmEjs"
-      ],
-      "note": "390 hektarlık alanı ve 8 km’lik surlarıyla Anadolu’nun en büyük antik kentlerinden biri."
-    },
-    {
-      "id": "troya",
-      "name": "Troya Antik Kenti",
-      "area": "Çanakkale",
-      "lat": 39.9574,
-      "lng": 26.238,
-      "videos": [
-        "FjD8p-9sDso"
-      ]
     }
   ],
   "routes": [
@@ -262,6 +297,7 @@
         "koca-seyit",
         "akcay",
         "kucukkuyu",
+        "behramkale",
         "babakale"
       ]
     },
@@ -277,10 +313,14 @@
     },
     {
       "video": "AsjLriBmEjs",
-      "label": "TroasRoute #2: Ezine",
+      "label": "TroasRoute #2: Kumkale'den Küçükkuyu'ya",
       "stops": [
+        "kumkale-seyir-terasi",
         "hasan-pasa-kosku",
-        "alexandria-troas"
+        "asil-hektor-heykelleri",
+        "alexandria-troas",
+        "ayvacik-atena-heykeli",
+        "kucukkuyu"
       ]
     }
   ]

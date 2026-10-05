@@ -34,6 +34,14 @@
       n.textContent = p.note;
       box.appendChild(n);
     }
+    if (p.article) {
+      var r = document.createElement('p');
+      var ra = document.createElement('a');
+      ra.href = p.article;
+      ra.textContent = 'Yazıyı oku';
+      r.appendChild(ra);
+      box.appendChild(r);
+    }
     var ul = document.createElement('ul');
     p.videos.forEach(function (id) {
       var li = document.createElement('li');
@@ -64,11 +72,13 @@
     });
   }
   function showAll() {
+    map.closePopup();
     if (line) { map.removeLayer(line); line = null; }
     setActive(null);
     map.fitBounds(all, { padding: [30, 30] });
   }
   function showRoute(r) {
+    map.closePopup();
     if (line) map.removeLayer(line);
     var pts = r.stops.map(function (id) { return [byId[id].lat, byId[id].lng]; });
     line = L.polyline(pts, { color: '#e4b040', weight: 3, opacity: 0.9, dashArray: '8 8' }).addTo(map);
@@ -95,6 +105,14 @@
   data.routes.forEach(function (r) { chip(r.label, function () { showRoute(r); }); });
   first.setAttribute('aria-pressed', 'true');
   showAll();
+
+  try {
+    var want = new URLSearchParams(location.search).get('yer');
+    if (want && byId[want]) {
+      map.setView([byId[want].lat, byId[want].lng], 11);
+      markers[want].openPopup();
+    }
+  } catch (e) {}
 
   document.querySelectorAll('[data-focus]').forEach(function (btn) {
     btn.addEventListener('click', function () {

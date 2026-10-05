@@ -71,3 +71,7 @@ build.mjs        tüm HTML'i üreten tek betik
 ## Ondan Sonra haritası (`/yapim/harita/`)
 
 Videolarda gidilen yerler `data/places.json` içinde tutulur (`videos`, `places`, `routes`). Yeni bir yer ya da video eklemek için bu dosyaya satır eklemek yeterlidir; harita ve liste derlemede kendiliğinden güncellenir. Konumlar yaklaşıktır. Harita Leaflet (npm) ve OpenStreetMap karolarıyla çalışır; `assets/js/harita.js` yalnızca bu sayfada yüklenir.
+
+### Ondan Sonra durak yazıları
+
+Her durağın yazısı `content/duraklar/<slug>.md` dosyasındadır. Frontmatter alanları: `title`, `place` (`data/places.json` içindeki yer kimliği), `video` (YouTube kimliği), `t` (videoda başlangıç saniyesi), `order`, `excerpt`. Yazılar `yapim/harita/<slug>/` adresine üretilir; haritadaki açılır pencerede ve "Duraklar" listesinde "Yazıyı oku" bağlantısı görünür. Yeni durak eklemek için önce `data/places.json`'a yer, sonra `content/duraklar/`a yazı ekle. Yazı akışı: videonun altyazısı -> anlatılan bilgilerin düzenlenmesi -> kaynaklı araştırmayla zenginleştirme -> doğrulanamayanların ayrıca belirtilmesi.

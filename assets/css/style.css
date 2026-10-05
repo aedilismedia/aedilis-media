@@ -917,3 +917,15 @@ body.theme-dzs {
 .place-videos { margin: 0.7rem 0 0; padding-left: 1.1rem; font-size: 0.86rem; }
 .place-videos a { color: var(--stone); }
 .section-more .text-link + .text-link { margin-left: 1.4rem; }
+
+/* Ondan Sonra durak yazıları */
+.durak .durak-lead { max-width: var(--measure); color: var(--stone-muted); font-size: 1.15rem; margin: 0 0 1.4rem; }
+.durak .durak-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.6rem; margin: 0 0 0.8rem; }
+.durak .durak-video { color: var(--stone-muted); font-size: 0.9rem; margin: 0 0 2rem; }
+.durak .prose ul { padding-left: 1.2rem; }
+.durak .prose li { margin-bottom: 0.4rem; }
+.durak .durak-note { max-width: var(--measure); margin-top: 2.4rem; padding: 1rem 1.2rem; border-left: 2px solid var(--gold); background: var(--charcoal); font-size: 0.92rem; color: var(--stone-muted); }
+.durak .durak-note a { color: var(--gold); }
+.durak .durak-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 1.6rem; margin-top: 2rem; }
+.place-read { margin: 0.4rem 0 0; }
+.harita .pop p a { color: var(--gold); }

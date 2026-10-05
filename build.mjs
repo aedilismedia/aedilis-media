@@ -91,6 +91,23 @@ async function loadJournal() {
 }
 const journal = await loadJournal();
 
+// Ondan Sonra durak yazıları: content/duraklar/*.md (frontmatter: title, place, video, t, order, excerpt)
+async function loadDuraklar() {
+  const dir = path.join(ROOT, 'content/duraklar');
+  if (!existsSync(dir)) return [];
+  const out = [];
+  for (const f of (await readdir(dir)).filter((x) => x.endsWith('.md'))) {
+    const { meta, body } = parseFrontmatter(await readFile(path.join(dir, f), 'utf8'));
+    if (meta.draft === true) continue;
+    let html = await marked.parse(body);
+    html = html.replace(/<a href="(https?:[^"]+)"/g, '<a href="$1" target="_blank" rel="noopener"');
+    out.push({ slug: meta.slug || f.replace(/\.md$/, ''), ...meta, html });
+  }
+  return out.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+}
+const duraklar = await loadDuraklar();
+const durakByPlace = Object.fromEntries(duraklar.map((d) => [d.place, d]));
+
 // ---------- parçalar ----------
 const PLATFORMS = [
   ['spotify', 'Spotify'],
@@ -628,11 +645,12 @@ function haritaPage() {
   const { videos, places, routes } = placesData;
   const vById = Object.fromEntries(videos.map((v) => [v.id, v]));
   const watch = (id) => `https://www.youtube.com/watch?v=${id}`;
-  const payload = { places, routes: routes.map((r) => ({ ...r, title: vById[r.video].title })), videos: videos.map((v) => ({ id: v.id, title: v.title })) };
+  const payload = { places: places.map((p) => ({ ...p, article: durakByPlace[p.id] ? `${durakByPlace[p.id].slug}/` : undefined })), routes: routes.map((r) => ({ ...r, title: vById[r.video].title })), videos: videos.map((v) => ({ id: v.id, title: v.title })) };
   const placeCard = (p) => `<li class="place" data-place="${esc(p.id)}">
     <button type="button" class="place-name" data-focus="${esc(p.id)}">${esc(p.name)}</button>
     <p class="place-area">${esc(p.area)}</p>
     ${p.note ? `<p class="place-note">${esc(p.note)}</p>` : ''}
+    ${durakByPlace[p.id] ? `<p class="place-read"><a class="text-link" href="${esc(durakByPlace[p.id].slug)}/">Yazıyı oku</a></p>` : ''}
     <ul class="place-videos">${p.videos.map((id) => `<li><a href="${watch(id)}" target="_blank" rel="noopener">${esc(vById[id].title)}</a></li>`).join('')}</ul>
   </li>`;
   return (
@@ -655,7 +673,7 @@ ${pageHero(depth, god, { title: 'Ondan Sonra Haritası', lead: 'Ondan Sonra kana
 
 <section class="section section-alt" aria-labelledby="h-duraklar">
   <div class="wrap">
-    ${sectionHead('duraklar', 'Duraklar', `${places.length} yer, ${videos.length} video.`)}
+    ${sectionHead('duraklar', 'Duraklar', `${places.length} yer, ${videos.length} video, ${duraklar.length} yazı.`)}
     <ul class="places">${places.map(placeCard).join('')}</ul>
     <p class="section-more"><a class="text-link" href="${esc(url('yapim/'))}">Yapım sayfasına dön</a> <a class="text-link" href="${esc(videosData.channel.url)}" target="_blank" rel="noopener">Ondan Sonra YouTube kanalı</a></p>
   </div>
@@ -664,6 +682,42 @@ ${pageHero(depth, god, { title: 'Ondan Sonra Haritası', lead: 'Ondan Sonra kana
 <script type="application/json" id="harita-data">${JSON.stringify(payload).replace(/</g, '\\u003c')}</script>
 <script src="${relPrefix(depth)}assets/vendor/leaflet/leaflet.js" defer></script>
 <script src="${relPrefix(depth)}assets/js/harita.js" defer></script>
+` +
+    footer(depth)
+  );
+}
+
+// Ondan Sonra durak yazısı: yapim/harita/<slug>/
+function durakPage(a, i) {
+  const depth = 3;
+  const url = makeUrl(depth);
+  const place = placesData.places.find((p) => p.id === a.place);
+  const video = placesData.videos.find((v) => v.id === a.video);
+  const t = Number(a.t) || 0;
+  const stamp = `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+  const ytUrl = `https://www.youtube.com/watch?v=${a.video}${t ? `&t=${t}s` : ''}`;
+  const prev = duraklar[i - 1];
+  const next = duraklar[i + 1];
+  const nav = [prev ? `<a class="text-link" href="${esc(url(`yapim/harita/${prev.slug}/`))}">&larr; ${esc(prev.title)}</a>` : '', next ? `<a class="text-link" href="${esc(url(`yapim/harita/${next.slug}/`))}">${esc(next.title)} &rarr;</a>` : ''].filter(Boolean).join('');
+  return (
+    head({ title: `${a.title} | Ondan Sonra | Aedilis Media`, description: a.excerpt || site.description, canonicalPath: `yapim/harita/${a.slug}/`, depth }) +
+    `
+<body>
+${header(depth)}
+<main id="icerik" tabindex="-1">
+<article class="post wrap durak">
+  <p class="crumbs"><a href="${url('yapim/')}">Yapım</a> / <a href="${url('yapim/harita/')}">Ondan Sonra Haritası</a></p>
+  <h1 class="page-title post-title">${esc(a.title)}</h1>
+  <p class="post-meta">${esc(place ? place.area : '')}</p>
+  ${a.excerpt ? `<p class="lead durak-lead">${esc(a.excerpt)}</p>` : ''}
+  <p class="durak-actions"><a class="btn btn-primary" href="${esc(ytUrl)}" target="_blank" rel="noopener">Videoda izle (${esc(stamp)})</a> <a class="text-link" href="${esc(url('yapim/harita/'))}?yer=${esc(a.place)}">Haritada göster</a></p>
+  ${video ? `<p class="durak-video">Video: ${esc(video.title)}</p>` : ''}
+  <div class="prose">${a.html}</div>
+  <p class="durak-note">Bu yazı, videodaki anlatımın kısa bir derlemesine araştırılıp doğrulanabilen bilgileri ekler. Videoda söylenip kaynaklarla teyit edilemeyen bilgiler ayrıca belirtilir. Bir hata görürsen <a href="${esc(url('iletisim/'))}">iletişim sayfasından</a> yaz.</p>
+  ${nav ? `<p class="durak-nav">${nav}</p>` : ''}
+  <p class="section-more"><a class="text-link" href="${esc(url('yapim/harita/'))}">Haritaya dön</a></p>
+</article>
+</main>
 ` +
     footer(depth)
   );
@@ -1199,6 +1253,10 @@ async function build() {
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
   const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
+  for (const [i, a] of duraklar.entries()) {
+    await write(`yapim/harita/${a.slug}/index.html`, durakPage(a, i));
+    pages.push({ loc: `yapim/harita/${a.slug}/`, pri: '0.6' });
+  }
   for (const r of releases) {
     await write(`muzik/${r.slug}/index.html`, releasePage(r, releases.filter((x) => x.project === r.project)));
     pages.push({ loc: `muzik/${r.slug}/`, pri: '0.7' });
