@@ -955,3 +955,6 @@ body.theme-dzs {
 .archive[open] summary::after { content: '\2212'; }
 .archive summary:focus-visible { outline: 2px solid #2de2e6; outline-offset: 2px; }
 .archive p { margin: 0; padding: 0 1.2rem 1rem; font-size: 0.95rem; color: var(--stone-muted); }
+
+/* Metin bloklari iki yana yaslı */
+.prose p, .prose li, .section-desc, .cast-feature-body p:not(.cast-role):not(.cast-tone), .era p, .archive p, .universe > p:not(.universe-tag):not(.universe-stats):not(.universe-actions), .track-story p, .rel-note, .durak-lead, .durak-note, .harita-note, .place-note { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }

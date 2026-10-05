@@ -85,7 +85,6 @@
     "positioningText": "Sanal müzik projesi; Türkçe ve İngilizce, ağırlık İngilizce. Darkwave, new wave dream pop ve alternatif electro-pop; kaset paraziti ve analog synth dokusu. İnsan duygusu ile dijital üretimin birleşimi.",
     "themesText": "Anlatı dünyasında analog nostalji (gece radyosu, kaset, VHS), geçici şöhret ve algoritma, komplo tavşan delikleri, kayıp ve bekleyiş, masalsı hüzün, neşeli kabullenme ve yıldızlar yer alıyor."
   },
-  "castNote": "Sahne kurgusaldır. Bu isim gerçek bir müzisyen ya da sahne sanatçısı değildir; projenin sanal dünyasının karakteridir. Static Era’da sahnede tek bir figür var: altın maskeli sunucu.",
   "music": {
     "lead": "Static Era darkwave, new wave dream pop ve alternatif electro-pop ile açılıyor. Dil ağırlıklı İngilizce; Türkçe şarkılar da sürüyor.",
     "genres": [
@@ -188,18 +187,15 @@
   ],
   "featuredCast": {
     "name": "Vesper Aurum",
-    "role": "Maskeli sunucu, yeni dönemin yüzü",
+    "role": "Kurgusal karakter · maskeli sunucu",
     "text": [
-      "Vesper Aurum, yeni dönemin tek sahne figürü. Altın bir maskenin arkasından, gece yarısı frekansında yayına giren sessiz bir sunucu. Yüzünü gören yok; elimizdeki tek iz, bir VHS kasetine düşmüş bulanık bir kayıt.",
-      "Maskenin boynuzları yıldızlara uzanan antenler gibi durur, kulağından sarkan madalyon bir gece vardiyasının kimlik rozetini andırır. Kasetin tarih damgası 12 Haziran 2026, 23.37: normal bir akşamın son saati.",
-      "Vesper söyler: yayının sesi onun sesidir. Bu ses, eski dönemin vokali Arda Lumen’in sesi; bu kez İngilizce. Bazen tek başına, bazen Lucerna’nın koro gibi katmanlanan sesiyle.",
-      "Eski kadro Static Era’da görünmüyor. 12 Haziran 2026, 23.37’de son normal yayın kesildiğinde sahneden değil sinyalden düştüler: yayın eski kanalın dar bandına sığmayacak kadar genişledi, onlardan geriye yayının arkasındaki cızırtı, kaset hışırtısı ve VHS paraziti kaldı. Yayını, vardiyada kalan tek sunucu Vesper Aurum açık tutuyor."
+      "Gece yarısı frekansında bir ses açılır. Sonra bir ışık, sonra altın bir maske. Kimse yüzünü görmedi; elimizde yalnızca bir VHS kasetine düşmüş, bulanık bir kayıt var.",
+      "Maskenin boynuzları yıldızlara uzanan antenler gibi durur. Kulağından sarkan madalyon, bir gece vardiyasının kimlik rozetini andırır. Kasetin köşesinde tarih damgası yanıp söner: 12 Haziran 2026, 23.37. Normal bir akşamın son saati.",
+      "O saatten sonra yayın bir daha eskisi gibi olmadı. Sinyal öyle genişledi ki eski kanalın dar bandında kalanlar cızırtıya karıştı; yayının arkasında hala bir hışırtı, bir bas uğultusu, kısık bir ses duyulur. Vardiyada tek bir sunucu kaldı. Yayını o açık tutuyor. Şarkıyı da o söylüyor, ama sesi bir yerlerden tanıdık."
     ],
     "tone": "Soğukkanlı, gizemli",
-    "camera": "Her yerde görünebilir; ana çerçevesi VHS kaydı",
     "image": "assets/img/dzs/kadro/vesper-aurum.webp",
-    "alt": "Altın boynuzlu bir maske takan Vesper Aurum, renkli parazitli bir VHS kaydında; köşede PLAY ve 12 Haziran 2026 tarih damgası",
-    "voice": "Vesper söyler, sesi Arda Lumen’in sesidir"
+    "alt": "Altın boynuzlu bir maske takan Vesper Aurum, renkli parazitli bir VHS kaydında; köşede PLAY ve 12 Haziran 2026 tarih damgası"
   },
   "taglineTr": "Sinyal genişledi.",
   "secondaryTr": "Sinyal. Parazit. Hikaye.",

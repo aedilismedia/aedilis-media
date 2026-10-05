@@ -990,7 +990,6 @@ ${SYNTH_RULE}
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-sahne" class="section-title">SAHNE</h2>
-      <p class="section-desc">${esc(dzs.castNote)}</p>
     </header>
     <article class="cast-feature">
       <img class="cast-feature-img" src="${esc(url(dzs.featuredCast.image))}" alt="${esc(dzs.featuredCast.alt)}" width="1100" height="825" loading="lazy" decoding="async">
@@ -999,8 +998,6 @@ ${SYNTH_RULE}
         <h3 class="cast-feature-name">${esc(dzs.featuredCast.name)}</h3>
         ${dzs.featuredCast.text.map((t) => `<p>${esc(t)}</p>`).join('')}
         <p class="cast-tone"><span>Ton</span>${esc(dzs.featuredCast.tone)}</p>
-        <p class="cast-tone"><span>Kadraj</span>${esc(dzs.featuredCast.camera)}</p>
-        <p class="cast-tone"><span>Ses</span>${esc(dzs.featuredCast.voice)}</p>
       </div>
     </article>
   </div>
