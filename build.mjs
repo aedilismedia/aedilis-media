@@ -437,7 +437,7 @@ ${pageHero(depth, god, { title: 'Müzik', lead: 'Aedilis Media Music çatısı a
     </div>
 
     <ul class="universes">
-      <li class="universe">
+      <li class="universe universe-dzs">
         <img class="universe-logo universe-logo-wide" src="${esc(url(dzs.logo))}" alt="" width="1000" height="588" loading="lazy" decoding="async">
         <h3>${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h3>
         <p class="universe-tag">${esc(dzs.tagline)}</p>
@@ -698,6 +698,8 @@ function castItem(c) {
       </div>
     </li>`;
 }
+const SYNTH_RULE = `<div class="dzs-rule" aria-hidden="true"><svg viewBox="0 0 40 40" width="22" height="22"><path d="M20 0C21.5 12 28 18.5 40 20 28 21.5 21.5 28 20 40 18.5 28 12 21.5 0 20 12 18.5 18.5 12 20 0Z" fill="currentColor"/></svg></div>`;
+
 function dzsPage() {
   const depth = 1;
   const url = makeUrl(depth);
@@ -722,23 +724,25 @@ function dzsPage() {
       },
     }) +
     `
-<body>
+<body class="theme-dzs">
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-<section class="hero hero-sub hero-vhs">
+<section class="hero hero-dzs hero-vhs">
   <span class="vhs-play" aria-hidden="true">PLAY ▶</span>
   <span class="vhs-date" aria-hidden="true">SONRASI BİZİZ</span>
-  <div class="wrap hero-grid hero-grid-sub">
-    <div class="hero-copy">
-      <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
-      <h1 class="page-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h1>
-      <p class="motto motto-upper">${esc(dzs.tagline)}</p>
-      <p class="lead">${esc(dzs.intro)}</p>
-    </div>
-    <img class="sub-logo sub-logo-wide" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1000" height="588" onerror="this.remove()">
+  <div class="dzs-sky" aria-hidden="true"><span class="shooting-star"></span><span class="shooting-star s2"></span></div>
+  <div class="dzs-sun" aria-hidden="true"></div>
+  <div class="dzs-floor" aria-hidden="true"><div></div></div>
+  <div class="wrap dzs-hero-inner">
+    <p class="crumbs"><a href="${url('muzik/')}">Aedilis Media Music</a></p>
+    <img class="dzs-hero-logo" src="${esc(url(dzs.logo))}" alt="${esc(dzs.shortName)} logosu" width="1000" height="588" fetchpriority="high" onerror="this.remove()">
+    <h1 class="page-title dzs-title">${esc(dzs.shortName)} <small class="former">(${esc(dzs.formerName)})</small></h1>
+    <p class="dzs-tag">${esc(dzs.tagline)}</p>
+    <p class="lead dzs-lead">${esc(dzs.intro)}</p>
+    <p class="dzs-actions"><a class="btn btn-primary" href="#yayinlar">Yayınlara git</a><a class="btn" href="#dinle">Dinle</a></p>
   </div>
-  <div class="frieze frieze-draw" aria-hidden="true"></div>
 </section>
+${SYNTH_RULE}
 
 <section class="section" aria-labelledby="h-hikaye">
   <div class="wrap prose-grid">
@@ -751,6 +755,7 @@ ${header(depth)}
     </div>
   </div>
 </section>
+${SYNTH_RULE}
 
 <section class="section section-alt" aria-labelledby="h-kimlik">
   <div class="wrap prose-grid">
@@ -764,6 +769,7 @@ ${header(depth)}
     </div>
   </div>
 </section>
+${SYNTH_RULE}
 
 <section class="section" aria-labelledby="h-ses">
   <div class="wrap prose-grid">
@@ -783,6 +789,7 @@ ${header(depth)}
     </div>
   </div>
 </section>
+${SYNTH_RULE}
 
 <section class="section section-alt" aria-labelledby="h-sahne">
   <div class="wrap">
@@ -794,6 +801,7 @@ ${header(depth)}
     <ul class="cast cast-lineup">${dzs.cast.filter((c) => c.image).map(castItem).join('')}</ul>
   </div>
 </section>
+${SYNTH_RULE}
 
 <section class="section" aria-labelledby="h-gorsel">
   <div class="wrap">
@@ -806,8 +814,9 @@ ${header(depth)}
     <ul class="gallery">${dzs.visual.images.map(([src, alt]) => `<li><img src="${esc(url(src))}" alt="${esc(alt)}" width="1100" height="825" loading="lazy" decoding="async"></li>`).join('')}</ul>
   </div>
 </section>
+${SYNTH_RULE}
 
-<section class="section section-alt" aria-labelledby="h-yayinlar">
+<section class="section section-alt" id="yayinlar" aria-labelledby="h-yayinlar">
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
@@ -816,8 +825,9 @@ ${header(depth)}
     <ul class="rgrid">${lockedCard(url)}${list.map((r) => releaseCard(r, url)).join('')}</ul>
       </div>
 </section>
+${SYNTH_RULE}
 
-<section class="section" aria-labelledby="h-dinle">
+<section class="section" id="dinle" aria-labelledby="h-dinle">
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-dinle" class="section-title">DİNLE</h2>
@@ -882,7 +892,7 @@ function releasePage(r, list) {
       },
     }) +
     `
-<body${isDzs ? '' : ' class="theme-dn"'}>
+<body class="${isDzs ? 'theme-dzs' : 'theme-dn'}">
 ${header(depth)}
 <main id="icerik" tabindex="-1">
 <section class="section rel-page">
@@ -991,6 +1001,8 @@ const FONT_FILES = [
   ['@fontsource-variable/montserrat', 'montserrat-latin-ext-wght-normal.woff2'],
   ['@fontsource/new-rocker', 'new-rocker-latin-400-normal.woff2'],
   ['@fontsource/new-rocker', 'new-rocker-latin-ext-400-normal.woff2'],
+  ['@fontsource/audiowide', 'audiowide-latin-400-normal.woff2'],
+  ['@fontsource/audiowide', 'audiowide-latin-ext-400-normal.woff2'],
 ];
 const LATIN = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
 const LATIN_EXT = 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF';
@@ -1006,6 +1018,8 @@ function fontsCss() {
     face('Montserrat', 'montserrat-latin-wght-normal.woff2', LATIN, '100 900'),
     face('New Rocker', 'new-rocker-latin-ext-400-normal.woff2', LATIN_EXT, '400'),
     face('New Rocker', 'new-rocker-latin-400-normal.woff2', LATIN, '400'),
+    face('Audiowide', 'audiowide-latin-ext-400-normal.woff2', LATIN_EXT, '400'),
+    face('Audiowide', 'audiowide-latin-400-normal.woff2', LATIN, '400'),
   ].join('\n');
 }
 
