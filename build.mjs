@@ -218,8 +218,8 @@ const lockedCard = (url) => `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-badge">
     <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1" fill="currentColor"/></svg>
     <span class="locked-label">Yakında</span>
-    <span class="locked-date">${esc(formatDate(dzs.upcoming.date))}</span>
-    <span class="locked-count" data-date="${esc(dzs.upcoming.date)}T00:00:00+03:00" hidden></span>
+    <span class="locked-date">${esc(formatDate(dzs.upcoming.date))}${dzs.upcoming.time ? ', ' + esc(dzs.upcoming.time) : ''}</span>
+    <span class="locked-count" data-date="${esc(dzs.upcoming.date)}T${esc(dzs.upcoming.time || '00:00')}:00+03:00" hidden></span>
     <a class="locked-link" href="${esc(url(dzs.upcoming.slug + '/'))}">Yayın sayfası</a>
     <span class="sr-only">${esc(dzs.upcoming.title)}: yeni albüm, çıkış tarihi ${esc(formatDate(dzs.upcoming.date))}.</span>
   </div>
@@ -858,7 +858,7 @@ function tlnbPage() {
 <body class="theme-dzs tlnb-page">
 ${header(depth)}
 <main id="icerik" tabindex="-1">
-<section class="tlnb hero-dzs" data-release="${esc(u.date)}T00:00:00+03:00">
+<section class="tlnb hero-dzs" data-release="${esc(u.date)}T${esc(u.time || '00:00')}:00+03:00">
   <div class="dzs-sky" aria-hidden="true"><span class="shooting-star"></span><span class="shooting-star s2"></span></div>
   <div class="dzs-floor" aria-hidden="true"><div></div></div>
   <div class="wrap tlnb-grid">
@@ -866,7 +866,7 @@ ${header(depth)}
     <div class="tlnb-info" lang="en">
       <p class="dzs-tag tlnb-state"><span data-before>Yakında</span><span data-after hidden>Yayında</span></p>
       <h1 class="page-title tlnb-title">${esc(u.title)}</h1>
-      <p class="tlnb-meta" lang="tr">${esc(u.type)} · ${u.tracks} parça · ${esc(formatDate(u.date))} · Sözler İngilizce</p>
+      <p class="tlnb-meta" lang="tr">${esc(u.type)} · ${u.tracks} parça · ${esc(formatDate(u.date))}${u.time ? ', ' + esc(u.time) : ''} · Sözler İngilizce</p>
       <div class="tlnb-count" data-before lang="tr" aria-live="off"><div><b data-d>--</b><span>gün</span></div><div><b data-h>--</b><span>saat</span></div><div><b data-m>--</b><span>dk</span></div><div><b data-s>--</b><span>sn</span></div></div>
       <div lang="tr">
         ${hasLive ? `<div data-after hidden><h2 class="chips-title">Dinle</h2><ul class="platform-links">${btns(Object.entries(live))}</ul></div>` : ''}
@@ -889,10 +889,19 @@ ${header(depth)}
 const tlnbIcs = () => {
   const u = dzs.upcoming;
   const d = u.date.replace(/-/g, '');
-  const next = new Date(Date.UTC(+u.date.slice(0, 4), +u.date.slice(5, 7) - 1, +u.date.slice(8, 10) + 1)).toISOString().slice(0, 10).replace(/-/g, '');
   const stamp = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
   const pageUrl = `${site.url.replace(/\/?$/, '/')}${u.slug}/`;
-  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Aedilis Media//TLNB//TR', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT', `UID:${u.slug}-${d}@aedilismedia.com`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${next}`, `SUMMARY:${dzs.shortName}: ${u.title} yayında`, `DESCRIPTION:${u.title} bugün yayında. ${pageUrl}`, `URL:${pageUrl}`, 'END:VEVENT', 'END:VCALENDAR', ''].join('\r\n');
+  let when;
+  if (u.time) {
+    const start = new Date(`${u.date}T${u.time}:00+03:00`);
+    const end = new Date(start.getTime() + 60 * 60 * 1000);
+    const f = (x) => x.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+    when = [`DTSTART:${f(start)}`, `DTEND:${f(end)}`];
+  } else {
+    const next = new Date(Date.UTC(+u.date.slice(0, 4), +u.date.slice(5, 7) - 1, +u.date.slice(8, 10) + 1)).toISOString().slice(0, 10).replace(/-/g, '');
+    when = [`DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${next}`];
+  }
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Aedilis Media//TLNB//TR', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT', `UID:${u.slug}-${d}@aedilismedia.com`, `DTSTAMP:${stamp}`, ...when, `SUMMARY:${dzs.shortName}: ${u.title} yayında`, `DESCRIPTION:${u.title} bugün yayında. ${pageUrl}`, `URL:${pageUrl}`, 'END:VEVENT', 'END:VCALENDAR', ''].join('\r\n');
 };
 
 const SYNTH_RULE = `<div class="dzs-rule" aria-hidden="true"><svg viewBox="0 0 40 40" width="22" height="22"><path d="M20 0C21.5 12 28 18.5 40 20 28 21.5 21.5 28 20 40 18.5 28 12 21.5 0 20 12 18.5 18.5 12 20 0Z" fill="currentColor"/></svg></div>`;
