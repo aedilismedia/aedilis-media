@@ -154,7 +154,13 @@
     "time": "11:00",
     "cover": "assets/img/dzs/kapaklar/the-last-normal-broadcast.webp",
     "slug": "tlnb",
-    "links": {}
+    "links": {
+      "spotify": "https://open.spotify.com/album/58mzNOFLU0fgQOKRwceFiw",
+      "apple": "https://music.apple.com/tr/album/the-last-normal-broadcast/6826919264",
+      "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_mEZxsgYxMCU6BXOL5CrLhne9FW7N7Db0A",
+      "deezer": "https://www.deezer.com/tr/album/1130356591"
+    },
+    "lyrics": "https://genius.com/albums/Dorduncu-zamdan-sonra/The-last-normal-broadcast"
   },
   "castFormer": [
     {

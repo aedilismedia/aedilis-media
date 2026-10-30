@@ -208,7 +208,19 @@ function listenButton(r, url) {
   const first = Object.values(links)[0] || '#';
   return `<a class="btn btn-small listen" href="${esc(first)}" rel="noopener" data-title="${esc(r.title)}" data-meta="${esc(r.artist)}, ${esc(r.type)}" data-links='${esc(JSON.stringify(links))}'${url ? ` data-page="${esc(url('muzik/' + r.slug + '/'))}"` : ''}>Dinle<span class="sr-only">: ${esc(r.title)}</span></a>`;
 }
-const lockedCard = (url) => `<li class="rcard rcard-locked has-cover" lang="en">
+const upcomingLive = () => Object.keys(dzs.upcoming.links || {}).length > 0;
+const upcomingCard = (url) => {
+  const u = dzs.upcoming;
+  const r = { title: u.title, artist: dzs.shortName, type: u.type, links: u.links };
+  return `<li class="rcard has-cover">
+  <img class="rcard-cover" src="${esc(url(u.cover))}" alt="${esc(u.title)} kapağı" width="360" height="360" loading="lazy" decoding="async">
+  <p class="rcard-top"><span class="release-year">${esc(yearOf(u.date))}</span><span class="rcard-type">${esc(u.type)}</span></p>
+  <h4 class="rcard-title" lang="en">${esc(u.title)}</h4>
+  <p class="rcard-meta">${esc(formatDate(u.date))} · ${u.tracks} parça</p>
+  <div class="rcard-actions">${listenButton(r, null)}<a class="btn btn-small" href="${esc(url(u.slug + '/'))}">Yayın sayfası</a></div>
+</li>`;
+};
+const lockedCard = (url) => upcomingLive() ? upcomingCard(url) : `<li class="rcard rcard-locked has-cover" lang="en">
   <div class="locked-ghost" aria-hidden="true">
     <img class="rcard-cover locked-cover" src="${esc(url(dzs.upcoming.cover))}" alt="" width="360" height="360" loading="lazy" decoding="async">
     <p class="rcard-top"><span class="release-year">2026</span><span class="rcard-type">Albüm</span></p>
@@ -864,13 +876,13 @@ ${header(depth)}
   <div class="wrap tlnb-grid">
     <img class="tlnb-cover" src="${esc(url(u.cover))}" alt="${esc(u.title)} albüm kapağı" width="720" height="720" fetchpriority="high">
     <div class="tlnb-info" lang="en">
-      <p class="dzs-tag tlnb-state"><span data-before>Yakında</span><span data-after hidden>Yayında</span></p>
+      <p class="dzs-tag tlnb-state"><span data-before${hasLive ? ' hidden' : ''}>Yakında</span><span data-after${hasLive ? '' : ' hidden'}>Yayında</span></p>
       <h1 class="page-title tlnb-title">${esc(u.title)}</h1>
       <p class="tlnb-meta" lang="tr">${esc(u.type)} · ${u.tracks} parça · ${esc(formatDate(u.date))}${u.time ? ', ' + esc(u.time) : ''} · Sözler İngilizce</p>
-      <div class="tlnb-count" data-before lang="tr" aria-live="off"><div><b data-d>--</b><span>gün</span></div><div><b data-h>--</b><span>saat</span></div><div><b data-m>--</b><span>dk</span></div><div><b data-s>--</b><span>sn</span></div></div>
+      <div class="tlnb-count" data-before${hasLive ? ' hidden' : ''} lang="tr" aria-live="off"><div><b data-d>--</b><span>gün</span></div><div><b data-h>--</b><span>saat</span></div><div><b data-m>--</b><span>dk</span></div><div><b data-s>--</b><span>sn</span></div></div>
       <div lang="tr">
-        ${hasLive ? `<div data-after hidden><h2 class="chips-title">Dinle</h2><ul class="platform-links">${btns(Object.entries(live))}</ul></div>` : ''}
-        <div ${hasLive ? 'data-before' : ''}>
+        ${hasLive ? `<div data-after><h2 class="chips-title">Dinle</h2><ul class="platform-links">${btns(Object.entries(live))}</ul>${u.lyrics ? `<p class="tlnb-note"><a href="${esc(u.lyrics)}" target="_blank" rel="noopener">Sözler (Genius)</a></p>` : ''}</div>` : ''}
+        <div ${hasLive ? 'data-before hidden' : ''}>
           <p class="tlnb-actions"><a class="btn btn-primary" href="${esc(u.slug)}.ics" download>Takvime ekle</a><button class="btn" type="button" data-share data-url="${esc(pageUrl)}" data-title="${esc(u.title)}">Paylaş</button></p>
           <h2 class="chips-title">${esc(dzs.shortName)}'yi şimdiden takip et</h2>
           <ul class="platform-links">${btns(follow.map((p) => [p.label, p.href]))}</ul>
@@ -1030,7 +1042,7 @@ ${SYNTH_RULE}
   <div class="wrap">
     <header class="section-head">
       <h2 id="h-yayinlar" class="section-title">YAYINLAR</h2>
-      <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}. Static Era, The Last Normal Broadcast ile ${esc(formatDate(dzs.upcoming.date))} tarihinde açılıyor.</p>
+      <p class="section-desc">${list.length} yayın, ${trackCount} parça: ${esc(statLine(list))}. Static Era, The Last Normal Broadcast ile ${esc(formatDate(dzs.upcoming.date))} tarihinde ${upcomingLive() ? 'açıldı' : 'açılıyor'}.</p>
     </header>
     <ul class="rgrid">${lockedCard(url)}${list.map((r) => releaseCard(r, url)).join('')}</ul>
       </div>

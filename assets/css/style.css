@@ -451,7 +451,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .rcard-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
 .rcard-title { font-size: 1.2rem; margin: 0.2rem 0 0; line-height: 1.3; letter-spacing: 0.01em; }
 .rcard-meta { margin: 0; font-size: 0.82rem; color: var(--stone-muted); }
-.rcard-actions { margin-top: auto; padding-top: 1rem; }
+.rcard-actions { margin-top: auto; padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tracks { margin-top: 0.7rem; border-top: 1px solid var(--line-soft); padding-top: 0.7rem; }
 .tracks summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; color: var(--gold); list-style: none; }
 .tracks summary::-webkit-details-marker { display: none; }
