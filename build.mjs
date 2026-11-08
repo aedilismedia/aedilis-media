@@ -4,6 +4,7 @@
 
 import { readFile, writeFile, mkdir, cp, rm, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import http from 'node:http';
 import { fileURLToPath } from 'node:url';
@@ -11,6 +12,9 @@ import { marked } from 'marked';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
+const assetVer = async (p) => createHash('sha1').update(await readFile(path.join(ROOT, p))).digest('hex').slice(0, 8);
+const CSS_V = await assetVer('assets/css/style.css');
+const JS_V = await assetVer('assets/js/main.js');
 const readJSON = async (p) => JSON.parse(await readFile(path.join(ROOT, p), 'utf8'));
 
 // ---------- yardımcılar ----------
@@ -142,7 +146,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <link rel="preload" href="${rel}assets/fonts/cinzel-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${rel}assets/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel}assets/css/fonts.css">
-<link rel="stylesheet" href="${rel}assets/css/style.css">
+<link rel="stylesheet" href="${rel}assets/css/style.css?v=${CSS_V}">
 <script>document.documentElement.classList.add('js')</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e50802e58b840188c1caa488af6b975"}'></script><!-- End Cloudflare Web Analytics -->
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
@@ -177,7 +181,7 @@ function footer(depth) {
     <p class="footer-copy">${esc(site.footer)}</p>
   </div>
 </footer>
-<script src="${relPrefix(depth)}assets/js/main.js" defer></script>
+<script src="${relPrefix(depth)}assets/js/main.js?v=${JS_V}" defer></script>
 </body>
 </html>`;
 }
@@ -288,6 +292,9 @@ function divisionBlock(d, url) {
     ${d.parent.href ? `<a class="text-link" href="${esc(url(d.parent.href))}" target="_blank" rel="noopener">${esc(d.parent.hrefLabel)}</a>` : ''}
   </div>`
     : '';
+  const social = d.social && d.social.length
+    ? `<p class="division-social"><a class="btn btn-small listen" href="${esc(d.social[0].href)}" target="_blank" rel="noopener" data-title="${esc(d.name)}" data-meta="Sosyal medya hesapları" data-tag="Hesabı seç" data-links='${esc(JSON.stringify(Object.fromEntries(d.social.map((s) => [s.label, s.href]))))}'>Sosyal medya<span class="sr-only">: ${esc(d.name)}</span></a></p>`
+    : '';
   return `<article class="division" id="${esc(d.id)}">
   <div class="division-id">
     <img class="division-logo${d.logoSmall ? ' division-logo-sm' : ''}" src="${esc(url(d.logo))}" alt="${esc(d.logoAlt)}" width="360" height="360" loading="lazy" decoding="async">
@@ -296,7 +303,8 @@ function divisionBlock(d, url) {
   </div>
   <div class="division-work">
     ${parent}
-    <ul class="project-list">${d.projects.map((p) => projectRow(p, url)).join('')}</ul>
+    ${d.projects && d.projects.length ? `<ul class="project-list">${d.projects.map((p) => projectRow(p, url)).join('')}</ul>` : ''}
+    ${social}
   </div>
 </article>`;
 }
@@ -432,7 +440,7 @@ async function hubPage() {
   <div class="frieze" aria-hidden="true"></div>
   <p>${esc(site.footer)}</p>
 </footer>
-<script src="${relPrefix(depth)}assets/js/main.js" defer></script>
+<script src="${relPrefix(depth)}assets/js/main.js?v=${JS_V}" defer></script>
 </body>
 </html>`
   );
@@ -654,7 +662,7 @@ ${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve t
 
 ${sectionVideolar()}
 </main>
-` +
+${LISTEN_DIALOG}` +
     footer(depth)
   );
 }

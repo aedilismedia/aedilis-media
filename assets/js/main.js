@@ -17,6 +17,8 @@
   const dialog = document.getElementById('listen-dialog');
   if (dialog && typeof dialog.showModal === 'function') {
     const title = dialog.querySelector('#listen-title');
+    const tag = dialog.querySelector('.tag');
+    const tagDefault = tag ? tag.textContent : '';
     const meta = dialog.querySelector('#listen-meta');
     const list = dialog.querySelector('#listen-links');
     let opener = null;
@@ -29,6 +31,7 @@
       if (!Object.keys(links).length) return;
       e.preventDefault();
       opener = trigger;
+      if (tag) tag.textContent = trigger.dataset.tag || tagDefault;
       title.textContent = trigger.dataset.title || '';
       meta.textContent = trigger.dataset.meta || '';
       list.replaceChildren(

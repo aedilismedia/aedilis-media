@@ -81,16 +81,20 @@
       "name": "Kısa bilgi videoları",
       "text": "Günlük hayattaki küçük “neden?” sorularına 40-120 saniyelik, İngilizce ve çoğunlukla yapay zeka destekli videolarla cevap verir. Kediler tuvalet sonrası neden zoomlar, neden hıçkırırız gibi."
     },
-    "projects": [
+    "logoSmall": true,
+    "social": [
       {
-        "name": "Instagram ve TikTok",
-        "text": "@aediliscuriosa"
+        "label": "Instagram",
+        "href": "https://www.instagram.com/aediliscuriosa/"
       },
       {
-        "name": "YouTube",
-        "text": "Kanal adı: Aedilis Curiosa"
+        "label": "TikTok",
+        "href": "https://www.tiktok.com/@aediliscuriosa"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@AedilisCuriosa"
       }
-    ],
-    "logoSmall": true
+    ]
   }
 ]

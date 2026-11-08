@@ -166,6 +166,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 58rem) { .division { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); } .division-id { position: sticky; top: 6rem; align-self: start; } }
 .division-logo { width: min(100%, 20rem); margin-bottom: 1.4rem; }
 .division-logo-sm { width: min(100%, 12rem); }
+.division-social { margin: 1.6rem 0 0; }
 .division-id h3 { font-size: 1.35rem; margin-bottom: 0.6rem; letter-spacing: 0.01em; }
 .division-id p { color: var(--stone-muted); max-width: 34ch; margin: 0; }
 
