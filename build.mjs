@@ -290,7 +290,7 @@ function divisionBlock(d, url) {
     : '';
   return `<article class="division" id="${esc(d.id)}">
   <div class="division-id">
-    <img class="division-logo" src="${esc(url(d.logo))}" alt="${esc(d.logoAlt)}" width="360" height="360" loading="lazy" decoding="async">
+    <img class="division-logo${d.logoSmall ? ' division-logo-sm' : ''}" src="${esc(url(d.logo))}" alt="${esc(d.logoAlt)}" width="360" height="360" loading="lazy" decoding="async">
     <h3>${esc(d.name)}</h3>
     <p>${esc(d.summary)}</p>
   </div>
