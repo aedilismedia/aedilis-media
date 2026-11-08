@@ -644,6 +644,14 @@ ${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve t
   </div>
 </section>
 
+<section class="section" id="oyunlar" aria-labelledby="h-oyunlar">
+  <div class="wrap harita-cta">
+    ${sectionHead('oyunlar', 'Oyunlar', 'Tarayıcıda oynanan küçük bağımsız oyunlar.')}
+    <p><strong>Lifelines</strong>: Bir hayat, bin ihtimal. Dünyanın herhangi bir yerinde doğ, bir hayatı baştan sona yaşa. Gerçek dünya istatistikleriyle çalışan Türkçe yaşam simülasyonu.</p>
+    <p><a class="btn btn-primary" href="${esc(url('oyunlar/lifelines/'))}">Lifelines'ı oyna</a></p>
+  </div>
+</section>
+
 ${sectionVideolar()}
 </main>
 ` +
@@ -1255,6 +1263,8 @@ async function build() {
 
   // statik dosyalar
   await cp(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+  // public/: olduğu gibi yayınlanan bağımsız sayfalar (ör. oyunlar/lifelines/)
+  await cp(path.join(ROOT, 'public'), DIST, { recursive: true });
   await mkdir(path.join(DIST, 'assets/fonts'), { recursive: true });
   for (const [pkg, file] of FONT_FILES) {
     await cp(path.join(ROOT, 'node_modules', pkg, 'files', file), path.join(DIST, 'assets/fonts', file));
@@ -1284,7 +1294,7 @@ async function build() {
   // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
-  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'oyunlar/lifelines/', pri: '0.6' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
   for (const [i, a] of duraklar.entries()) {
     await write(`yapim/harita/${a.slug}/index.html`, durakPage(a, i));
     pages.push({ loc: `yapim/harita/${a.slug}/`, pri: '0.6' });
