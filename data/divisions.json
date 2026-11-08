@@ -70,5 +70,26 @@
         "hrefLabel": "Proje sayfası"
       }
     ]
+  },
+  {
+    "id": "kreatif",
+    "name": "Aedilis Curiosa",
+    "summary": "Günlük hayattaki küçük “neden?” sorularına kısa videolarla cevap veren, kuruluş aşamasındaki yeni marka.",
+    "logo": "assets/img/aedilis-curiosa.webp",
+    "logoAlt": "Aedilis Curiosa logosu: meander çerçeve içinde meander desenli altın soru işareti, taç, yıldız, şimşek ve turkuaz fırça darbesi",
+    "parent": {
+      "name": "Kısa bilgi videoları",
+      "text": "Günlük hayattaki küçük “neden?” sorularına 40-120 saniyelik, İngilizce ve çoğunlukla yapay zeka destekli videolarla cevap verir. Kediler tuvalet sonrası neden zoomlar, neden hıçkırırız gibi."
+    },
+    "projects": [
+      {
+        "name": "Instagram ve TikTok",
+        "text": "@aediliscuriosa"
+      },
+      {
+        "name": "YouTube",
+        "text": "Kanal adı: Aedilis Curiosa"
+      }
+    ]
   }
 ]

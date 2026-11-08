@@ -285,7 +285,7 @@ function divisionBlock(d, url) {
     ? `<div class="parent">
     <h4 class="project-name">${esc(d.parent.name)}</h4>
     <p>${esc(d.parent.text)}</p>
-    <a class="text-link" href="${esc(url(d.parent.href))}" target="_blank" rel="noopener">${esc(d.parent.hrefLabel)}</a>
+    ${d.parent.href ? `<a class="text-link" href="${esc(url(d.parent.href))}" target="_blank" rel="noopener">${esc(d.parent.hrefLabel)}</a>` : ''}
   </div>`
     : '';
   return `<article class="division" id="${esc(d.id)}">
@@ -618,6 +618,7 @@ function yapimPage() {
   const url = makeUrl(depth);
   const god = godOf('yapim');
   const yapim = divisions.find((d) => d.id === 'yapim');
+  const curiosa = divisions.find((d) => d.id === 'kreatif');
   const yt = site.hero.youtube;
   return (
     head({ title: 'Yapım ve Videolar | Aedilis Media', description: god.desc, canonicalPath: 'yapim/', depth }) +
@@ -632,6 +633,7 @@ ${pageHero(depth, god, { title: 'Yapım', lead: 'Yolculuk, kültür, lezzet ve t
     <h2 id="h-bolum-yapim" class="sr-only">Aedilis Media Yapım</h2>
     ${divisionBlock(yapim, url)}
     <p class="yt-stat"><a href="${esc(yt.href)}" target="_blank" rel="noopener"><strong>${esc(yt.count)}</strong> ${esc(yt.label)}</a></p>
+    ${divisionBlock(curiosa, url)}
   </div>
 </section>
 
