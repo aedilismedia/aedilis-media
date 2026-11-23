@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A cheerful game studio site for a cozy farming game that gets more wrong the further you scroll.">
+<meta property="og:title" content="Sunny Acres">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/img/site-icon.webp">
+<title>Sunny Acres</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=IM+Fell+English:ital@0;1&family=VT323&display=swap">
+<style>
+/* Layout: a stock single-column game marketing page that rots band by band.
+   Each band paints its own ground, draining from sky blue to a black finale. */
+:root {
+  --sky: #8FD8FF;
+  --sky-2: #E2F5FF;
+  --ink: #1C2448;
+  --ink-soft: #4A5378;
+  --sun: #FFC43D;
+  --sun-deep: #E8960A;
+  --coral: #FF6A55;
+  --leaf: #45B866;
+  --paper: #FFFFFF;
+  --mist: #EEF1F5;
+  --ash: #D6D2C7;
+  --dust: #8C877C;
+  --term: #0D120D;
+  --term-ink: #BFF5B8;
+  --blood: #B0001E;
+  --blood-hot: #FF2338;
+  --void: #060304;
+  --bone: #E6DDCC;
+
+  --f-display: 'Fredoka', 'Nunito', ui-rounded, system-ui, sans-serif;
+  --f-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-fell: 'IM Fell English', 'Iowan Old Style', Georgia, serif;
+  --f-mono: 'VT323', ui-monospace, 'Courier New', monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(1.9rem, 3.4vw, 2.6rem);
+  --step-4: clamp(2.5rem, 5.6vw, 4.2rem);
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: auto; }
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  color: var(--ink);
+  /* top half of the document is daylight, bottom half is the void (for overscroll) */
+  background: linear-gradient(to bottom, var(--sky) 0, var(--paper) 30%, var(--paper) 50%, var(--void) 50%);
+  overflow-x: hidden;
+}
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+img, svg { max-width: 100%; }
+button { font: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: .5em;
+  border: 0; cursor: pointer;
+  font-family: var(--f-display); font-weight: 600; font-size: 1.05rem;
+  padding: .85em 1.4em; border-radius: 999px;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-sun { background: var(--sun); color: var(--ink); box-shadow: 0 4px 0 var(--sun-deep); }
+.btn-sun:hover { box-shadow: 0 6px 0 var(--sun-deep); }
+.btn-ghost { background: rgba(255,255,255,.65); color: var(--ink); box-shadow: inset 0 0 0 2px rgba(28,36,72,.15); }
+.btn-sm { font-size: .92rem; padding: .55em 1.05em; }
+.btn svg { width: 1em; height: 1em; }
+.linklike { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; }
+
+/* ---------- nav ---------- */
+.nav { background: var(--sky); }
+.nav-in { display: flex; align-items: center; gap: 24px; padding-block: 18px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 700; font-size: 1.4rem; color: var(--ink); text-decoration: none; }
+.logo-mark { width: 36px; height: 36px; border-radius: 12px; background: var(--paper); display: grid; place-items: center; box-shadow: 0 3px 0 rgba(28,36,72,.12); }
+.logo-mark svg { width: 24px; height: 24px; }
+.links { display: flex; gap: 22px; margin-left: auto; }
+.links a { color: var(--ink); text-decoration: none; font-weight: 700; font-size: .98rem; opacity: .85; }
+.links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) { .links { display: none; } .nav .btn { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { background: linear-gradient(to bottom, var(--sky), var(--sky-2) 85%, var(--paper)); padding-block: 28px 72px; }
+.hero-in { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.eyebrow { justify-self: start; font-weight: 800; font-size: var(--step--1); letter-spacing: .04em; background: var(--paper); color: var(--ink); padding: .4em .9em; border-radius: 999px; box-shadow: 0 3px 0 rgba(28,36,72,.1); }
+.hero h1 { font-family: var(--f-display); font-weight: 700; font-size: var(--step-4); line-height: 1.02; letter-spacing: -.01em; }
+.lede { font-size: var(--step-1); color: var(--ink-soft); max-width: 34em; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-meta { font-weight: 700; color: var(--ink-soft); font-size: var(--step--1); }
+.stars { color: var(--sun-deep); letter-spacing: .1em; }
+.restart { font-size: var(--step--1); color: var(--ink-soft); }
+.scene-card { border-radius: 28px; overflow: hidden; box-shadow: 0 24px 60px -20px rgba(28,36,72,.45), 0 0 0 6px var(--paper); aspect-ratio: 600 / 420; max-width: 100%; background: var(--sky); }
+.scene-card svg { display: block; width: 100%; height: 100%; }
+@media (max-width: 860px) { .hero-in { grid-template-columns: 1fr; gap: 36px; } }
+
+/* cursed hero (after the finale) */
+.cursed .hero { background: linear-gradient(to bottom, #9fb6bf, #d9dfdc 85%, var(--paper)); }
+.cursed .nav { background: #9fb6bf; }
+.cursed .hero h1 { color: #2a0d10; }
+.h-face { display: none; }
+.cursed .h-face { display: inline; }
+.cursed .h-away { display: none; }
+
+/* ---------- press ---------- */
+.press { background: var(--paper); padding-block: 36px; border-bottom: 1px solid var(--mist); }
+.press-in { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.press figure { margin: 0; display: grid; gap: 6px; }
+.press blockquote { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: var(--step-1); line-height: 1.3; }
+.press figcaption { font-weight: 800; font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+@media (max-width: 760px) { .press-in { grid-template-columns: 1fr; } }
+
+/* ---------- section scaffolding ---------- */
+.band { padding-block: 88px; }
+.band-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 40em; }
+.band-head h2 { font-family: var(--f-display); font-weight: 700; font-size: var(--step-3); line-height: 1.1; }
+.band-head p { font-size: var(--step-1); color: var(--ink-soft); }
+.kicker { font-weight: 800; font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+
+/* ---------- games ---------- */
+.games { background: var(--paper); }
+.game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.game { background: var(--paper); border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 1px var(--mist), 0 14px 30px -18px rgba(28,36,72,.35); display: flex; flex-direction: column; }
+.game-art { aspect-ratio: 16 / 10; max-width: 100%; position: relative; }
+.game-art svg { width: 100%; height: 100%; display: block; }
+.tag { position: absolute; top: 12px; left: 12px; font-weight: 800; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; background: var(--paper); color: var(--ink); padding: .3em .7em; border-radius: 999px; }
+.game-body { padding: 20px 22px 24px; display: grid; gap: 8px; flex: 1; align-content: start; }
+.game h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-2); }
+.game .genre { font-weight: 700; font-size: var(--step--1); color: var(--ink-soft); }
+.game p { color: var(--ink-soft); }
+.game a { margin-top: 6px; font-weight: 800; color: var(--coral); text-decoration: none; }
+.game a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .game-grid { grid-template-columns: 1fr; max-width: 520px; } }
+
+/* ---------- features + reviews ---------- */
+.features { background: linear-gradient(to bottom, var(--paper), var(--mist)); }
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; }
+.feat { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; }
+.feat-ico { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; }
+.feat-ico svg { width: 26px; height: 26px; }
+.feat h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); margin-bottom: 4px; }
+.feat p { color: var(--ink-soft); }
+.feat.off .feat-ico { filter: saturate(.35); }
+@media (max-width: 900px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .feat-grid { grid-template-columns: 1fr; } }
+
+.reviews { margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review { background: var(--paper); border-radius: 18px; padding: 22px; display: grid; gap: 14px; align-content: start; box-shadow: 0 0 0 1px rgba(28,36,72,.06); }
+.review .stars { font-size: 1.05rem; }
+.review blockquote { margin: 0; font-size: 1.02rem; }
+.who { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: var(--step--1); }
+.who span:last-child { min-width: 0; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; color: var(--paper); flex: none; }
+.review.off { background: #f4f4f2; }
+.review.off .stars .dead { color: #9a9a9a; }
+.review.off .avatar { background: #bdbdbd; }
+@media (max-width: 900px) { .reviews { grid-template-columns: 1fr; max-width: 560px; } }
+
+.signup { margin-top: 72px; background: var(--ink); color: var(--paper); border-radius: 26px; padding: 36px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+.signup h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-2); }
+.signup p { color: #c7cbe0; margin-top: 6px; }
+.signup form { display: flex; gap: 10px; flex-wrap: wrap; }
+.signup input { flex: 1 1 200px; min-width: 0; font: inherit; padding: .8em 1.1em; border-radius: 999px; border: 0; color: var(--ink); background: var(--paper); }
+.signup .status { flex-basis: 100%; font-weight: 700; color: var(--sun); min-height: 1.5em; }
+@media (max-width: 760px) { .signup { grid-template-columns: 1fr; padding: 26px; } }
+
+/* ---------- neighbours (uncanny) ---------- */
+.neighbours { background: linear-gradient(to bottom, var(--mist), var(--ash)); }
+.neighbours .kicker { color: #a2645a; }
+.n-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.n-card { background: #f6f3ec; border-radius: 20px; padding: 20px; display: grid; gap: 10px; align-content: start; box-shadow: 0 0 0 1px rgba(0,0,0,.05); }
+.n-card:nth-child(2) { transform: rotate(-.6deg); }
+.n-card:nth-child(3) { transform: translateY(6px); }
+.n-face { aspect-ratio: 1; max-width: 100%; border-radius: 14px; background: #e3ded2; overflow: hidden; }
+.n-face svg { width: 100%; height: 100%; display: block; }
+.n-card h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); }
+.n-role { font-weight: 800; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--dust); }
+.n-card p { color: #4d4a44; font-size: .98rem; }
+.hearts { color: #d0574e; letter-spacing: .12em; font-size: .95rem; overflow-wrap: anywhere; }
+.n-card.him { background: #241f1b; color: var(--bone); transform: rotate(.4deg); }
+.n-card.him .n-face { background: #14110f; }
+.n-card.him p { color: #b7ad9b; }
+.n-card.him .hearts { color: var(--blood-hot); }
+@media (max-width: 960px) { .n-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .n-grid { grid-template-columns: 1fr; } }
+
+/* ---------- FAQ (weird) ---------- */
+.faq { background: linear-gradient(to bottom, var(--ash), var(--dust)); color: #24221e; }
+.faq .band-head p { color: #46423b; }
+.faq .kicker { color: #7d2b24; }
+.faq-list { display: grid; gap: 12px; max-width: 46rem; }
+.faq details { background: rgba(255,255,255,.45); border-radius: 14px; padding: 16px 20px; }
+.faq summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; font-size: 1.12rem; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-weight: 700; }
+.faq details[open] summary::after { content: "–"; }
+.faq .a { margin-top: 8px; color: #3b3832; }
+.faq details:nth-child(4) { background: rgba(255,255,255,.32); }
+.faq details:nth-child(5) { background: rgba(255,255,255,.22); transform: translateX(10px); }
+.faq details:nth-child(5) summary,
+.faq details:nth-child(6) summary,
+.faq details:nth-child(7) summary { font-family: var(--f-fell); font-weight: 400; font-size: 1.22rem; }
+.faq details:nth-child(6) { background: rgba(30,10,10,.12); }
+.faq details:nth-child(7) { background: rgba(30,5,5,.22); transform: rotate(-.5deg); }
+.red { color: #8a0f14; }
+.redact { background: #1d1a17; color: transparent; border-radius: 2px; user-select: none; }
+
+/* ---------- patch notes (dread) ---------- */
+.patch { background: linear-gradient(to bottom, var(--dust), #1a1715 18%, #0c0a09); color: var(--bone); }
+.patch .band-head p { color: #a69c8a; }
+.patch .kicker { color: #d5534a; }
+.terminal { background: var(--term); border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px #233023, 0 30px 80px -30px #000; max-width: 52rem; }
+.term-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #1a221a; font-family: var(--f-mono); color: #7e9b7b; font-size: 1.05rem; }
+.term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a4a3a; display: block; }
+.term-bar span { margin-left: 8px; }
+.term-body { padding: 20px 22px 26px; font-family: var(--f-mono); font-size: 1.32rem; line-height: 1.35; color: var(--term-ink); overflow-x: auto; }
+.term-body p { display: grid; grid-template-columns: 6.5ch 1fr; gap: 1ch; }
+.term-body b { font-weight: 400; color: #7fbf78; }
+.term-body .warn { color: #e8c86a; }
+.term-body .bad { color: #ff6b6b; }
+.term-body .worse { color: var(--blood-hot); text-shadow: 0 0 8px rgba(255,35,56,.5); }
+.caret { display: inline-block; width: .6em; height: 1em; background: var(--blood-hot); vertical-align: -.12em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.preorder { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; max-width: 52rem; }
+.preorder h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-2); color: var(--bone); }
+.preorder p { color: #8f8676; flex-basis: 100%; }
+.btn-rot { background: #5a1a14; color: #f3d9cf; box-shadow: 0 4px 0 #2c0c09; }
+
+/* ---------- night field (scary, scroll-scrubbed) ---------- */
+.night { position: relative; height: 340vh; background: #0a0204; }
+.night-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+#night-scene, #night-scene svg { width: 100%; height: 100%; display: block; }
+.captions { position: absolute; inset: auto 0 0 0; padding-bottom: 11vh; pointer-events: none; }
+.captions .wrap { position: relative; min-height: 8rem; }
+.cap { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: 0; font-family: var(--f-fell); font-size: clamp(1.6rem, 4.4vw, 3.2rem); line-height: 1.15; color: var(--bone); text-shadow: 0 2px 24px #000, 0 0 6px #000; max-width: 22em; }
+.cap em { color: var(--blood-hot); font-style: italic; }
+.glow .pupil { fill: var(--blood-hot); }
+
+/* ---------- finale (horror) ---------- */
+.finale { position: relative; background: var(--void); color: var(--bone); padding-block: 10vh 0; }
+.finale-face { position: sticky; top: 8vh; height: 84vh; display: grid; place-items: center; margin-bottom: -84vh; pointer-events: none; z-index: 0; }
+.finale-face > div { opacity: .1; width: min(88vmin, 760px); transform-origin: 50% 55%; will-change: transform, opacity; }
+.lines { position: relative; z-index: 1; }
+.line { min-height: 78vh; display: grid; place-items: center; text-align: center; font-family: var(--f-fell); font-size: clamp(1.6rem, 4.6vw, 3.3rem); line-height: 1.2; text-shadow: 0 0 18px #000, 0 0 6px #000, 0 0 2px #000; }
+.line > p { max-width: 18em; }
+.line .live { color: var(--blood-hot); font-style: italic; }
+.line.big { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.6rem, 10vw, 7.5rem); color: var(--blood-hot); letter-spacing: -.01em; line-height: .95; text-shadow: 0 0 40px rgba(176,0,30,.6), 0 0 4px #000; }
+.line.flicker > p { animation: flickin 1.1s linear 1 both; }
+@keyframes flickin { 0% { opacity: 0; } 8% { opacity: .9; } 12% { opacity: .1; } 22% { opacity: 1; } 26% { opacity: .3; } 40%, 100% { opacity: 1; } }
+#jump-trigger { height: 1px; }
+
+.after { position: relative; z-index: 1; background: var(--void); padding-block: 30vh 64px; text-align: center; }
+.after-in { display: grid; gap: 22px; justify-items: center; }
+.after .tiny-sun { width: 120px; height: 120px; }
+.after h2 { font-family: var(--f-display); font-weight: 700; font-size: var(--step-3); color: #f1e4b3; }
+.after p { color: #8e8473; max-width: 30em; }
+.after .btn-sun { background: #d8b13a; box-shadow: 0 4px 0 #7a5d08; }
+.rot-foot { margin-top: 18vh; padding-block: 28px; border-top: 1px solid #1e1416; display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; color: #5f5348; font-size: var(--step--1); text-align: left; }
+.rot-foot nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.rot-foot a { color: #7a6c5e; text-decoration: none; }
+.rot-foot a:hover { color: var(--blood-hot); }
+
+/* ---------- global overlays ---------- */
+.fx-vignette { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0; background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(10,0,2,.92) 100%); }
+.fx-grain { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 51; opacity: 0; }
+
+.cookie {
+  position: fixed; z-index: 60;
+  left: max(16px, env(safe-area-inset-left, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  max-width: 360px; background: var(--paper); color: var(--ink);
+  border-radius: 18px; padding: 18px; display: grid; gap: 12px;
+  box-shadow: 0 18px 40px -14px rgba(28,36,72,.45);
+  font-size: .95rem;
+}
+.cookie-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookie.rotten { background: #120709; color: var(--bone); box-shadow: 0 0 0 1px #3a0a10, 0 18px 50px -10px #000; font-family: var(--f-fell); font-size: 1.1rem; }
+.cookie.rotten .btn-sun { background: var(--blood); color: #fff; box-shadow: 0 4px 0 #4a000c; }
+.cookie.rotten .btn-ghost { background: var(--blood); color: #fff; box-shadow: 0 4px 0 #4a000c; }
+@media (max-width: 520px) { .cookie { right: max(16px, env(safe-area-inset-right, 0px)); max-width: none; } }
+
+.sound {
+  position: fixed; z-index: 61;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 0; cursor: pointer; border-radius: 999px; padding: .55em 1em;
+  font-family: var(--f-display); font-weight: 600; font-size: .9rem;
+  background: var(--paper); color: var(--ink); box-shadow: 0 8px 20px -8px rgba(28,36,72,.5);
+  transition: background .6s, color .6s;
+}
+.sound svg { width: 1.1em; height: 1.1em; }
+.late .sound { background: #160a0c; color: var(--bone); box-shadow: 0 0 0 1px #3a0a10; }
+@media (max-width: 520px) { .cookie:not([hidden]) ~ .sound { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); } }
+
+.toast { position: fixed; z-index: 70; left: 50%; top: calc(16px + env(safe-area-inset-top, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: .7em 1.2em; border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px -10px rgba(0,0,0,.5); max-width: calc(100% - 32px); text-align: center; }
+.late .toast { background: #160a0c; color: var(--blood-hot); font-family: var(--f-fell); font-weight: 400; }
+
+.idle { position: fixed; z-index: 62; left: 50%; top: 46%; transform: translate(-50%, -50%); font-family: var(--f-fell); font-style: italic; font-size: clamp(1.4rem, 3.4vw, 2.2rem); color: var(--blood-hot); text-shadow: 0 0 12px #000; pointer-events: none; text-align: center; width: calc(100% - 32px); }
+
+.scare { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: radial-gradient(circle at 50% 50%, #4a000c 0, #120004 45%, #000 75%); overflow: hidden; }
+.scare-face { width: min(150vmin, 1300px); animation: lunge .95s cubic-bezier(.15,.9,.2,1) both; }
+.scare::after { content: ""; position: absolute; inset: 0; background: #fff; animation: flash .95s linear both; pointer-events: none; }
+@keyframes lunge {
+  0% { transform: scale(.25) rotate(-4deg); filter: brightness(1.8) contrast(1.4); }
+  14% { transform: scale(1.02) translate(-1.5%, 1%) rotate(2deg); }
+  22% { transform: scale(1.1) translate(1.5%, -1%) rotate(-2deg); }
+  30% { transform: scale(1.16) translate(-1%, 1.5%) rotate(1deg); }
+  40% { transform: scale(1.2) translate(1%, 0) rotate(-1deg); filter: none; }
+  100% { transform: scale(1.45); filter: brightness(.6); }
+}
+@keyframes flash { 0% { opacity: .85; } 6% { opacity: 0; } 100% { opacity: 0; } }
+
+.glitching { animation: glitch .2s steps(2, end) 1; }
+@keyframes glitch {
+  0% { transform: translate(3px, -1px); text-shadow: -3px 0 var(--blood-hot), 3px 0 #29e0ff; clip-path: inset(8% 0 38% 0); }
+  50% { transform: translate(-4px, 1px); text-shadow: 3px 0 var(--blood-hot), -3px 0 #29e0ff; clip-path: inset(48% 0 4% 0); }
+  100% { transform: none; text-shadow: none; clip-path: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scare-face, .scare::after, .line.flicker > p, .caret { animation: none !important; }
+  .btn:hover { transform: none; }
+  .glitching { animation: none; }
+}
+</style>
+
+<div class="fx-vignette" id="vignette" aria-hidden="true"></div>
+<canvas class="fx-grain" id="grain" width="360" height="220" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 21V11" stroke="#2F8F4E" stroke-width="2.4" stroke-linecap="round"/><path d="M12 12C12 7 8 5 4 5c0 4 3 7 8 7Z" fill="#45B866"/><path d="M12 10c0-4 3-6 8-6 0 4-3 6-8 6Z" fill="#7BD88F"/></svg>
+      </span>
+      <span>Pinegrove</span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#games">Games</a>
+      <a href="#features">Features</a>
+      <a href="#neighbours">Community</a>
+      <a href="#faq">Support</a>
+      <a href="#patch" id="nav-last">Careers</a>
+    </nav>
+    <button class="btn btn-sun btn-sm" data-toast="Added to your wishlist. Thank you!">Wishlist</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow" id="hero-eyebrow">New: the Lantern Festival update is live</p>
+      <h1 id="hero-title">Grow something wonderful.</h1>
+      <p class="lede" id="hero-lede">Sunny Acres is the cozy farming adventure that two million players call home. Plant, fish, decorate and make friends in a little town that is always happy to see you.</p>
+      <div class="cta-row">
+        <button class="btn btn-sun" id="hero-cta" data-toast="Added to your wishlist. Thank you!">Wishlist Sunny Acres</button>
+        <button class="btn btn-ghost" id="theme-btn" type="button">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+          <span>Play the theme song</span>
+        </button>
+      </div>
+      <p class="hero-meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> 4.9 from 182,406 reviews · PC, consoles and mobile</p>
+      <p class="restart" id="restart" hidden>Not you? <button class="linklike" id="restart-btn" type="button">Start over</button></p>
+    </div>
+    <div class="hero-art">
+      <div class="scene-card" id="hero-scene" role="img" aria-label="A sunny farm with a red barn, rolling hills and a smiling sun"></div>
+    </div>
+  </div>
+</section>
+
+<section class="press" aria-label="What the press says">
+  <div class="wrap press-in">
+    <figure><blockquote>“The coziest game of the year, maybe the decade.”</blockquote><figcaption>Pixel Gazette</figcaption></figure>
+    <figure><blockquote>“I sat down for ten minutes and lost a whole weekend.”</blockquote><figcaption>The Cozy Report</figcaption></figure>
+    <figure><blockquote>“9 out of 10. Utterly, relentlessly charming.”</blockquote><figcaption>Controller Monthly</figcaption></figure>
+  </div>
+</section>
+
+<section class="band games" id="games">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker">Our games</p>
+      <h2>Made with love in a small studio by the lake</h2>
+      <p>Pinegrove Interactive is a team of 24 people making warm, welcoming games for players of every age.</p>
+    </div>
+    <div class="game-grid">
+      <article class="game">
+        <div class="game-art">
+          <svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#8FD8FF"/><circle cx="250" cy="55" r="28" fill="#FFC43D"/><path d="M0 140 Q90 100 170 130 T320 120 V200 H0Z" fill="#7BD88F"/><path d="M0 165 Q120 140 220 160 T320 158 V200 H0Z" fill="#45B866"/><rect x="48" y="104" width="52" height="40" fill="#E5484D"/><path d="M42 106 L74 82 L106 106Z" fill="#B9343C"/></svg>
+          <span class="tag">Out now</span>
+        </div>
+        <div class="game-body">
+          <h3>Sunny Acres</h3>
+          <p class="genre">Farming life sim · 1 to 4 players</p>
+          <p>Inherit a sleepy farm, bring it back to life and find your place in the friendliest town on the map.</p>
+          <a href="#features">Learn more →</a>
+        </div>
+      </article>
+      <article class="game">
+        <div class="game-art">
+          <svg viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9C7BFF"/><stop offset="1" stop-color="#FF9EC7"/></linearGradient></defs><rect width="320" height="200" fill="url(#sk)"/><ellipse cx="70" cy="60" rx="40" ry="14" fill="#fff" opacity=".8"/><ellipse cx="240" cy="40" rx="34" ry="11" fill="#fff" opacity=".8"/><path d="M110 200 L160 92 L210 200Z" fill="#3B2F6B"/><path d="M158 200 L160 92 L162 200Z" fill="#FFE27A"/><rect x="138" y="150" width="44" height="22" rx="8" fill="#FF6A55"/><circle cx="146" cy="174" r="7" fill="#1C2448"/><circle cx="174" cy="174" r="7" fill="#1C2448"/></svg>
+          <span class="tag">Early access</span>
+        </div>
+        <div class="game-body">
+          <h3>Skyhop Rally</h3>
+          <p class="genre">Arcade racing · Online multiplayer</p>
+          <p>Drift across floating islands, collect sky-coins and bump your friends off the cloud tracks.</p>
+          <a href="#features">Learn more →</a>
+        </div>
+      </article>
+      <article class="game">
+        <div class="game-art">
+          <svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#5ECFC1"/><circle cx="60" cy="50" r="16" fill="#FFF3C4"/><path d="M0 160 Q160 120 320 160 V200 H0Z" fill="#2E9C8D"/><g fill="#F4EBD9"><rect x="120" y="90" width="80" height="60"/><rect x="110" y="70" width="22" height="80"/><rect x="188" y="70" width="22" height="80"/><rect x="148" y="60" width="24" height="50"/></g><g fill="#E5484D"><path d="M108 72 L121 52 L134 72Z"/><path d="M186 72 L199 52 L212 72Z"/><path d="M146 62 L160 38 L174 62Z"/></g><rect x="150" y="122" width="20" height="28" rx="10" fill="#6B4F3A"/></svg>
+          <span class="tag">Coming 2027</span>
+        </div>
+        <div class="game-body">
+          <h3>Pocket Kingdoms</h3>
+          <p class="genre">Cozy strategy · Single player</p>
+          <p>Build a tiny kingdom that fits in your pocket. Your subjects adore you. They would never leave you.</p>
+          <a href="#features">Learn more →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band features" id="features">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker">Why players love Sunny Acres</p>
+      <h2>A whole world, ready when you are</h2>
+      <p>Everything you need for a slower, softer life. No timers, no pressure, no reason to ever leave.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-ico" style="background:#E3F7E6"><svg viewBox="0 0 24 24"><path d="M12 21V10" stroke="#2F8F4E" stroke-width="2.2" stroke-linecap="round"/><path d="M12 11C12 6 8 4 4 4c0 4 3 7 8 7Z" fill="#45B866"/><path d="M12 9c0-4 3-6 8-6 0 4-3 6-8 6Z" fill="#7BD88F"/></svg></div>
+        <div><h3>200+ crops to grow</h3><p>From strawberries to starfruit, with rare seeds hidden all over the valley.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico" style="background:#FFF1CF"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#FFC43D"/><g stroke="#E8960A" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></g></svg></div>
+        <div><h3>Four full seasons</h3><p>Spring blossoms, summer fairs, autumn lanterns and snowy winter nights.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico" style="background:#FFE3DE"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="#FF6A55"/></svg></div>
+        <div><h3>30 neighbours to befriend</h3><p>Every villager has a story, a birthday, and a long memory for everything you do.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico" style="background:#E2ECFF"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3Z" fill="#6C8CFF"/><rect x="10" y="14" width="4" height="6" fill="#fff"/></svg></div>
+        <div><h3>Build your dream farmhouse</h3><p>Over 1,500 pieces of furniture, wallpapers and garden decorations.</p></div>
+      </div>
+      <div class="feat off">
+        <div class="feat-ico" style="background:#EDE6F7"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="#8A6FC2" stroke-width="2.2"/><path d="M12 7v5l3 2" stroke="#8A6FC2" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></div>
+        <div><h3>Play at your own pace</h3><p>There is no clock in Sunny Acres. There is no night, either. <span data-glitch data-alt="You will not need to sleep.">You won't need to sleep.</span></p></div>
+      </div>
+      <div class="feat off">
+        <div class="feat-ico" style="background:#E3EEF2"><svg viewBox="0 0 24 24"><path d="M7 17a4 4 0 0 1-.6-8A5.5 5.5 0 0 1 17 8a4.5 4.5 0 0 1 0 9Z" fill="#7FA6B5"/></svg></div>
+        <div><h3>Cross-save everywhere</h3><p>Your farm follows you to every device. <span data-glitch data-alt="It follows you home.">Everywhere you go.</span></p></div>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <figure class="review">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote>My daughter and I play together every evening after dinner. It's so relaxing and wholesome. Highly recommend!</blockquote>
+        <figcaption class="who"><span class="avatar" style="background:#FF6A55">D</span><span>Dana K. · 74 hours played</span></figcaption>
+      </figure>
+      <figure class="review">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote>Best farming game I've ever played. The neighbours feel so real. Sometimes a little too real, haha. Marigold knew my actual birthday??</blockquote>
+        <figcaption class="who"><span class="avatar" style="background:#6C8CFF">M</span><span>marcus_plays · 311 hours played</span></figcaption>
+      </figure>
+      <figure class="review off">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★<span class="dead">★</span></span>
+        <blockquote>I have played for 2,191 hours. I don't remember buying it. My farm is beautiful. The doors only open onto the field now. <span data-glitch data-alt="please tell my sister i'm still here">Please tell my sister I'm fine.</span></blockquote>
+        <figcaption class="who"><span class="avatar" aria-hidden="true"></span><span>Verified player · 2,191 hours played</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="signup">
+      <div>
+        <h3>Join 400,000 farmers</h3>
+        <p>Get patch notes, seasonal events and a free in-game scarecrow when you sign up.</p>
+      </div>
+      <form id="signup-form" novalidate>
+        <label for="signup-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
+        <input id="signup-email" type="email" placeholder="you@example.com" autocomplete="off">
+        <button class="btn btn-sun" type="submit">Sign up</button>
+        <p class="status" id="signup-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="band neighbours" id="neighbours">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker">Meet your neighbours</p>
+      <h2>Everyone is so glad you moved in</h2>
+      <p>The folks of Sunny Acres have been waiting a long time for someone like you. <span data-glitch data-alt="They watched you arrive.">They can't wait to say hello.</span></p>
+    </div>
+    <div class="n-grid">
+      <article class="n-card">
+        <div class="n-face" data-face="marigold"></div>
+        <p class="n-role">Baker</p>
+        <h3>Marigold</h3>
+        <p>Bakes a fresh pie every morning and leaves it on your porch. She always knows when you're home.</p>
+        <p class="hearts" aria-label="Friendship 4 of 5">♥︎♥︎♥︎♥︎♡</p>
+      </article>
+      <article class="n-card">
+        <div class="n-face" data-face="tobias"></div>
+        <p class="n-role">Fisherman</p>
+        <h3>Tobias</h3>
+        <p>Tells the best stories down by the lake. Don't ask him what's under the lake. He'll tell you.</p>
+        <p class="hearts" aria-label="Friendship 3 of 5">♥︎♥︎♥︎♡♡</p>
+      </article>
+      <article class="n-card">
+        <div class="n-face" data-face="twins"></div>
+        <p class="n-role">Flower shop</p>
+        <h3>Nell &amp; Nora</h3>
+        <p>The twins always finish each other's sentences. Always. They will finish yours too, if you let them.</p>
+        <p class="hearts" aria-label="Friendship 5 of 5">♥︎♥︎♥︎♥︎♥︎</p>
+      </article>
+      <article class="n-card him">
+        <div class="n-face" data-face="farmer"></div>
+        <p class="n-role">The far field</p>
+        <h3 data-glitch data-alt="HE SEES YOU">The Farmer</h3>
+        <p>He tends the far field. He was here before the town was. He is looking forward to meeting you.</p>
+        <p class="hearts" aria-label="Friendship beyond maximum">♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎♥︎</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band faq" id="faq">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker">Support</p>
+      <h2>Frequently asked questions</h2>
+      <p>Can't find what you're looking for? Our friendly support team answers every message. <span data-glitch data-alt="Someone always answers.">Someone always answers.</span></p>
+    </div>
+    <div class="faq-list">
+      <details open><summary>Is Sunny Acres family friendly?</summary><p class="a">Yes! Sunny Acres is rated for everyone. Everyone is welcome. Everyone stays.</p></details>
+      <details open><summary>Does it support controllers?</summary><p class="a">Full controller support on every platform, plus mouse and keyboard. You can also just watch.</p></details>
+      <details open><summary>How long does the game take to finish?</summary><p class="a">About 60 hours for the main story. Most players never finish. Most players never stop.</p></details>
+      <details open><summary>Can I play offline?</summary><p class="a">Yes. <span data-glitch data-alt="HE IS NEVER OFFLINE">He can still see you when you're offline.</span></p></details>
+      <details open><summary>Who is the man standing in the far field?</summary><p class="a">There is no man in the far field. <span class="red" data-glitch data-alt="DON'T LOOK AT HIM">Please stop looking at the far field.</span></p></details>
+      <details open><summary>My character's name changed in my save file. Is that a bug?</summary><p class="a">It isn't your save file anymore.</p></details>
+      <details open><summary>How do I quit the game?</summary><p class="a"><span class="redact">we are so sorry we tried</span> <span class="redact">there is no menu</span><br><span class="red">[This answer was removed at the Farmer's request.]</span></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band patch" id="patch">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="kicker">Patch notes</p>
+      <h2>What's new in Sunny Acres</h2>
+      <p>We read every bug report. We are still reading them. We read them in the dark.</p>
+    </div>
+    <div class="terminal" role="region" aria-label="Patch notes">
+      <div class="term-bar"><i></i><i></i><i></i><span>patch_notes.txt</span></div>
+      <div class="term-body">
+        <p><b>1.0.0</b><span>Launch day! Thank you to everyone who helped us grow.</span></p>
+        <p><b>1.0.1</b><span>Fixed a bug where pumpkins could grow inside the barn.</span></p>
+        <p><b>1.0.2</b><span>Improved fishing controls. Tobias says hello.</span></p>
+        <p><b>1.1.0</b><span>Added the far field.</span></p>
+        <p><b>1.1.1</b><span class="warn">Players can no longer enter the far field.</span></p>
+        <p><b>1.1.2</b><span class="warn">Players can no longer leave the far field.</span></p>
+        <p><b>1.2.0</b><span>Removed the day/night cycle at the Farmer's request.</span></p>
+        <p><b>1.2.1</b><span class="warn">Removed the Quit button. Nobody was using it.</span></p>
+        <p><b>1.3.0</b><span class="bad">We can't find Dana from QA. If you meet her in game, do not answer her.</span></p>
+        <p><b>1.3.1</b><span class="bad">Dana is fine. Dana is home now. Dana lives in the barn.</span></p>
+        <p><b>1.4.0</b><span class="bad">The Farmer no longer turns to face the camera.</span></p>
+        <p><b>1.4.1</b><span class="worse">Reverted the previous change. He prefers it this way.</span></p>
+        <p><b>1.?.?</b><span class="worse" data-glitch data-alt="LET US OUT LET US OUT LET US OUT">we are still in the office. every door opens onto the field.</span></p>
+        <p><b>-.-.-</b><span class="worse">he knows you are reading this <span class="caret"></span></span></p>
+      </div>
+    </div>
+    <div class="preorder">
+      <h3>Sunny Acres: Forever Edition</h3>
+      <button class="btn btn-rot" type="button" data-glitch data-alt="PLEASE HELP US" data-toast="Thank you. He will be with you shortly.">Pre-order now</button>
+      <p>Includes the season pass, the Lantern Festival, and a plot in the far field reserved in your name.</p>
+    </div>
+  </div>
+</section>
+
+<section class="night" id="night" aria-label="The farm at night">
+  <div class="night-stick">
+    <div id="night-scene"></div>
+    <div class="captions">
+      <div class="wrap">
+        <p class="cap">The sun went down in Sunny Acres.</p>
+        <p class="cap">It was never supposed to do that.</p>
+        <p class="cap">Someone is walking in from the far field.</p>
+        <p class="cap">He has been waiting for you to scroll this far.</p>
+        <p class="cap"><em>Don't stop now.</em> He's almost here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finale" id="finale">
+  <div class="finale-face" aria-hidden="true"><div id="finale-face"></div></div>
+  <div class="lines wrap">
+    <div class="line"><p>Hello again.</p></div>
+    <div class="line"><p>It's <span class="live" data-live="clock">late</span> where you are. <span data-live="clocktail">Everyone else is asleep.</span></p></div>
+    <div class="line"><p>You've been on this page for <span class="live" data-live="elapsed">a while</span>. He has watched every second of it.</p></div>
+    <div class="line"><p>You scrolled <span class="live" data-live="distance">a long way</span> to get down here.</p></div>
+    <div class="line"><p data-live="pointerline">Your cursor is at <span class="live" data-live="cursor">the edge of the screen</span>. Keep it still.</p></div>
+    <div class="line"><p>You could have stopped at any time.</p></div>
+    <div class="line"><p>You didn't.</p></div>
+    <div class="line big"><p>So now you get to stay.</p></div>
+  </div>
+  <div id="jump-trigger" aria-hidden="true"></div>
+  <div class="after">
+    <div class="wrap after-in">
+      <div class="tiny-sun" data-sun="wrong" data-track aria-hidden="true"></div>
+      <h2>Thanks for visiting Sunny Acres!</h2>
+      <p>Coming soon to every screen in your house. We'll see you tonight. We'll see you every night.</p>
+      <button class="btn btn-sun" id="go-back" type="button">Go back to the farm</button>
+      <footer class="rot-foot">
+        <span>© 2026 Pinegrove Interactive. All souls reserved.</span>
+        <nav aria-label="Footer"><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#finale">There is no exit</a></nav>
+      </footer>
+    </div>
+  </div>
+</section>
+
+<div class="cookie" id="cookie" role="region" aria-label="Cookie notice">
+  <p id="cookie-text">We use cookies to give you the best possible experience on our site.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-sm btn-sun" id="cookie-a" type="button">Accept</button>
+    <button class="btn btn-sm btn-ghost" id="cookie-b" type="button">Preferences</button>
+  </div>
+</div>
+<button class="sound" id="sound" type="button" aria-pressed="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9Z" fill="currentColor"/><path id="sound-wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" opacity=".25"/></svg>
+  <span id="sound-label">Sound off</span>
+</button>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="idle" id="idle" hidden>why did you stop?</div>
+<div class="scare" id="scare" hidden aria-hidden="true"><div class="scare-face" id="scare-face"></div></div>
+
+<script>
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const noHover = matchMedia('(hover: none)').matches;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+    del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+  /* ================= SVG builders ================= */
+  function qb(p0, p1, p2, t) {
+    const u = 1 - t;
+    return [u * u * p0[0] + 2 * u * t * p1[0] + t * t * p2[0], u * u * p0[1] + 2 * u * t * p1[1] + t * t * p2[1]];
+  }
+  function rays(mode) {
+    const n = mode === 'horror' ? 16 : 12;
+    let out = '';
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+      let len, w, r0 = 62;
+      if (mode === 'happy') { len = 90; w = 0.17; }
+      else if (mode === 'wrong') { len = 90 + (i % 3) * 7 + (i === 4 ? 16 : 0); w = 0.14; }
+      else { len = 96 + ((i * 7) % 5) * 7 + (i % 2 ? 14 : 0); w = 0.1; }
+      const p = (ang, r) => `${(100 + r * Math.cos(ang)).toFixed(1)},${(100 + r * Math.sin(ang)).toFixed(1)}`;
+      out += `<polygon points="${p(a - w, r0)} ${p(a, len)} ${p(a + w, r0)}"/>`;
+    }
+    return out;
+  }
+  function sunInner(mode, uid) {
+    if (mode === 'happy') {
+      return `<g fill="#FFB703" stroke="#FFB703" stroke-width="6" stroke-linejoin="round">${rays('happy')}</g>
+        <circle cx="100" cy="100" r="60" fill="#FFD34E" stroke="#F4A300" stroke-width="3"/>
+        <circle cx="70" cy="114" r="9" fill="#FF9C8A" opacity=".7"/><circle cx="130" cy="114" r="9" fill="#FF9C8A" opacity=".7"/>
+        <ellipse cx="80" cy="94" rx="7" ry="9" fill="#3B2A1A"/><ellipse cx="120" cy="94" rx="7" ry="9" fill="#3B2A1A"/>
+        <g><circle class="pupil" cx="82" cy="91" r="2.4" fill="#fff" data-max="2.5"/></g>
+        <g><circle class="pupil" cx="122" cy="91" r="2.4" fill="#fff" data-max="2.5"/></g>
+        <path d="M80 116 Q100 134 120 116" stroke="#3B2A1A" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+    }
+    if (mode === 'wrong') {
+      let teeth = '';
+      for (let i = 1; i < 10; i++) {
+        const [x, y] = qb([64, 110], [100, 130], [136, 110], i / 10);
+        teeth += `<rect x="${(x - 2.6).toFixed(1)}" y="${(y - 1).toFixed(1)}" width="5.2" height="8" rx="1" fill="#F7F1E3"/>`;
+      }
+      return `<g fill="#E2AE3A" stroke="#E2AE3A" stroke-width="5" stroke-linejoin="round">${rays('wrong')}</g>
+        <circle cx="100" cy="100" r="60" fill="#EFD07E" stroke="#C99526" stroke-width="3"/>
+        <ellipse cx="78" cy="88" rx="10" ry="12" fill="#120A05"/><ellipse cx="122" cy="88" rx="10" ry="12" fill="#120A05"/>
+        <g><circle class="pupil" cx="78" cy="88" r="1.8" fill="#fff" data-max="6"/></g>
+        <g><circle class="pupil" cx="122" cy="88" r="1.8" fill="#fff" data-max="6"/></g>
+        <path d="M64 110 Q100 162 136 110 Q100 130 64 110Z" fill="#1A0A06"/>${teeth}`;
+    }
+    // horror
+    let teeth = '';
+    const U0 = [52, 116], U1 = [100, 142], U2 = [148, 116], L1 = [100, 184];
+    for (let i = 1; i < 12; i++) {
+      const t = i / 12, d = 0.038;
+      const a = qb(U0, U1, U2, t - d), b = qb(U0, U1, U2, t + d), c = qb(U0, U1, U2, t);
+      teeth += `<polygon points="${a[0].toFixed(1)},${a[1].toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)} ${c[0].toFixed(1)},${(c[1] + 11).toFixed(1)}"/>`;
+      const e = qb(U0, L1, U2, t - d), f = qb(U0, L1, U2, t + d), g = qb(U0, L1, U2, t);
+      teeth += `<polygon points="${e[0].toFixed(1)},${e[1].toFixed(1)} ${f[0].toFixed(1)},${f[1].toFixed(1)} ${g[0].toFixed(1)},${(g[1] - 12).toFixed(1)}"/>`;
+    }
+    return `<defs>
+        <radialGradient id="pale-${uid}" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#EFE4CF"/><stop offset=".65" stop-color="#B7A68A"/><stop offset="1" stop-color="#5E4A36"/></radialGradient>
+        <radialGradient id="hole-${uid}" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#000"/><stop offset="1" stop-color="#2a0a06"/></radialGradient>
+      </defs>
+      <g fill="#2E0007" stroke="#6D0012" stroke-width="2" stroke-linejoin="miter">${rays('horror')}</g>
+      <circle cx="100" cy="100" r="64" fill="url(#pale-${uid})"/>
+      <path d="M58 70 Q78 60 96 74" stroke="#3a2a1c" stroke-width="3" fill="none"/>
+      <path d="M142 70 Q122 60 104 74" stroke="#3a2a1c" stroke-width="3" fill="none"/>
+      <ellipse cx="77" cy="92" rx="16" ry="20" fill="url(#hole-${uid})"/><ellipse cx="123" cy="92" rx="16" ry="20" fill="url(#hole-${uid})"/>
+      <path d="M70 108 q2 16 0 30 q-3 -12 -4 -28Z" fill="#5C0010"/>
+      <path d="M128 109 q2 10 1 20 q-3 -8 -4 -19Z" fill="#5C0010"/>
+      <g><circle class="pupil" cx="77" cy="92" r="2.4" fill="#fff" data-max="9"/></g>
+      <g><circle class="pupil" cx="123" cy="92" r="2.4" fill="#fff" data-max="9"/></g>
+      <path d="M52 116 Q100 184 148 116 Q100 142 52 116Z" fill="#000"/>
+      <g fill="#E9DFC8">${teeth}</g>`;
+  }
+  const sunSVG = (mode, uid) => `<svg viewBox="-20 -20 240 240" aria-hidden="true">${sunInner(mode, uid)}</svg>`;
+
+  function farmer(facing, wide) {
+    const skin = '#D8CCB6';
+    const face = facing
+      ? `<ellipse cx="-6.5" cy="-207" rx="4.4" ry="5.6" fill="#000"/><ellipse cx="6.5" cy="-207" rx="4.4" ry="5.6" fill="#000"/>
+         <g><circle class="pupil" cx="-6.5" cy="-207" r="1" fill="#fff" data-max="2.2"/></g>
+         <g><circle class="pupil" cx="6.5" cy="-207" r="1" fill="#fff" data-max="2.2"/></g>
+         ${wide ? '<path d="M-13 -197 Q0 -184 13 -197 Q0 -191 -13 -197Z" fill="#000"/>' : '<path d="M-9 -196 Q0 -190 9 -196" stroke="#000" stroke-width="1.6" fill="none"/>'}`
+      : `<path d="M-17 -210 Q0 -192 17 -210 Q14 -190 0 -186 Q-14 -190 -17 -210Z" fill="#4A3A28"/>`;
+    return `<g>
+      <rect x="-14" y="-96" width="9" height="96" fill="#140C08"/><rect x="5" y="-96" width="9" height="96" fill="#140C08"/>
+      <path d="M-27 -176 Q0 -186 27 -176 L33 -90 Q0 -83 -33 -90Z" fill="#2E241A"/>
+      <path d="M-13 -146 H13 V-98 H-13Z" fill="#232B38"/>
+      <path d="M-13 -146 L-20 -176 M13 -146 L20 -176" stroke="#232B38" stroke-width="4"/>
+      <path d="M-25 -170 Q-42 -120 -39 -44" stroke="#2E241A" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M25 -170 Q42 -120 39 -44" stroke="#2E241A" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="-39" cy="-41" r="5" fill="${skin}"/><circle cx="39" cy="-41" r="5" fill="${skin}"/>
+      <rect x="-5" y="-192" width="10" height="18" fill="${skin}"/>
+      <ellipse cx="0" cy="-205" rx="17" ry="21" fill="${skin}"/>
+      ${face}
+      <ellipse cx="0" cy="-222" rx="31" ry="6" fill="#B89A4A"/>
+      <path d="M-15 -222 Q-14 -241 0 -242 Q14 -241 15 -222Z" fill="#A3863C"/>
+      <rect x="-15" y="-228" width="30" height="4" fill="#5A1010"/>
+    </g>`;
+  }
+
+  function farmScene(kind, uid) {
+    const day = kind === 'day';
+    const C = day
+      ? { s1: '#8FD8FF', s2: '#E2F5FF', far: '#A6E39A', field: '#E7C76A', near: '#6FCB63', barn: '#E5484D', roof: '#B9343C', door: '#FFFFFF', post: '#FFFFFF', crop: '#2F9E44', path: '#EAD9A8' }
+      : { s1: '#090103', s2: '#3B0410', far: '#1B0B0E', field: '#2E160E', near: '#110608', barn: '#3B0B10', roof: '#22060A', door: '#0E0305', post: '#3A2E2A', crop: '#2A1A12', path: '#24140F' };
+    let crops = '';
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 9; c++) {
+      const x = 236 + c * 38 + r * 9, y = 356 + r * 17;
+      crops += day
+        ? `<circle cx="${x}" cy="${y}" r="7"/><circle cx="${x + 6}" cy="${y - 4}" r="5"/>`
+        : `<path d="M${x} ${y + 6} l-3 -12 M${x} ${y + 6} l5 -10" stroke="${C.crop}" stroke-width="2.4"/>`;
+    }
+    let wheat = '';
+    for (let i = 0; i < 26; i++) {
+      const x = 372 + i * 9, y = 240 + Math.sin(i * 1.7) * 4;
+      wheat += `<path d="M${x} ${y + 18} q1 -10 0 -18" stroke="${day ? '#C9A43E' : '#4a2a16'}" stroke-width="2" fill="none"/>`;
+    }
+    let fence = '';
+    for (let x = 236; x <= 590; x += 32) fence += `<rect x="${x}" y="318" width="6" height="28" rx="2" fill="${C.post}"/>`;
+    let stars = '';
+    if (!day) for (let i = 0; i < 40; i++) stars += `<circle cx="${(i * 97) % 600}" cy="${(i * 53) % 190}" r="${i % 3 ? .8 : 1.4}" fill="#d8b9a8" opacity="${.25 + (i % 4) * .12}"/>`;
+    const sky = `<defs><linearGradient id="sky-${uid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${C.s1}"/><stop offset="1" stop-color="${C.s2}"/></linearGradient></defs><rect width="600" height="420" fill="url(#sky-${uid})"/>`;
+    const clouds = day ? `<g fill="#fff" opacity=".92"><ellipse cx="110" cy="78" rx="46" ry="16"/><ellipse cx="138" cy="68" rx="30" ry="19"/><ellipse cx="86" cy="70" rx="22" ry="14"/><ellipse cx="300" cy="48" rx="34" ry="11"/><ellipse cx="320" cy="40" rx="20" ry="12"/></g>` : '';
+    const celestial = day
+      ? `<svg x="440" y="20" width="135" height="135" viewBox="-20 -20 240 240" class="scene-sun" data-track-when-cursed>${sunInner('happy', uid + 's')}</svg>`
+      : `<svg x="400" y="10" width="170" height="170" viewBox="-20 -20 240 240" data-track>${sunInner('horror', uid + 's')}</svg>`;
+    const figBack = day ? `<g class="h-away" transform="translate(486 252) scale(.16)">${farmer(false)}</g>` : '';
+    const figFront = day
+      ? `<g class="h-face" data-track transform="translate(500 372) scale(.6)">${farmer(true, true)}</g>`
+      : `<g id="night-farmer" transform="translate(486 252) scale(.16)">${farmer(true, true)}</g>`;
+    const svg = `<svg viewBox="0 0 600 420" preserveAspectRatio="${day ? 'xMidYMid meet' : 'xMidYMid slice'}" aria-hidden="true" ${day ? '' : 'id="night-svg" data-track'}>
+      ${sky}${stars}${clouds}${celestial}
+      <path d="M0 250 Q150 190 300 236 T600 222 V420 H0Z" fill="${C.far}"/>
+      <path d="M360 240 Q470 216 600 228 V272 Q480 262 360 272Z" fill="${C.field}"/>
+      ${wheat}
+      ${figBack}
+      <path d="M0 302 Q200 252 380 292 T600 286 V420 H0Z" fill="${C.near}"/>
+      <path d="M30 420 Q120 345 170 314" stroke="${C.path}" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <rect x="70" y="226" width="120" height="86" fill="${C.barn}"/>
+      <path d="M62 230 L130 184 L198 230Z" fill="${C.roof}"/>
+      <rect x="106" y="262" width="48" height="50" fill="${C.door}"/>
+      <path d="M106 262 L154 312 M154 262 L106 312" stroke="${C.barn}" stroke-width="5"/>
+      ${day ? '' : '<rect x="118" y="200" width="24" height="18" fill="#C9A15A" opacity=".85"/><rect x="118" y="200" width="24" height="18" fill="none" stroke="#000" stroke-width="2"/><ellipse cx="126" cy="210" rx="4" ry="5" fill="#000"/>'}
+      <path d="M232 326 H596 M232 338 H596" stroke="${C.post}" stroke-width="4"/>${fence}
+      <g fill="${C.crop}">${crops}</g>
+      ${figFront}
+    </svg>`;
+    return svg;
+  }
+
+  function eye(cx, cy, r, pr, max, white = '#fff', pupil = '#1D1410') {
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${white}"/><g><circle class="pupil" cx="${cx}" cy="${cy}" r="${pr}" fill="${pupil}" data-max="${max}"/></g>`;
+  }
+  const FACES = {
+    marigold: `<svg viewBox="0 0 120 120" data-track>
+      <circle cx="60" cy="18" r="14" fill="#D9692F"/><circle cx="60" cy="56" r="40" fill="#D9692F"/>
+      <path d="M22 120 Q60 90 98 120Z" fill="#F3A6A0"/><rect x="53" y="88" width="14" height="10" fill="#F7CFAE"/>
+      <circle cx="60" cy="62" r="31" fill="#F7CFAE"/>
+      <path d="M29 56 Q60 22 91 56 Q76 41 60 45 Q44 41 29 56Z" fill="#D9692F"/>
+      ${eye(48, 64, 6.5, 3.2, 2.8)}${eye(72, 64, 6.5, 3.2, 2.8)}
+      <circle cx="42" cy="76" r="5" fill="#F29C8C" opacity=".7"/><circle cx="78" cy="76" r="5" fill="#F29C8C" opacity=".7"/>
+      <path d="M50 80 Q60 89 70 80" stroke="#7A3B22" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    tobias: `<svg viewBox="0 0 120 120" data-track>
+      <path d="M20 120 Q60 92 100 120Z" fill="#F2C14E"/>
+      <circle cx="60" cy="62" r="32" fill="#D7A07A"/>
+      <path d="M34 72 Q60 114 86 72 Q60 86 34 72Z" fill="#7B5236"/>
+      <path d="M28 56 Q60 8 92 56Z" fill="#3466B0"/><rect x="26" y="50" width="68" height="11" rx="5.5" fill="#2A5394"/>
+      ${eye(48, 68, 6, 3, 2.6)}${eye(72, 68, 6, 3, 2.6)}
+      <path d="M52 84 Q60 89 68 84" stroke="#3a2416" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+    twins: `<svg viewBox="0 0 120 120" data-track>
+      <path d="M2 120 Q38 96 74 120Z" fill="#9FD6A8"/><path d="M46 120 Q82 96 118 120Z" fill="#9FD6A8"/>
+      <circle cx="16" cy="58" r="9" fill="#4F3426"/><circle cx="60" cy="58" r="9" fill="#4F3426"/><circle cx="104" cy="58" r="9" fill="#4F3426"/>
+      <circle cx="38" cy="66" r="23" fill="#F3D2B8"/><circle cx="82" cy="66" r="23" fill="#F3D2B8"/>
+      <path d="M15 62 Q38 34 61 62 Q50 50 38 52 Q26 50 15 62Z" fill="#4F3426"/><path d="M59 62 Q82 34 105 62 Q94 50 82 52 Q70 50 59 62Z" fill="#4F3426"/>
+      ${eye(30, 68, 4.5, 2.4, 2)}${eye(46, 68, 4.5, 2.4, 2)}${eye(74, 68, 4.5, 2.4, 2)}${eye(90, 68, 4.5, 2.4, 2)}
+      <path d="M31 79 Q38 86 45 79" stroke="#7A3B22" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M75 79 Q82 86 89 79" stroke="#7A3B22" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>`,
+    farmer: `<svg viewBox="0 0 120 120" data-track>
+      <path d="M16 120 Q60 88 104 120Z" fill="#2E241A"/>
+      <rect x="54" y="84" width="12" height="12" fill="#BDB09A"/>
+      <ellipse cx="60" cy="66" rx="24" ry="29" fill="#CFC2AA"/>
+      <ellipse cx="60" cy="52" rx="26" ry="14" fill="#000" opacity=".35"/>
+      <ellipse cx="51" cy="64" rx="5" ry="6.4" fill="#000"/><ellipse cx="69" cy="64" rx="5" ry="6.4" fill="#000"/>
+      <g><circle class="pupil" cx="51" cy="64" r="1.2" fill="#fff" data-max="2.6"/></g><g><circle class="pupil" cx="69" cy="64" r="1.2" fill="#fff" data-max="2.6"/></g>
+      <ellipse cx="60" cy="40" rx="50" ry="9" fill="#B89A4A"/>
+      <path d="M36 40 Q37 14 60 13 Q83 14 84 40Z" fill="#A3863C"/><rect x="36" y="33" width="48" height="5" fill="#5A1010"/></svg>`
+  };
+
+  /* ================= mount art ================= */
+  $('#hero-scene').innerHTML = farmScene('day', 'h');
+  $('#night-scene').innerHTML = farmScene('night', 'n');
+  $$('[data-face]').forEach((el) => { el.innerHTML = FACES[el.dataset.face]; });
+  $$('[data-sun]').forEach((el, i) => {
+    el.innerHTML = sunSVG(el.dataset.sun, 'ds' + i);
+    if (el.hasAttribute('data-track')) { el.removeAttribute('data-track'); el.firstElementChild.setAttribute('data-track', ''); }
+  });
+  $('#finale-face').innerHTML = sunSVG('horror', 'fin').replace('<svg ', '<svg data-track ');
+  $('#scare-face').innerHTML = sunSVG('horror', 'scr').replace('<svg ', '<svg data-track ');
+  const nightFarmer = $('#night-farmer');
+  const nightSvg = $('#night-svg');
+
+  /* ================= state ================= */
+  let P = 0;                      // page progress 0..1
+  let maxP = 0;
+  let mouse = null;               // {x, y} in client px
+  let lastInput = performance.now();
+  const startTime = Date.now();
+  let cursed = store.get('sunny-acres-cursed') === '1';
+  let scared = false;
+
+  /* ================= toasts, cookie, form ================= */
+  const toast = $('#toast');
+  let toastTimer = 0;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-toast]');
+    if (b) showToast(P > 0.6 ? 'Thank you. He will be with you shortly.' : b.dataset.toast);
+  });
+
+  const cookie = $('#cookie');
+  let cookieRotShown = false;
+  const hideCookie = () => { cookie.hidden = true; };
+  $('#cookie-a').addEventListener('click', hideCookie);
+  $('#cookie-b').addEventListener('click', hideCookie);
+  function rotCookie() {
+    if (cookieRotShown) return;
+    cookieRotShown = true;
+    cookie.classList.add('rotten');
+    $('#cookie-text').textContent = 'We use cookies to remember you. We will always remember you.';
+    $('#cookie-b').textContent = 'Accept';
+    cookie.hidden = false;
+  }
+
+  $('#signup-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = $('#signup-email').value.trim();
+    $('#signup-status').textContent = v
+      ? "You're on the list. Watch your inbox for your free scarecrow."
+      : 'Pop your email in above and we’ll send your free scarecrow.';
+  });
+
+  /* ================= hero curse (after the finale) ================= */
+  const heroOrig = {
+    eyebrow: $('#hero-eyebrow').textContent,
+    title: $('#hero-title').textContent,
+    lede: $('#hero-lede').textContent,
+    cta: $('#hero-cta').textContent,
+    nav: $('#nav-last').textContent
+  };
+  function applyCurse(on) {
+    cursed = on;
+    root.classList.toggle('cursed', on);
+    $('#hero-eyebrow').textContent = on ? 'Welcome home' : heroOrig.eyebrow;
+    $('#hero-title').textContent = on ? 'You came back.' : heroOrig.title;
+    $('#hero-lede').textContent = on
+      ? 'Sunny Acres missed you. The neighbours missed you. He missed you most of all. Go on, scroll down. He is closer than last time.'
+      : heroOrig.lede;
+    $('#hero-cta').textContent = on ? 'Stay forever' : heroOrig.cta;
+    $('#nav-last').textContent = on ? 'Leave' : heroOrig.nav;
+    $('#nav-last').setAttribute('href', on ? '#finale' : '#patch');
+    $('#restart').hidden = !on;
+    $('#hero-scene').innerHTML = farmScene('day', 'h');
+    const s = $('.scene-sun');
+    if (s) {
+      s.innerHTML = sunInner(on ? 'wrong' : 'happy', 'hs' + (on ? 'w' : 'h'));
+      if (on) s.setAttribute('data-track', ''); else s.removeAttribute('data-track');
+    }
+    $('#hero-scene').setAttribute('aria-label', on
+      ? 'The farm again. The sun is grinning and the farmer is standing in the near field, facing you.'
+      : 'A sunny farm with a red barn, rolling hills and a smiling sun');
+    if (on) store.set('sunny-acres-cursed', '1'); else store.del('sunny-acres-cursed');
+    refreshTrackers();
+  }
+  $('#restart-btn').addEventListener('click', () => { applyCurse(false); scared = false; showToast('Welcome to Sunny Acres!'); });
+  $('#go-back').addEventListener('click', () => {
+    applyCurse(true);
+    window.scrollTo(0, 0);
+  });
+
+  /* ================= eye tracking ================= */
+  let trackers = [];
+  const visibleTrackers = new Set();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) visibleTrackers.add(en.target); else visibleTrackers.delete(en.target); });
+  });
+  function refreshTrackers() {
+    trackers.forEach((t) => io.unobserve(t));
+    visibleTrackers.clear();
+    trackers = $$('svg[data-track], g[data-track]');
+    trackers.forEach((t) => io.observe(t));
+  }
+  function trackEyes() {
+    const scare = $('#scare');
+    const list = scare.hidden ? visibleTrackers : new Set([...visibleTrackers, ...scare.querySelectorAll('svg[data-track]')]);
+    const target = mouse || { x: innerWidth / 2, y: innerHeight * 0.45 };
+    list.forEach((svg) => {
+      svg.querySelectorAll('.pupil').forEach((pu) => {
+        const g = pu.parentNode;
+        const m = g.getScreenCTM && g.getScreenCTM();
+        if (!m) return;
+        const cx = +pu.getAttribute('cx'), cy = +pu.getAttribute('cy');
+        const sx = m.a * cx + m.c * cy + m.e, sy = m.b * cx + m.d * cy + m.f;
+        const dx = target.x - sx, dy = target.y - sy;
+        const dist = Math.hypot(dx, dy) || 1;
+        const max = +pu.dataset.max || 2;
+        const k = max * Math.min(1, dist / 260);
+        pu.setAttribute('transform', `translate(${(dx / dist * k).toFixed(2)} ${(dy / dist * k).toFixed(2)})`);
+      });
+    });
+  }
+
+  /* ================= grain ================= */
+  const grain = $('#grain');
+  const gctx = grain.getContext('2d');
+  const gimg = gctx.createImageData(grain.width, grain.height);
+  let gframe = 0;
+  function drawGrain() {
+    const d = gimg.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255 | 0;
+      d[i] = v; d[i + 1] = v * 0.85; d[i + 2] = v * 0.85; d[i + 3] = 255;
+    }
+    gctx.putImageData(gimg, 0, 0);
+  }
+
+  /* ================= audio ================= */
+  const A = { ctx: null, on: false };
+  const MEL = [72, 76, 79, 76, 77, 76, 74, null, 71, 74, 77, 74, 76, 74, 72, null, 72, 76, 79, 84, 83, 79, 77, 76, 74, 77, 76, 74, 72, null, null, null];
+  const BASS = [48, null, 55, null, 53, null, 55, null, 55, null, 50, null, 48, null, 55, null, 48, null, 52, null, 53, null, 55, null, 55, null, 55, null, 48, null, 48, null];
+  function audioInit() {
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return false;
+    const ctx = new C();
+    A.ctx = ctx;
+    A.master = ctx.createGain(); A.master.gain.value = 0; A.master.connect(ctx.destination);
+    A.filter = ctx.createBiquadFilter(); A.filter.type = 'lowpass'; A.filter.frequency.value = 9000; A.filter.connect(A.master);
+    A.music = ctx.createGain(); A.music.gain.value = 1; A.music.connect(A.filter);
+    const dl = ctx.createBiquadFilter(); dl.type = 'lowpass'; dl.frequency.value = 340; dl.Q.value = 7;
+    A.drone = ctx.createGain(); A.drone.gain.value = 0;
+    [55, 58.27, 82.41, 41.2].forEach((f) => {
+      const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f;
+      const g = ctx.createGain(); g.gain.value = 0.28; o.connect(g); g.connect(dl); o.start();
+    });
+    const lfo = ctx.createOscillator(); lfo.frequency.value = 0.08;
+    const lg = ctx.createGain(); lg.gain.value = 160; lfo.connect(lg); lg.connect(dl.frequency); lfo.start();
+    dl.connect(A.drone); A.drone.connect(A.master);
+    A.step = 0; A.next = ctx.currentTime + 0.06; A.beatNext = ctx.currentTime + 0.5;
+    setInterval(audioTick, 25);
+    return true;
+  }
+  function note(midi, t, dur, type, vol) {
+    const ctx = A.ctx;
+    if (P > 0.5) { const pc = midi % 12; if (pc === 4 || pc === 9 || pc === 11) midi -= 1; }
+    const o = ctx.createOscillator(); o.type = type;
+    o.frequency.value = 440 * Math.pow(2, (midi - 69) / 12);
+    const det = -smooth(0.2, 0.92, P) * 280 + (Math.random() * 2 - 1) * P * P * 95;
+    o.detune.setValueAtTime(det, t);
+    if (P > 0.4) o.detune.linearRampToValueAtTime(det - P * 90, t + dur);
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(A.music);
+    o.start(t); o.stop(t + dur + 0.05);
+  }
+  function thump(t, vol) {
+    const ctx = A.ctx;
+    const o = ctx.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(72, t); o.frequency.exponentialRampToValueAtTime(36, t + 0.2);
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+    o.connect(g); g.connect(A.master); o.start(t); o.stop(t + 0.35);
+  }
+  function audioTick() {
+    const ctx = A.ctx;
+    if (!ctx || ctx.state !== 'running') return;
+    const bpm = lerp(128, 56, smooth(0.15, 0.9, P));
+    const eighth = 60 / bpm / 2;
+    const melVol = 1 - smooth(0.8, 0.94, P);
+    while (A.next < ctx.currentTime + 0.15) {
+      const i = A.step % 32;
+      if (melVol > 0.01) {
+        const m = MEL[i], b = BASS[i];
+        if (m != null && Math.random() > P * 0.45) note(m, A.next, eighth * 0.9, 'square', 0.05 * melVol);
+        if (b != null && Math.random() > P * 0.2) note(b, A.next, eighth * 1.8, 'triangle', 0.13 * melVol);
+      }
+      A.next += eighth; A.step++;
+    }
+    if (P > 0.6) {
+      const interval = 60 / lerp(54, 100, smooth(0.6, 1, P));
+      const v = 0.9 * smooth(0.6, 0.78, P);
+      while (A.beatNext < ctx.currentTime + 0.15) {
+        thump(A.beatNext, v); thump(A.beatNext + 0.24, v * 0.65);
+        A.beatNext += interval;
+      }
+    } else {
+      A.beatNext = ctx.currentTime + 0.1;
+    }
+  }
+  function audioParams() {
+    if (!A.ctx || !A.on) return;
+    const t = A.ctx.currentTime;
+    A.filter.frequency.setTargetAtTime(lerp(9000, 520, smooth(0.2, 0.9, P)), t, 0.25);
+    A.drone.gain.setTargetAtTime(smooth(0.42, 0.85, P) * 0.24, t, 0.6);
+  }
+  function scream() {
+    if (!A.on || !A.ctx) return;
+    const ctx = A.ctx, t = ctx.currentTime;
+    const len = Math.floor(ctx.sampleRate * 1.4);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1900; bp.Q.value = 0.7;
+    const ng = ctx.createGain(); ng.gain.setValueAtTime(0.0001, t); ng.gain.exponentialRampToValueAtTime(0.75, t + 0.02); ng.gain.exponentialRampToValueAtTime(0.0001, t + 1.3);
+    src.connect(bp); bp.connect(ng); ng.connect(A.master); src.start(t);
+    [311, 440, 622, 932, 1245].forEach((f, i) => {
+      const o = ctx.createOscillator(); o.type = 'sawtooth';
+      o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 1.7, t + 1.1);
+      o.detune.value = (i % 2 ? 1 : -1) * 35;
+      const g = ctx.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.12, t + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+      o.connect(g); g.connect(A.master); o.start(t); o.stop(t + 1.3);
+    });
+    const boom = ctx.createOscillator(); boom.type = 'sine';
+    boom.frequency.setValueAtTime(90, t); boom.frequency.exponentialRampToValueAtTime(30, t + 1.2);
+    const bg = ctx.createGain(); bg.gain.setValueAtTime(0.0001, t); bg.gain.exponentialRampToValueAtTime(1, t + 0.02); bg.gain.exponentialRampToValueAtTime(0.0001, t + 1.5);
+    boom.connect(bg); bg.connect(A.master); boom.start(t); boom.stop(t + 1.6);
+  }
+  const soundBtn = $('#sound'), soundLabel = $('#sound-label'), soundWave = $('#sound-wave');
+  const themeBtn = $('#theme-btn');
+  function setSound(on) {
+    if (on && !A.ctx && !audioInit()) { showToast('Sound is not available in this browser.'); return; }
+    A.on = on;
+    if (A.ctx) {
+      if (on) {
+        A.ctx.resume();
+        A.next = A.ctx.currentTime + 0.06;
+        A.master.gain.setTargetAtTime(0.6, A.ctx.currentTime, 0.05);
+        audioParams();
+      } else {
+        A.master.gain.setTargetAtTime(0, A.ctx.currentTime, 0.05);
+        setTimeout(() => { if (!A.on) A.ctx.suspend(); }, 300);
+      }
+    }
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundLabel.textContent = on ? 'Sound on' : 'Sound off';
+    soundWave.setAttribute('opacity', on ? '1' : '.25');
+    themeBtn.querySelector('span').textContent = on ? 'Now playing: Sunny Acres theme' : 'Play the theme song';
+  }
+  soundBtn.addEventListener('click', () => setSound(!A.on));
+  themeBtn.addEventListener('click', () => setSound(!A.on));
+
+  /* ================= glitches ================= */
+  const glitchables = $$('[data-glitch]');
+  glitchables.forEach((el) => { el.dataset.orig = el.textContent; });
+  function inView(el) { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }
+  setInterval(() => {
+    if (reduce || P < 0.3) return;
+    if (Math.random() > (P - 0.25) * 1.1) return;
+    const vis = glitchables.filter(inView);
+    if (!vis.length) return;
+    const el = vis[Math.random() * vis.length | 0];
+    el.classList.remove('glitching'); void el.offsetWidth; el.classList.add('glitching');
+    if (el.dataset.alt) {
+      el.textContent = el.dataset.alt;
+      setTimeout(() => { el.textContent = el.dataset.orig; }, 170 + Math.random() * 160);
+    }
+  }, 650);
+
+  /* ================= live finale text ================= */
+  const live = (k) => $$(`[data-live="${k}"]`);
+  function clockLine() {
+    const d = new Date();
+    const h = d.getHours();
+    live('clock').forEach((el) => { el.textContent = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); });
+    const tail = (h >= 22 || h < 5) ? 'Everyone else in your house is asleep.'
+      : h < 12 ? 'Morning light. It doesn’t reach down here.'
+      : h < 18 ? 'Broad daylight. That has never stopped him.'
+      : 'Getting dark outside. Have you drawn the curtains?';
+    live('clocktail').forEach((el) => { el.textContent = tail; });
+  }
+  function elapsedLine() {
+    const s = Math.floor((Date.now() - startTime) / 1000);
+    const m = Math.floor(s / 60), r = s % 60;
+    const txt = m ? `${m} minute${m === 1 ? '' : 's'} and ${r} second${r === 1 ? '' : 's'}` : `${r} second${r === 1 ? '' : 's'}`;
+    live('elapsed').forEach((el) => { el.textContent = txt; });
+  }
+  if (noHover) {
+    const pl = $('[data-live="pointerline"]');
+    pl.innerHTML = 'Your thumb is resting on the glass. <span class="live">He can feel how warm it is.</span>';
+  }
+
+  /* ================= night scrub + finale scale ================= */
+  const night = $('#night');
+  const caps = $$('.cap');
+  const finale = $('#finale');
+  const finaleFace = $('#finale-face');
+  function updateNight() {
+    const r = night.getBoundingClientRect();
+    const vh = innerHeight;
+    if (r.bottom < -50 || r.top > vh + 50) return;
+    const s = clamp(-r.top / (r.height - vh));
+    const e = s * s;
+    const x = lerp(486, 300, smooth(0, 0.85, s));
+    const y = lerp(252, 590, e);
+    const sc = lerp(0.16, 2.7, e);
+    nightFarmer.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${sc.toFixed(3)})`);
+    nightSvg.classList.toggle('glow', s > 0.8);
+    const n = caps.length;
+    caps.forEach((c, i) => {
+      const a = i / n, b = (i + 1) / n;
+      const fadeIn = i === 0 ? 1 : smooth(a - 0.02, a + 0.05, s);
+      const fadeOut = i === n - 1 ? 1 : 1 - smooth(b - 0.05, b + 0.02, s);
+      c.style.opacity = (fadeIn * fadeOut).toFixed(3);
+    });
+  }
+  function updateFinale() {
+    const r = finale.getBoundingClientRect();
+    const vh = innerHeight;
+    if (r.bottom < 0 || r.top > vh) return;
+    const f = clamp((vh - r.top) / (r.height * 0.82));
+    finaleFace.style.opacity = lerp(0.1, 0.85, smooth(0, 0.9, f)).toFixed(3);
+    finaleFace.style.transform = `scale(${lerp(0.5, 1.35, smooth(0, 0.92, f)).toFixed(3)})`;
+  }
+
+  const lineIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting && !reduce) { en.target.classList.add('flicker'); lineIO.unobserve(en.target); }
+    });
+  }, { threshold: 0.6 });
+  $$('.line').forEach((l) => lineIO.observe(l));
+
+  /* ================= jumpscare ================= */
+  const scare = $('#scare');
+  function jumpscare() {
+    if (scared) return;
+    scared = true;
+    scare.hidden = false;
+    scream();
+    trackEyes();
+    setTimeout(() => { scare.hidden = true; applyCurse(true); }, reduce ? 900 : 1050);
+  }
+  new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting && P > 0.8) jumpscare(); });
+  }, { rootMargin: '0px 0px -30% 0px' }).observe($('#jump-trigger'));
+
+  /* ================= scroll loop ================= */
+  const vignette = $('#vignette');
+  const titles = [
+    [0.22, 'Sunny Acres | Pinegrove Interactive'],
+    [0.42, 'Sunny Acres'],
+    [0.56, 'Sunny Acres?'],
+    [0.7, 'sunny acres'],
+    [0.86, 'he is in the far field'],
+    [1.01, 'you get to stay']
+  ];
+  // Progress is measured by section, not raw scroll %, because the horror bands are very tall.
+  const anchors = [['top', 0], ['games', 0.1], ['features', 0.2], ['neighbours', 0.36], ['faq', 0.48], ['patch', 0.6], ['night', 0.7], ['finale', 0.84]]
+    .map(([id, v]) => [document.getElementById(id), v]);
+  function computeP() {
+    const y = scrollY + innerHeight * 0.5;
+    const pts = anchors.map(([el, v]) => [el.offsetTop, v]);
+    pts.push([document.documentElement.scrollHeight - innerHeight * 0.5, 1]);
+    if (y <= pts[0][0]) return 0;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [y0, v0] = pts[i], [y1, v1] = pts[i + 1];
+      if (y < y1) return lerp(v0, v1, clamp((y - y0) / Math.max(1, y1 - y0)));
+    }
+    return 1;
+  }
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      P = computeP();
+      maxP = Math.max(maxP, P);
+      root.style.setProperty('--p', P.toFixed(4));
+      root.classList.toggle('late', P > 0.6);
+      vignette.style.opacity = smooth(0.3, 0.95, P).toFixed(3);
+      grain.style.opacity = (smooth(0.4, 1, P) * 0.07).toFixed(3);
+      if (!document.hidden) document.title = (titles.find((t) => P < t[0]) || titles[titles.length - 1])[1];
+      if (P > 0.62) rotCookie();
+      live('distance').forEach((el) => { el.textContent = Math.round(scrollY).toLocaleString() + ' pixels'; });
+      updateNight();
+      updateFinale();
+      audioParams();
+      trackEyes();
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+
+  function noteInput() {
+    lastInput = performance.now();
+    if (!idleEl.hidden) idleEl.hidden = true;
+  }
+  const idleEl = $('#idle');
+  addEventListener('pointermove', (e) => {
+    mouse = { x: e.clientX, y: e.clientY };
+    live('cursor').forEach((el) => { el.textContent = `${Math.round(e.clientX)}, ${Math.round(e.clientY)}`; });
+    noteInput();
+    requestAnimationFrame(trackEyes);
+  }, { passive: true });
+  addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    if (t) mouse = { x: t.clientX, y: t.clientY };
+    noteInput();
+  }, { passive: true });
+  addEventListener('scroll', noteInput, { passive: true });
+  addEventListener('keydown', noteInput);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && maxP > 0.5) document.title = 'come back';
+    else onScroll();
+  });
+
+  setInterval(() => {
+    clockLine();
+    elapsedLine();
+    if (P > 0.86 && performance.now() - lastInput > 8000 && scare.hidden) idleEl.hidden = false;
+  }, 1000);
+
+  function frame() {
+    gframe++;
+    if (parseFloat(grain.style.opacity || '0') > 0.005 && gframe % 4 === 0 && !reduce) drawGrain();
+    requestAnimationFrame(frame);
+  }
+
+  /* ================= boot ================= */
+  clockLine();
+  elapsedLine();
+  refreshTrackers();
+  if (cursed) applyCurse(true);
+  drawGrain();
+  onScroll();
+  requestAnimationFrame(frame);
+})();
+</script>
+<!-- wrapper -->
+</html>

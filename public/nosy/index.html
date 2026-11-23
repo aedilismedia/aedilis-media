@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A parody website for a fictional, very nosy federal agency that turns into surveillance horror as you scroll.">
+<meta property="og:title" content="N.O.S.Y. Agency">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/img/site-icon.webp">
+<title>N.O.S.Y. Agency</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&family=Merriweather:wght@700;900&family=Special+Elite&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a parody federal agency site. Stiff government chrome (navy bands, gold seal, plain grid)
+   around comedy that slowly turns into real surveillance. Each stage the visitor reaches
+   adds a class (s1..s7) to <html> that drains and darkens the tokens below. */
+:root {
+  --navy: #0E2747;
+  --navy-2: #163A66;
+  --gold: #C9A227;
+  --paper: #FFFFFF;
+  --file: #F2EFE6;
+  --ink: #15202E;
+  --ink-soft: #4B5869;
+  --heading: #0E2747;
+  --on-dark: #FFFFFF;
+  --line: #D8DDE4;
+  --alert: #C8102E;
+  --ok: #1F7A4D;
+  --doc: #F2EFE6;
+  --terminal: #0B1410;
+  --terminal-ink: #7CF2A8;
+
+  --f-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-head: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --f-type: 'Special Elite', 'Courier New', ui-monospace, monospace;
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --step-0: 1rem;
+  --step-1: 1.2rem;
+  --step-3: clamp(1.7rem, 3vw, 2.3rem);
+  --step-4: clamp(2.2rem, 5vw, 3.6rem);
+  color-scheme: light;
+}
+/* s4: the file is opened. colour drains */
+:root.s4 { --paper: #ECEDEE; --file: #E1DFD9; --gold: #A8924F; --line: #C9CDD2; --ok: #4E6B5C; }
+/* s5: the site goes dark */
+:root.s5 {
+  --navy: #07080B; --navy-2: #111318; --gold: #A3142A; --paper: #121418; --file: #0C0D10;
+  --ink: #D3D7DE; --ink-soft: #8A929E; --heading: #ECEFF3; --line: #262A31; --ok: #B3122B;
+  color-scheme: dark;
+}
+:root.s7 { --paper: #08090B; --file: #050607; --navy: #000; --navy-2: #050505; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; font-family: var(--f-body); font-size: var(--step-0); line-height: 1.55;
+  color: var(--ink); background: var(--paper); overflow-x: hidden;
+  transition: background-color 1.6s ease, color 1.6s ease;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--navy); }
+.band, .band-alt, .stats, .poster, .form, .job, .foia-out, .mast, .hero, .foot, .govbar { transition: background-color 1.6s ease, color 1.6s ease, border-color 1.6s ease; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.wrap { max-width: 1140px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-weight: 800; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--alert); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- gov banner ---------- */
+.govbar { background: #EEF1F5; font-size: .82rem; color: #4B5869; }
+.s5 .govbar { background: #1a0306; color: #E3A1A9; }
+.govbar .wrap { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; padding-block: 6px; }
+.flag { width: 20px; height: 13px; display: inline-block; vertical-align: -2px; margin-right: 6px; }
+.govbar button { background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; font-size: .82rem; }
+.govbar-more { flex-basis: 100%; padding: 6px 0 4px; }
+
+/* ---------- header ---------- */
+.mast { background: var(--navy); color: var(--on-dark); }
+.mast-in { display: flex; align-items: center; gap: 18px; padding-block: 18px; flex-wrap: wrap; }
+.seal { width: 74px; height: 74px; flex: none; }
+.seal-lg { width: min(300px, 70vw); height: auto; aspect-ratio: 1; }
+.org { display: grid; gap: 2px; min-width: 0; }
+.org b { font-family: var(--f-head); font-size: clamp(1.2rem, 2.4vw, 1.6rem); letter-spacing: .02em; }
+.org span { font-size: .85rem; color: #B9C6D8; }
+.mast nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.mast nav a { color: var(--on-dark); text-decoration: none; font-weight: 700; font-size: .95rem; padding: 4px 0; border-bottom: 2px solid transparent; }
+.mast nav a:hover { border-bottom-color: var(--gold); }
+@media (max-width: 860px) { .mast nav { margin-left: 0; flex-basis: 100%; } }
+
+/* ---------- threat ribbon (sticky, escalates by stage) ---------- */
+.threat { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--gold); color: #0E2747; transition: background-color 1s, color 1s; }
+.threat .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; padding-block: 9px; font-weight: 700; }
+.threat-level { font-family: var(--f-mono); font-weight: 600; background: #0E2747; color: #F3E6B5; padding: 3px 10px; border-radius: 3px; }
+.threat button { margin-left: auto; background: #0E2747; color: #fff; border: 0; padding: 7px 14px; border-radius: 3px; font-weight: 700; cursor: pointer; }
+.threat-note { font-weight: 400; font-size: .92rem; }
+.s3 .threat { background: #D9822B; }
+.s4 .threat { background: #B3122B; color: #fff; }
+.s4 .threat-level { background: #fff; color: #B3122B; }
+.s6 .threat { background: #000; color: #FF3045; box-shadow: 0 1px 0 #3a0a10; }
+.s6 .threat-level { background: #FF3045; color: #000; animation: blink 1s steps(1) infinite; }
+.s6 .threat button { background: #2a0a0e; color: #FF8F9B; }
+
+/* ---------- hero ---------- */
+.hero { background: linear-gradient(180deg, var(--navy-2), var(--navy)); color: var(--on-dark); padding-block: 64px 72px; overflow: hidden; }
+.hero-in { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.hero .eyebrow { color: #E0BE4A; }
+.s5 .hero .eyebrow { color: #FF3045; }
+.hero h1 { font-family: var(--f-head); font-weight: 900; font-size: var(--step-4); line-height: 1.08; }
+.hero p.lede { font-size: var(--step-1); color: #D2DCEA; max-width: 34em; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; font-weight: 800; padding: 13px 22px; border-radius: 4px; text-decoration: none; }
+.btn-gold { background: var(--gold); color: #0E2747; }
+.s5 .btn-gold { color: #fff; }
+.btn-line { background: transparent; color: var(--on-dark); box-shadow: inset 0 0 0 2px rgba(255,255,255,.5); }
+.btn-navy { background: var(--navy-2); color: var(--on-dark); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.btn-navy:hover { filter: brightness(1.2); }
+.fine { font-size: .82rem; color: #9FB0C6; }
+.hero-seal { display: grid; place-items: center; }
+.hero-seal svg { filter: drop-shadow(0 20px 40px rgba(0,0,0,.4)); }
+@media (max-width: 860px) { .hero-in { grid-template-columns: 1fr; } .hero-seal { order: -1; } .seal-lg { width: 200px; } }
+
+/* ---------- seal eye ---------- */
+.iris { transition: fill 1.2s; }
+.s5 .iris { fill: #C8102E; }
+
+/* ---------- stats ---------- */
+.stats { border-bottom: 1px solid var(--line); }
+.stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { padding: 28px 20px; border-left: 1px solid var(--line); display: grid; gap: 4px; align-content: start; }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat b { font-family: var(--f-head); font-size: var(--step-3); color: var(--heading); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { color: var(--ink-soft); font-size: .95rem; }
+@media (max-width: 860px) { .stats .wrap { grid-template-columns: 1fr 1fr; } .stat { padding: 20px 16px; } .stat:nth-child(3) { border-left: 0; padding-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* ---------- sections ---------- */
+.band { padding-block: 80px; background: var(--paper); }
+.band-alt { background: var(--file); }
+.head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 44em; }
+.head h2 { font-family: var(--f-head); font-weight: 900; font-size: var(--step-3); color: var(--heading); line-height: 1.15; }
+.head p { color: var(--ink-soft); font-size: var(--step-1); }
+
+/* ---------- most wanted ---------- */
+.wanted-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.poster { background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--alert); display: flex; flex-direction: column; }
+.mug { aspect-ratio: 1; max-width: 100%; background: #E6E9EE; position: relative; }
+.s4 .mug svg { filter: grayscale(.7) contrast(1.1); }
+.mug svg { width: 100%; height: 100%; display: block; transition: filter 1.6s; }
+.plate { position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); background: #111; color: #fff; font-family: var(--f-mono); font-size: .72rem; padding: 3px 8px; white-space: nowrap; }
+.poster-body { padding: 16px 16px 18px; display: grid; gap: 10px; flex: 1; align-content: start; }
+.poster h3 { font-family: var(--f-head); font-size: 1.1rem; color: var(--heading); line-height: 1.25; }
+.stars { display: flex; gap: 3px; }
+.stars svg { width: 18px; height: 18px; }
+.poster dl { margin: 0; display: grid; gap: 8px; font-size: .92rem; }
+.poster dt { font-weight: 800; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.poster dd { margin: 0; }
+.reward { font-weight: 800; color: var(--ok); }
+.poster button { justify-self: start; }
+@media (max-width: 1000px) { .wanted-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .wanted-grid { grid-template-columns: 1fr; } }
+
+.you { margin-top: 28px; display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--line); border-top: 6px solid #000; background: var(--paper); }
+.you .mug { background: #D5D8DD; }
+.you .poster-body { padding: 20px 22px; }
+.you .tagline { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .1em; color: var(--alert); text-transform: uppercase; }
+.you .stars svg { width: 26px; height: 26px; }
+.stars .fresh { animation: starflash .9s steps(2) 3; }
+@keyframes starflash { 50% { opacity: .15; } }
+@media (max-width: 620px) { .you { grid-template-columns: 1fr; } .you .mug { max-width: 260px; } }
+
+/* ---------- surveillance ---------- */
+.watch { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.watch-copy { display: grid; gap: 16px; min-width: 0; }
+.watch-copy ul { margin: 0; padding-left: 1.2em; color: var(--ink-soft); display: grid; gap: 6px; }
+.term { background: var(--terminal); color: var(--terminal-ink); border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px -24px rgba(14,39,71,.6); min-width: 0; }
+.term-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #13221B; font-family: var(--f-mono); font-size: .8rem; color: #8FBFA2; }
+.rec { width: 10px; height: 10px; border-radius: 50%; background: var(--alert); animation: blink 1.2s steps(1) infinite; flex: none; }
+@keyframes blink { 50% { opacity: .2; } }
+.term-bar span:last-child { margin-left: auto; }
+.log { font-family: var(--f-mono); font-size: .86rem; line-height: 1.55; padding: 14px 16px; height: 360px; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; gap: 2px; }
+.log p { display: grid; grid-template-columns: 9ch 1fr; gap: 1ch; overflow-wrap: anywhere; }
+.log time { color: #4E8F68; }
+.log .hot { color: #FFD166; }
+.log .red { color: #FF6B6B; }
+.log .we { color: #FF3045; font-weight: 600; }
+.s5 .term { box-shadow: 0 0 0 1px #3a0a10, 0 0 60px -20px rgba(200,16,46,.5); }
+@media (max-width: 860px) { .watch { grid-template-columns: 1fr; } }
+
+/* ---------- tip line ---------- */
+.tip { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.form { background: var(--paper); border: 1px solid var(--line); padding: 26px; display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 800; font-size: .9rem; }
+.field small { color: var(--ink-soft); font-size: .82rem; }
+.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; background: var(--paper); color: var(--ink); }
+.field textarea { min-height: 110px; resize: vertical; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; }
+.check input { margin-top: 4px; }
+.receipts { display: grid; gap: 14px; }
+.receipt { background: var(--doc); border: 2px dashed #0E2747; padding: 22px; font-family: var(--f-type); display: grid; gap: 8px; color: #222; }
+.receipt h3 { font-family: var(--f-type); font-weight: 400; font-size: 1.25rem; color: #0E2747; }
+.receipt.about-you { border-color: var(--alert); background: #F4E3E3; }
+.stamp { justify-self: start; border: 3px solid var(--alert); color: var(--alert); padding: 4px 12px; font-family: var(--f-body); font-weight: 800; letter-spacing: .12em; transform: rotate(-4deg); }
+.tip-side { display: grid; gap: 16px; min-width: 0; }
+.hotline { border-left: 4px solid var(--gold); padding: 6px 0 6px 16px; display: grid; gap: 4px; }
+.hotline b { font-family: var(--f-mono); font-size: 1.3rem; color: var(--heading); }
+.hotline .fine { color: var(--ink-soft); }
+@media (max-width: 860px) { .tip { grid-template-columns: 1fr; } }
+
+/* ---------- documents ---------- */
+.docs { display: grid; gap: 40px; }
+.doc { background: var(--doc); max-width: 760px; padding: clamp(22px, 5vw, 48px); font-family: var(--f-type); font-size: 1.05rem; line-height: 1.75; color: #1d1d1d; box-shadow: 0 1px 0 #d9d2bf, 0 22px 40px -28px rgba(0,0,0,.5); position: relative; display: grid; gap: 14px; }
+.doc .hdr { display: grid; gap: 2px; border-bottom: 2px solid #1d1d1d; padding-bottom: 12px; padding-right: 7rem; }
+.classified { position: absolute; top: 22px; right: 22px; border: 3px solid var(--alert); color: var(--alert); padding: 2px 10px; font-family: var(--f-body); font-weight: 800; letter-spacing: .15em; transform: rotate(6deg); font-size: .85rem; background: var(--doc); }
+.x { background: #111; color: transparent; cursor: pointer; border-radius: 1px; padding: 0 2px; border: 0; font: inherit; line-height: inherit; transition: background .2s, color .2s; }
+.x.open { background: #FFF2A8; color: #111; }
+.doc.subject { background: #E9E4D6; border-left: 10px solid #111; }
+.doc.subject dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; }
+.doc.subject dt { font-weight: 400; color: #555; }
+.doc.subject dd { margin: 0; overflow-wrap: anywhere; }
+.doc.subject .live { color: #9a0a1d; }
+@media (max-width: 560px) { .doc.subject dl { grid-template-columns: 1fr; gap: 0; } .doc.subject dd { margin-bottom: 8px; } .doc .hdr { padding-right: 0; padding-top: 2.2rem; } }
+.doc-hint { font-family: var(--f-body); font-size: .9rem; color: var(--ink-soft); margin-top: -26px; }
+
+/* ---------- FOIA ---------- */
+.foia { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+.foia form { display: flex; gap: 10px; flex-wrap: wrap; }
+.foia input { flex: 1 1 220px; min-width: 0; border: 1px solid var(--line); border-radius: 3px; padding: 11px 12px; background: var(--paper); color: var(--ink); }
+.foia-out { background: var(--doc); color: #1d1d1d; border: 1px solid var(--line); padding: 24px; font-family: var(--f-type); line-height: 1.9; min-height: 220px; display: grid; gap: 10px; align-content: start; }
+.foia-out h3 { font-family: var(--f-type); font-weight: 400; color: #0E2747; }
+.foia-out .kept { background: #FFF2A8; padding: 0 2px; }
+.bar { display: inline-block; height: 1em; background: #111; vertical-align: -.12em; margin-right: .35em; }
+.foia .fine { color: var(--ink-soft); margin-top: 12px; }
+@media (max-width: 860px) { .foia { grid-template-columns: 1fr; } }
+
+/* ---------- careers ---------- */
+.jobs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.job { background: var(--paper); border: 1px solid var(--line); padding: 20px 22px; display: grid; gap: 8px; align-content: start; position: relative; overflow: hidden; }
+.job h3 { font-family: var(--f-head); color: var(--heading); font-size: 1.15rem; }
+.job .meta { font-size: .85rem; color: var(--ink-soft); font-weight: 700; }
+.job ul { margin: 0; padding-left: 1.1em; color: var(--ink-soft); font-size: .95rem; }
+.job button { justify-self: start; margin-top: 4px; background: none; border: 0; padding: 0; color: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; }
+.jobs.filled .job:not(.yours)::after { content: "POSITION FILLED"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-12deg); border: 4px solid var(--alert); color: var(--alert); font-weight: 800; letter-spacing: .14em; padding: 4px 14px; font-size: 1.15rem; white-space: nowrap; background: var(--paper); }
+.jobs.filled .job:not(.yours) > * { opacity: .35; }
+.job.yours { grid-column: 1 / -1; border: 2px solid var(--alert); }
+.job.yours h3 { color: #FF3045; }
+@media (max-width: 760px) { .jobs { grid-template-columns: 1fr; } }
+
+/* ---------- footer ---------- */
+.foot { background: var(--navy); color: #B9C6D8; padding-block: 48px 36px; font-size: .92rem; }
+.foot-in { display: grid; grid-template-columns: auto 1fr; gap: 24px 32px; align-items: start; }
+.foot .seal { width: 64px; height: 64px; }
+.foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.foot h4 { margin: 0 0 8px; color: var(--on-dark); font-size: .9rem; }
+.foot a { color: #B9C6D8; display: block; text-decoration: none; padding: 2px 0; }
+.foot a:hover { color: var(--gold); }
+.disclaimer { grid-column: 1 / -1; border-top: 1px solid #2A4468; padding-top: 18px; font-size: .82rem; color: #8DA0BA; }
+@media (max-width: 700px) { .foot-in { grid-template-columns: 1fr; } .foot-cols { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- after the footer ---------- */
+.void { background: #000; color: #3d3f44; font-family: var(--f-mono); font-size: .85rem; }
+.void p { padding-block: 22rem 0; text-align: center; }
+.void p:last-child { padding-bottom: 22rem; }
+.beyond { background: #000; color: #D9D2CF; padding-block: 6rem 10rem; text-align: center; }
+.beyond-in { display: grid; gap: 22px; justify-items: center; }
+.beyond .seal-xl { width: min(380px, 82vw); height: auto; aspect-ratio: 1; filter: drop-shadow(0 0 60px rgba(200,16,46,.35)); }
+.beyond h2 { font-family: var(--f-head); font-weight: 900; font-size: var(--step-3); color: #F2ECEA; max-width: 22em; }
+.beyond p { max-width: 34em; color: #9B9192; font-size: 1.1rem; }
+.eta { display: grid; gap: 4px; justify-items: center; border: 1px solid #3a0a10; padding: 16px 30px; }
+.eta span { font-family: var(--f-mono); letter-spacing: .25em; font-size: .8rem; color: #8a3d47; }
+.eta b { font-family: var(--f-mono); font-size: clamp(2.4rem, 8vw, 4rem); color: #FF3045; font-variant-numeric: tabular-nums; line-height: 1; }
+.eta-msg { font-family: var(--f-type); font-size: clamp(1.4rem, 4vw, 2.2rem) !important; color: #FF3045 !important; }
+.beyond .btn-close { background: transparent; color: #6d6466; border: 1px solid #2a2224; padding: 10px 18px; cursor: pointer; }
+.beyond .btn-close:hover { color: #fff; border-color: #fff; }
+.beyond.arrived { animation: redflash 1.4s ease-out 1; }
+@keyframes redflash { 0% { background: #5a0010; } 100% { background: #000; } }
+
+/* ---------- overlays ---------- */
+.vignette { position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0; transition: opacity 2s; background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 50%, rgba(8,0,2,.9) 100%); }
+.s4 .vignette { opacity: .25; } .s5 .vignette { opacity: .5; } .s6 .vignette { opacity: .7; } .s7 .vignette { opacity: .85; }
+.scan { position: fixed; inset: 0; pointer-events: none; z-index: 41; opacity: 0; transition: opacity 2s; background: repeating-linear-gradient(to bottom, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); }
+.s5 .scan { opacity: .5; }
+
+.toast { position: fixed; z-index: 50; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: #0E2747; color: #fff; border-left: 5px solid #C9A227; padding: 12px 18px; box-shadow: 0 14px 30px -10px rgba(0,0,0,.5); max-width: calc(100% - 32px); width: max-content; font-weight: 600; }
+.s5 .toast { background: #000; color: #FF3045; border-left-color: #FF3045; font-family: var(--f-mono); font-weight: 400; }
+
+.glitching { animation: glitch .2s steps(2, end) 1; }
+@keyframes glitch {
+  0% { transform: translate(3px, -1px); text-shadow: -3px 0 #FF3045, 3px 0 #29e0ff; clip-path: inset(8% 0 38% 0); }
+  50% { transform: translate(-4px, 1px); text-shadow: 3px 0 #FF3045, -3px 0 #29e0ff; clip-path: inset(48% 0 4% 0); }
+  100% { transform: none; text-shadow: none; clip-path: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rec, .s6 .threat-level, .stars .fresh, .glitching, .beyond.arrived { animation: none !important; }
+  body, .vignette, .scan { transition: none; }
+}
+</style>
+
+<div class="vignette" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<div class="govbar">
+  <div class="wrap">
+    <span><svg class="flag" viewBox="0 0 20 13" aria-hidden="true"><rect width="20" height="13" fill="#fff"/><g fill="#C8102E"><rect y="0" width="20" height="1.9"/><rect y="3.7" width="20" height="1.9"/><rect y="7.4" width="20" height="1.9"/><rect y="11.1" width="20" height="1.9"/></g><rect width="9" height="7" fill="#0E2747"/></svg><span id="gov-text">An official-ish website of the Federal Government of Los Diablos.</span></span>
+    <button type="button" id="how" aria-expanded="false" aria-controls="how-more">Here's how you know</button>
+    <p class="govbar-more" id="how-more" hidden>You don't. That's the whole point. Official websites use <b>.gov</b>. This one uses <b>.gov-ish</b>, which our lawyers say is "technically a different thing."</p>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <span id="seal-top"></span>
+    <div class="org">
+      <b>N.O.S.Y.</b>
+      <span>National Office of Snooping, Yes · Est. whenever</span>
+    </div>
+    <nav aria-label="Main">
+      <a href="#wanted" data-nav="You">Most Wanted</a>
+      <a href="#watch" data-nav="Watching">Surveillance</a>
+      <a href="#tips" data-nav="Told on you">Tip Line</a>
+      <a href="#declassified" data-nav="Your file">Files</a>
+      <a href="#careers" data-nav="Stay">Careers</a>
+    </nav>
+  </div>
+</header>
+
+<div class="threat" role="status">
+  <div class="wrap">
+    <span>National threat level:</span>
+    <span class="threat-level" id="threat-level">BEIGE</span>
+    <span class="threat-note" id="threat-note">Nothing is happening. Probably. Stay casually alert.</span>
+    <button type="button" id="threat-btn">Raise threat level</button>
+  </div>
+</div>
+
+<section class="hero" data-stage="0">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow" id="hero-eyebrow">Fidelity · Bravery · Eavesdropping</p>
+      <h1 id="hero-title" data-glitch data-alt="We are watching you very, very closely.">Protecting your freedom by watching it very, very closely.</h1>
+      <p class="lede" id="hero-lede">For over 60 years, N.O.S.Y. agents have kept Los Diablos safe from crime, terrorism, and people who don't return shopping carts. We're here for you. We're always here. Even right now.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#tips">Report your neighbor</a>
+        <button class="btn btn-line" type="button" id="surrender">Turn yourself in (express lane)</button>
+      </div>
+      <p class="fine">Average wait time for the express lane: 14 to 20 years.</p>
+    </div>
+    <div class="hero-seal" id="seal-hero"></div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Agency statistics" data-stage="0">
+  <div class="wrap">
+    <div class="stat"><b>4,200,000,000</b><span>private emails read this year (for security)</span></div>
+    <div class="stat"><b>0</b><span>warrants filed (we lost the form)</span></div>
+    <div class="stat"><b>12</b><span>interns, 3 of them confirmed human</span></div>
+    <div class="stat"><b id="stat-you">97%</b><span id="stat-you-label">of agents are probably not double agents</span></div>
+  </div>
+</section>
+
+<section class="band" id="wanted" data-stage="1">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Most wanted</p>
+      <h2 data-glitch data-alt="One Most Wanted Fugitive. Guess who.">Ten Most Wanted Fugitives (we could only afford four)</h2>
+      <p>These individuals are considered armed, dangerous, and extremely annoying. If you see them, do not approach. Call us. We'll probably approach.</p>
+    </div>
+    <div class="wanted-grid" id="wanted-grid"></div>
+    <article class="you" aria-label="Recently added to the Most Wanted list">
+      <div class="mug" id="you-mug"><span class="plate">SUBJECT #<span class="sid">000000</span></span></div>
+      <div class="poster-body">
+        <p class="tagline">Recently added · just now</p>
+        <h3>Subject #<span class="sid">000000</span> (name pending)</h3>
+        <div class="stars" id="you-stars" aria-label="Wanted level"></div>
+        <dl>
+          <div><dt>Wanted for</dt><dd>Visiting this website. Scrolling past the funny part. Still scrolling.</dd></div>
+          <div><dt>Last seen</dt><dd>Right where you're sitting.</dd></div>
+          <div><dt>Reward</dt><dd class="reward">Undisclosed</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band band-alt" id="watch" data-stage="2">
+  <div class="wrap watch">
+    <div class="watch-copy">
+      <p class="eyebrow">Domestic surveillance program</p>
+      <div class="head" style="margin:0">
+        <h2 data-glitch data-alt="Operation Big Ears: we can hear you.">Operation Big Ears: transparency in action</h2>
+        <p>Citizens asked us to be more transparent about what we collect. So here is the live feed on you, specifically, right now.</p>
+      </div>
+      <ul>
+        <li id="dave-line">Updated in real time by Agent Dave, who is very bored.</li>
+        <li>All observations are made inside your own browser. Nothing leaves this page. We're nosy, not organized.</li>
+        <li>Try moving your mouse, scrolling, or clicking things. Agent Dave will notice.</li>
+      </ul>
+    </div>
+    <div class="term" aria-label="Live surveillance log">
+      <div class="term-bar"><span class="rec" aria-hidden="true"></span><span>SUBJECT_FILE_#<span class="sid">000000</span>.log</span><span id="watch-clock">00:00</span></div>
+      <div class="log" id="log" aria-live="off"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tips" data-stage="3">
+  <div class="wrap tip">
+    <div class="tip-side">
+      <div class="head" style="margin:0">
+        <p class="eyebrow">Tip line</p>
+        <h2 data-glitch data-alt="Someone already told us about you.">See something? Say something. Say anything, honestly.</h2>
+        <p>Every tip is read by a trained professional, then by a second trained professional who reads it out loud in a funny voice.</p>
+      </div>
+      <div class="hotline">
+        <span>24-hour hotline (business hours only)</span>
+        <b>1-800-SNITCH-N</b>
+        <span class="fine">Calls may be recorded for quality, training, and the office holiday party.</span>
+      </div>
+      <div class="receipts" id="receipts" aria-live="polite"></div>
+    </div>
+    <form class="form" id="tip-form" novalidate>
+      <div class="field">
+        <label for="tip-cat">What are you reporting?</label>
+        <select id="tip-cat">
+          <option>Suspicious neighbor</option>
+          <option>Suspiciously nice neighbor</option>
+          <option>Unidentified flying object</option>
+          <option>Unidentified frying object (food truck)</option>
+          <option>My ex</option>
+          <option>A pigeon that has been staring at me</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="tip-text">Describe the incident</label>
+        <textarea id="tip-text" placeholder="Example: My neighbor Gary waters his lawn at 3 a.m. while whispering. He owns 40 identical beige shirts."></textarea>
+        <small>Please don't include real names or personal details. Gary deserves privacy too.</small>
+      </div>
+      <div class="field">
+        <label for="tip-urgency">How urgent is this?</label>
+        <select id="tip-urgency">
+          <option>Mildly</option>
+          <option>Medium rare</option>
+          <option>Extremely, I'm typing this from a closet</option>
+        </select>
+      </div>
+      <label class="check"><input type="checkbox" id="tip-anon" checked> Keep me anonymous (we will still know)</label>
+      <button class="btn btn-navy" type="submit">Submit tip</button>
+    </form>
+  </div>
+</section>
+
+<section class="band band-alt" id="declassified" data-stage="4">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Declassified documents</p>
+      <h2 data-glitch data-alt="We opened your file.">Released to the public after a thorough review by an intern named Kyle</h2>
+      <p>Some sensitive details were redacted to protect national security. Click a black bar to see what you're not supposed to see.</p>
+    </div>
+    <div class="docs">
+      <article class="doc" id="memo">
+        <span class="classified">TOP SECRET-ISH</span>
+        <div class="hdr">
+          <span>MEMORANDUM · FILE NO. 77-B/DONUT</span>
+          <span>TO: Director <button class="x" type="button">Brenda "The Vault" Halloway</button></span>
+          <span>FROM: Field Office, Vespucci Beach</span>
+          <span>RE: Operation <button class="x" type="button">Soggy Waffle</button></span>
+        </div>
+        <p>At 0300 hours, Agents Dave and <button class="x" type="button">other Dave</button> established a surveillance position outside the target's residence, disguised as <button class="x" type="button">a single very tall bush</button>.</p>
+        <p>The target was observed entering a black sedan carrying <button class="x" type="button">fourteen rotisserie chickens</button>. When asked to explain, the target stated "<button class="x" type="button">it's for a friend</button>." This was deemed suspicious.</p>
+        <p>Agents pursued the vehicle for 46 miles before determining it belonged to <button class="x" type="button">the Director's mother-in-law</button>. The pursuit has been reclassified as "a nice drive."</p>
+        <p>Signed, <button class="x" type="button">Agent Dave (the first one)</button></p>
+      </article>
+      <p class="doc-hint" id="doc-hint">0 of 7 secrets revealed.</p>
+      <article class="doc subject" aria-label="Your subject file">
+        <span class="classified">EYES ONLY</span>
+        <div class="hdr">
+          <span>SUBJECT FILE #<span class="sid">000000</span></span>
+          <span>STATUS: OPEN · ACTIVE · ONGOING</span>
+        </div>
+        <dl>
+          <dt>File opened</dt><dd class="live" data-live="opened">today</dd>
+          <dt>Subject's local time</dt><dd class="live" data-live="clock">now</dd>
+          <dt>Display</dt><dd class="live" data-live="screen">unknown</dd>
+          <dt>Time on this page</dt><dd class="live" data-live="elapsed">a while</dd>
+          <dt>Last cursor position</dt><dd class="live" data-live="cursor">not moving. Good.</dd>
+          <dt>Known associates</dt><dd><button class="x" type="button">Agent Dave said you seemed nice. Agent Dave is no longer with us.</button></dd>
+          <dt>Current location</dt><dd><button class="x" type="button">Directly in front of this screen</button></dd>
+          <dt>Is the subject alone?</dt><dd><button class="x" type="button">No.</button></dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="foia" data-stage="5">
+  <div class="wrap foia">
+    <div>
+      <div class="head">
+        <p class="eyebrow">Freedom of Information Act</p>
+        <h2 data-glitch data-alt="You don't have the right to know.">You have the right to know. We have the right to a black marker.</h2>
+        <p>Request any government file. Our automated Transparency Engine processes your request in seconds and returns the document in full.*</p>
+      </div>
+      <form id="foia-form" novalidate>
+        <label for="foia-topic" class="sr">Topic of your request</label>
+        <input id="foia-topic" type="text" placeholder="e.g. aliens, the moon landing, the office fridge" autocomplete="off">
+        <button class="btn btn-navy" type="submit">Request file</button>
+      </form>
+      <p class="fine">*"In full" means "in full, minus the parts with words."</p>
+    </div>
+    <div class="foia-out" id="foia-out" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band band-alt" id="careers" data-stage="6">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Careers</p>
+      <h2 data-glitch data-alt="Your country needs you. To stay exactly where you are.">Join N.O.S.Y. Your country needs you. Mostly to fix the printer.</h2>
+      <p>Competitive salary, full dental, and a pension we promise exists. All applicants must pass a polygraph, a background check, and a vibe check.</p>
+    </div>
+    <div class="jobs" id="jobs">
+      <article class="job">
+        <h3>Special Agent, Field Operations</h3>
+        <p class="meta">Los Diablos · Full time · GS-12</p>
+        <ul><li>Sunglasses rated for indoor use</li><li>Ability to say "Clear!" convincingly</li><li>Must be comfortable sitting in a van for 9 hours with Dave</li></ul>
+        <button type="button" data-apply="Special Agent">Apply now</button>
+      </article>
+      <article class="job">
+        <h3>Undercover Agent</h3>
+        <p class="meta">Location classified · Hours classified · This job does not exist</p>
+        <ul><li>Fluent in at least one accent</li><li>Owns a fake mustache (we can provide one, used)</li><li>Can keep a secret, unlike Kyle</li></ul>
+        <button type="button" data-apply="Undercover Agent">Apply discreetly</button>
+      </article>
+      <article class="job">
+        <h3>Intern, Shredding Department</h3>
+        <p class="meta">Basement level B4 · Unpaid · Very loud</p>
+        <ul><li>Shred approximately 9,000 pages per day</li><li>Do not read the pages</li><li>Especially do not read the ones that say "DO NOT READ"</li></ul>
+        <button type="button" data-apply="Shredding Intern">Apply now</button>
+      </article>
+      <article class="job">
+        <h3>Double Agent (part time)</h3>
+        <p class="meta">Remote, from two places at once · Flexible loyalty</p>
+        <ul><li>Two of everything: phones, passports, birthdays</li><li>Strong time-management skills</li><li>Preference given to candidates also applying at the Agency of Overseas Shenanigans</li></ul>
+        <button type="button" data-apply="Double Agent">Apply to both sides</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" data-stage="6">
+  <div class="wrap foot-in">
+    <span id="seal-foot"></span>
+    <div class="foot-cols">
+      <div><h4>About</h4><a href="#watch">Our mission (watching)</a><a href="#careers">Leadership (unknown)</a><a href="#declassified">History (redacted)</a></div>
+      <div><h4>Services</h4><a href="#tips">Report a crime</a><a href="#tips">Report a vibe</a><a href="#foia">FOIA requests</a></div>
+      <div><h4>Legal</h4><a href="#top" data-toast="Privacy policy: lol.">Privacy policy</a><a href="#top" data-toast="Accessibility: our agents can access anything.">Accessibility</a><a href="#top" data-toast="We are not affiliated with the Agency of Overseas Shenanigans. They know what they did.">Rival agencies</a></div>
+    </div>
+    <p class="disclaimer">N.O.S.Y. is a completely fictional agency and this site is a parody. Los Diablos isn't a real place, no real government agency is involved, and no actual pigeons were investigated. Nothing you type or do here leaves this page. It only feels like it does.</p>
+  </div>
+</footer>
+
+<div class="void" aria-hidden="true" data-stage="7">
+  <p>this is the end of the website.</p>
+  <p>you can stop scrolling now.</p>
+  <p>why are you still scrolling?</p>
+</div>
+
+<section class="beyond" id="beyond" data-stage="7">
+  <div class="wrap beyond-in">
+    <div id="seal-big"></div>
+    <h2>Thank you for your cooperation, Subject #<span class="sid">000000</span>.</h2>
+    <p>Please remain where you are. Do not refresh this page. Do not close this tab. An agent has been dispatched to your location.</p>
+    <div class="eta" role="timer" aria-live="off"><span>AGENT ETA</span><b id="eta">00:30</b></div>
+    <p class="eta-msg" id="eta-msg" aria-live="polite" hidden></p>
+    <button class="btn-close" id="close-file" type="button" hidden>Close my file</button>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const pick = (a) => a[Math.random() * a.length | 0];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const noHover = matchMedia('(hover: none)').matches;
+  const SID = String(Math.random() * 900000 + 100000 | 0);
+  $$('.sid').forEach((el) => { el.textContent = SID; });
+  const t0 = Date.now();
+  let stage = 0;
+  let mouse = null;
+
+  /* ---------- toast ---------- */
+  const toast = $('#toast');
+  let tt = 0;
+  function say(msg) { toast.textContent = msg; toast.hidden = false; clearTimeout(tt); tt = setTimeout(() => { toast.hidden = true; }, 3400); }
+  document.addEventListener('click', (e) => { const t = e.target.closest('[data-toast]'); if (t) { e.preventDefault(); say(stage >= 5 ? 'There is no policy. There is only us.' : t.dataset.toast); } });
+
+  /* ---------- seal ---------- */
+  function seal(id, cls) {
+    return `<svg class="${cls}" viewBox="0 0 200 200" role="img" aria-label="Seal of the National Office of Snooping, Yes" data-eye>
+      <defs><path id="ring-${id}" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
+      <circle cx="100" cy="100" r="97" fill="#C9A227"/>
+      <circle cx="100" cy="100" r="90" fill="#0E2747"/>
+      <circle cx="100" cy="100" r="60" fill="#163A66" stroke="#C9A227" stroke-width="2"/>
+      <text font-family="Public Sans, sans-serif" font-weight="800" font-size="11" letter-spacing="1.4" fill="#F3E6B5"><textPath href="#ring-${id}" startOffset="2%">NATIONAL OFFICE OF SNOOPING · YES ·</textPath></text>
+      <text x="100" y="186" text-anchor="middle" font-family="Public Sans, sans-serif" font-weight="800" font-size="9" letter-spacing="1.5" fill="#F3E6B5">★ EST. WHENEVER ★</text>
+      <g transform="translate(100 96)">
+        <path d="M-38 0 Q0 -30 38 0 Q0 30 -38 0Z" fill="#fff"/>
+        <g class="eyeball"><circle class="iris" r="15" fill="#5B8BC9"/><circle r="7" fill="#0E2747"/><circle cx="4" cy="-4" r="2.6" fill="#fff"/></g>
+        <path d="M-34 -16 Q-12 -30 8 -26" stroke="#C9A227" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M14 -24 Q28 -24 36 -14" stroke="#C9A227" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </g>
+      <path d="M44 130 H156 L147 144 L156 158 H44 L53 144Z" fill="#C9A227" stroke="#0E2747" stroke-width="1.5"/>
+      <text class="motto" x="100" y="148.5" text-anchor="middle" font-family="Merriweather, serif" font-weight="900" font-size="10.5" fill="#0E2747" letter-spacing=".5">WE SAW THAT</text>
+    </svg>`;
+  }
+  $('#seal-top').outerHTML = seal('a', 'seal');
+  $('#seal-hero').innerHTML = seal('b', 'seal-lg');
+  $('#seal-foot').outerHTML = seal('c', 'seal');
+  $('#seal-big').innerHTML = seal('d', 'seal-xl');
+
+  function trackEyes() {
+    if (stage < 2) return;
+    const target = mouse || { x: innerWidth / 2, y: innerHeight * 0.4 };
+    $$('.eyeball').forEach((g) => {
+      const parent = g.parentNode;
+      const m = parent.getScreenCTM && parent.getScreenCTM();
+      if (!m) return;
+      const sx = m.e, sy = m.f;
+      if (sy < -400 || sy > innerHeight + 400) return;
+      const dx = target.x - sx, dy = target.y - sy;
+      const d = Math.hypot(dx, dy) || 1;
+      const k = 13 * Math.min(1, d / 300);
+      g.setAttribute('transform', `translate(${(dx / d * k).toFixed(2)} ${(dy / d * k * 0.55).toFixed(2)})`);
+    });
+  }
+
+  /* ---------- gov banner ---------- */
+  $('#how').addEventListener('click', (e) => {
+    const m = $('#how-more'); m.hidden = !m.hidden; e.currentTarget.setAttribute('aria-expanded', String(!m.hidden));
+  });
+
+  /* ---------- threat level ---------- */
+  const FUNNY = [
+    ['BEIGE', 'Nothing is happening. Probably. Stay casually alert.'],
+    ['MILDLY CONCERNED', 'Someone left a backpack at the bus stop. It was full of sandwiches.'],
+    ['SPICY', 'Agents have been told to wear their serious sunglasses.'],
+    ['CODE PLAID', 'The Director has cancelled his tee time.'],
+    ['SOMEBODY’S MOM IS CALLING', 'This is the highest level. Hide.']
+  ];
+  const STAGED = {
+    3: ['ELEVATED', 'A new tip has been filed. It is about you.'],
+    4: ['SEVERE', 'Your file has been opened.'],
+    5: ['CRITICAL', 'Do not close this tab.'],
+    6: ['YOU', 'The threat is you.'],
+    7: ['WE ARE OUTSIDE', 'Stay where you are.']
+  };
+  let funnyIdx = 0;
+  function setThreat(l, n) { $('#threat-level').textContent = l; $('#threat-note').textContent = n; }
+  $('#threat-btn').addEventListener('click', (e) => {
+    if (stage >= 3) { say(`Request denied, Subject #${SID}.`); log('Subject tried to lower the threat level. Cute.', 'red'); return; }
+    funnyIdx = (funnyIdx + 1) % FUNNY.length;
+    setThreat(...FUNNY[funnyIdx]);
+    e.currentTarget.textContent = funnyIdx === FUNNY.length - 1 ? 'Reset (please)' : 'Raise threat level';
+    log(`Subject raised the national threat level to ${FUNNY[funnyIdx][0]}. Bold move.`, 'hot');
+  });
+  $('#surrender').addEventListener('click', () => {
+    if (stage >= 5) { say('No need. We already have you.'); return; }
+    say('Confession received. Please hold. You are caller number 48,112.');
+    log('Subject attempted to turn themselves in. Paperwork misplaced.', 'hot');
+  });
+
+  /* ---------- most wanted ---------- */
+  const star = (on, fresh) => `<svg viewBox="0 0 24 24" aria-hidden="true" class="${fresh ? 'fresh' : ''}"><path d="M12 2.5l2.9 6.2 6.7.7-5 4.6 1.4 6.6L12 17.3 6 20.6l1.4-6.6-5-4.6 6.7-.7z" fill="${on ? '#C8102E' : 'none'}" stroke="${on ? '#C8102E' : '#AAB3BF'}" stroke-width="1.6"/></svg>`;
+  function lines() {
+    let s = '';
+    for (let i = 0; i < 9; i++) s += `<line x1="0" x2="200" y1="${20 + i * 20}" y2="${20 + i * 20}" stroke="#C9D0DA" stroke-width="1"/><text x="6" y="${16 + i * 20}" font-family="IBM Plex Mono, monospace" font-size="8" fill="#9AA5B4">${(7 - i * .5).toFixed(1)}</text>`;
+    return s;
+  }
+  const mug = (body) => `<svg viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" fill="#E6E9EE"/>${lines()}${body}</svg>`;
+  const WANTED = [
+    {
+      name: 'Reginald "Two-Shoes" Plunkett', plate: 'LD-PD 004417', stars: 3,
+      charges: 'Impersonating a mall Santa in July. 14 counts of returning opened yogurt.',
+      last: 'Speeding away on a mobility scooter, Del Perro Pier.',
+      reward: '$250 and a commemorative mug',
+      body: `<path d="M40 200 Q100 140 160 200Z" fill="#B5302E"/><circle cx="100" cy="98" r="44" fill="#F1C7A2"/>
+        <path d="M58 104 Q100 180 142 104 Q130 128 100 130 Q70 128 58 104Z" fill="#fff"/>
+        <ellipse cx="84" cy="92" rx="5" ry="6" fill="#222"/><ellipse cx="116" cy="92" rx="5" ry="6" fill="#222"/>
+        <path d="M74 80 l18 4 M126 80 l-18 4" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <path d="M86 116 Q100 110 114 116" stroke="#C88" stroke-width="3" fill="none"/>
+        <path d="M54 72 Q100 24 146 72Z" fill="#B5302E"/><rect x="50" y="66" width="100" height="12" rx="6" fill="#fff"/><circle cx="150" cy="44" r="9" fill="#fff"/>`
+    },
+    {
+      name: '"Big Carl" (last name unknown, possibly also Carl)', plate: 'LD-PD 112358', stars: 5,
+      charges: 'Stole three fire trucks "to see if he could." Started a cult around a vending machine.',
+      last: 'Inside the vending machine.',
+      reward: '$1,000,000 (in board-game money)',
+      body: `<path d="M24 200 Q100 128 176 200Z" fill="#3A4A3F"/><rect x="40" y="60" width="120" height="104" rx="40" fill="#C99773"/>
+        <rect x="56" y="88" width="34" height="14" rx="3" fill="#111"/><rect x="110" y="88" width="34" height="14" rx="3" fill="#111"/><rect x="90" y="92" width="20" height="4" fill="#111"/>
+        <path d="M70 134 Q100 124 130 134" stroke="#5a3a28" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M60 124 Q100 172 140 124 Q140 160 100 166 Q60 160 60 124Z" fill="#4A3020"/>
+        <path d="M44 72 Q100 30 156 72 Q150 58 100 50 Q50 58 44 72Z" fill="#2A2A2A"/>`
+    },
+    {
+      name: 'Unknown Pigeon', plate: 'LD-PD 000001', stars: 4,
+      charges: 'Espionage. We have no evidence. We just know it’s him.',
+      last: 'Every rooftop downtown, simultaneously.',
+      reward: 'One (1) bag of breadcrumbs',
+      body: `<ellipse cx="100" cy="160" rx="62" ry="50" fill="#8D95A3"/><path d="M70 140 Q100 120 130 140 Q120 160 100 160 Q80 160 70 140Z" fill="#5FA38E" opacity=".8"/>
+        <circle cx="100" cy="86" r="40" fill="#9EA6B3"/><circle cx="86" cy="80" r="9" fill="#FFB347"/><circle cx="86" cy="80" r="4" fill="#111"/>
+        <circle cx="116" cy="80" r="9" fill="#FFB347"/><circle cx="116" cy="80" r="4" fill="#111"/>
+        <path d="M94 96 L106 96 L100 112Z" fill="#E7A33E"/>
+        <rect x="70" y="66" width="60" height="6" rx="3" fill="#111" transform="rotate(-6 100 69)"/>`
+    },
+    {
+      name: 'Tiffani (with an i)', plate: 'LD-PD 909090', stars: 2,
+      charges: 'Forged a parking permit with crayon. Left 1-star reviews on four federal buildings.',
+      last: 'Arguing with a parking meter, Rockford Hills.',
+      reward: '$40 and our sincere respect',
+      body: `<path d="M34 200 Q100 140 166 200Z" fill="#E46CA4"/><path d="M48 100 Q46 40 100 36 Q154 40 152 100 L160 170 H40Z" fill="#F4D35E"/>
+        <circle cx="100" cy="100" r="40" fill="#E8B48F"/>
+        <path d="M64 86 Q100 60 136 86 Q126 70 100 68 Q74 70 64 86Z" fill="#F4D35E"/>
+        <ellipse cx="86" cy="98" rx="4.5" ry="5.5" fill="#222"/><ellipse cx="114" cy="98" rx="4.5" ry="5.5" fill="#222"/>
+        <path d="M78 88 l14 -2 M122 88 l-14 -2" stroke="#7a4a2a" stroke-width="3" stroke-linecap="round"/>
+        <path d="M88 118 Q100 112 112 118" stroke="#B3365F" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="140" cy="122" r="6" fill="none" stroke="#C9A227" stroke-width="3"/>`
+    }
+  ];
+  $('#wanted-grid').innerHTML = WANTED.map((w, i) => `
+    <article class="poster">
+      <div class="mug">${mug(w.body)}<span class="plate">${w.plate}</span></div>
+      <div class="poster-body">
+        <h3>${w.name}</h3>
+        <div class="stars" aria-label="Wanted level ${w.stars} of 5">${[0, 1, 2, 3, 4].map((k) => star(k < w.stars)).join('')}</div>
+        <dl>
+          <div><dt>Wanted for</dt><dd>${w.charges}</dd></div>
+          <div><dt>Last seen</dt><dd>${w.last}</dd></div>
+          <div><dt>Reward</dt><dd class="reward">${w.reward}</dd></div>
+        </dl>
+        <button class="btn btn-navy" type="button" data-sight="${i}">Report a sighting</button>
+      </div>
+    </article>`).join('');
+  // the visitor's own mugshot: a silhouette lit by a screen
+  $('#you-mug').insertAdjacentHTML('afterbegin', mug(`
+    <defs><radialGradient id="screenglow" cx="50%" cy="60%" r="60%"><stop offset="0" stop-color="#9DB7D6" stop-opacity=".55"/><stop offset="1" stop-color="#9DB7D6" stop-opacity="0"/></radialGradient></defs>
+    <rect width="200" height="200" fill="url(#screenglow)"/>
+    <path d="M30 200 Q100 128 170 200Z" fill="#1A1D22"/>
+    <ellipse cx="100" cy="96" rx="40" ry="48" fill="#1A1D22"/>
+    <text x="100" y="108" text-anchor="middle" font-family="Merriweather, serif" font-weight="900" font-size="34" fill="#3B414B">?</text>`));
+  const SIGHT = [
+    'Thank you. An agent will be dispatched as soon as he finds his keys.',
+    'Sighting logged. Wanted level increased. He is now slightly more wanted.',
+    'Noted. Please do not make eye contact with the suspect. He remembers.',
+    'Great tip! Your reward will arrive in 6 to 8 business decades.'
+  ];
+  $('#wanted-grid').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-sight]'); if (!b) return;
+    say(stage >= 5 ? 'They are not the ones we are looking for.' : pick(SIGHT));
+    log(`Subject reported a sighting of ${WANTED[+b.dataset.sight].name}. Snitch energy detected.`, 'hot');
+  });
+  let youStars = 0;
+  function setYouStars(n) {
+    n = Math.max(0, Math.min(5, n));
+    const prev = youStars; youStars = n;
+    $('#you-stars').innerHTML = [0, 1, 2, 3, 4].map((k) => star(k < n, k >= prev && k < n)).join('');
+    $('#you-stars').setAttribute('aria-label', `Wanted level ${n} of 5`);
+  }
+  setYouStars(0);
+
+  /* ---------- surveillance log ---------- */
+  const logEl = $('#log');
+  function stamp() { return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }); }
+  function log(msg, cls) {
+    const p = document.createElement('p');
+    const t = document.createElement('time'); t.textContent = stamp();
+    const s = document.createElement('span'); s.textContent = msg; if (cls) s.className = cls;
+    p.append(t, s); logEl.append(p);
+    while (logEl.children.length > 80) logEl.firstElementChild.remove();
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  function elapsedText() {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    const m = Math.floor(s / 60), r = s % 60;
+    return m ? `${m} minute${m === 1 ? '' : 's'} and ${r} second${r === 1 ? '' : 's'}` : `${r} second${r === 1 ? '' : 's'}`;
+  }
+  const clockText = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  const hour = new Date().getHours();
+  const os = /Mac/.test(navigator.platform) ? 'a Mac. Fancy.' : /Win/.test(navigator.platform) ? 'Windows. Classic.' : /iPhone|iPad|Android/.test(navigator.userAgent) ? 'a phone. Probably in bed.' : 'some kind of computer. Agent Dave is unsure which.';
+  [
+    ['Subject has entered the website. Initiating Protocol: Stare.', 'hot'],
+    [`Subject's screen is ${screen.width} × ${screen.height} pixels. Big enough to hide something.`],
+    [`Subject is using ${os}`],
+    [hour >= 23 || hour < 5 ? 'Subject is browsing government websites after midnight. Highly suspicious.' : hour < 9 ? 'Subject is up early. Nobody is up this early. Flagged.' : 'Subject is browsing during working hours. Reporting to subject’s boss.', 'red'],
+    [`Subject's browser language is "${navigator.language}". Agent Dave only speaks English and a little Pig Latin.`]
+  ].forEach(([m, c], i) => setTimeout(() => log(m, c), 400 + i * 900));
+  const IDLE_FUNNY = [
+    'Agent Dave is eating a sandwich. Surveillance paused for 4 seconds.',
+    'Subject blinked. Probably.',
+    'Cross-referencing subject with the Most Wanted list... No match. Disappointing.',
+    'Requesting satellite imagery of subject’s house. Satellite busy.',
+    'Agent Dave says subject seems "fine, honestly."',
+    'Van parked outside subject’s home. Wrong home. Relocating van.',
+    'Wiretap installed. It is picking up a radio station. Leaving it on, it’s a good song.'
+  ];
+  const IDLE_UNEASY = [
+    'Agent Dave is not answering his radio.',
+    'The van outside has been running for an hour. Nobody is in it.',
+    'Someone else is reading this log now.',
+    'Cross-referencing subject... match found.',
+    'Subject’s file is thicker than expected.',
+    'Agent Dave’s sandwich is still on his desk. Half eaten.'
+  ];
+  const IDLE_WE = [
+    () => 'We are still here.',
+    () => 'You blinked. We saw it.',
+    () => `You have been here for ${elapsedText()}. We have been here longer.`,
+    () => `It is ${clockText()} where you are. We know.`,
+    () => 'Don’t look at the window.',
+    () => 'We know you are reading this one.',
+    () => 'Your breathing changed. Interesting.',
+    () => 'Nobody else can see this page. Only you. And us.'
+  ];
+  function idleLine() {
+    if (stage >= 5) log(pick(IDLE_WE)(), 'we');
+    else if (stage >= 3) log(pick(IDLE_UNEASY), 'red');
+    else log(pick(IDLE_FUNNY));
+  }
+  let lastMove = 0, moves = 0, lastScroll = 0;
+  addEventListener('pointermove', (e) => {
+    mouse = { x: e.clientX, y: e.clientY };
+    $$('[data-live="cursor"]').forEach((el) => { el.textContent = `${Math.round(e.clientX)}, ${Math.round(e.clientY)}`; });
+    moves++;
+    const n = Date.now();
+    if (n - lastMove > 9000 && moves > 20) {
+      lastMove = n;
+      if (stage >= 5) log(pick(['You moved your mouse. We moved too.', 'Your hand is shaking a little.', 'Keep your hand where we can see it.']), 'we');
+      else log(pick(['Subject moved the mouse. Nervously.', 'Cursor activity detected. Subject is looking for something.', 'Subject wiggled the mouse. Is this a signal?']));
+    }
+    requestAnimationFrame(trackEyes);
+  }, { passive: true });
+  addEventListener('touchmove', (e) => { const t = e.touches[0]; if (t) mouse = { x: t.clientX, y: t.clientY }; }, { passive: true });
+  addEventListener('scroll', () => {
+    requestAnimationFrame(trackEyes);
+    const n = Date.now();
+    if (n - lastScroll > 12000 && stage >= 1) {
+      lastScroll = n;
+      log(stage >= 5 ? 'You are going deeper. We are right behind you.' : stage >= 3 ? 'Subject keeps scrolling down. Why?' : 'Subject is scrolling. What are they looking for?', stage >= 5 ? 'we' : undefined);
+    }
+  }, { passive: true });
+  addEventListener('blur', () => log(stage >= 5 ? 'You looked away. We did not.' : 'Subject switched tabs. What are they hiding in the other tab?', stage >= 5 ? 'we' : 'red'));
+  addEventListener('focus', () => log(stage >= 5 ? 'Welcome back. You were gone for a moment. We were not.' : 'Subject returned. We missed you. Professionally.', stage >= 5 ? 'we' : undefined));
+  document.addEventListener('copy', () => log('Subject copied text from a federal website. Leaker behaviour.', 'red'));
+
+  /* ---------- live fields in the subject file ---------- */
+  $$('[data-live="opened"]').forEach((el) => { el.textContent = new Date().toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }); });
+  $$('[data-live="screen"]').forEach((el) => { el.textContent = `${screen.width} × ${screen.height}, ${navigator.language}`; });
+  if (noHover) $$('[data-live="cursor"]').forEach((el) => { el.textContent = 'thumb resting on the glass'; });
+  setInterval(() => {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    $('#watch-clock').textContent = `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+    $$('[data-live="elapsed"]').forEach((el) => { el.textContent = elapsedText(); });
+    $$('[data-live="clock"]').forEach((el) => { el.textContent = clockText(); });
+    if (s > 6 && s % (stage >= 5 ? 6 : 11) === 0) idleLine();
+  }, 1000);
+
+  /* ---------- tip line ---------- */
+  const AGENTS = ['Agent Dave', 'Agent other Dave', 'Agent Brenda', 'Agent Kyle (intern)', 'a golden retriever we deputized'];
+  const ETA = ['on lunch until 2029', 'currently undercover as a hot dog vendor', 'stuck in the parking garage', 'on hold with the tip line himself', 'reading your tip out loud right now'];
+  const receipts = $('#receipts');
+  function receipt(title, stampText, lines, cls) {
+    const r = document.createElement('div'); r.className = 'receipt' + (cls ? ' ' + cls : '');
+    const h = document.createElement('h3'); h.textContent = title;
+    const s = document.createElement('span'); s.className = 'stamp'; s.textContent = stampText;
+    r.append(h, s, ...lines.map((l) => { const p = document.createElement('p'); p.textContent = l; return p; }));
+    receipts.prepend(r);
+    return r;
+  }
+  $('#tip-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cat = $('#tip-cat').value, urg = $('#tip-urgency').value, text = $('#tip-text').value.trim(), anon = $('#tip-anon').checked;
+    const id = 'NOSY-' + (Math.random() * 90000 + 10000 | 0);
+    const r = stage >= 5
+      ? receipt(`Case ${id}`, 'NOT NEEDED', ['We don’t need your tips anymore.', 'We have you.'], 'about-you')
+      : receipt(`Case ${id}`, urg.startsWith('Extremely') ? 'EXPEDITED' : 'RECEIVED', [
+        `Category: ${cat}`,
+        `Urgency: ${urg}`,
+        `Assigned to: ${pick(AGENTS)}, who is ${pick(ETA)}.`,
+        text ? `Agent's first impression: "${text.length > 140 ? 'This is a lot of words.' : pick(['Wow.', 'Huh.', 'Classic Gary.', 'I knew it.', 'Bold claim.'])}"` : 'You left the description blank. Agents are calling this "mysterious" and "kind of rude."',
+        anon ? 'Anonymity status: Granted. (Hi.)' : 'Anonymity status: Declined. We’ll send a fruit basket.'
+      ]);
+    log(`Subject filed tip ${id}. Snitch rating: ${'★'.repeat(1 + (Math.random() * 5 | 0))}`, 'hot');
+    if (innerWidth < 860) r.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  });
+
+  /* ---------- declassified ---------- */
+  const memoBars = $$('#memo .x');
+  $$('.doc .x').forEach((b) => {
+    b.setAttribute('aria-label', 'Redacted. Click to reveal.');
+    b.addEventListener('click', () => {
+      if (b.classList.contains('open')) return;
+      b.classList.add('open'); b.removeAttribute('aria-label');
+      const n = memoBars.filter((x) => x.classList.contains('open')).length;
+      $('#doc-hint').textContent = n === memoBars.length
+        ? `${n} of ${memoBars.length} secrets revealed. You now have a higher clearance than the Director.`
+        : `${n} of ${memoBars.length} secrets revealed.`;
+      if (b.closest('.subject')) log('You read your own file. That was not meant for you.', 'we');
+    });
+  });
+
+  /* ---------- FOIA ---------- */
+  const KEEP = ['the', 'and', 'of', 'a', 'was', 'lol', 'pudding', 'Dave', 'definitely', 'not', 'anyway'];
+  const out = $('#foia-out');
+  function foiaDoc(title, metaText, paragraphs) {
+    out.innerHTML = '';
+    const h = document.createElement('h3'); h.textContent = title;
+    const meta = document.createElement('p'); meta.textContent = metaText; meta.style.fontSize = '.85rem';
+    out.append(h, meta);
+    paragraphs.forEach((para) => out.append(para));
+    const sig = document.createElement('p'); sig.textContent = 'Thank you for your interest in government transparency.';
+    out.append(sig);
+  }
+  function barEl() { const b = document.createElement('span'); b.className = 'bar'; b.style.width = (1.6 + Math.random() * 4.5).toFixed(1) + 'em'; return b; }
+  function redacted(topic) {
+    const paras = [];
+    for (let p = 0; p < 3; p++) {
+      const para = document.createElement('p');
+      const words = 14 + (Math.random() * 10 | 0);
+      for (let w = 0; w < words; w++) {
+        if (Math.random() < 0.13) para.append(document.createTextNode(pick(KEEP) + ' '));
+        else para.append(barEl());
+      }
+      paras.push(para);
+    }
+    foiaDoc(`RE: ${topic || 'Nothing in particular'}`, `Request #${Math.random() * 900000 + 100000 | 0} · Pages released: 1 of 4,118 · Status: FULLY TRANSPARENT`, paras);
+  }
+  function redactedMessage() {
+    // the only words left unredacted spell a message
+    const msg = ['we', 'are', 'not', 'on', 'the', 'other', 'side', 'of', 'the', 'screen', 'anymore'];
+    const paras = [document.createElement('p'), document.createElement('p'), document.createElement('p')];
+    msg.forEach((word, i) => {
+      const para = paras[Math.min(2, Math.floor(i / 4))];
+      for (let k = 0; k < 2 + (Math.random() * 3 | 0); k++) para.append(barEl());
+      const kept = document.createElement('span'); kept.className = 'kept'; kept.textContent = word;
+      para.append(kept, document.createTextNode(' '));
+    });
+    paras[2].append(barEl(), barEl());
+    foiaDoc(`RE: Subject #${SID}`, `Request filed by: us · About: you · Status: ONGOING`, paras);
+  }
+  redacted('The office fridge');
+  $('#foia-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const t = $('#foia-topic').value.trim().slice(0, 80);
+    if (stage >= 5) { redactedMessage(); log(`You asked about "${t || 'nothing'}". We answered something else.`, 'we'); return; }
+    redacted(t);
+    log(`Subject filed a FOIA request about "${t || 'nothing'}". Adding subject to the "asks questions" list.`, 'red');
+  });
+
+  /* ---------- careers ---------- */
+  const APPLY = {
+    'Special Agent': 'Application received. Please report to the van. Dave saved you a seat.',
+    'Undercover Agent': 'What application? We don’t know you. (Welcome aboard.)',
+    'Shredding Intern': 'Your application has been forwarded to the Shredding Department. It is gone now.',
+    'Double Agent': 'Application received by both agencies. Neither will tell you.'
+  };
+  $('#jobs').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-apply]'); if (!b) return;
+    say(stage >= 6 ? 'You already have a position.' : APPLY[b.dataset.apply]);
+    log(`Subject applied for "${b.dataset.apply}". Background check: once returned a library book late. Hired anyway.`, 'hot');
+  });
+
+  /* ---------- glitches ---------- */
+  const glitchables = $$('[data-glitch]');
+  glitchables.forEach((el) => { el.dataset.orig = el.textContent; });
+  const inView = (el) => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+  setInterval(() => {
+    if (reduce || stage < 4) return;
+    if (Math.random() > (stage - 3) * 0.22) return;
+    const vis = glitchables.filter(inView);
+    if (!vis.length) return;
+    const el = pick(vis);
+    el.classList.remove('glitching'); void el.offsetWidth; el.classList.add('glitching');
+    el.textContent = el.dataset.alt;
+    setTimeout(() => { el.textContent = el.dataset.orig; }, 160 + Math.random() * 180);
+  }, 900);
+
+  /* ---------- audio (only a knock at the very end, after the visitor has interacted) ---------- */
+  let actx = null;
+  function unlockAudio() {
+    if (actx) return;
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return;
+    try { actx = new C(); actx.resume(); } catch (e) { actx = null; }
+  }
+  ['pointerdown', 'keydown', 'touchstart'].forEach((ev) => addEventListener(ev, unlockAudio, { once: true, passive: true }));
+  function knock(t, vol) {
+    const len = Math.floor(actx.sampleRate * 0.12);
+    const buf = actx.createBuffer(1, len, actx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+    const src = actx.createBufferSource(); src.buffer = buf;
+    const lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 420;
+    const g = actx.createGain(); g.gain.value = vol;
+    src.connect(lp); lp.connect(g); g.connect(actx.destination); src.start(t);
+    const o = actx.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(110, t); o.frequency.exponentialRampToValueAtTime(55, t + 0.12);
+    const og = actx.createGain(); og.gain.setValueAtTime(vol * 0.9, t); og.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+    o.connect(og); og.connect(actx.destination); o.start(t); o.stop(t + 0.2);
+  }
+  function knocks() {
+    if (!actx || actx.state !== 'running') return;
+    const t = actx.currentTime + 0.05;
+    [0, 0.32, 0.64, 1.6, 1.9, 2.2].forEach((dt, i) => knock(t + dt, i < 3 ? 0.9 : 1.2));
+  }
+
+  /* ---------- the ending ---------- */
+  let etaStarted = false;
+  function startEta() {
+    if (etaStarted) return;
+    etaStarted = true;
+    let left = 30;
+    const etaEl = $('#eta'), msg = $('#eta-msg');
+    const iv = setInterval(() => {
+      left--;
+      etaEl.textContent = `00:${String(Math.max(0, left)).padStart(2, '0')}`;
+      if (left === 20) log('The agent has entered your street.', 'we');
+      if (left === 10) log('The agent is outside.', 'we');
+      if (left <= 0) {
+        clearInterval(iv);
+        $('#beyond').classList.add('arrived');
+        knocks();
+        msg.hidden = false;
+        msg.textContent = 'He’s here.';
+        log('Agent has arrived.', 'we');
+        setTimeout(() => { msg.textContent = 'Don’t open the door.'; }, 3200);
+        setTimeout(() => { msg.textContent = 'He isn’t at the door.'; }, 6400);
+        setTimeout(() => { $('#close-file').hidden = false; }, 8400);
+      }
+    }, 1000);
+  }
+  new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) startEta(); }), { threshold: 0.35 }).observe($('.eta'));
+  $('#close-file').addEventListener('click', () => {
+    $('#hero-eyebrow').textContent = 'Case status: ongoing';
+    $('#hero-title').dataset.orig = $('#hero-title').textContent = `Welcome back, Subject #${SID}.`;
+    $('#hero-lede').textContent = 'Your file cannot be closed. It can only be scrolled past. We will be here when you scroll down again. We will be here when you don’t.';
+    window.scrollTo(0, 0);
+  });
+
+  /* ---------- stages ---------- */
+  const FX = {
+    1() { setYouStars(1); },
+    2() {
+      setYouStars(2);
+      log('Agent Dave: "hey, uh, the subject is reading the log."', 'hot');
+      trackEyes();
+    },
+    3() {
+      setYouStars(3);
+      log('Agent Dave has left the building. His chair is still warm.', 'red');
+      $('#dave-line').textContent = 'Agent Dave is no longer updating this feed.';
+      receipt(`Case NOSY-${SID.slice(0, 5)}`, 'ABOUT YOU', [
+        'Category: Suspicious person',
+        `Subject: #${SID} (you)`,
+        'Reported by: someone who knows you',
+        'Received: a few minutes before you arrived',
+        'Tip: "They’re on that website again."'
+      ], 'about-you');
+    },
+    4() {
+      setYouStars(4);
+      log('We have opened your file.', 'we');
+      $('#gov-text').textContent = 'An official website of the Federal Government of Los Diablos.';
+      $('#how').textContent = 'Here’s how you know: we know where you are.';
+      $('#how-more').textContent = 'You are on this page. We are on this page. That is how.';
+    },
+    5() {
+      setYouStars(5);
+      log(`It is ${clockText()} where you are. We noticed.`, 'we');
+      $$('.motto').forEach((m) => { m.textContent = 'WE SEE YOU'; });
+      $('#stat-you').textContent = '1';
+      $('#stat-you-label').textContent = 'subject currently being watched. You.';
+      redactedMessage();
+      $('#foia-topic').placeholder = 'you can still ask. we will answer something else.';
+    },
+    6() {
+      log('You are no longer a visitor. You are a subject.', 'we');
+      $$('[data-nav]').forEach((a) => { a.textContent = a.dataset.nav; });
+      const jobs = $('#jobs');
+      jobs.classList.add('filled');
+      const mine = document.createElement('article');
+      mine.className = 'job yours';
+      mine.innerHTML = `<h3>Your new position: Subject</h3><p class="meta">Location: exactly where you are · Start date: now · End date: none</p><ul><li>Stay still</li><li>Keep scrolling</li><li>Benefits: we will always know where you are</li></ul>`;
+      jobs.prepend(mine);
+      $('#hero-eyebrow').textContent = 'Fidelity · Bravery · Eavesdropping · You';
+      $('#hero-title').dataset.orig = $('#hero-title').textContent = 'Protecting your freedom by watching you. Specifically you.';
+      $('#hero-lede').textContent = 'We are here for you. We are always here. Even right now. Especially right now.';
+    },
+    7() {
+      log('We are outside.', 'we');
+      document.title = 'we are outside';
+    }
+  };
+  function reach(n) {
+    let changed = false;
+    while (stage < n) {
+      stage++;
+      root.classList.add('s' + stage);
+      (FX[stage] || (() => {}))();
+      changed = true;
+    }
+    if (changed && STAGED[stage]) {
+      setThreat(...STAGED[stage]);
+      $('#threat-btn').textContent = 'Lower threat level';
+    }
+  }
+  // IntersectionObserver works whether the page scrolls itself or sits inside a taller frame
+  const sio = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) reach(+e.target.dataset.stage); });
+  }, { threshold: 0.15 });
+  $$('[data-stage]').forEach((el) => sio.observe(el));
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && stage >= 5) document.title = 'we can still see you';
+    else document.title = stage >= 7 ? 'we are outside' : 'N.O.S.Y. Agency';
+  });
+})();
+</script>
+<!-- wrapper -->
+</html>
