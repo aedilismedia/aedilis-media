@@ -1302,7 +1302,7 @@ async function build() {
   // Eski adres: GitHub Pages sunucu yönlendirmesi vermez, bu yüzden küçük bir yönlendirme sayfası bırakıyoruz.
   const target = `${site.url.replace(/\/?$/, '/')}${dzs.slug}/`;
   await write('dorduncu-zamdan-sonra/index.html', `<!DOCTYPE html>\n<html lang="tr"><head><meta charset="utf-8"><title>DZS | Aedilis Media</title><meta name="robots" content="noindex"><link rel="canonical" href="${target}"><meta http-equiv="refresh" content="0; url=../${dzs.slug}/"><script>location.replace('../${dzs.slug}/' + location.hash)</script></head><body><p><a href="../${dzs.slug}/">DZS sayfasına git</a></p></body></html>\n`);
-  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'oyunlar/lifelines/', pri: '0.6' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
+  const pages = [{ loc: '', pri: '1.0' }, { loc: 'muzik/', pri: '0.9' }, { loc: 'yapim/', pri: '0.9' }, { loc: 'yapim/harita/', pri: '0.7' }, { loc: 'gunluk/', pri: '0.7' }, { loc: 'oyunlar/lifelines/', pri: '0.6' }, { loc: 'gta6/', pri: '0.6' }, { loc: 'iletisim/', pri: '0.7' }, { loc: `${dzs.slug}/`, pri: '0.8' }, { loc: `${dn.slug}/`, pri: '0.8' }, { loc: `${dzs.upcoming.slug}/`, pri: '0.8' }];
   for (const [i, a] of duraklar.entries()) {
     await write(`yapim/harita/${a.slug}/index.html`, durakPage(a, i));
     pages.push({ loc: `yapim/harita/${a.slug}/`, pri: '0.6' });

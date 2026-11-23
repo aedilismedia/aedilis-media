@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="GTA VI hikâye görevleri için spoilersız Türkçe takip defteri: görevi işaretle, sıradaki açılsın. Her görev için ayrıntılı Türkçe özet ve ipuçları.">
+<meta property="og:title" content="Leonida Görev Defteri · GTA VI">
+<meta property="og:description" content="GTA VI görevlerini spoiler yemeden takip et: işaretle, sıradaki açılsın.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/img/site-icon.webp">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Leonida Görev Defteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: tek sütunlu yol defteri — üstte ilerleme + sıradaki görev, altında bölüm bölüm kilitli/açık görev satırları */
+:root{
+  --bg:#eef3f3;
+  --surface:#ffffff;
+  --surface-2:#e3ebec;
+  --ink:#10262b;
+  --muted:#58706f;
+  --line:#cfdbdb;
+  --accent:#e2533a;       /* gün batımı mercanı */
+  --accent-ink:#ffffff;
+  --sea:#0f7c86;          /* körfez turkuazı */
+  --ok:#2f8a4e;
+  --warn:#b7791f;
+  --lock:#9fb1b1;
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1619; --surface:#122227; --surface-2:#182d33; --ink:#e4efee; --muted:#8ea6a5;
+    --line:#22393f; --accent:#ff6a4d; --accent-ink:#1a0d09; --sea:#3cc2cc; --ok:#5cc47f; --warn:#e3a94a; --lock:#4a6266;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1619; --surface:#122227; --surface-2:#182d33; --ink:#e4efee; --muted:#8ea6a5;
+  --line:#22393f; --accent:#ff6a4d; --accent-ink:#1a0d09; --sea:#3cc2cc; --ok:#5cc47f; --warn:#e3a94a; --lock:#4a6266;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+
+/* Masthead */
+.mast{padding-top:28px;display:flex;flex-direction:column;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(44px,11vw,84px);line-height:.88;margin:0;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{margin:0;color:var(--muted);max-width:60ch}
+
+/* Progress */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat b{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.stat small{font-size:12px;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sea),var(--accent));transition:width .4s ease}
+
+/* Toolbar */
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:7px 13px;font-size:13px;font-weight:500;display:inline-flex;gap:7px;align-items:center}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.danger{color:var(--accent)}
+.sync{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:auto}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.confirm .yes{background:var(--accent);color:var(--accent-ink);border:0;border-radius:99px;padding:7px 13px;font-weight:600}
+
+/* Next mission card */
+.next{background:var(--ink);color:var(--bg);border-radius:14px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.next::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--accent) 0%,transparent 70%);opacity:.55;pointer-events:none}
+.next .eyebrow{color:inherit;opacity:.7}
+.next h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,8vw,52px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance;position:relative}
+.next .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:relative}
+.btn-done{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:10px 16px;font-weight:700}
+.btn-ghost{background:transparent;border:1px solid currentColor;border-radius:8px;padding:9px 14px;opacity:.85}
+.next .sum{position:relative;margin:0;max-width:60ch}
+.next .warnline{position:relative;font-size:13px;background:color-mix(in srgb,var(--warn) 30%,transparent);border-radius:8px;padding:8px 10px}
+.side-list{display:flex;flex-direction:column;gap:8px;position:relative}
+.side-list h3{margin:6px 0 0;font-size:12px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.7;font-weight:500}
+
+/* Chapters */
+.chapter{display:flex;flex-direction:column;gap:6px}
+.ch-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.ch-head .no{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+.ch-head h2{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;margin:0;text-transform:uppercase}
+.ch-head .count{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ch-locked{border:1px dashed var(--line);border-radius:10px;padding:16px;color:var(--muted);display:flex;gap:10px;align-items:center;font-size:14px}
+
+.m{display:grid;grid-template-columns:28px 40px minmax(0,1fr);gap:4px 10px;align-items:start;padding:10px 4px;border-bottom:1px solid var(--line)}
+.m .num{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.m .body{min-width:0;display:flex;flex-direction:column;gap:4px}
+.m .title{font-weight:600;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.m.opt .title{font-weight:500}
+.m.done .title .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--ok);text-decoration-thickness:2px}
+.m.locked{color:var(--lock)}
+.m.locked .title{font-weight:500;font-style:italic}
+.m.missed .title .t{color:var(--muted)}
+.check{width:24px;height:24px;border-radius:6px;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:0;margin-top:1px}
+.check svg{width:14px;height:14px;opacity:0}
+.m.done .check{background:var(--ok);border-color:var(--ok);color:#fff}
+.m.done .check svg{opacity:1}
+.m.avail .check{border-color:var(--sea)}
+.check:disabled{cursor:not-allowed;opacity:.5}
+.lockicon{width:18px;height:18px;margin:3px 0 0 3px;color:var(--lock)}
+
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;font-weight:700;white-space:nowrap}
+.b-opt{background:var(--surface-2);color:var(--muted)}
+.b-miss{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.b-ponr{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
+.b-now{background:var(--sea);color:var(--bg)}
+.b-gone{background:var(--surface-2);color:var(--muted)}
+
+.reveal{align-self:flex-start;background:none;border:0;padding:0;font-size:13px;color:var(--sea);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.sum{margin:0;font-size:14px;color:var(--muted);max-width:62ch}
+.detail{display:flex;flex-direction:column;gap:6px;max-width:64ch}
+.detail .sum{color:var(--ink);opacity:.85;line-height:1.6}
+.meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--sea)}
+.tip{margin:0;font-size:13px;color:var(--muted);border-left:3px solid var(--warn);padding:2px 0 2px 10px}
+.tip b{color:var(--warn);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-right:4px}
+.next .detail{position:relative}
+.next .detail .sum,.next .tip{color:inherit;opacity:.9}
+.next .meta{color:inherit;opacity:.7}
+.next .reveal{color:inherit;opacity:.8}
+
+/* Notes */
+.notes{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.notes h2{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;margin:0 0 8px}
+.notes ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:14px}
+.notes b{color:var(--ink)}
+.foot{font-size:12px;color:var(--muted)}
+.foot a{color:var(--sea)}
+
+@media (max-width:480px){
+  .stat b{font-size:24px}
+  .m{grid-template-columns:28px 32px minmax(0,1fr)}
+  .sync{margin-left:0;width:100%}
+}
+@media (prefers-reduced-motion: reduce){ .bar i{transition:none} }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="eyebrow">GTA VI · Hikâye görevleri · Spoilersız takip</div>
+    <h1>Leonida <span>Görev</span> Defteri</h1>
+    <p class="lede">Bitirdiğin görevi işaretle, sıradaki açılsın. Henüz gelmediğin görevlerin adı ve bölüm başlıkları gizli kalır. Her görevin ayrıntılı özeti, kim verdiği, kiminle oynandığı ve ipuçları sen açana kadar kapalı.</p>
+    <div class="stats">
+      <div class="stat"><b id="st-main">0/0</b><small>Ana görev</small></div>
+      <div class="stat"><b id="st-opt">0/0</b><small>Opsiyonel</small></div>
+      <div class="stat"><b id="st-pct">%0</b><small id="st-ch">Prolog</small></div>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <div class="tools">
+      <button class="chip" id="t-sum" aria-pressed="false">Özetleri hep göster</button>
+      <button class="chip" id="t-all" aria-pressed="false">Spoiler modu</button>
+      <span id="reset-slot"><button class="chip danger" id="t-reset">İlerlemeyi sıfırla</button></span>
+      <span class="sync" id="sync">Bu tarayıcıda kaydediliyor</span>
+    </div>
+  </header>
+
+  <section class="next" id="next" aria-live="polite"></section>
+
+  <main id="chapters" class="wrap" style="gap:34px"></main>
+
+  <section class="notes">
+    <h2>Bilmekte fayda var</h2>
+    <ul>
+      <li><b>Görev tekrarı yok.</b> Biten görev yeniden oynanamıyor. Her bölümün başında ve sonunda ayrı bir manuel kayıt al.</li>
+      <li><b>Altın madalya yok.</b> Görevlerde ek hedef ya da madalya sistemi bulunmuyor.</li>
+      <li><b>Dönüşü olmayan nokta</b> etiketli görevden sonra bölüm kapanır. Açık yan görevlerin varsa önce onları bitir.</li>
+      <li><b>Kaçırılabilir</b> etiketli opsiyoneller süreli. Sıradaki ana görevi yaparsan kaybolabilirler. Kupa ya da %100 için gerekmiyorlar.</li>
+      <li><b>Para önemli.</b> Bazı ana görevler ancak belli bir birikime ulaşınca açılıyor (ör. Bölüm 2 sonunda 15.000 $).</li>
+      <li><b>Karakter değiştirme</b> Bölüm 2'deki “Coffee Break” görevinden sonra serbest.</li>
+      <li><b>Final</b> birden çok sona sahip. Sonu, son bölümdeki seçimler ve hikâye boyunca biriktirdiklerin belirliyor.</li>
+      <li>Görev sayısı rehberden rehbere değişiyor (çoğu 91–93 der). Bu liste kısa hikâye adımlarını da ayrı saydığı için daha uzun.</li>
+    </ul>
+  </section>
+
+  <p class="foot">Görev adları, sırası ve ayrıntılar <a href="https://www.gtabase.com/missions/gta-6/" target="_blank" rel="noopener">GTABase</a> rehberlerine dayanır; Türkçe özetler bu sayfa için ayrıca yazıldı. Diyalog içermez. Rockstar ile bağlantısı olmayan bir hayran takip sayfasıdır.</p>
+</div>
+
+<script>
+// [tür, no, ad, özet, işaretler, görevi veren, karakter, ipucu]
+// tür: M ana, O opsiyonel | işaretler: x kaçırılabilir, p dönüşü olmayan nokta | karakter: J Jason, L Lucia, JL ikisi
+const CHAPTERS = [
+ {key:"pro", label:"Prolog", name:"Prolog", items:[
+  ["M",1,"Prologue","Hikâye cezaevinde, Lucia'yla açılıyor. Bir danışmanla yaptığı görüşmede onu içeri düşüren olaylar ve erken tahliye umudu konuşuluyor. Lucia'nın geçmişine ve oyunun temel kontrollerine giriş niteliğinde.","","","L",""]
+ ]},
+ {key:"c1", label:"Bölüm 1", name:"Just Like Paradise", items:[
+  ["M",2,"Gone Fishing","Jason ile Cal tekneyle denize açılıp Donnie'nin uçaktan bıraktığı paketleri sudan topluyor. Paketlerin bataklıkta Kingfishers çetesine teslimi bozuluyor ve Donnie rehin alınıyor. Jason kampa sızıp Donnie'yi kulübeden çıkarıyor, deniz uçağıyla kaçıyorlar. Görev Cal'ı eve bırakıp Jason'ın evine varmanla bitiyor.","","Cal Hampton","J","Kampı tamamen gizlilikle temizleyebilirsin. Dürbünle hayvan taramak %100 tamamlamaya sayılıyor."],
+  ["M",3,"Gear Up","Jason, evine yakın Ammu-Nation'dan bir uzun namlulu silah alıyor: pompalı ya da paran yetiyorsa daha isabetli taktik tüfek. Dükkândan çıkar çıkmaz kamyonetle gelen üç Kingfishers üyesi pusu kuruyor.","","","J","Pusuda ölsen bile görev tamamlanmış sayılıyor."],
+  ["M",4,"Unwanted Attention","Brian'ın alacağı, polisin çektiği kırmızı bir Imponte Phoenix'in bagajında duruyor. Cal'la Hamlet'teki otoparka gidip çitlerin ve konteynerlerin üstünden içeri sızıyorsun, arabayı alıp polisi atlatıyorsun. Sonra arabayı boyatıp teslim ediyor, son olarak görünüşünü değiştiriyorsun. Yolda Cal telefonuna polis telsizi uygulamasını kuruyor.","","Cal Hampton","J","Bekçileri bayıltırsan telsize cevap vermedikleri fark edilip devriye gönderiliyor. Ya tamamen gizli kal ya da arabayı kapıp hızla çık."],
+  ["M",5,"Lab Fees","Brian'ın kira alacağı hediyelik eşya dükkânı aslında bir asit laboratuvarının paravanı. Parası olmayan tezgâhtar sopayla üstüne yürüyor. Sopayı elinden alırsan borcunu arka odadaki asitle ödemeyi teklif ediyor. Malı alıp Brian'ın güneydeki deposuna bırakıyorsun.","","Brian Heder","J","Laboratuvar kapısının şifresi 0420. Çıkarken kasayı da boşaltabilirsin."],
+  ["M",6,"Pipework","Kiracı Mandy, tıkalı lavabosu açılmadan kira vermeyeceğini söylüyor. Banyodan pompayı alıp mutfakta tıkanıklığı açıyor, boruyu anahtarla sıkıyorsun. Mandy'nin Jason'a yakınlaşma ısrarı komik bir sahneye dönüşüyor. Konuşma nasıl giderse gitsin sonuç aynı.","","Brian Heder, Mandy","J",""],
+  ["M",7,"Just a Scratch","Jason'ın '70 model Ganado'sunu Coastal Auto Care'de Joey'e götürüyorsun. Motor tamiri bedava, boya menüsünden istediğin rengi seçiyorsun. Görev, Pay 'n' Spray tarzı atölyelerin nasıl çalıştığını tanıtıyor ve Lucia çıkmadan arabanın toparlanmasını sağlıyor.","","","J","Ganado'yu parçaladıysan manuel kayıt alıp yükle, araba evin önünde yeniden belirir."],
+  ["O",0,"Get Shirley's Rum","Key Lento'daki komşun Shirley, Pipework açıldıktan sonra seni çağırıp rom istiyor. Three Sheets içki dükkânından şişeyi alıp ona götürüyorsun. Tezgâhtara arka taraftan gelen kuş seslerini sorarsan haritaya yasa dışı bir egzotik hayvan işi işleniyor.","x","Shirley","J","Shirley'nin iki görevi de Tourist Trap'e başladığın an kalıcı olarak kayboluyor."],
+  ["O",0,"Steal the Scooter","Shirley, komşusu Peggy'nin akülü arabasını çalmanın onu depresyondan çıkaracağına inanıyor. Suyun karşısındaki evden arabayı alıp Shirley'nin verandasına sürüyorsun. Gözleri iyi görmeyen Peggy peşinden geliyor ama Jason'ı tanımıyor bile.","x","Shirley","J",""],
+  ["M",8,"Hey Arnold!","Brian'ın yıllardır çalıştığı komisyoncu Arnold telefonlara çıkmıyor. Cal'ı alıp Maroon Key'de radar istasyonunun yakınında Arnold'u buluyorsun, ama görüşme hızla çatışmaya dönüyor. Motosikletli adamlarıyla kaçan Arnold'u önce araçla, sonra yaya kovalıyor ve köşeye sıkıştırınca ne olacağına sen karar veriyorsun.","","Brian Heder","J","Kovalamaca sırasında köprüdeki rampalar dublör atlayışı olarak sayılıyor."],
+  ["M",9,"Island Dreams","Hazine avcısı Kenton, bir bekârlığa veda grubunun batık dalışını asıl aramasına kılıf yapıyor. Tekneyi okyanustaki dalış noktasına götürüp grubu bir sualtı tünelinden batığa kadar götürüyor, metal dedektörle hazine arıyorsun. Gruptan biri başını belaya sokuyor ve onu kurtarıp herkesi tekneye geri getirmen gerekiyor.","","Kenton","J",""],
+  ["M",10,"Feng Shui","Cal'la Jason'ın evinde bira açıp Lucia gelmeden salonu yeniden düzenliyorsunuz. Sehpayı nereye koyarsan koy, Cal sonunda onu ilk yerine geri getiriyor. Ardından Cal'ın konsolunda iki mini oyun var: Tenebrae Lux ve Street Trash III.","","Cal Hampton","J",""],
+  ["O",0,"Pick Up Groceries","Key Lento'daki marketten pembe işaretli ürünlerden herhangi üçünü al, bagaja koy ve eve taşı. Ürünler raftan aldığın anda ödeniyor, kasaya gitmen gerekmiyor.","","Lucia Caminos","J","Lucia'nın tahliyesinden önceki beş opsiyonel işin hepsi ilişkiye artı yazıyor."],
+  ["O",0,"Buy Flowers","Key Lento'nun güneyindeki çiçek tezgâhından büyük buket (10 $) ya da gül (25 $) al. Çiçekler daha sonra eve teslim ediliyor.","","Lucia Caminos","J","Satıcı seçimine yorum yapıyor; güller daha iyi karşılanıyor."],
+  ["O",0,"Buy Lucia a Necklace","The Siren's Chest'te Jason, Lucia'nın oğlunun adı kazınmış özel bir altın kolye sipariş ediyor. Fiyatı 475 $.","","Lucia Caminos","J","Mutlaka al: Bölüm 2'de kolye rehin olarak işe yarıyor ve bir görevi kolaylaştırıyor."],
+  ["O",0,"Get The Chop","Kuyumcunun yanındaki Barnacle Beauties'de yeni saç, saç rengi ya da sakal düzeltme yaptır.","","Lucia Caminos","J","Saç modelleri kıyafetler gibi kalıcı açılmıyor; eski görünüme dönmek için yeniden ödüyorsun."],
+  ["O",0,"Get Lucia's Clothes","Bilinmeyen bir numaradan arayan Andy, Lucia'nın arkadaşı. Manatee's Rest barında onu bulup arabasına kadar yürüyorsun, kıyafet çantasını alıp kendi bagajına koyuyorsun.","","Lucia Caminos","J","Çantayı bagajda tut ve Coming Home'da Lucia'yı almaya giderken yanında olsun."],
+  ["O",0,"Catch a Bigger Fish","Cal, Gambit Bay'de 2 pound'u geçen bir papağan balığı tutamayacağına iddiaya giriyor. Bir tekneyle işaretli noktaya git, demir at, oltayı at ve tuttuğun balığın fotoğrafını Cal'a gönder.","","Cal Hampton","J","İddia Bölüm 1'den sonra da açık kalıyor; Rusty Anchor'ın iskelesinde ödünç alınacak tekneler var."],
+  ["M",11,"Coming Home","Lucia yakında tahliye olacağını haber veriyor. Beklerken evi tamir edebilir ve opsiyonel işleri bitirebilirsin. Lucia'yı Hamlet Correctional'dan alıp Rusty Anchor'da arkadaşlarla kutlama yapıyorsunuz. Gece dans, Mattia'yla tanışma, D-Man adlı biriyle bir arbede ve polisten kaçışla bitiyor.","","Lucia Caminos","J","Beş opsiyonel işin hepsini yaparsan ilişki 4 kalpten 3'üyle başlıyor. Yatak odası duvarı, merdiven, çatı ve balkon korkuluğunu tamir etmek de iyi gelir."],
+  ["M",12,"Clean Up After Donnie","Donnie'nin bozulan teslimatından kalan bir paket, Hamlet'in güneybatısındaki bataklıkta sinyal veriyor. İskeledeki balıkçı seni açılmış pakete yönlendiriyor: içindekiler nehrin aşağısındaki bir kulübeye taşınmış. Üç Kingfishers'ı halledip kokaini alıyor, tekneyle Donnie'nin karavanına götürüyorsun.","","Donnie","J","Ödül 600 $."],
+  ["M",13,"Buck Me","Lucia kamu hizmeti ücretini alabilmek için banka hesabı istiyor ama ikisinin de kredi notu berbat. Fleeca müdürü onları BuckMe adlı fintek uygulamasına yönlendiriyor. 100 $ hoş geldin bonusunu Aile Birikimi'ne aktarmayı öğreniyorsun.","","Lucia Caminos","J","Aile Birikimi'ndeki para hiç çekilemiyor ama hiç kaybolmuyor da. Oyunun sonunu da etkiliyor."],
+  ["M",14,"Down to Earth","Marinada önce bir tekneyi basınçlı suyla yıkıyorsun. Yarısında Lucia gelip Jason'ın asıl işini merak ediyor. Birlikte deniz uçağıyla Bobcat Bay'e uçup kaçakçılardan paket alıyorsunuz. Para gelmeyince işler çatışmaya dönüyor; ardından paketleri bırakıp eve yetişmeniz gerekiyor.","","Brian Heder","J","Düşmanları kol ve bacaklarından vurmak onları hayatta bırakır ve suç profilini profesyonel tarafta tutar."],
+  ["O",0,"Meditate with Lucia","Down to Earth'ün ertesi sabahı mutfakta Lucia'yla konuş. Balkona çıkıp Jason'a meditasyon yapmayı gösteriyor.","x","Lucia Caminos","J","Sadece Bölüm 1'de yapılabiliyor. 18 meditasyonluk kupa sayacına +1 ekliyor."],
+  ["O",0,"Find the Lost Drugs","Bataklıkta dört arama bölgesi açılıyor. Her birinde bip sesi çıkaran, sarı ışıklı birkaç paket var: kimi ağaçta, kimi suda, kiminin başında düşman bekliyor. Topladıklarını Brian'a ya da Donnie'ye sat.","","Brian Heder, Donnie","J","Çantayla ölürsen ya da çantayı kaybedersen toplananlar gider."],
+  ["M",15,"Deposit Cash Into BuckMe","Haritada işaret yok, görev listesinden takip ediliyor. BuckMe'deki ATM bulucuyla en yakın ATM'yi işaretle (Jason'ın evinin hemen yanında bir tane var) ve cebindeki parayı hesabına yatır.","","","J","Cepteki para ölünce kayboluyor, hesaptaki güvende. Cebin boşsa alışverişler doğrudan BuckMe'den ödeniyor."],
+  ["M",16,"Save for the Future","Hikâye boyunca süren bir hedef. BuckMe'de Aile Birikimi'ne para aktardıkça yeni kademeler açılıyor: 10.000 $'da RydeMe indirimi, 100.000 $'da garaj indirimi, 500.000 $'da kaplama indirimi. En üst kademe 1.000.000 $.","","","J","Hikâyeyi ilerletmek için zorunlu değil ama birikim oyunun sonunu etkiliyor."],
+  ["M",17,"Day Release","Kat ve Mattia'yla Rusty Anchor'da buluşuyorsunuz; Mattia'nın adamı Lucia'nın ayak bileğindeki takip cihazını çıkarıyor. Sürat teknesiyle kuzeydeki bir yata gidiyor, Mattia'yla jet-ski yarışıyor, Lucia'yla havaya atılan şampanya şişelerini vuruyorsun. Gün bir motelden Nine1Nine kulübüne uzanan bir partiyle sürüyor.","","Mattia Tauro","JL","Jet-ski'de Lucia'yı arkana alırsan ilişki artıyor. Yarışı kazanıp kaybetmen fark etmiyor."],
+  ["O",0,"Clock Out","Lucia işten erken çıkıp eve bırakılmak istiyor. Key Lento Toplum Merkezi'ne saat 16.00'dan önce bir araçla git ve onu Jason'ın evine götür.","","Lucia Caminos","J","Yaya gidersen eve yürümeyi reddediyor. Arama her zaman gelmeyebilir; yüksek ilişki seviyesi gerekebilir."],
+  ["M",18,"Clear Skies","Southwind'de Brian'la konuşup deniz uçağıyla havalanıyorsun. Pilot Pete'in uçağının hemen üstünde uçarak radar izini gizliyor, onu bataklıktaki pistlere kadar götürüyorsun. Donnie'nin bağlantısıyla buluşmada Final Chapter motorcu çetesi baskın yapıyor; Donnie'yi kurtarıp motorculardan sıyrılıyorsun.","","Brian Heder, Donnie","J","Uçağı yoldan değil sudan kaldırmak daha güvenli."],
+  ["M",19,"Building a Life","Clear Skies biter bitmez evde Lucia bir sehpayı kurmaya uğraşıyor. Vidaları birlikte takıyor, parçaların yanlış sırada olduğunu fark edip söküyor ve cam tablayı yerleştiriyorsunuz. Sahnede Jason, Lucia'ya silah tutmayı öğretiyor.","","","J",""],
+  ["O",0,"Ring the Bell!","Swamped için marinaya giderken Cal seni Rusty Anchor'a çağırıyor. İkram ettiği içkileri kabul edersen Jason sarhoş oluyor: ekran bulanıklaşıyor, kontroller hantallaşıyor. Gecenin sonunda Cal'ı arabaya taşıyıp sağ salim evine bırakıyorsun.","x","Cal Hampton","J","Sadece Bölüm 1'de açık; Swamped'a başlamadan önce yap."],
+  ["M",20,"Swamped","Brian'ı Mariana County'nin kuzeybatısındaki Kingfishers kampına götürüyorsun. Bir domuz ağılını incelerken görüşmenin aslında bir pusu olduğu anlaşılıyor. Brian'la çatışarak kaçıyor, ardından helikopterle Lori'yi kaçıran tekneyi kovalıyorsun.","","Brian Heder","J",""],
+  ["M",21,"Don Gone","Brian, Donnie'nin kendi isteğiyle şehri terk etmiş gibi görünmesini istiyor. Key Lento'daki karavandan çantayı alıp fotoğraf, uçuş programı, kıyafetler, kimlik, telefon mesajı ve buzdolabındaki harita gibi eşyaları topluyorsun. Çıkışta bardaki kavgadan tanıdık üç Aviator beliriyor. Donnie'nin arabasıyla Key Lento'dan çıkıp aracı yok ediyorsun.","","Brian Heder","J","Eşyaları bulmak için yavaş çekim hepsini vurguluyor."],
+  ["O",0,"Donnie's Lost Drugs","Donnie'nin teknesi Corsair Key açıklarında batmış ve içinde mal var. Bir tekne çal, pembe arama alanının güneydoğusuna dal, batığın arka bölmesinden çantayı al ve Brian'ın deposunda sat.","","Brian Heder","J","Satış 1.200 $ getiriyor. Yüzerek gitmek çok uzun sürer, tekne al."],
+  ["M",22,"Recalibration","Cal zor günler geçiriyor ve Lucia onu neşelendirmeyi öneriyor. Altılı bira alıp Cal'a götürüyor, tekneyle balığa çıkıyor ve tuttuğunuz balıkları ızgarada pişiriyorsun. Görev balıkçılık ve ızgara mekaniklerini ayrıntılı tanıtıyor, sonunda Lucia'yı eve götürüyorsun.","","Lucia Caminos","J","Balıkları her iki tarafı eşit pişene kadar çevir."],
+  ["M",23,"Tourist Trap","Mattia'nın basit görünen işi: Ziyaretçi Merkezi'ndeki bir dolaptan çanta almak. İş çabucak çığırından çıkıyor. Bir polisi izlemen, çantayı kapman ve Jason'la açık denize kaçman gerekiyor.","p","Lucia Caminos, Mattia Tauro","JL","Başlamadan ayrı bir manuel kayıt al ve en az 5.000 $'ı Aile Birikimi'ne aktar: cepteki tüm parayı ve Key Lento'daki evi kalıcı olarak kaybediyorsun. Görev, Lucia'yı işten aldığında başlıyor; hazır olmadan gitme."],
+  ["M",24,"Home Sweet Home","Lucia, şehri terk etmeden önce Jason'ın eşyalarını almak için eve dönüyor; ama ev talan edilmiş ve ateşe verilmiş. Soyguncuları halledip ev patlamadan dışarı çıkıyorsun. Ardından Key Lento'daki polis aramasından karanlıkta gizlice sıyrılıyorsun.","","Lucia Caminos","L","Çıkmadan kapının solundaki raftan Tomás'ın fotoğrafını al. Andy'yi arayıp görünmeden arabasına ulaşırsan Andy'nin Ceketi açılıyor; bu kaçırılabilir."],
+  ["M",25,"Discharge Time","Lucia, Vice City Hastanesi'nde 203 numaralı odada yatan yaralı Jason'a koşuyor. Onu tekerlekli sandalyeyle çıkarmaya çalışırken saldırganlar geliyor: Lucia sandalyeyi iterken sen Jason'la ateş ediyorsun. Ardından ambulansla kaçış ve ambulansı savunma bölümü geliyor.","","Lucia Caminos","JL",""]
+ ]},
+ {key:"c2", label:"Bölüm 2", name:"Paradise Lost", items:[
+  ["M",26,"What's in the Bag?","Lucia yaralı Jason'la Port Gellhorn'daki Starlet Motel'e sığınmış. Haberlerde suç onlara yıkılıyor. Çantadan altına not iliştirilmiş küçük bir kadın heykeli ve bilgisayarları olmadığı için açamadıkları bir sabit disk çıkıyor.","","Lucia Caminos","L","Bölüm 2 çoğunlukla Lucia'yla oynanıyor. Eşyaları sonradan banyodaki küvetin altındaki zulada yeniden inceleyebilirsin."],
+  ["M",27,"Ambulance Chaser","Kaçışta kullanılan ambulans motelin doğusundaki bir ahıra saklanmış ve bir grup bağımlı onu bulup kaçırıyor. Ahırdaki ATV ile kovalıyorsun. Ambulans durunca benzin bidonuyla yakıp hemen bölgeden uzaklaşıyorsun.","","Lucia Caminos","L","Slam Dunk'tan önce yapmazsan polis ambulansı bulur ve görev kaybolur."],
+  ["M",28,"Play Nurse","Haritada işareti olmayan, bölüm boyunca süren bir görev. Her günün sonunda motel odasına dönüp Jason'ı kontrol ediyorsun. Arada Lucia'nın ona baktığı sahneler ilişkiyi güçlendiriyor. Breakfast Run'dan sonra kendiliğinden tamamlanıyor.","","Jason Duval","L","Ara zamanlarda havuz başındaki ağırlıklarla Lucia'nın gücünü ve can barını artırabilirsin."],
+  ["M",29,"Overnight Charges","Motel müdürü Linda odanın hemen ödenmesini istiyor: kira artı %10, toplam 900 $. Bölüme yaklaşık 146 $ ile başladığın için, Jason kolyeyi aldıysa Lucia onu rehin bırakıyor ve görev hemen bitiyor.","","Linda","L","Resepsiyondaki duvar haritasını incele, Port Gellhorn haritanda açılsın. İlan ve kayıp afişleri yeni işler işaretliyor."],
+  ["M",30,"Just Moved In","Motelin karşısındaki benzinlikte Alpha marketten sekiz ürün alıyorsun: içecek, protein bar, meyve, çorba, gazlı bez, bandana, saç makinesi ve makyaj çantası. Hepsini odaya götürüyorsun.","","","L","Toplam 55 $ tutuyor ve ilişkiye artı yazıyor."],
+  ["M",31,"Girls' Trip","Motelde ağrı kesici ararken Zach seni 10 numaradaki Vicki'ye yönlendiriyor. Aldığın haplar sıradan bir eczane ilacı çıkınca Vicki'yle yüzleşiyorsun. O da gerçek ilaç için tanıdığı Dunk'ı bulmaya yardım ediyor. Yol, Vicki'nin çalıştığı Delights kulübünden bir oto yıkamada Kolts çetesiyle hesaplaşmaya uzanıyor.","","Vicki","L",""],
+  ["O",0,"Pick Up a Gun","Port Gellhorn'daki silah dükkânından yeni bir silah al ya da yeşil dolaptan eski silahlarından birini çıkar.","","Lucia Caminos","L","En ucuz yeni silah Scorpio Nipper .38 (495 $). Dolaptan almak bedava."],
+  ["M",32,"Moses","Herhangi bir arabayı Moses'ın garajına sür. Moses, WAiNK uygulamasıyla araçlardaki takip cihazını (yok, standart, gelişmiş) taramayı öğretiyor ve kilitli araçları alarmsız açan Slim Jim'i veriyor. Takip cihazı olmayan bir arabayla geldiysen görev sonunda onu kendi adına kaydettiriyorsun.","","Moses","L","Ucuz arabalarda genelde takip cihazı yok. Süper arabalarda gelişmiş cihaz var ve yavaş sürersen polisi çağırıyor."],
+  ["M",33,"New Look","Port Gellhorn'daki Pearl House kuaföründe herhangi bir saç modeli satın al. Yaklaşık bir dakikalık bir görev.","","Lucia Caminos","L","Yaklaşık 150 $ bulundur. Paran yoksa bir kasa soy ya da rehinciye koleksiyon kartı sat."],
+  ["M",34,"How Do I Look?","Port Gellhorn'un güneyindeki Bargain World'den bir üst ve bir alt al. Ne seçtiğin önemli değil.","","Lucia Caminos","L","En ucuz yol cansız mankendeki Bargain World takımı: 46 $."],
+  ["M",35,"Got Pills?","İşaretsiz bir bekleme görevi. Dunk birkaç oyun günü içinde arıyor, ardından ikinci bir arama bekleniyor. Bu sırada diğer görevleri yapmak süreci hızlandırıyor. İkinci arama Slam Dunk'ı açıyor.","","Dunk","L","Dunk'ı kendin aramayı dene, görevi hemen verebiliyor. Motelin etrafındaki üç kediyi sevip beslemek Focus'a katkı sağlıyor."],
+  ["M",36,"Daily Driver","Moses'ın istediği araba eski Traders' Union binasının yanındaki beyaz '82 Canis Crawler. Etraftaki düşmanları temizle ya da doğrudan arabaya atlayıp kaç, sonra Moses'ın garajına teslim et.","","Moses","L","Ödül 1.250 $, araba sağlamsa 500 $ daha. Ardından Port Gellhorn Garajı ve garaj satın alma uygulaması açılıyor."],
+  ["M",37,"Behind on Payments","Linda'ya oda borcunu öde. Parayı diğer Bölüm 2 görevlerinden, araba satarak ya da kasa soyarak toplayabilirsin. Ödeyince rehindeki kolye geri geliyor.","","Linda","L","Çok beklersen Linda kirayı artırabiliyor; erken öde."],
+  ["M",38,"Slam Dunk","Dunk'la bir market önünde emekli Doktor Bill'i bekleyip zorla arabaya bindiriyorsunuz. Bill artık reçete yazamıyor ama Kolts çetesiyle eski bir bağlantısı var. Limandaki Kolts buluşması çatışmaya dönüyor. Kaçıp Bill'i yeniden alıyor, sonunda Dunk'ı karavanına bırakıyorsun.","","Dunk","L",""],
+  ["M",39,"Breakfast Run","Jason tamamen iyileşince ikili bir soygun turuna çıkıyor: Hank's Waffles, bir içki dükkânı, bir ikinci el mağazası ve birkaç dükkân daha. Her birinde kasiyeri tehdit edip parayı alıyorsun. Sonunda iki yıldızlı aranma seviyesinden kurtulman gerekiyor.","","Jason Duval, Lucia Caminos","L","Jason'ın araması Slam Dunk'tan yaklaşık yarım gün sonra geliyor."],
+  ["M",40,"Coffee Break","Motel mutfağında Lucia'ya 2 $'lık bir kahve alıyorsun. İkili daha büyük işler yapıp Vice City'ye, Jason'ın lise arkadaşı Dre'Quan'ın yanına taşınmaya karar veriyor. Yan işlerin hepsi haritada aynı anda işaretleniyor ve partner menüsü açılıyor.","","Jason Duval, Lucia Caminos","JL","Bundan sonra D-Pad Sağ'ı basılı tutarak Jason ile Lucia arasında geçiş yapabilir, partnerine emir verebilirsin."],
+  ["O",0,"Thrillbillies","Thrillbilly Mud Club'da önce hatıra dükkânından iki karakter için kıyafet alıyor, sonra Billy'nin motorcu ekibiyle tanışıyorsun. Bir Manchez ya da Sanchez kiralayıp 13 rakiple çamur yarışına giriyorsun. Sonuncu olmaman yeterli.","","Billy","JL","Birincilik 2.500 $. Sanchez daha pahalı ama daha hızlı."],
+  ["O",0,"Twist Wrist, Smash, Grab","Billy zırhlı bir aracı soymak için seni ekibe çağırıyor ve bir Highwayman Sanchez veriyor. Aracı kovalarken ateş etmene gerek yok, kendi kendine ağaca çarpıyor. Arka kapıları patlatıp çantayı alıyor, Billy'nin ardından dağa kaçıyorsun.","","Billy","JL","Highwayman Sanchez arazi atlayışları için çok iyi; sakla."],
+  ["O",0,"Hit Avery Pawn","Port Gellhorn'daki rehinciyi silahla basıp vitrinleri kırıyor, mücevherleri topluyorsun. Personeli tehdit edersen arka odadaki kasanın şifresini verebiliyorlar. İki yıldızlı aranmadan kurtulup ganimeti Dunk'a satıyorsun.","","Lucia Caminos","JL","Kasa şifresi oyundan oyuna değişebiliyor. Hızlı motosiklet kaçış için ideal."],
+  ["O",0,"Hit Kingpin Bowling","Kolts çetesinin üssüne dönmüş bowling salonu kalabalık. Partnerini çağır, zırh ve yapışkan bomba al. İçeride üç değerli hedef var: lüks bir saat, özel bir pompalı ve ofisteki kasa.","","Lucia Caminos","JL","Üçünü de alırsan 'Let's Go Bowling' kupası açılıyor. Kasayı yapışkan bombayla patlat."],
+  ["O",0,"Impounded Vehicle","Lucia'nın arabası polis merkezinin yakınındaki otoparka çekilmiş. Çiti kırıp giriyor, iki yıldızla arabayı kapıp kaçıyorsun.","","Lucia Caminos","JL","Suçtan sonra arama alanında bıraktığın kişisel araç çekiliyor. İleride Scooter Bros uygulamasıyla ücret karşılığı geri alınabiliyor."],
+  ["M",41,"Prepare for Vice City","Bölümü kapatan görevin açılması için en az 15.000 $ biriktirmen gerekiyor. En kolay yol haritadaki yan işler: çamur yarışı, zırhlı araç, rehinci, bowling ve Afternoon Delight.","","Lucia Caminos","JL","Parayı BuckMe'ye yatır, ölürsen kaybetme."],
+  ["M",42,"Afternoon Delight","Vicki, patronu Frankie Delight'ın kulübünü soymayı öneriyor. Kadınlar gecesi olduğu için Lucia ön kapıdan, Jason arka çitten giriyor. Jason'ın sahneye çıkıp çıkmayacağına sen karar veriyorsun. Ardından kasa soygunu ve motorculardan kaçış geliyor.","","Vicki","JL","Dansa katılırsan ekstra sahneler ve sonrasında kıyafet alma hedefi var. Katılmazsan görev kısalıyor."],
+  ["M",43,"Checking Out","15.000 $ toplanınca motel odası işaretleniyor. Odadaki pompalıyı alıyorsun: yozlaşmış polisler sizi bulmuş. Motelde çatışma, motosikletten Jason'ın arabasına atlama ve uzun bir kovalamacayla Port Gellhorn'u terk ediyorsunuz.","p","Jason Duval, Lucia Caminos","JL","Başlamadan motelde kalan işlerini bitir, oradaki iki koleksiyon kartını al ve ayrı bir kayıt yap. Starlet Motel artık evin olmayacak."]
+ ]},
+ {key:"c3", label:"Bölüm 3", name:"Tits Ass Drug Money", items:[
+  ["M",44,"Welcome to Vice City","Otoyoldan Vice City'ye giriyorsunuz. Dre'Quan, plak şirketini yönettiği Crosstown'daki Jack of Hearts kulübüne çağırıyor. İçeride dansçılara para atabilir ya da reddedebilirsin. Sonra Dre'Quan'ı takip edip size ayarlanan daireye gidiyorsunuz.","","","JL","Parayı reddedersen görev kısalıyor."],
+  ["M",45,"Dealer's Choice","Dre'Quan'ın stüdyo kaydını izledikten sonra Boobie dairenin bir bedeli olduğunu söylüyor. Satıcı Tyrone'dan mal alıp alıcılara götürüyorsun ve saf ya da kesilmiş ürün arasında seçim yapıyorsun. Teslimat gerginleşiyor, sonunda Dre'Quan'ı Southside'a bırakıyorsun.","","Dre'Quan Priest","J","Kesilmiş mal daha kârlı ama alıcılar fark edip silah çekiyor. Tyrone sonraki görevde seçimine göre tepki veriyor."],
+  ["M",46,"Meet the Heders","Çatı katındaki barda Brian ve Lori'yle akşam yemeği. Ardından Brian'ın işine geçiliyor: Lucia kılık değiştirip limana bir minibüs sürüyor, SCOOP konteynerini buluyor ve kovalıyor. Polisi atlatıp depoya ulaşıyorsun.","","Brian Heder","JL","Garsona Lucia'nın istediği Surf and Turf'ü söyle. Lucia'yı fazla aceleye getirmek ilişkiye zarar veriyor."],
+  ["M",47,"Dubious Provenance","Heykeli Capri'deki antikacıya götürüyorsun ama sahibi Evelyn bakmayı bile reddediyor. İngiliz tüccar Benedict Halifax heykeli kayıt dışı değerlendirmeyi teklif ediyor ve rehin olarak değerli saatini bırakıyor. Kararına göre görev dükkâna gece girme, motelde Halifax'ı arama ve onu kovalamaya uzanıyor.","","Jason Duval, Lucia Caminos","JL","Teklifi kabul etmek nadir bir Crowex saati kazandırıyor."],
+  ["M",48,"Mami Knows Best","Lucia, emlakçılığa yeni başlayan annesi Mia'yla Hamlet'teki ilk satılık eve gidiyor. Ev harabe: bahçedeki çöpleri konteynere taşıyor, havuzdan şilteyi çıkarıyor, Mia'ya saldıran bir timsahı vuruyorsun. Sonra bir çetenin eşyalarını parçalayıp Mia'nın ofisine gidiyorsunuz.","","Mia Caminos","L","Timsahı hızlı vur; geç kalırsan Mia ölüyor ve görev başarısız oluyor."],
+  ["O",0,"Get Your Wheels","Bölüm 2'nin sonunda iki arabaya da el konuldu. Scooter Bros uygulamasından yaklaşık 700–900 $ ödeyerek birini geri alabilir ya da yeni bir aracı Pay 'n' Spray'de kaydettirebilirsin.","","","JL","Bir karakterin arabası görevi bitirmek için yeterli. Kayıt için boş araç yuvası gerekebilir."],
+  ["M",49,"Tyrone","Tyrone'un dairesine dönüyorsun; seni nasıl karşılayacağı Dealer's Choice'taki seçimine bağlı. Tyrone sokaktan bulduğun her malı almaya hazır, tek bir istisnayla: kaynağı bilinmeyen yeni sentetik uyuşturucu Kitty Litter. Kuaförden gelen bir ipucu doğrudan sonraki göreve bağlanıyor.","","Tyrone","J",""],
+  ["M",50,"Here, Kitty Kitty","Charles'ı bulmak için Rockridge'deki adresine gidiyorsun. Komşuya 20 $ rüşvet verebilir ya da boş daireye girip ipucu arayabilirsin. İki yol da La Perle'deki evsiz kampına çıkıyor; kaçan Charles'ı kovalayıp üstünü arıyorsun.","","Tyrone","J","Rüşvet için cebinde nakit olmalı."],
+  ["M",51,"Send Money to Lorena","Gidilecek bir yer yok: telefonu açıp Lorena'ya para gönder.","","","",""],
+  ["M",52,"Car Service","Raul bir Schafter V12 istiyor. Başta bir bagajdan flaş bombası ve susturuculu tabanca alabilirsin. Parça dükkânına beyaz minibüsün üstünden çatıya çıkarak sızıyor, arabayı alıp kuzeybatıdaki Leonida Auto World'e teslim ediyorsun.","","Raul Bautista","L","Bekçi köpeği saldırmadıkça ona zarar verme; suç profilini ciddi biçimde etkiliyor."],
+  ["M",53,"Send More Money to Lorena","Aynı işlem, aynı tutar: telefondan Lorena'ya ikinci ödemeyi gönder.","","","",""],
+  ["M",54,"Top Billing","Jack of Hearts'ta sahne arkasında buluşuyorsunuz ama Dimez kulüpten atılmış. Küsüp giden Roxy'nin peşine düşüyor, Peewees'te yemek molası veriyor, bir ev partisine arkadan sızıyorsun. Gece bir hesaplaşma ve elektriği kesmekle sonlanıyor.","","Dre'Quan Priest","JL","Yemekte masaya gelen adama ne verdiğin yalnızca konuşmayı değiştiriyor."],
+  ["M",55,"Boobie Time","Boobie'nin şoförlüğünü yapıyorsun: şehirde birkaç tahsilat durağı var. Yapım aşamasındaki kulübü gezerken hırsızlar para çantasını arabadan kapıyor. Seashark'la nehirde kovalayıp çantayı geri alıyor, sonra Yasmani'yle tanışıyorsun.","","Boobie Ike","J",""],
+  ["M",56,"Yasmani's Jewelry Jobs","Yasmani üç dükkânın kasasından birer özel parça istiyor, hangi sırayla yapacağın sana kalmış. İlk parçayı teslim edince alarmsız kapı açan Snap Gun'ı veriyor ve kalan iki iş kolaylaşıyor. Vitrinleri kırıp ekstra mücevher de toplayabilirsin.","","Yasmani","JL","Casa de Empeño'yu ilk yap (kasa kodu 1680); arka kapısı olmadığı için Snap Gun işe yaramıyor. Ölür ya da tutuklanırsan ganimet gidiyor."],
+  ["M",57,"First Impressions","Waxman Island'daki garajı açıp Lucia'yla Raul'u almaya gidiyorsun ve hemen polis yetişiyor. Lucia sürerken Jason ateş ediyor. Araç kaza yapınca geri geri kaçıyor, Rialto Islands'a ulaşıp araç değiştiriyor ve Raul'u bırakıyorsunuz.","","Raul Bautista","JL","Garaj kodu 2404. Polis araçlarının lastik ve motoruna, memurların bacağına nişan almak profesyonel profili korur."],
+  ["M",58,"Caught Slipping","Bayside dairesine döndüğünde iki hırsız eşyalarını karıştırıyor. Jason ve Lucia ayrı ayrı kovalıyor, bacaklarından vurup çantalarını arıyor. Sonra eşyaları güvenceye almak için Big House Storage'a gidiyorsunuz.","","","JL","Focus ile yavaşlatıp bacağa nişan almak en hızlı yol."],
+  ["M",59,"Crosstown Traffic","İki koldan bir görev. Jason bisikletle nehirdeki tekneleri izliyor. Lucia metroda bir Guardia kardeşine yetişip onu sindiriyor ve telefonuyla arama yaptırıyor. Sonra Jason bir atlayışla teknelerden birine konuyor, tekneyi ele geçiriyor ve savunuyor.","","Raul Bautista","JL","Lucia treni kaçırırsa scooter ya da bisikletle bir sonraki istasyona yetiş."],
+  ["M",60,"Credit Check","Raul'un ekibiyle tanışıp maske ve boya paketi engelleyici alıyorsun; artık işaretli banknotları çalabilirsin. Raul profesyonelliğinizi ölçmek için arka arkaya üç banka şubesi soyduruyor. Sonra kaçıp buluşuyorsunuz.","","Raul Bautista","JL","Sivil öldürme ve oyalanma: polis müdahalesi büyürse Raul işi iptal edebiliyor."],
+  ["M",61,"Clonin' Keys, Makin' Gs","Randy'nin istediği Zorrusso, Ocean Beach'teki Hathaway Apartments'ın kapalı otoparkında. Arabada gelişmiş takip cihazı olduğu için Randy telefonuna Key Cloner yüklüyor. Anahtarı kopyalayıp arabayı alıyor, yavaşlamadan Randy'nin galerisine sürüyorsun.","","Randy","JL","Çok yavaş sürersen takip cihazı konumunu polise gönderiyor."],
+  ["O",0,"Race Against Yago","Yago'nun mesajından sonra kısa bir süre açık kalıyor. Salton'daki buluşmada Santiago'yla konuşup Freeway Run yarışını seç ve kiralık bir arabayla yarış.","x","Yago","J","Birincilik 3.800 $'a kadar getiriyor."],
+  ["M",62,"Sinfrontera National Bank","Kartelin para akladığı Tequesta'daki bankaya keşfe giriyorsun. Lucia'yla müşteri gibi bir masaya yaslanıp Focus ile kameraları, korumaları ve asansörler arasındaki güvenlik panelini inceliyorsun. Sonra Raul ve Andrea'yla üst katta buluşuyorsunuz.","","Raul Bautista","JL","Asansörlere ya da yasak alanlara yaklaşma; bir koruma seni sorguya çekiyor."],
+  ["M",63,"Security Expert","Waning Sands'deki bir evde Nicole Park'ı arıyorsun. Evin önünden yavaşça geçip arkadan gizlice giriyor, baygın Nicole'u taşıyıp arabanın bagajına koyuyor ve planlama odasına getiriyorsun.","","Raul Bautista","JL","Gürültülü de girebilirsin ama birkaç korumayla ve gelen takviyeyle uğraşırsın."],
+  ["M",64,"Heist Planning","Kendine ait hedefi olmayan bir takip kaydı. Banka soygunu öncesi hazırlık görevlerini (Company Property, Safe Word, The Missing Link, Hidden Charges) yaptıkça kendiliğinden tamamlanıyor.","","","",""],
+  ["M",65,"Ride or Die","Dre'Quan, DWNPLY'den intikam almak için arabasını çalmak istiyor. VIP salona girebilmek için önce bir çift DWNPLY spor ayakkabısı buluyor, içeride anahtarları aşırıyor, arabayı bulup Speedshop'a teslim ediyorsun.","","Dre'Quan Priest","J","Ayakkabıları satan adama basketbol topu atarsan 1.580 $ ödemeden alıyorsun."],
+  ["M",66,"Company Property","Raul, Brian'dan bir iyilik istiyor: Pilot Pete'ten silah sevkiyatı. Uçaktan inen sandıkları kamyonete yüklerken IAA ajanları ve polis baskın yapıyor. Jason Pete'le çatışarak kaçıyor, ardından havalanıp kargoyu koruyorsunuz. Uçuş mecburi bir inişle bitiyor.","","Brian Heder","JL","Bu görevde ekipmanının bir kısmını kaybedebilirsin."],
+  ["M",67,"The Missing Link","Andrea, Lucia'yı yasa dışı bir horoz dövüşünde La Polilla Negra'nın üst düzey adamı Monty'yle buluşturuyor. Monty'nin fotoğraflarını çektikten sonra iş yumruk kavgasına dönüyor. Onu bayıltıp binadan çatışarak çıkarıyor ve sorguya götürüyorsun. Sonunda Monty hakkında karar veriyorsun.","","Andrea","L",""],
+  ["M",68,"Safe Word","Nicole, bankanın kullandığı kasanın küçük bir modelini çalıp Lucia'ya alıştırma yaptırmak istiyor. Kasa bir yetişkin film yapımcısının malikânesinde. Jason çekim ekibine karışıp rol yapıyor, sonra kasayı söküp Felipe'ye götürüyorsun. Son olarak kasa açma pratiği yapıyorsun.","","Nicole Park","JL",""],
+  ["M",69,"Cooties","Dimez'in 'Cooties' klibi, DWNPLY'den çalınan arabayla çekiliyor. Lucia'yla drift yapıyor, araya girenlerle dövüşüyor, sopayla ve spreyle arabayı dağıtıyorsun. DWNPLY'nin ekibi gelince kaçıyor ve harap olmuş arabayı stüdyoya götürmeye çalışıyorsun.","","Dre'Quan Priest","L",""],
+  ["M",70,"South Leonida Real Estate","Mia, M7 çetesi tarafından kaçırılıyor. Fazla yaklaşmadan takip ediyor ve onu bir binada buluyorsun. Mia, çete lideri Terro'ya yeni karargâh bulma teklifiyle durumu kurtarıyor. Mülkleri gezdirirken Terro'nun yardımcısı Viper ekibiyle saldırıyor.","","Mia Caminos","L","Elinde yalnızca başlangıç tabancan var; düşen düşmanların silahlarını topla."],
+  ["O",0,"Pick Up Shayna","Hapisten arkadaşın Shayna tahliye oluyor ve Lucia'dan kendisini almasını istiyor. Onu sevgilisi Raph'ın evine götürürken etrafta yaklaşık 1.500 $'lık değerli eşya toplayabilirsin. Shayna silah çektiğinde ne söylediğin olayların gidişini değiştiriyor.","x","Shayna","L","Süreli bir görev. Bölüm 3'te çıkmazsa Bölüm 4'te gelebiliyor."],
+  ["M",71,"Hidden Charges","Karim'in planı Vice City'deki kilit baz istasyonlarını patlatıp bankanın acil durum iletişimini kesmek. Patlayıcı yüklü minibüsle garaja gidip doğu, güney ve batı kulelerine düzenek kuruyorsun. Bu arada ikili Raul'a sabit diskten bahsediyor.","","Karim","JL","İşi iki karaktere bölmek hem hızlı hem ilişkiye iyi geliyor. Düzenek taşırken ölmek ya da tutuklanmak işi zorlaştırıyor."],
+  ["M",72,"Bricked Up","Boobie, San4San çetesinin borcu olan kokain paketlerini toplatmak istiyor. Rockridge'deki Venture Apartments'ta Raymond'u ararken yozlaşmış polisler binayı basıyor. Elinde sadece tabancalarla çatışarak, pencereden çıkıp polisten kaçıyorsun.","","Boobie Ike","JL","Arabayı haritadaki kırmızı alanın dışına park et, yoksa çekiliyor. Polislerin düşürdüğü uzun silahları al."],
+  ["M",73,"The Cartel Heist","Büyük gün. Baz istasyonlarını patlatınca yaklaşık 11 dakikalık süre başlıyor. Lobiyi ele geçiriyor, rehineleri topluyor, kasa katına inip binayı temizliyor ve Nicole'la kasayı açıyorsun. Kaçışın nasıl geçeceği planın tutup tutmamasına bağlı; sonunda otobüsü savunup otoyoldan kaçıyorsunuz.","","Raul Bautista","JL","Brifingden önce kendi modlu silahlarını yanına al ve Nicole'la kasa alıştırması yap."]
+ ]},
+ {key:"c4", label:"Bölüm 4", name:"Vice City, Baby", items:[
+  ["M",74,"Ocean Beach","İkili Bayside dairesini temelli bırakıp Y Hotel'e taşınıyor. Valentina, süitin kendi para aklama düzeninin parçası olduğunu söylüyor, sizi kapıcı Santino'yla tanıştırıyor ve ünlü avukat Abraham Gonzalez'le görüşme ayarlamayı vaat ediyor. 701 numaralı süiti gezip balkonda kutluyorsunuz.","","Jason Duval, Lucia Caminos","JL",""],
+  ["M",75,"Another Life","Bir geçmiş sahnesi: Lucia'nın tutuklanmadan önceki son sabahı ve oğlu Tomas'la geçirdiği saatler. Bebeği beşiğinden alıp sakinleştiriyor, radyoyu açıp onunla salonda dans ediyorsun.","","Lucia Caminos","L",""],
+  ["M",76,"Pool Day","Balkonda Lucia'yla konuşup havuza iniyorsunuz. Bardan Lucia'ya kokteyl alırken kripto meraklısı Eddie Acosta seni bir partiye davet ediyor. Sonra havuz başında insanları izleyip meslek tahmini yapıyor ve sahilde yürüyorsunuz.","","Jason Duval, Lucia Caminos","JL",""],
+  ["O",0,"Attend Eddie Acosta's Party","Heathcliff Heights'taki partiye Jason ya da Lucia'yla tek başına git. Eddie asansörde kripto projesini anlatıyor, terasta seni kilitleyip 50.000 $ 'yatırım' istiyor. Parti bir tuzak.","","Eddie Acosta","JL","Ödersen karşılığında değersiz bir NFT alıyorsun."],
+  ["M",77,"Company Cars","Valentina ikiliye yeni araçlar ayarlamış. Santino otelin araç servisiyle sizi Status Auto Imports'a götürüyor. Önce Jason'a, sonra Lucia'ya bir araba seçip otele yarışıyorsunuz.","","Santino","JL","Otelin araç servisi her zaman bedava taksi gibi kullanılabiliyor. Pfister Comet S2 temel değerlerde en iyisi."],
+  ["M",78,"Lawyer Up","Abe Gonzalez'in ofisine gidiyorsun. Abe davalarla ilgilenmeyi bir iyilik karşılığında kabul ediyor. Jason odadan çıkınca Lucia'ya, Jason'ı satarsa kendi durumunun çok daha kolay çözüleceğini söylüyor; Lucia reddediyor.","","Valentina","JL",""],
+  ["M",79,"Party Hard","Avukat ücreti için bir korumalık işi: telenovela yıldızı Andrés de León'u havalimanından Megamundo genel merkezinin açılışına götürüyorsun. Partide FAP militanları binayı basıp Andrés'i kaçırıyor. Jason katları temizlerken Lucia merdivenlerden ilerliyor, kovalamaca helikopterle çatıda bitiyor.","","Valentina","JL",""],
+  ["M",80,"Heavy Lifting","Sabit diski depodan alıp Raul'un yüzen evine götürüyorsun. Raul, eski ortağı vücut geliştirici Kordell Grant'in ekibini soymak istiyor. Ajax Gym'de Raina'nın çantasını arıyor, kılık değiştirip antrenman yapıyor, Nate'e tuzak kuruyor ve ekibi çatıya kadar izliyorsun.","","Raul Bautista","JL",""],
+  ["O",0,"It's a Date!","Stockyard'daki Courtyard Bar'a ikiniz birlikte gidin ve bir içki alın; istersen biraz da dans edin. Bardan çıktığında görev bitiyor.","","","JL","Oyunun en kısa görevlerinden biri ve ilişkiye kolay bir katkı."],
+  ["M",81,"Photo/Shoot","Tequesta'daki bir çatıda Dimez'in tanıtım çekimi var: Lucia helikopterde telefonla fotoğraf çekiyor. Lobide Cash City çetesi Dre'Quan'ı kaçırıyor. Jason helikopterle, Lucia motosikletle kovalıyor; sonunda çeteyle çatışıp Dre'Quan'ı kurtarıyorsunuz.","","Dre'Quan Priest","JL","Kaçıranların arabasını vuramazsın ama sonradan katılan araçları vurabilirsin."],
+  ["O",0,"Bad Driver!","Banka soygununda ekibi yüzüstü bırakan Felipe, Millport'ta görülmüş. Bardan kaçan Felipe'yi ormana kadar kovalayıp yakalıyorsun ve kaderine sen karar veriyorsun.","x","Andrea","","Power Play'e başlamadan yap, yoksa kayboluyor. Öldürmek Andrea'dan 20.000 $ getiriyor; bağışlamak sonradan bir araç hediyesi açıyor."],
+  ["M",82,"Making Gainz","Lucia, Ajax Gym'de Nate'e yakınlaşarak Kordell'in ekibine sızmaya başlıyor. Nate'le bench press, squat ve deadlift yapıyor, ardından Trauma Floor'da ekibin güvenini kazanmaya çalışıyorsun.","","Raul Bautista","L","Bu görevden VCIA Takedown'a kadar Jason ve Lucia dışarıda birlikte görünemiyor. Birlikte vakit geçirmek istiyorsan önce yap."],
+  ["M",83,"Too Much Baggage","Jason, Vice City Uluslararası Havalimanı'nda bagaj görevlisi kılığında keşif yapıyor. Omar'la gezerken gözlükle önemli noktaları işaretliyor, bagaj aracını bağlayıp uçağa valiz yüklüyor ve fırsat bulunca bir dinleme cihazı yerleştiriyor.","","Andrea","J","Valiz atarken güç barını ortaya varmadan biraz önce bırak; bar bıraktıktan sonra da biraz ilerliyor."],
+  ["M",84,"Watch It","Dre'Quan bir kulüp sahibini etkilemek istiyor. Ona Crowex saati satanlarla otoparkta yapılan buluşma önce kavgaya, sonra silahlı çatışmaya dönüyor. Ardından Nola'dan kıyafet seçip Royce Jones'la görüşmeye gidiyorsunuz.","","Dre'Quan Priest","J",""],
+  ["M",85,"Cash Injections","Nate, Synthol satışında arkasında birini istiyor. Alıcılar aleyhinize dönünce yanındakinin silahını düşürüyor, saldırganları temizliyor ve Nate'in kaçırılan arabasını kovalayıp bir moteldeki silahlılardan geri alıyorsun.","","Nate","L","Kaçan arabanın sürücüsünü vuramıyorsun; sadece peşinden ayrılma."],
+  ["M",86,"Amateur Hour","Cisco, kendisine borcu olan bir yetişkin film yönetmeninin peşinde; Lucia bunu onun güvenini kazanma fırsatı olarak görüyor. Washington Island'da karavanı bekleyip Cisco'nun arabasıyla kovalıyor ve parayı geri alıyorsunuz.","","Francisco \"Cisco\" Delgado","L","Lastiklere nişan al: patlayınca karavan hemen duruyor."],
+  ["M",87,"Dirty Work","Raina hâlâ Lucia'ya karşı. Andrea'nın planıyla Velvet Palm Motel'de Jason, Raina'yla bir randevu ayarlıyor. Lucia karşıdaki konteynerlerden pencereden fotoğraf çekiyor. Ertesi gün spor salonunda Nate'le konuşup işi bağlıyorsun.","","Andrea","JL",""],
+  ["M",88,"Adventures in Babysitting","Jason yine Andrés'in korumalığını yapıyor: The Vault kulübünde ona içki alıyor, masasına misafir davet ediyor. Gece kontrolden çıkıyor. Andrés'i koruyup arabayla kaçıyor, helikopter pistine ulaşıp helikopteri savunuyorsun.","","Andrés de León","J","Teklif edilen uyuşturucuyu kabul etmek ya da reddetmek kalıcı bir fark yaratmıyor."],
+  ["M",89,"Fresh Evidence","Kulüp sahibine verilen söz için Dre'Quan'la Starfish Island'daki Dante'nin malikânesine gece sızıyorsun. Korumayı bayıltıp anahtar kartı alıyor, evde dolaşan kaplandan kaçıyor ve gizli odadaki şantaj malzemesini kopyalıyorsun. Çıkışta çatışma ve tekneyle kaçış var.","","Dre'Quan Priest","J",""],
+  ["M",90,"Power Play","Lucia, Kordell'in ekibine bir soygunda yardım ediyor. Bu sırada Jason binaya gizlice girip beyaz tahtanın arkasındaki gerçek soygun planının fotoğrafını çekiyor. Lucia yolu kesip ekibi koruyor, sonra yaya kaçıp polisten kurtuluyorsunuz.","","Kordell Grant","JL",""],
+  ["M",91,"Child's Play","Andrés'in oğlu Rafa kaçırılmış. Takas için VCIA'nın güneyindeki taş ocağına gidiyorsun. Lucia dürbünle düşmanları işaretleyip susturuculu tabancayla Rafa'ya ulaşıyor. Görev Andrés'i koruma, kaçış ve kaçıranları kovalama bölümleriyle bitiyor.","","Andrés de León","JL","Haritada süre varmış gibi görünse de yok; zorunlu olduğu ana kadar erteleyebilirsin."],
+  ["M",92,"Headliners","Dimez'in Club VYB'deki lansman partisi. Lucia ışıkları test ediyor, Jason VIP masalarını misafirlere dağıtıyor: teklif anında gelen para, takipçi sayısı gece boyunca gelecek ek gelir demek. Gece ünlüleri gezdirme, masa açma ve DWNPLY'yle bir kavgayla sürüp gösteriyle bitiyor.","","Dre'Quan Priest","JL","En çok takipçisi olanı ve en yüksek teklifi vereni birlikte seçmek iyi bir kombinasyon."],
+  ["M",93,"Close Surveillance","Kordell ekibinin havalimanındaki köstebeğini bulmak için Karim mikrofonu yönetirken sen casus dronu uçuruyorsun. Çatı barında Nate ile Cisco'yu bulup fark edilmeden dinliyor, araçlarını izliyor ve Omar'ın dairesine kamera yerleştiriyorsun.","","Raul Bautista","J","Dron helikopter gibi uçuyor ve yüksekliği kendisi koruyor. Dinlerken yaklaş ama görünme."],
+  ["M",94,"Delivery Method","Lucia'nın soygun günü güvenlikten geçebilmesi için Jason yemek kuryesi kılığında havalimanına giriyor. Resepsiyon bilgisayarına flaş bellek takıyor, yangın alarmını çalıştırıp binayı boşaltıyor ve üst kattaki güvenlik veritabanını hackliyor.","","Andrea","J",""],
+  ["M",95,"Team Building","Kordell, Lucia'yı bir depoya götürüyor ve Lucia kendini bir yeraltı kafes dövüşünde buluyor. Rakipleri birer birer yeniyor; üçüncüsünde Kordell de kafese giriyor. Ardından Riverbank'teki bara geçiyorsunuz.","","Kordell Grant","L","Ekrandaki zamanlamayla blok yapıp kaçınmak dövüşleri çok kolaylaştırıyor."],
+  ["M",96,"Fully Catered","Soygun için havalimanından bir ikram kamyonu çalman gerekiyor. Yasak bölgede görünmeden binanın yanından çatıya tırmanıyor, kamyonların yanına inip Slim Jim ile birini açıyorsun. Kamyonu Rockridge'e götürüp sahte parayı torbalıyorsun.","","Raul Bautista","JL","Seni gören çalışan izinsiz girişi bildiriyor; yavaş ve dikkatli ilerle."],
+  ["M",97,"VCIA Takedown","Bütün hazırlıklar bitince havalimanı soygunu başlıyor. Lucia terminalde Nate'le ilerleyip bir görevliyi etkisiz hale getiriyor, Jason ikram kamyonuyla kargo terminaline giriyor. Kasa açılıyor ve uçak yükleniyor. Ardından polisle çatışma, uçak ve kamyon kovalamacası, Raina'yla bir dövüş ve uçağı indirme geliyor.","","Raul Bautista","JL","12 hazırlık görevinin hepsi bitmeden açılmıyor."],
+  ["M",98,"Tie Up Loose Ends","Soygun sonrası bir bekleme dönemi. Raul'un sabit disk için araması bekleniyor ama arama bir türlü gelmiyor. Hikâyeyi Valentina'nın araması ilerletiyor; onu geri arayıp işi hızlandırabilirsin. Bir süre sonra otel resepsiyonuna bir not bırakılıyor.","","Raul Bautista","JL",""],
+  ["O",0,"That's Where the Money Is…","Yasmani'nin ipucuyla ilk kez kendi başına bir banka kasası soyuyorsun. Kafede bekle, para nakil aracını mesafeli izle, korumayı bankaya kadar takip et, kılık değiştir ve kasaya patlayıcıyla gir. İşaretli paraları topla, polisten kaç ve ganimeti Yasmani'ye sat.","","Yasmani","JL","İki çanta yetmeyebilir: dolu çantayı partnerine ver."],
+  ["M",99,"Sunset","Valentina sabit disk için iki güçlü alıcıyla pazarlık ediyor ve acele etmemeyi öğütlüyor. Lucia'yla onu geri arayıp işi hızlandırmasını istiyorsun. Resepsiyondaki not Raul'un teknesini Ocean Beach Marina'ya işaret ediyor; oradan sonrası kovalamaca ve tekneyle kaçış.","p","Jason Duval, Lucia Caminos","JL","Bu görev hikâyeyi Bölüm 5'e taşıyor. Yapmak istediğin yan işleri önce bitir."],
+  ["M",100,"Starting From Zero","Şehrin her yerinde polis var. Gözden uzak durarak Aqua Stadium'da Andrea'yla buluşuyor, depodaki heykeli alıyor ve Mattia'nın bağlantısıyla görüşüyorsun. Gün yeni ve güçlü isimlerle tanışmanla bitiyor.","","Jason Duval, Lucia Caminos","JL","Cebinde para varsa yakın bir mağazadan kıyafet değiştirmek tanınmanı zorlaştırıyor."]
+ ]},
+ {key:"c5", label:"Bölüm 5", name:"Top of the World, Ma", items:[
+  ["M",101,"Bird in the Hand","Giorgio'nun penthouse'u hikâyenin geri kalanında ana üssün. Helikopterle sahil güvenlik üssüne uçup Lucia'yla yukarıdan korumaları ve teknedeki paletleri inceliyorsun. Sonra tekneyle üsse sızıyor, hangara ulaşıp kapıları açıyor, askerleri durdurup helikopteri savunuyorsun.","","Giorgio Gallo","JL","Penthouse'u iyice gez, artık evin orası."],
+  ["M",102,"Taking Liberties","Giorgio spa'da ikiliye yardımları karşılığında neler sunabileceğini anlatıyor; konuşmayı Arnavut mafyasından gelen beklenmedik bir ziyaretçi bölüyor. Giorgio'nun ofisinde seriyi uzun süredir oynayanları şaşırtacak bir sürprizle karşılaşıyorsun.","","Giorgio Gallo","JL",""],
+  ["M",103,"Doggie Bag","Giorgio dev bir konteyner gemisindeki kokaini bulmak istiyor. Vinny'nin planı sahil güvenliğin en iyi narkotik köpeği Rocco'yu ödünç almak. Lucia demirli bir kruvaziyere gizlice sızıp üst güverteye çıkıyor, Rocco'ya ilaçlı bisküvi veriyor ve iniş noktasına ulaşıyor.","","Vinny Capsik","JL","Lucia'nın susturuculu tabancasında öldürücü olmayan mermi var; kafaya isabet korumayı bayıltıyor."],
+  ["M",104,"VC Baby","Kat doğuma girmiş ve Mattia hastaneye yetişmek için yardım istiyor. Yardım etmeyi seçersen bir anahtar çalıyor, araç bulup Mattia'yı hastaneye yetiştiriyorsun. Reddedersen görev hemen bitiyor ve Mattia oraya bambaşka bir yoldan ulaşıyor.","","Mattia Tauro","JL","Yardım etmek, Jason ile Mattia'nın barıştığı bir son sahne ekliyor."],
+  ["M",105,"Operation Savage Glory","Rakip kartelin kokain sevkiyatını ele geçirme operasyonu. Lucia köprü ayağına patlayıcı kuruyor, Jason helikopterden keskin nişancı tüfeğiyle gemiyi temizliyor. Rocco'yu takip edip malı buluyor, köprüyü kaldırıyor, sahil güvenliğe sızıyor ve havadan ekibe destek veriyorsun.","","Vinny Capsik","JL","Gemide düşmanları silahlarındaki ışıklardan fark edebilirsin."],
+  ["M",106,"Honest Abe","Giorgio, ikilinin hukuki sorunlarını çözebilecek bir anlaşma ayarlamış. Abe'nin ofisinde tek bir ara sahne izliyorsun. Çıktıktan sonra açık dünya tamamen serbest.","","Abe Gonzalez","JL",""],
+  ["M",107,"Unfinished Business","Sabit disk anlaşması arka planda tamamlanırken tempo senin elinde: açık yan işlerini bitir ya da Abe'nin teklifiyle devam et. Abe'nin ofisinde hukuki anlaşmayı imzalıyor ve ücretini BuckMe'den ödüyorsun. Ardından penthouse'a dönüp Giorgio'yla bir ara sahne izliyorsun.","p","Abe Gonzalez","JL","Ücret 150.000 $. Anlaşmayı imzaladıktan sonra hikâye finale gidiyor; önce ayrı bir kayıt al."],
+  ["M",108,"Protective Custody","Finalin ilk yarısı. Bu görev ve The End of the Road arka arkaya, jeneriğe kadar kesintisiz oynanıyor. Görevin sonundaki seçim hikâyenin nasıl biteceğini etkiliyor.","","Giorgio Gallo","JL","Başlamadan yedek bir yuvaya manuel kayıt al. Jenerikten sonra oyun seni bu görevden hemen önceye döndürüyor."],
+  ["M",109,"The End of the Road","Uzun bir final görevi. Brian'ın marinasındaki hangarda donanıp Giorgio'nun kulesine saldırıyor, sabit diski almak için katları aşıyorsun. Sondaki karar; ilişki durumu, Aile Birikimi ve suç profilinle birlikte beş sondan hangisini göreceğini belirliyor.","","","JL","Son karara kadar yaklaşık 25 dakika sürüyor; zırh ve el bombası al. Jenerikten sonra diğer sonları görmek için finali yeniden oynayabilirsin."]
+ ]}
+];
+
+// ---- düz liste + kilit ilişkileri
+const FLAT = [];
+CHAPTERS.forEach((ch, ci) => ch.items.forEach(([k,n,name,sum,fl,giver,play,tip]) => {
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  FLAT.push({id:(k==="M"?"m"+n:"o-"+slug), main:k==="M", n, name, sum, giver:giver||"", play:play||"", tip:tip||"", missable:(fl||"").includes("x"), ponr:(fl||"").includes("p"), ci});
+}));
+let lastMain = null;
+FLAT.forEach(m => { m.prev = lastMain; if (m.main) lastMain = m; });
+let nextMain = null;
+for (let i = FLAT.length-1; i >= 0; i--) { FLAT[i].nextMain = nextMain; if (FLAT[i].main) nextMain = FLAT[i]; }
+const MAINS = FLAT.filter(m => m.main), OPTS = FLAT.filter(m => !m.main);
+
+// ---- durum
+let state = {done:{}, showSum:false, showAll:false};
+let revealed = new Set();
+const LS_KEY = "leonida-gorev-defteri-v1";
+try { const s = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (s && s.done) state = Object.assign(state, s); } catch(e) {}
+
+const isDone = m => !!state.done[m.id];
+const isAvail = m => m.prev === null || isDone(m.prev);
+const isMissed = m => !m.main && m.missable && !isDone(m) && m.nextMain && isDone(m.nextMain);
+const chReached = ci => { const first = FLAT.find(m => m.ci===ci && m.main); return isAvail(first) || isDone(first); };
+
+// ---- kayıt (hesap varsa db, yoksa tarayıcı)
+let remote = null, saveTimer = null;
+function persist(){
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
+  if (!remote) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    setSync("Kaydediliyor…");
+    try { await remote.set({done:Object.keys(state.done), showSum:state.showSum, showAll:state.showAll, updatedAt:Date.now()}); setSync("Hesabına kaydedildi"); }
+    catch(e) { setSync("Kaydedilemedi, bu tarayıcıda tutuluyor"); }
+  }, 600);
+}
+const setSync = t => { document.getElementById("sync").textContent = t; };
+
+(async () => {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const [db, user] = await Promise.all([claude.use("db"), claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    const ref = db.collection("data/users/" + uid).doc("progress");
+    const snap = await ref.get();
+    const d = snap.exists !== false ? snap.data() : null;
+    remote = ref;
+    if (d && Array.isArray(d.done)) {
+      state.done = {}; d.done.forEach(id => state.done[id] = true);
+      state.showSum = !!d.showSum; state.showAll = !!d.showAll;
+      try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
+      render();
+    } else if (Object.keys(state.done).length) {
+      persist();
+    }
+    setSync("Hesabına kaydediliyor");
+  } catch(e) { /* tarayıcı kaydıyla devam */ }
+})();
+
+// ---- yardımcılar
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const CHECK_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+const LOCK_SVG = '<svg class="lockicon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>';
+
+function toggle(m){
+  if (isDone(m)) delete state.done[m.id];
+  else if (isAvail(m) || state.showAll) state.done[m.id] = true;
+  persist(); render();
+}
+const PLAY = {J:"Jason", L:"Lucia", JL:"Jason ve Lucia"};
+function detail(m, parent){
+  const meta = [];
+  if (PLAY[m.play]) meta.push("Karakter: " + PLAY[m.play]);
+  if (m.giver) meta.push("Veren: " + m.giver);
+  if (meta.length) parent.appendChild(el("div","meta",meta.join(" · ")));
+  parent.appendChild(el("p","sum",m.sum));
+  if (m.tip) { const p = el("p","tip"); p.appendChild(el("b",null,"İpucu ")); p.appendChild(document.createTextNode(m.tip)); parent.appendChild(p); }
+}
+function summaryBlock(m, parent){
+  if (state.showSum || revealed.has(m.id)) { const w = el("div","detail"); detail(m, w); parent.appendChild(w); return; }
+  const b = el("button","reveal","Özeti göster");
+  b.addEventListener("click", () => { revealed.add(m.id); render(); });
+  parent.appendChild(b);
+}
+function badges(m, title){
+  if (!m.main) title.appendChild(el("span","badge b-opt","Opsiyonel"));
+  if (m.missable) title.appendChild(el("span", isMissed(m) ? "badge b-gone" : "badge b-miss", isMissed(m) ? "Kaçırıldı" : "Kaçırılabilir"));
+  if (m.ponr) title.appendChild(el("span","badge b-ponr","Dönüşü olmayan nokta"));
+}
+
+function row(m){
+  const done = isDone(m), avail = isAvail(m);
+  const visible = state.showAll || done || avail;
+  const r = el("div", "m" + (m.main ? "" : " opt") + (done ? " done" : visible ? " avail" : " locked") + (isMissed(m) ? " missed" : ""));
+  if (!visible) {
+    r.innerHTML = LOCK_SVG;
+    r.appendChild(el("span","num", m.main ? String(m.n).padStart(3,"0") : "—"));
+    const b = el("div","body"); b.appendChild(el("div","title","Kilitli görev")); r.appendChild(b);
+    return r;
+  }
+  const c = el("button","check"); c.innerHTML = CHECK_SVG;
+  c.setAttribute("aria-label", (done ? "İşareti kaldır: " : "Tamamlandı: ") + m.name);
+  c.setAttribute("aria-pressed", done ? "true" : "false");
+  c.addEventListener("click", () => toggle(m));
+  r.appendChild(c);
+  r.appendChild(el("span","num", m.main ? String(m.n).padStart(3,"0") : "+"));
+  const b = el("div","body"); const t = el("div","title"); t.appendChild(el("span","t",m.name));
+  if (!done && avail && m.main) t.appendChild(el("span","badge b-now","Sırada"));
+  badges(m, t); b.appendChild(t); summaryBlock(m, b); r.appendChild(b);
+  return r;
+}
+
+function renderNext(){
+  const box = document.getElementById("next"); box.innerHTML = "";
+  const nm = MAINS.find(m => !isDone(m) && isAvail(m));
+  if (!nm) {
+    box.appendChild(el("div","eyebrow","Tebrikler"));
+    box.appendChild(el("h2",null,"Hikâye tamamlandı"));
+    box.appendChild(el("p","sum","Bütün ana görevler işaretli. Kalan opsiyonelleri aşağıdan takip edebilirsin."));
+    return;
+  }
+  box.appendChild(el("div","eyebrow", "Sıradaki · " + CHAPTERS[nm.ci].label + " · Görev " + nm.n));
+  box.appendChild(el("h2",null,nm.name));
+  if (state.showSum || revealed.has(nm.id)) { const w = el("div","detail"); detail(nm, w); box.appendChild(w); }
+  const row1 = el("div","row");
+  const d = el("button","btn-done","Bitirdim");
+  d.addEventListener("click", () => toggle(nm));
+  row1.appendChild(d);
+  if (!(state.showSum || revealed.has(nm.id))) {
+    const g = el("button","btn-ghost","Özeti göster");
+    g.addEventListener("click", () => { revealed.add(nm.id); render(); });
+    row1.appendChild(g);
+  }
+  box.appendChild(row1);
+  const openOpts = OPTS.filter(o => isAvail(o) && !isDone(o) && !isMissed(o));
+  const urgent = openOpts.filter(o => o.missable && o.nextMain === nm);
+  if (nm.ponr || urgent.length) {
+    box.appendChild(el("div","warnline", nm.ponr
+      ? "Bu görev bölümü kapatır. Açık yan görevlerin varsa önce onları bitir."
+      : urgent.length + " kaçırılabilir yan görev bu ana görevi yapınca kaybolabilir."));
+  }
+  if (openOpts.length) {
+    const sl = el("div","side-list");
+    sl.appendChild(el("h3",null,"Şu an açık yan görevler · " + openOpts.length));
+    sl.appendChild(el("p","sum", openOpts.map(o => o.name + (o.missable ? " (süreli)" : "")).join(" · ")));
+    box.appendChild(sl);
+  }
+}
+
+function render(){
+  // istatistik
+  const md = MAINS.filter(isDone).length, od = OPTS.filter(isDone).length;
+  document.getElementById("st-main").textContent = md + "/" + MAINS.length;
+  document.getElementById("st-opt").textContent = od + "/" + OPTS.length;
+  const pct = Math.round(md / MAINS.length * 100);
+  document.getElementById("st-pct").textContent = "%" + pct;
+  const cur = MAINS.find(m => !isDone(m));
+  document.getElementById("st-ch").textContent = cur ? CHAPTERS[cur.ci].label : "Final geçildi";
+  document.getElementById("bar").style.width = pct + "%";
+  document.getElementById("t-sum").setAttribute("aria-pressed", state.showSum);
+  document.getElementById("t-all").setAttribute("aria-pressed", state.showAll);
+
+  renderNext();
+
+  const root = document.getElementById("chapters"); root.innerHTML = "";
+  CHAPTERS.forEach((ch, ci) => {
+    const sec = el("section","chapter");
+    const reached = state.showAll || chReached(ci);
+    const items = FLAT.filter(m => m.ci === ci);
+    const mains = items.filter(m => m.main);
+    const head = el("div","ch-head");
+    head.appendChild(el("span","no", ch.label));
+    head.appendChild(el("h2", null, reached ? ch.name : "• • •"));
+    head.appendChild(el("span","count", mains.filter(isDone).length + "/" + mains.length));
+    sec.appendChild(head);
+    if (!reached) {
+      const lk = el("div","ch-locked"); lk.innerHTML = LOCK_SVG;
+      lk.appendChild(el("span",null,"Bu bölüm henüz kilitli. " + mains.length + " ana görev seni bekliyor."));
+      sec.appendChild(lk);
+    } else {
+      items.forEach(m => {
+        // kilitli opsiyonelleri hiç gösterme (isim ve sayı spoiler olmasın)
+        if (!m.main && !state.showAll && !isDone(m) && !isAvail(m)) return;
+        sec.appendChild(row(m));
+      });
+    }
+    root.appendChild(sec);
+  });
+}
+
+document.getElementById("t-sum").addEventListener("click", () => { state.showSum = !state.showSum; persist(); render(); });
+document.getElementById("t-all").addEventListener("click", () => { state.showAll = !state.showAll; persist(); render(); });
+function bindReset(){
+  document.getElementById("t-reset").addEventListener("click", () => {
+    const slot = document.getElementById("reset-slot"); slot.innerHTML = "";
+    const w = el("span","confirm"); w.appendChild(el("span",null,"Tüm işaretler silinsin mi?"));
+    const y = el("button","yes","Evet, sıfırla"); const n = el("button","chip","Vazgeç");
+    y.addEventListener("click", () => { state.done = {}; revealed.clear(); persist(); restore(); render(); });
+    n.addEventListener("click", restore);
+    w.append(y, n); slot.appendChild(w);
+  });
+}
+function restore(){ document.getElementById("reset-slot").innerHTML = '<button class="chip danger" id="t-reset">İlerlemeyi sıfırla</button>'; bindReset(); }
+bindReset();
+render();
+</script>
+
+</body>
+</html>
