@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Aralık 2026 celbinde Amasya 15. Piyade Eğitim Tugayı için forumlardan derlenmiş ipuçları, ilk gün / ilk hafta / son hafta akışı ve işaretlenebilir kış alışveriş listesi.">
+<meta property="og:title" content="Amasya Bedelli Kiti">
+<meta property="og:description" content="Amasya 15. Piyade Eğitim Tugayı, Aralık celbi: ipuçları, gün gün akış ve kış alışveriş listesi.">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/img/site-icon.webp">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}*{box-sizing:border-box}</style>
+<title>Amasya Bedelli Kiti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: tek sütun "saha defteri"; üstte künye şeridi, altta işaretlenebilir kit listesi */
+:root{
+  --bg:#f2f3ee; --surface:#fbfbf8; --fg:#1c2118; --muted:#5d6455; --line:#d5d9cc;
+  --olive:#4c5a2c; --olive-soft:#e3e8d3; --must:#9b2c1f; --must-soft:#f5dfdb; --cold:#245a7a; --cold-soft:#dbe8f0;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141711; --surface:#1b1f17; --fg:#e5e8dd; --muted:#a0a796; --line:#30362a;
+  --olive:#a9b97c; --olive-soft:#283019; --must:#ec8f7f; --must-soft:#3a1f1a; --cold:#8cc1df; --cold-soft:#17293a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141711; --surface:#1b1f17; --fg:#e5e8dd; --muted:#a0a796; --line:#30362a;
+  --olive:#a9b97c; --olive-soft:#283019; --must:#ec8f7f; --must-soft:#3a1f1a; --cold:#8cc1df; --cold-soft:#17293a; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:2rem 4rem}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,9vw,4rem);letter-spacing:.01em;text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase;letter-spacing:.02em}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0}
+a{color:var(--olive)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:62ch;margin-top:.75rem}
+
+/* künye */
+.tag-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.5rem}
+.tag-strip div{background:var(--surface);padding:.8rem .9rem;min-width:0}
+.tag-strip dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tag-strip dd{margin:.15rem 0 0;font-family:var(--display);font-size:1.45rem;font-weight:600;font-variant-numeric:tabular-nums}
+.tag-strip dd small{display:block;font-family:var(--body);font-size:.8rem;font-weight:400;color:var(--muted)}
+.verify{font-size:.85rem;color:var(--muted);margin-top:.6rem}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
+nav.toc a{font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--fg);border:1px solid var(--line);padding:.3rem .65rem;background:var(--surface)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--olive);outline:none}
+
+section{margin-top:3rem;display:grid;gap:1rem}
+.sec-head{display:grid;gap:.3rem;border-top:3px solid var(--fg);padding-top:.8rem}
+
+/* gerçekler */
+.facts{display:grid;gap:.75rem;list-style:none;margin:0;padding:0}
+.facts li{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start}
+.facts .pip{font-family:var(--mono);font-size:.7rem;padding:.15rem .4rem;margin-top:.25rem;border:1px solid currentColor;white-space:nowrap}
+.pip.cold{color:var(--cold)} .pip.must{color:var(--must)} .pip.olive{color:var(--olive)}
+.quote{border-left:3px solid var(--line);padding:.2rem 0 .2rem .9rem;color:var(--muted);font-style:italic}
+
+/* zaman çizelgesi */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline>li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.timeline .when{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--olive);line-height:1.2}
+.timeline .when small{display:block;font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:500}
+.timeline ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.3rem}
+.timeline>li>div{min-width:0}
+@media (max-width:520px){.timeline>li{grid-template-columns:1fr;gap:.3rem}}
+
+/* gözlük kutusu */
+.lens-box{background:var(--cold-soft);border:1px solid var(--cold);padding:1.1rem 1.2rem;display:grid;gap:.7rem}
+.lens-box ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+
+/* liste */
+.list-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:.7rem 0;border-bottom:1px solid var(--line);display:grid;gap:.5rem}
+.bar-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
+.count{font-family:var(--mono);font-size:.85rem;font-variant-numeric:tabular-nums}
+.meter{height:6px;background:var(--line);overflow:hidden}
+.meter span{display:block;height:100%;background:var(--olive);width:0;transition:width .25s}
+.controls{display:flex;flex-wrap:wrap;gap:.4rem}
+button{font:inherit;font-family:var(--mono);font-size:.78rem;padding:.35rem .7rem;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+button:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:.8rem;font-size:.8rem;color:var(--muted)}
+.group{display:grid;gap:0;margin-top:1.2rem}
+.group h3{display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;padding-bottom:.4rem;border-bottom:1px solid var(--fg)}
+.group h3 span{font-family:var(--mono);font-size:.75rem;font-weight:500;color:var(--muted)}
+.item{display:grid;grid-template-columns:1.4rem 1fr auto;gap:.7rem;align-items:start;padding:.65rem 0;border-bottom:1px solid var(--line);cursor:pointer}
+.item input{width:1.15rem;height:1.15rem;margin:.2rem 0 0;accent-color:var(--olive);cursor:pointer}
+.item .txt{min-width:0}
+.item .name{font-weight:500}
+.item .qty{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-left:.35rem}
+.item .note{font-size:.86rem;color:var(--muted);margin-top:.1rem}
+.item.done .name{text-decoration:line-through;color:var(--muted)}
+.badge{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;padding:.15rem .4rem;white-space:nowrap;align-self:start;margin-top:.2rem}
+.b-sart{background:var(--must-soft);color:var(--must)}
+.b-kis{background:var(--cold-soft);color:var(--cold)}
+.b-konfor{background:var(--olive-soft);color:var(--olive)}
+.empty{color:var(--muted);padding:1rem 0}
+
+.dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem}
+.dont div{border:1px solid var(--line);background:var(--surface);padding:.8rem 1rem;min-width:0}
+.dont strong{display:block}
+.dont p{font-size:.88rem;color:var(--muted)}
+
+.tips{counter-reset:none;list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.tips li{display:grid;gap:.15rem}
+.tips strong{font-weight:600}
+.tips p{color:var(--muted);font-size:.95rem}
+
+/* evreler */
+.phase-note{font-size:.9rem;color:var(--muted);max-width:62ch}
+.steps{list-style:none;margin:0;padding:0;border-left:2px solid var(--olive);display:grid;gap:0}
+.steps>li{display:grid;grid-template-columns:6.2rem 1fr;gap:.9rem;padding:.75rem 0 .75rem 1rem;position:relative;border-bottom:1px solid var(--line)}
+.steps>li:last-child{border-bottom:0}
+.steps>li::before{content:"";position:absolute;left:-6px;top:1.15rem;width:10px;height:10px;background:var(--bg);border:2px solid var(--olive)}
+.steps .at{font-family:var(--mono);font-size:.78rem;color:var(--olive);padding-top:.15rem;line-height:1.35}
+.steps .what{min-width:0;display:grid;gap:.2rem}
+.steps .what strong{font-weight:600}
+.steps .what p{color:var(--muted);font-size:.93rem}
+@media (max-width:520px){.steps>li{grid-template-columns:1fr;gap:.15rem}}
+.callout{background:var(--olive-soft);padding:.9rem 1.1rem;display:grid;gap:.35rem}
+.callout strong{color:var(--olive)}
+.callout.warn{background:var(--must-soft)}
+.callout.warn strong{color:var(--must)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table.sched{border-collapse:collapse;width:100%;min-width:420px;font-size:.92rem}
+table.sched th,table.sched td{text-align:left;padding:.55rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+table.sched th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+table.sched td:first-child{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--olive)}
+table.sched tr:last-child td{border-bottom:0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.two>div{min-width:0;display:grid;gap:.5rem;align-content:start}
+.two ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+.mid{border:1px dashed var(--line);padding:.9rem 1.1rem;display:grid;gap:.3rem;color:var(--muted);font-size:.93rem}
+.mid strong{color:var(--fg)}
+
+.sources{font-size:.85rem;color:var(--muted);display:grid;gap:.6rem}
+.sources ul{margin:0;padding-left:1.1rem;display:grid;gap:.25rem;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.meter span{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Saha defteri · Bedelli askerlik</p>
+    <h1>Amasya Bedelli Kiti</h1>
+    <p class="lede">15. Piyade Eğitim Tugay Komutanlığı (Amasya Merkez), Aralık 2026 celbi için forumlardan, gidenlerin yazdıklarından ve güncel rehberlerden derlenmiş öneriler, ipuçları ve kış odaklı alışveriş listesi. Gözlük kullanan, konforu önceleyen biri için ayarlandı.</p>
+    <dl class="tag-strip">
+      <div><dt>Sevk / teslim</dt><dd>3 Ara 2026<small id="countdown">Perşembe</small></dd></div>
+      <div><dt>Yemin töreni</dt><dd>~30 Ara<small>Aileler katılabiliyor</small></dd></div>
+      <div><dt>Resmi terhis</dt><dd>~3 Oca 2027<small>Kışladan çıkış yemin günü</small></dd></div>
+      <div><dt>Aralık iklimi</dt><dd>0–1 °C gece<small>Gündüz 7–10 °C, nemli</small></dd></div>
+    </dl>
+    <p class="verify">Tarihler yayımlanan 2026 takviminden alındı. Esas olan e-Devlet'teki sevk belgendeki gün ve saat; yola çıkmadan bir kez daha kontrol et.</p>
+    <nav class="toc" aria-label="Bölümler">
+      <a href="#gercekler">Seni ne bekliyor</a>
+      <a href="#takvim">Gün gün hazırlık</a>
+      <a href="#ilk-gun">İlk gün</a>
+      <a href="#ilk-hafta">İlk hafta</a>
+      <a href="#son-hafta">Son hafta</a>
+      <a href="#gozluk">Gözlük</a>
+      <a href="#liste">Alışveriş listesi</a>
+      <a href="#goturme">Götürme</a>
+      <a href="#ipuclari">İçeride ipuçları</a>
+      <a href="#kaynaklar">Kaynaklar</a>
+    </nav>
+  </header>
+
+  <section id="gercekler">
+    <div class="sec-head">
+      <p class="eyebrow">Forumlarda tekrar eden konular</p>
+      <h2>Seni ne bekliyor</h2>
+    </div>
+    <ul class="facts">
+      <li><span class="pip cold">SOĞUK</span><p>Amasya kış celbi için forumlarda en çok şikâyet edilen yer olarak geçiyor. Birlik açık ve rüzgâr alan bir alanda. Kasım–Aralık için "çok soğuk hava, kasvetli ve rutubetli koğuşlar" yazılmış. Bir yorumcu Aralık'ı Ocak ve Şubat'tan daha zor bulmuş.</p></li>
+      <li><span class="pip must">HASTALIK</span><p>Kalabalık koğuşlarda (yorumlarda 60–85 kişilik koğuşlar geçiyor) grip ve soğuk algınlığı hızla yayılıyor. Aralık celbinden biri "26 günün tamamını hasta geçirdim" diye yazmış. Bu yüzden listede sağlık ve uyku maddeleri geniş tutuldu.</p></li>
+      <li><span class="pip olive">RUTİN</span><p>Kasım celbinden biri ilk bir buçuk hafta 04:00'te kalktıklarını, kar ve yağmurda bile dışarıda olduklarını yazmış. Kalkış saati döneme göre değişiyor ama erken kalkış ve dışarıda bekleme kesin.</p></li>
+      <li><span class="pip olive">DUŞ</span><p>Sıcak su genelde akşamları ve sınırlı süre (yorumlarda yaklaşık 90 dakika) veriliyor. Saatini kaçıran duş alamıyor. Duş ve yemek sıraları uzun.</p></li>
+      <li><span class="pip olive">KANTİN</span><p>Çoğu şey var ve fiyatlar çoğunlukla normal. İlk hafta kuyruk çok uzun. Bir yorumcuya göre merkez kantine ancak 4.–5. gün götürülüyorsunuz. Temel ihtiyaçlarını yanında getir.</p></li>
+      <li><span class="pip must">İLK GÜN</span><p>Kayıt uzun sürüyor. Öğleden sonra teslim olan biri koğuşa akşam 21:00 civarı varmış. Tıraş malzemesi ilk gün verilmiyor ama ertesi sabah tıraşlı olman bekleniyor.</p></li>
+    </ul>
+    <p class="quote">"Bedelli de düşebilecek en kötü ve zorlu yerdir Amasya." Forumda bir yorumcu böyle yazmış. Abartılı olabilir ama hazırlıklı gitmenin karşılığını en çok burada alırsın.</p>
+  </section>
+
+  <section id="takvim">
+    <div class="sec-head">
+      <p class="eyebrow">Bugünden sevke</p>
+      <h2>Gün gün hazırlık</h2>
+    </div>
+    <ol class="timeline">
+      <li><p class="when">Bu hafta<small>23–29 Kasım</small></p><div>
+        <ul>
+          <li>Göz muayenesine git, numaranı güncelle, <strong>yedek gözlük</strong> yaptır. Gözlükçünün hazırlaması birkaç gün sürebilir.</li>
+          <li>Termal içlik, yün çorap ve tabanlıkları sipariş et. Kargo gecikirse son güne kalmasın.</li>
+          <li>Tuşlu telefon al. Askercell/Askerfone hattını <strong>sivilken</strong> almak, kapıdaki sıradan ve hat satış baskısından kurtarıyor (Şikâyetvar'da kayıt sırasında hat dayatıldığına dair şikâyetler var).</li>
+          <li>Sevk günü için otobüs/uçak biletini şimdi al. Sevk günü Amasya otogarı kalabalık oluyor.</li>
+        </ul></div></li>
+      <li><p class="when">Sevke 1 hafta<small>26 Kasım – 2 Aralık</small></p><div>
+        <ul>
+          <li>Banka kartlarının temassız ve internet limitlerini kontrol et. Forumda kartı bloke olanlar var; 2–3 farklı banka kartı götür.</li>
+          <li>Harcırah ve yol parası için kendi adına bir IBAN not et. Ödemesi gecikenler var, takibi kolaylaşır.</li>
+          <li>Yemin töreni (~30 Aralık) için ailene haber ver. Amasya'da o hafta otel bulmak zorlaşıyor; erken rezervasyon yapsınlar.</li>
+          <li><strong>Dönüş biletini</strong> şimdiden al: yemin günü akşamı (~30 Aralık) ya da 31 Aralık için. Bedelliler genelde yemin töreninden sonra kışladan ayrılıyor; 3 Ocak resmi terhis tarihi. Yılbaşı yoğunluğu çakıştığı için tarihi değiştirilebilir bilet tercih et.</li>
+          <li>Botla gün içinde uzun yürüyüş yapacağın için yeni tabanlık ve çorap kombinasyonunu bir gün dene.</li>
+        </ul></div></li>
+      <li><p class="when">Son gün<small>2 Aralık</small></p><div>
+        <ul>
+          <li>Saçını kısa kestir. İçeride yine kesilecek ama kısa saç soğukta ve sınırlı sıcak suda çok rahat ediyor.</li>
+          <li>Telefona önemli numaraları kaydet, ayrıca kâğıda da yaz.</li>
+          <li>Çantanı listeye göre son kez kontrol et ve hepsini tek bir koyu renk sırt çantası/asker çantasına sığdır.</li>
+        </ul></div></li>
+      <li><p class="when">Sevk günü<small>3 Aralık</small></p><div>
+        <ul>
+          <li><strong>Erken git.</strong> Kayıt sıraları uzun; sabah teslim olan akşam yorgunluğunu azaltıyor. Sevk belgende yazan saat esas.</li>
+          <li>Adres: Yazıbağları Mah., Kışla Cad., General Hikmet Akıncı Kışlası. Otogardan merkeze, oradan dolmuş/halk otobüsü ya da en kolayı taksi.</li>
+          <li>Kimlik ve sevk belgesi (çıktısı) elinde hazır olsun.</li>
+          <li>Kalın sivil montunla git. Dönüşte de Aralık sonunda aynı montu giyeceksin.</li>
+          <li>Yanına gün boyu yetecek su, kuru atıştırmalık ve dolu powerbank al. Akşama kadar yemek düzeni belli olmayabiliyor.</li>
+        </ul></div></li>
+    </ol>
+  </section>
+
+  <section id="ilk-gun">
+    <div class="sec-head">
+      <p class="eyebrow">Evre 1 · 3 Aralık, Perşembe</p>
+      <h2>İlk gün</h2>
+      <p class="phase-note">Saatler forum anlatımlarına göre yaklaşık. İlk günün büyük kısmı sırada beklemekle ve evrak işiyle geçiyor; askerlik asıl ertesi sabah başlıyor. Kimse senden bir şey bilmeni beklemiyor: söyleneni yap, anlamadığını sor.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="at">Sabah<br>08:00 civarı</span><div class="what"><strong>Nizamiye ve arama</strong><p>Kimlik ve sevk belgesi kontrol ediliyor, çantan aranıyor. İlaçlar ve SIM kartlar kontrol ediliyor. Akıllı telefon getirdiysen burada emanete alınabilir ya da geri gönderilmesi istenebilir.</p></div></li>
+      <li><span class="at">Sabah–öğle</span><div class="what"><strong>Hat ve kayıt sırası</strong><p>Askercell/Askerfone hattı olmayanlar için ayrı bir sıra oluyor. Hattını önceden aldıysan bu sırayı atlarsın. Kayıt bölük bölük yapılıyor: bilgi formları, imzalar, yakınının telefonu, IBAN. Bir bölükte 300–350 kişi olabildiği için en uzun bekleme burada.</p></div></li>
+      <li><span class="at">Öğle–öğleden sonra</span><div class="what"><strong>Sağlık kontrolü</strong><p>Kısa bir muayene ve beyan. Gözlük kullandığını, varsa alerjini ve kullandığın ilaçları burada söyle. Kalabalık celplerde bu adım ertesi günlere kayabiliyor.</p></div></li>
+      <li><span class="at">Öğleden sonra</span><div class="what"><strong>İstihkak (zimmet) dağıtımı</strong><p>Kamuflaj, bot, mont ve bir miktar iç çamaşırı-çorap veriliyor; imzalayıp teslim alıyorsun. Bot bedenini söylerken kalın yün çorap giyeceğini hesaba kat; forumlarda yarım ya da bir numara büyük almak öneriliyor. Aldığın her şeyi not defterine yaz: son hafta bunları eksiksiz iade edeceksin.</p></div></li>
+      <li><span class="at">Gün içinde</span><div class="what"><strong>Saç tıraşı</strong><p>İlk gün ya da ilk birkaç gün içinde. Önceden kısa kestirdiysen hızlı geçer.</p></div></li>
+      <li><span class="at">Akşamüstü</span><div class="what"><strong>Koğuşa yerleşme</strong><p>Sana bir yatak ve dolap gösteriliyor; izin almadan yer değiştirme. Sivil eşyalarını çantaya koyup dolaba yerleştir, kilidini hemen tak. Termal içliğini ve yün çoraplarını üstteki rafa koy ki gece kolayca alabilesin.</p></div></li>
+      <li><span class="at">Akşam<br>18:00–20:00</span><div class="what"><strong>İlk içtima ve yemek</strong><p>Yemekten önce ilk içtima yapılıyor. Öğleden sonra teslim olanlar koğuşa ancak 21:00 civarı varabiliyor, o yüzden yanındaki atıştırmalık çok işe yarıyor.</p></div></li>
+      <li><span class="at">Gece<br>21:00–22:00</span><div class="what"><strong>Yat yoklaması</strong><p>Telefon izni varsa ailene kısa bir "vardım" mesajı at. Ertesi sabah tıraşlı çıkman beklenecek; lavabo sırası uzun olduğu için ne zaman tıraş olunacağını ilk akşam takım/manga sorumlusuna sor. İnce termal üstle yat ve kulak tıkacını tak.</p></div></li>
+    </ol>
+    <div class="callout warn"><strong>İlk gün en sık yapılan hatalar</strong><p>Geç gelip kayıt sırasının sonuna düşmek, tıraş malzemesi getirmemek, zimmetle aldığı malzemeleri not etmemek ve dolabı kilitsiz bırakmak.</p></div>
+  </section>
+
+  <section id="ilk-hafta">
+    <div class="sec-head">
+      <p class="eyebrow">Evre 2 · 4–10 Aralık</p>
+      <h2>İlk hafta</h2>
+      <p class="phase-note">En zor kısım genelde ilk 3–4 gün: erken kalkış, soğuk, kalabalık ve bilmediğin kurallar bir arada geliyor. Gidenlerin çoğu bir hafta sonunda rutinin oturduğunu ve zamanın hızlandığını yazıyor.</p>
+    </div>
+    <h3>Örnek bir gün</h3>
+    <div class="table-wrap">
+      <table class="sched">
+        <thead><tr><th>Saat (yaklaşık)</th><th>Ne oluyor</th></tr></thead>
+        <tbody>
+          <tr><td>05:30–06:30</td><td>Kalk borusu. Yatak düzeni, tıraş, lavabo. Bir Amasya yorumu Kasım celbinde ilk bir buçuk hafta 04:00'te kalktıklarını söylüyor.</td></tr>
+          <tr><td>06:30–07:45</td><td>Sabah içtiması (dışarıda, karanlıkta ve soğukta), ardından kahvaltı.</td></tr>
+          <tr><td>08:30–12:00</td><td>Bölük içtiması ve eğitim: yanaşık düzen, konferanslar, nizam-intizam.</td></tr>
+          <tr><td>12:00–13:30</td><td>Öğle yemeği ve kısa dinlenme.</td></tr>
+          <tr><td>13:30–17:00</td><td>Eğitim devam ediyor; koğuş ve alan temizliği gibi görevler.</td></tr>
+          <tr><td>17:30–21:00</td><td>Akşam yemeği, akşam içtiması, telefon saati, sıcak su varsa duş, kantin.</td></tr>
+          <tr><td>21:00–22:00</td><td>Yat yoklaması ve ışıklar kapanıyor.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two">
+      <div>
+        <h3>Ne öğreneceksin</h3>
+        <ul>
+          <li><strong>Yanaşık düzen:</strong> hizalanma, sağa-sola dön, selam verme, uygun adım yürüyüş.</li>
+          <li><strong>Askeri nezaket:</strong> rütbeler, kime nasıl hitap edilir, selamlaşma.</li>
+          <li><strong>Nizam-intizam:</strong> yatak düzeni (çarşaf gergin; altını çengelli iğneyle sabitleyenler var), dolap düzeni, bot boyası kontrolü.</li>
+          <li><strong>Manga ve sıra düzeni:</strong> mangalara ayrılıyorsunuz, içtimada yerin belli oluyor.</li>
+          <li><strong>Konferanslar:</strong> bölük komutanının bilgilendirmeleri, kurallar, güvenlik.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ne yaşayacaksın</h3>
+        <ul>
+          <li><strong>Aşı:</strong> tetanos, bazı dönemlerde menenjit. Kolda bir iki gün ağrı ve şişlik normal.</li>
+          <li><strong>Bot vurması:</strong> ilk hafta ayaklar su topluyor. Compeed bandını erkenden kullan, çorabı kuru tut.</li>
+          <li><strong>Kantin:</strong> merkez kantine 4.–5. gün gidiliyor ve kuyruk uzun. İlk günlerde kendi malzemen yetecek.</li>
+          <li><strong>Soğuk algınlığı:</strong> kalabalık koğuşta ilk hafta içinde yayılmaya başlıyor. Ateşin çıkarsa revire hemen git.</li>
+          <li><strong>Telefon:</strong> belirli saatlerde. Aileyle her gün aynı saatte konuşmayı ayarla.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><strong>İlk hafta ipucu</strong><p>Göze batmamaya çalış: tıraşın, botun ve yatağın düzgün olsun, içtimaya erken çık. Bunlar düzgün olunca ilk hafta çok daha sakin geçiyor. Gözlüğünü askıyla tak ve buğu önleyiciyi cebinde taşı; sabah içtimasından kahvaltıya girerken camlar buğulanıyor.</p></div>
+    <div class="mid"><strong>2. ve 3. hafta (11–22 Aralık)</strong><p>Rutin oturuyor. Atış eğitimi ve seminerler başlıyor; silah bilgisi, kuru atış, nöbet ve arazi eğitimi geliyor. Pazar günleri eğitim olmuyor; birlik izin veriyorsa aile görüşü genelde pazar günü birlik içinde yapılıyor. Kar ya da yoğun yağmurda dış eğitimler azalıyor.</p></div>
+  </section>
+
+  <section id="son-hafta">
+    <div class="sec-head">
+      <p class="eyebrow">Evre 3 · 23–30 Aralık</p>
+      <h2>Son hafta</h2>
+      <p class="phase-note">Son hafta atış, tören provaları ve malzeme iadesiyle geçiyor. Moral genelde yükseliyor ama tören provaları soğukta uzun süre ayakta beklemek demek.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="at">Atış</span><div class="what"><strong>Atış günü</strong><p>Bir forum anlatımına göre birkaç gün tatbikattan ve kuru atıştan sonra G3 piyade tüfeğiyle kâğıt hedefe birkaç atış yapılıyor. İsabet ettirenlere yemin günü başarı belgesi verildiği yazılmış. Gözlüğünle at, askısı takılı olsun. Atış eğitimi döneme göre 3. haftaya da denk gelebilir.</p></div></li>
+      <li><span class="at">Her gün</span><div class="what"><strong>Yemin töreni provaları</strong><p>Tören yürüyüşü, hizalanma, yemin metni. Açık havada saatlerce beklemek demek: termal alt-üst, yün çorap, tabanlık, boyunluk ve eldiven (izin verilirse) bu hafta en çok işine yarayacak şeyler.</p></div></li>
+      <li><span class="at">Hafta ortası</span><div class="what"><strong>Aileyi bilgilendir</strong><p>Tören günü, saati ve giriş için gereken kimlik bilgisini birlik açıkladığı anda ailene ilet. Erken gelsinler, kalın giyinsinler. Amasya'da otel o hafta dolu olabilir; rezervasyonu henüz yapmadılarsa hemen yapsınlar.</p></div></li>
+      <li><span class="at">Son 2–3 gün</span><div class="what"><strong>Malzeme iadesi</strong><p>İlk gün not ettiğin zimmet listesine göre her şeyi temiz ve eksiksiz bir gece önceden ayır. Eksik malzeme çıkışını geciktirebilir. Kendi aldığın termal içlik, çorap gibi eşyalar senin; onları çantaya koy.</p></div></li>
+      <li><span class="at">Son gece</span><div class="what"><strong>Koğuş ve dolap kontrolü</strong><p>Dolabını boşalt, yatağını teslim edilecek şekilde düzenle, sivil kıyafetini ve montunu hazırla. Kilidini en son çıkar.</p></div></li>
+      <li><span class="at">Yemin günü<br>~30 Aralık</span><div class="what"><strong>Tören</strong><p>Bayrak, İstiklal Marşı, yemin, tören geçişi, belgelerin dağıtılması. Tören sonrası ailenle görüşebiliyorsun.</p></div></li>
+      <li><span class="at">Törenden sonra</span><div class="what"><strong>Kışladan çıkış</strong><p>Bedelliler genelde tören günü kışladan ayrılıyor. Resmi terhis tarihi (~3 Ocak) gelene kadar idari izinli sayılıyorsun. Amasya otogarı o gün çok kalabalık olur; ailen arabayla geldiyse en rahatı onlarla dönmek.</p></div></li>
+      <li><span class="at">Eve dönünce</span><div class="what"><strong>Takip</strong><p>Resmi terhis tarihinden sonra e-Devlet'te askerlik durumunun "terhis" olarak güncellendiğini kontrol et; işverenine gereken belgeyi oradan al. Harcırah ve yol parası ödemesini takip et; gecikme şikâyetleri yaygın. Bir de dinlen: dönüşte süren yorgunluk ve öksürük çok sık anlatılıyor.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="gozluk">
+    <div class="sec-head">
+      <p class="eyebrow">Senin için özel</p>
+      <h2>Gözlük ve lens</h2>
+    </div>
+    <div class="lens-box">
+      <p><strong>Öneri: eğitim boyunca gözlük kullan, lensi bırak.</strong> Toz, rüzgâr, kısıtlı ve soğuk su, kalabalık lavabolar lens hijyenini zorlaştırıyor. Forumlarda eğitimde tozdan göz enfeksiyonu yaşayanlar var. Gözlükle atışta sorun yaşamadığını yazanlar da var.</p>
+      <ul>
+        <li><strong>Yedek gözlük şart.</strong> Eğitimde düşme, ezilme, kırılma olursa içeride yenisini yaptırmak çok zor.</li>
+        <li>Sert kılıf ve gözlük askısı: koşu, sürünme ve atışta düşmesin.</li>
+        <li>Buğu önleyici bez veya sprey: soğuk dışarıdan sıcak koğuşa ya da yemekhaneye girişte camlar buğulanıyor. Maske takarsan bu daha da artıyor.</li>
+        <li>Mikrofiber bez (2 adet) ve küçük gözlük tornavida seti: vida gevşemesi en sık arıza.</li>
+        <li>Gözlük numaranı kâğıda yaz ya da reçetenin fotoğrafını çek. Kırılırsa ailenin Amasya'ya yaptırıp getirebilmesi için.</li>
+        <li>Suni gözyaşı damlası: kuru hava ve rüzgâr gözü yoruyor.</li>
+        <li>Yine de lens götürmek istersen yalnızca günlük kullan-at lens götür (ör. yemin töreni günü için) ve küçük bir el dezenfektanıyla takıp çıkar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="liste">
+    <div class="sec-head">
+      <p class="eyebrow">Konfor odaklı · yaklaşık 28 gün, kısıtlı çamaşır imkânı</p>
+      <h2>Alışveriş listesi</h2>
+      <p class="lede">Aldıkça işaretle. İşaretlerin sadece bu tarayıcıda saklanıyor. Miktarlar kış ve kısıtlı çamaşır yıkama imkânı düşünülerek bol tutuldu. Renk seçeneği olan kıyafetlerde haki, siyah veya lacivert gibi koyu tonlar al; birçok birlikte açık renk iç giyim hoş karşılanmıyor.</p>
+    </div>
+    <div class="list-bar">
+      <div class="bar-row">
+        <span class="count" id="count">0 / 0 alındı</span>
+        <div class="controls" role="group" aria-label="Filtre">
+          <button type="button" id="f-all" aria-pressed="true">Tümü</button>
+          <button type="button" id="f-open" aria-pressed="false">Alınmayanlar</button>
+          <button type="button" id="f-sart" aria-pressed="false">Sadece şart</button>
+        </div>
+      </div>
+      <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+      <div class="legend"><span><span class="badge b-sart">Şart</span> olmazsa olmaz</span><span><span class="badge b-kis">Kış</span> Aralık için kritik</span><span><span class="badge b-konfor">Konfor</span> hayatı kolaylaştırır</span></div>
+    </div>
+    <div id="groups"></div>
+  </section>
+
+  <section id="goturme">
+    <div class="sec-head">
+      <p class="eyebrow">Fazla yük ve sorun çıkaranlar</p>
+      <h2>Götürme</h2>
+    </div>
+    <div class="dont">
+      <div><strong>Akıllı telefon</strong><p>Amasya için kaynaklar "akıllı telefon yasak, tuşlu telefon serbest" diyor. Birlikten birliğe değişse de tuşlu telefona göre hazırlan.</p></div>
+      <div><strong>Fazla sivil kıyafet</strong><p>Gidişte giydiklerin yeterli. Sivil kıyafet çantada yer kaplıyor ve dönüşte zaten aynı kıyafeti giyeceksin.</p></div>
+      <div><strong>Büyük valiz</strong><p>Dolap küçük, koğuş kalabalık. Tek bir koyu renk sırt çantası en pratiği.</p></div>
+      <div><strong>Değerli eşya ve fazla nakit</strong><p>Pahalı saat, takı, yüksek miktarda nakit götürme. Kart ve az miktar bozuk para yeterli.</p></div>
+      <div><strong>Günlük kullanım için lens</strong><p>Yukarıdaki gözlük bölümüne bak. Eğitim boyunca gözlük çok daha az sorun çıkarıyor.</p></div>
+      <div><strong>Reçetesiz, kutusuz ilaç</strong><p>İlaçlarını orijinal kutusunda götür. Revirde kontrol edilebilir.</p></div>
+    </div>
+  </section>
+
+  <section id="ipuclari">
+    <div class="sec-head">
+      <p class="eyebrow">Gidenlerin tavsiyeleri</p>
+      <h2>İçeride ipuçları</h2>
+    </div>
+    <ul class="tips">
+      <li><strong>Katman katman giyin.</strong><p>Termal içlik, üstüne fanila, üstüne üniforma. İçtimada ve nöbette boyunluk ve bere fark yaratıyor. Uyurken de ince termal üstle yatmak rutubetli koğuşta işe yarıyor.</p></li>
+      <li><strong>Ayakların kuru kalsın.</strong><p>Islak çorapla durma; günde en az bir kez çorap değiştir. Yün çorap ıslakken bile sıcak tutuyor. Tabanlık hem soğuğu hem bot yorgunluğunu azaltıyor.</p></li>
+      <li><strong>Duşu planla.</strong><p>Sıcak su saatlerini ilk gün öğren. Duştan sonra hemen kurulan, saçını kurula, kuru ve sıcak giysiyle çık. Forumda en çok duş sonrası üşütüldüğü yazılmış.</p></li>
+      <li><strong>Hastalığa karşı önlem al.</strong><p>Sık el yıka, kendi bardağını ve havlunu kimseyle paylaşma, bol su iç. Ateşin çıkarsa revire gitmekten çekinme. İçeride hasta olanların en büyük pişmanlığı geç kalmak.</p></li>
+      <li><strong>İlk hafta kantine güvenme.</strong><p>Kuyruk uzun ve merkez kantine birkaç gün sonra gidiliyor. İlk 5 günün tıraş, hijyen ve atıştırmalık ihtiyacı yanında olsun.</p></li>
+      <li><strong>Telefon saatini aileyle önceden konuş.</strong><p>Telefon kullanımı belli saatlerle sınırlı. Aileye "her gün şu saatte ararım" demek iki tarafın da kaygısını azaltıyor.</p></li>
+      <li><strong>Eşyalarını kilitle ve isimle.</strong><p>Dolabına kilit tak. Havlu, terlik, termos gibi eşyalara kalıcı kalemle adını ya da bir işaret yaz; 60+ kişilik koğuşta her şey birbirine karışıyor.</p></li>
+      <li><strong>Yemin töreni için aileyi uyar.</strong><p>Tören açık havada ve Aralık sonunda. Kalın giyinsinler, erken gelsinler. Tören sonrası bir sonraki içtimaya kadar ailenle görüşebiliyorsun.</p></li>
+      <li><strong>Harcırahı takip et.</strong><p>Bazı celplerde yol parası ve harçlık ödemesinin aylarca geciktiğine dair şikâyetler var. IBAN'ını doğru ver, terhisten sonra takip et.</p></li>
+    </ul>
+  </section>
+
+  <section id="kaynaklar">
+    <div class="sec-head">
+      <p class="eyebrow">Nereden derlendi</p>
+      <h2>Kaynaklar</h2>
+    </div>
+    <div class="sources">
+      <p>Forum yorumları farklı yıllardan ve kişisel deneyim. Malzeme satıcısı sitelerinin listeleri satış amaçlı olabilir; miktarlar bunlarla forum tavsiyeleri karşılaştırılarak belirlendi. Kesin kurallar için sevk belgeni ve birliğin duyurusunu esas al.</p>
+      <ul>
+        <li><a href="https://eksisozluk.com/15-piyade-er-egitim-tugayi--1631074?p=58" target="_blank" rel="noopener">Ekşi Sözlük: 15. piyade er eğitim tugayı</a></li>
+        <li><a href="https://eksisozluk.com/bedelli-askerlik-yapacaklara-tavsiyeler--3136142?p=7" target="_blank" rel="noopener">Ekşi Sözlük: bedelli askerlik yapacaklara tavsiyeler</a></li>
+        <li><a href="https://forum.donanimhaber.com/15-piyade-er-egitim-tugay-komutanligi-amasya-merkez--154912216" target="_blank" rel="noopener">DonanımHaber: 15. Piyade Er Eğitim Tugay Komutanlığı Amasya</a></li>
+        <li><a href="https://forum.donanimhaber.com/bedelli-amasya-15-piyade-er-egitim-tugayi--157899318" target="_blank" rel="noopener">DonanımHaber: Bedelli Amasya 15. Piyade</a></li>
+        <li><a href="https://www.r10.net/sorum-var/4600775-bedelli-askerlik-amasya.html" target="_blank" rel="noopener">R10.net: Bedelli askerlik Amasya</a></li>
+        <li><a href="https://askerkolisi.com/amasya-bedelli-askerlik-yorumlari-gidenler-yazdi/" target="_blank" rel="noopener">Asker Kolisi: Amasya bedelli askerlik yorumları</a></li>
+        <li><a href="https://www.sikayetvar.com/amasya-15-piyade" target="_blank" rel="noopener">Şikâyetvar: Amasya 15. Piyade</a></li>
+        <li><a href="https://kahyaaskermalzemeleri.com/pages/birlikler/amasya-15-er-egitim-tugay-komutanligi-bedelli-askerlik-rehberi" target="_blank" rel="noopener">Kahya: Amasya 15. Er Eğitim Tugayı bedelli rehberi 2026</a></li>
+        <li><a href="https://www.aktanlaraskerimalzeme.com.tr/amasya-bedelli-askerlik-malzemeleri" target="_blank" rel="noopener">Aktanlar: Amasya bedelli malzeme listesi</a></li>
+        <li><a href="https://askerimalzemeci.com.tr/bedelli-askerlik-malzeme-listesi-rehberi/" target="_blank" rel="noopener">Askeri Malzemeci: Bedelli askerlik malzeme listesi 2026</a></li>
+        <li><a href="https://askerlik.org.tr/hazirlik/" target="_blank" rel="noopener">askerlik.org.tr: Bedelli askere giderken ne götürmeli</a></li>
+        <li><a href="https://askerlik.org.tr/celp/" target="_blank" rel="noopener">askerlik.org.tr: 2026 celp dönemleri ve takvimi</a></li>
+        <li><a href="https://emirhankabakci.com/bedelli-askerlik-hakkinda-her-sey-tecrubelerim-agustos-2026-celbi-burdur/" target="_blank" rel="noopener">Emirhan Kabakcı: Bedelli askerlik tecrübelerim (Ağustos 2026)</a></li>
+        <li><a href="https://www.referansgazetesi.com.tr/2026-bedelli-askerlikte-carsi-izni-var-mi-hafta-sonu-cikilabilir-mi" target="_blank" rel="noopener">Referans Gazetesi: 2026 bedelli askerlikte çarşı izni</a></li>
+        <li><a href="https://hizliulasim.com/ulasim-rehberi/askeriye/amasya-15-piyade-egitim-tugayi" target="_blank" rel="noopener">Hızlı Ulaşım: Amasya 15. Piyade Eğitim Tugayı'na nasıl gidilir</a></li>
+        <li><a href="https://mgm.gov.tr/veridegerlendirme/il-ve-ilceler-istatistik.aspx?m=AMASYA" target="_blank" rel="noopener">MGM: Amasya resmî iklim istatistikleri</a></li>
+        <li><a href="https://forum.donanimhaber.com/askerlikte-lens-kullanimi--52337106" target="_blank" rel="noopener">DonanımHaber: Askerlikte lens kullanımı</a></li>
+        <li><a href="https://askerkolisi.com/bedelli-askerlikte-ilk-gun/" target="_blank" rel="noopener">Asker Kolisi: Bedelli askerlikte ilk gün</a></li>
+        <li><a href="https://askerimalzemeci.com.tr/bedelli-askerlikte-ilk-gun/" target="_blank" rel="noopener">Askeri Malzemeci: Bedelli askerlikte ilk gün (2026)</a></li>
+        <li><a href="https://eksiseyler.com/bedelli-askerlige-ilk-celpte-gidip-terhis-olan-birinden-21-gun-izlenimleri" target="_blank" rel="noopener">Ekşi Şeyler: Bedelliden 21 gün izlenimleri</a></li>
+        <li><a href="https://askerlikcagi.com/rehber/bedelli-askerlik-gunluk-rutin-yat-ictimasi" target="_blank" rel="noopener">Askerlik Çağı: Bedelli askerlikte günlük rutin</a></li>
+        <li><a href="https://forum.donanimarsivi.com/konu/bedelli-askerlik-rehberi-2023-2024.834741/" target="_blank" rel="noopener">Donanım Arşivi: Bedelli askerlik rehberi</a></li>
+        <li><a href="https://eksisozluk.com/15-piyade-er-egitim-tugayi--1631074?p=55" target="_blank" rel="noopener">Ekşi Sözlük: 15. piyade er eğitim tugayı (atış anlatımı)</a></li>
+        <li><a href="https://askerlik.org.tr/terhis/" target="_blank" rel="noopener">askerlik.org.tr: Yemin töreni ve çıkış süreci</a></li>
+        <li><a href="https://askerimalzemeci.com.tr/bedelli-askerlikte-son-gun-ve-terhis-islemleri/" target="_blank" rel="noopener">Askeri Malzemeci: Son gün ve terhis işlemleri</a></li>
+        <li><a href="https://bha.net.tr/amasyada-bedelli-askerlerin-yemin-toreni-coskuyla-gerceklestirildi" target="_blank" rel="noopener">BHA: Amasya'da bedelli askerlerin yemin töreni</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+const GROUPS = [
+  {name:"Belgeler ve para", items:[
+    ["kimlik","T.C. kimlik kartı","","sart","Sevk belgesiyle birlikte kapıda ilk istenen."],
+    ["sevk","Sevk belgesi çıktısı","","sart","e-Devlet'ten çıktı al, telefonda da dursun."],
+    ["kart","Banka kartı","2–3 adet","sart","Farklı bankalardan; temassız limitlerini kontrol et."],
+    ["nakit","Bozuk para ve küçük banknot","","konfor","Kart çekmezse diye az miktarda."],
+    ["iban","IBAN ve önemli numaralar kâğıtta","","konfor","Harcırah ve aile numaraları için."],
+    ["recete","Gözlük numarası ve ilaç reçeteleri","","sart","Kâğıda yaz ya da fotokopisini al."]
+  ]},
+  {name:"Gözlük", items:[
+    ["gozluk2","Yedek gözlük","1","sart","Güncel numarayla, sağlam çerçeve."],
+    ["kilif","Sert gözlük kılıfı","2","sart","Biri yedek gözlük için."],
+    ["aski","Gözlük askısı / ipi","1","konfor","Koşu ve atışta düşmesin."],
+    ["bugu","Buğu önleyici bez veya sprey","1","kis","Soğuktan sıcağa girişte."],
+    ["mikro","Mikrofiber temizleme bezi","2","konfor",""],
+    ["vida","Mini gözlük tornavida seti","1","konfor","Gevşeyen vida en sık arıza."],
+    ["damla","Suni gözyaşı damlası","1","konfor","Rüzgâr ve kuru hava için."]
+  ]},
+  {name:"Kış katmanı", items:[
+    ["termal","Termal içlik takımı (alt + üst)","3 takım","kis","Merinos veya yün karışımı en iyisi; biri uyku için."],
+    ["yuncorap","Yün / merinos çorap","10–12 çift","kis","Islakken de ısıtır. Koyu renk."],
+    ["askcorap","İnce asker çorabı","4–5 çift","konfor","Yün çorabın altına ya da yedek."],
+    ["boyunluk","Polar boyunluk","2","kis","Biri ıslanınca diğeri."],
+    ["bere","Bere (koyu renk)","1","kis","Birlik kuralına uygun koyu ton."],
+    ["eldiven","Eldiven (koyu renk)","2 çift","kis","İnce + kalın; ince olanla atış yapılabilir."],
+    ["fanila","Fanila / tişört (haki-siyah)","7–8","sart","Birlikten gelenler yetmiyor."],
+    ["boxer","Boxer (koyu renk)","8–10","sart","Çamaşır imkânı kısıtlı."]
+  ]},
+  {name:"Ayak ve bot", items:[
+    ["taban","Isı yalıtımlı / jel tabanlık","2 çift","kis","Soğuğu ve bot yorgunluğunu azaltır."],
+    ["compeed","Su toplaması bandı (Compeed vb.)","1 kutu","konfor","Yeni botta ilk hafta lazım."],
+    ["pudra","Ayak pudrası / ter önleyici","1","konfor",""],
+    ["botboya","Bot boyası ve fırçası","1 set","sart","Her sabah bot kontrolü yapılıyor."],
+    ["terlik","Kaymaz terlik (koyu renk)","1","sart","Duş ve koğuş için."]
+  ]},
+  {name:"Hijyen", items:[
+    ["tiras","Tıraş bıçağı + yedek kartuş","1 + 8","sart","İlk gün verilmiyor, ertesi gün tıraş şart."],
+    ["kopuk","Tıraş köpüğü / jeli","1","sart",""],
+    ["dis","Diş fırçası ve macun","1 + 1","sart",""],
+    ["sampuan","Şampuan / duş jeli (küçük)","1–2","sart",""],
+    ["deo","Deodorant (stick)","1","konfor",""],
+    ["havlu","Hızlı kuruyan havlu (koyu/mavi)","2","sart","Biri kurutulurken diğeri."],
+    ["mendil","Islak mendil (büyük paket)","3","konfor","Sıcak su olmayan anlar için."],
+    ["kagit","Kuru mendil / tuvalet kâğıdı","1 paket","konfor",""],
+    ["dudak","Dudak balmı ve el kremi","1 + 1","kis","Soğuk ve sabun çatlatıyor."],
+    ["tirnak","Tırnak makası","1","konfor",""],
+    ["dezenf","El dezenfektanı (küçük)","1","konfor",""],
+    ["deterjan","Küçük deterjan / çamaşır tableti","1","konfor","Elde çorap-iç çamaşırı yıkamak için."]
+  ]},
+  {name:"Sağlık ve uyku", items:[
+    ["agri","Ağrı kesici / ateş düşürücü","1 kutu","sart","Kutusunda; düzenli ilaç varsa raporuyla."],
+    ["pastil","Boğaz pastili","2 kutu","kis","Grip koğuşta hızla yayılıyor."],
+    ["burun","Tuzlu su burun spreyi","1","kis",""],
+    ["maske","Cerrahi maske","10","kis","Hasta olunca ya da hasta yanında."],
+    ["bant","Yara bandı","1 kutu","konfor",""],
+    ["tikac","Kulak tıkacı","5 çift","konfor","60+ kişilik koğuşta uyku için."],
+    ["gozbandi","Uyku göz bandı","1","konfor",""]
+  ]},
+  {name:"Elektronik", items:[
+    ["tuslu","Tuşlu telefon + şarj aleti","1","sart","Akıllı telefon büyük ihtimalle yasak."],
+    ["hat","Askercell / Askerfone hattı","1","sart","Sivilken al, kapıda sıra ve baskı olmasın."],
+    ["powerbank","Powerbank (10.000 mAh)","1","konfor","Priz az; kurallar değişebilir, girişte sor."],
+    ["saat","Dijital kol saati (alarmlı, ışıklı)","1","konfor","Telefon elinde değilken saat lazım."]
+  ]},
+  {name:"Diğer", items:[
+    ["canta","Koyu renk sırt çantası","1","sart","Tek çanta; valiz değil."],
+    ["kilit","Küçük asma kilit","2","sart","Dolap için."],
+    ["file","Kirli çamaşır filesi / bez torba","2","konfor",""],
+    ["zip","Zip-lock poşet","10","konfor","Islak eşya ve küçük malzemeler için."],
+    ["kalem","Kalıcı kalem","1","konfor","Eşyalarına isim yaz."],
+    ["defter","Küçük not defteri ve kalem","1","konfor","Eğitim notları ve numaralar için."],
+    ["dikis","Mini dikiş seti","1","konfor","Kopan düğme için."],
+    ["termos","Küçük termos / matara","1","kis","Sıcak çay ya da su için; birlik izin verirse."],
+    ["atistirma","Kuruyemiş, bisküvi, kraker","sevk günü","konfor","İlk günler kantine gitmeden."]
+  ]}
+];
+const TAG_LABEL = {sart:"Şart", kis:"Kış", konfor:"Konfor"};
+const KEY = "amasya-bedelli-kit-v1";
+let checked = {};
+try { checked = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { checked = {}; }
+let filter = "all";
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(checked)); } catch(e) {} }
+
+function render(){
+  const root = document.getElementById("groups");
+  root.innerHTML = "";
+  let total = 0, done = 0, shown = 0;
+  GROUPS.forEach(g => {
+    total += g.items.length;
+    const gDone = g.items.filter(i => checked[i[0]]).length;
+    done += gDone;
+    const visible = g.items.filter(([id,,,tag]) =>
+      filter === "all" || (filter === "open" && !checked[id]) || (filter === "sart" && tag === "sart"));
+    if (!visible.length) return;
+    shown += visible.length;
+    const wrap = document.createElement("div");
+    wrap.className = "group";
+    const h = document.createElement("h3");
+    h.textContent = g.name;
+    const c = document.createElement("span");
+    c.textContent = gDone + " / " + g.items.length;
+    h.appendChild(c);
+    wrap.appendChild(h);
+    visible.forEach(([id,name,qty,tag,note]) => {
+      const lab = document.createElement("label");
+      lab.className = "item" + (checked[id] ? " done" : "");
+      lab.htmlFor = "c-" + id;
+      const cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = "c-" + id; cb.checked = !!checked[id];
+      cb.addEventListener("change", () => { checked[id] = cb.checked; if(!cb.checked) delete checked[id]; save(); render(); });
+      const t = document.createElement("div"); t.className = "txt";
+      const n = document.createElement("div"); n.className = "name"; n.textContent = name;
+      if (qty) { const q = document.createElement("span"); q.className = "qty"; q.textContent = "· " + qty; n.appendChild(q); }
+      t.appendChild(n);
+      if (note) { const nt = document.createElement("div"); nt.className = "note"; nt.textContent = note; t.appendChild(nt); }
+      const b = document.createElement("span"); b.className = "badge b-" + tag; b.textContent = TAG_LABEL[tag];
+      lab.append(cb, t, b);
+      wrap.appendChild(lab);
+    });
+    root.appendChild(wrap);
+  });
+  if (!shown) { const e = document.createElement("p"); e.className = "empty"; e.textContent = "Bu filtrede eksik bir şey kalmadı."; root.appendChild(e); }
+  document.getElementById("count").textContent = done + " / " + total + " alındı";
+  document.getElementById("meter").style.width = (total ? (done/total*100) : 0) + "%";
+}
+
+[["f-all","all"],["f-open","open"],["f-sart","sart"]].forEach(([id,val]) => {
+  document.getElementById(id).addEventListener("click", () => {
+    filter = val;
+    document.querySelectorAll(".controls button").forEach(b => b.setAttribute("aria-pressed", String(b.id === id)));
+    render();
+  });
+});
+
+(function countdown(){
+  const el = document.getElementById("countdown");
+  const target = new Date(2026, 11, 3);
+  const now = new Date(); now.setHours(0,0,0,0);
+  const d = Math.round((target - now) / 86400000);
+  if (d > 1) el.textContent = "Perşembe · " + d + " gün kaldı";
+  else if (d === 1) el.textContent = "Yarın";
+  else if (d === 0) el.textContent = "Bugün";
+  else el.textContent = "Perşembe";
+})();
+
+render();
+</script>
+</body>
+</html>
