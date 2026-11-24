@@ -46,6 +46,18 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 #chapters{width:100%;align-self:stretch}
+.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+.fake-line{font-size:13px;color:var(--muted)}
+.m.locked .body.blurred .title{font-style:normal;font-weight:600;color:var(--ink)}
+.lock-zone{position:relative;border-radius:12px;overflow:hidden}
+.lock-inner{opacity:.65}
+.lock-over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:16px;background:color-mix(in srgb,var(--bg) 35%,transparent)}
+.lock-over b{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.02em}
+.lock-over small{color:var(--muted);font-size:13px;max-width:40ch}
+.lock-ic .lockicon{width:30px;height:30px;margin:0;color:var(--ink)}
+.egg.lockd{position:relative;overflow:hidden}
+.egg.lockd .lock-mini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;background:color-mix(in srgb,var(--surface) 40%,transparent)}
+.egg.lockd .lock-mini .lockicon{margin:0;color:var(--ink)}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
 .wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
@@ -266,8 +278,8 @@ h1 span{color:var(--accent)}
       <li><b>Altın madalya yok.</b> Görevlerde ek hedef ya da madalya sistemi bulunmuyor.</li>
       <li><b>Dönüşü olmayan nokta</b> etiketli görevden sonra bölüm kapanır. Açık yan görevlerin varsa önce onları bitir.</li>
       <li><b>Kaçırılabilir</b> etiketli opsiyoneller süreli. Sıradaki ana görevi yaparsan kaybolabilirler. Kupa ya da %100 için gerekmiyorlar.</li>
-      <li><b>Para önemli.</b> Bazı ana görevler ancak belli bir birikime ulaşınca açılıyor (ör. Bölüm 2 sonunda 15.000 $).</li>
-      <li><b>Karakter değiştirme</b> Bölüm 2'deki “Coffee Break” görevinden sonra serbest.</li>
+      <li><b>Para önemli.</b> Bazı ana görevler ancak belli bir birikime ulaşınca açılıyor.</li>
+      <li><b>Karakter değiştirme</b> ikinci bölümün ortalarından itibaren serbest.</li>
       <li><b>Final</b> birden çok sona sahip. Sonu, son bölümdeki seçimler ve hikâye boyunca biriktirdiklerin belirliyor.</li>
       <li>Görev sayısı rehberden rehbere değişiyor (çoğu 91–93 der). Bu liste kısa hikâye adımlarını da ayrı saydığı için daha uzun.</li>
     </ul>
@@ -502,17 +514,17 @@ const STRANDS = [
 const ACTS = [
  {key:"g100a", title:"%100 · Görevler ve soygunlar", note:"Oyundaki %100 listesi hikâye bitince açılıyor ama öncesinde yaptıkların da sayılıyor. Hiçbir madde kaçırılamaz; hepsi hikâye sonrası da yapılabiliyor.", items:[
   ["Ana hikâye","Hepsi · %50","Jenerik akana kadar tüm ana görevler."],
-  ["Opsiyonel görevler","100 · %6","Mor ve siyah-pembe ikonlu her yan iş sayılıyor: Moses ve Randy teslimatları, Tyrone'un labları, Cal'ın balık meydan okumaları, meditasyonlar. Oyunda yüzlercesi var, kendiliğinden geçersin."],
+  ["Opsiyonel görevler","100 · %6","Mor ve siyah-pembe ikonlu her yan iş sayılıyor: teslimat işleri, balık meydan okumaları, meditasyonlar. Oyunda yüzlercesi var, kendiliğinden geçersin."],
   ["Çete operasyonları","39/39 · %3","Yaklaşınca beliren sarı ikonlar. Bir operasyonun sayılması için içindeki bütün değerli eşyaları toplaman gerekiyor; ikonun üstüne gelince kaç tane olduğu yazıyor."],
   ["Banka işleri","22/22 · %2","Credit Check'ten sonra açılıyor. Küçük bankalarda kasa çekmecesi ve kasa, büyüklerde ayrıca kasa dairesi gerekiyor."],
   ["Maaş avansı dükkânları","7/7 · %2","Bankalarla birlikte açılıyor (yeşil el ikonu). Tezgâhtaki para ve arka odadaki kasa."],
-  ["Smash 'N' Grab","34/35 · %2","Rehinciler (Coffee Break sonrası) ve kuyumcular (Yasmani'nin işlerinden sonra). Vitrinlerle birlikte arka odadaki kasayı da boşalt, yoksa sayılmayabilir."],
+  ["Smash 'N' Grab","34/35 · %2","Rehinciler ve ilerleyen bölümlerde açılan kuyumcular. Vitrinlerle birlikte arka odadaki kasayı da boşalt, yoksa sayılmayabilir."],
   ["Stick Up","50/91 · %2","Market, fast food ve içki dükkânı gibi küçük işletmeler: kasiyere silah doğrult, parayı al, çık."],
   ["Uyuşturucu satışı","100.000 $ · %2","Çete operasyonlarından ve kokain flamingolarından çıkan malı herhangi bir alıcıya sat."],
   ["Mücevher satışı","100.000 $ · %2","Kuyumcu soygunlarından gelir; hepsini soyunca kolayca geçersin."],
   ["İşaretli para satışı","250.000 $ · %2","Banka ve avans dükkânlarından. Tek bir büyük banka kasası 200.000 $'ı geçebiliyor."],
   ["Kasa daireleri","8/8 · %2","That's Where the Money Is… ile açılıyor. Nakil aracını bankaya kadar izle, kasa açıkken gir. 4 yıldız aranma; kaçış için hızlı motosiklet."],
-  ["Araç satışı","200.000 $ · %2","Moses'a takipsiz araçlar, Bölüm 3'ten itibaren Pay 'n' Spray'lere standart takipli araçlar. En hızlısı Randy'nin listesi."]
+  ["Araç satışı","200.000 $ · %2","Moses'a takipsiz araçlar; ilerleyen bölümlerde daha kârlı alıcılar açılıyor."]
  ]},
  {key:"g100b", title:"%100 · Keşif ve etkinlikler", note:"Çoğu maddenin hepsini değil bir kısmını yapman yeterli.", items:[
   ["Kenton hazine setleri","5/7 · %1","Island Dreams'ten sonra Kenton arıyor. Mor sandık ikonlu batıklara dal, metal dedektörle hazineyi çıkar ve Kenton'a götür. Sualtı keşifleri için 7 setin hepsi gerekiyor."],
@@ -565,7 +577,7 @@ const ACTS = [
   ["Gece kulüpleri ve dans","",""],
   ["Striptiz kulüpleri","",""],
   ["Bar ve içki","","Fazla içersen ekran bulanıklaşıyor."],
-  ["Hayvanat bahçesi","","Emerald Springs; Dodos Rising görevleri de burada bitiyor."],
+  ["Hayvanat bahçesi","","Emerald Springs."],
   ["Lunapark","",""],
   ["Video oyunları","","Evdeki konsol ve atari makineleri."],
   ["Televizyon izlemek","",""],
@@ -721,7 +733,7 @@ const MAP_LINKS = [["Dexerto interaktif harita","https://www.dexerto.com/wikis/g
 const COUNTERS = [
  ["cards","Koleksiyon kartları",null,480,"18 sette 480 kart. Bazı kartlar birden fazla yerde çıkabiliyor. Oyunda: İlerleme › Koleksiyonlar › Koleksiyon Kartları."],
  ["cardsets","Tamamlanan kart setleri",15,18,"%100 için 15 setin tamamı gerekiyor."],
- ["mags","Dergi, kitap ve çizgi romanlar",null,27,"Aynı yayının kopyaları sayılmıyor. Yan görevlerin içinde de çıkıyor (ör. Andy'nin garajı)."],
+ ["mags","Dergi, kitap ve çizgi romanlar",null,27,"Aynı yayının kopyaları sayılmıyor; bazıları yan görevlerin içinde çıkıyor."],
  ["swaps","Kitap takasları",null,7,"Dergilerle birlikte sayılıyor: %100 için 34'ten 30'u yeterli."],
  ["watches","Lüks saatler",null,34,"Altın ikonlu; çoğu çete operasyonlarında."],
  ["tattoos","Dövme dergileri (WAiNK)",null,45,"Jason 13, Lucia 15, diğer 17. Saatlerle birlikte 79 stilin 70'i yeterli."],
@@ -831,12 +843,7 @@ function row(m){
   const done = isDone(m), avail = isAvail(m);
   const visible = state.showAll || done || avail;
   const r = el("div", "m" + (m.main ? "" : " opt") + (done ? " done" : visible ? " avail" : " locked") + (isMissed(m) ? " missed" : ""));
-  if (!visible) {
-    r.innerHTML = LOCK_SVG;
-    r.appendChild(el("span","num", m.main ? String(m.n).padStart(3,"0") : "—"));
-    const b = el("div","body"); b.appendChild(el("div","title","Kilitli görev")); r.appendChild(b);
-    return r;
-  }
+  if (!visible) return lockedRow(FLAT.indexOf(m) + 3, m.main ? String(m.n).padStart(3,"0") : "+", m.main ? "" : "opt");
   const c = el("button","check"); c.innerHTML = CHECK_SVG;
   c.setAttribute("aria-label", (done ? "İşareti kaldır: " : "Tamamlandı: ") + m.name);
   c.setAttribute("aria-pressed", done ? "true" : "false");
@@ -886,6 +893,38 @@ function renderNext(){
   }
 }
 
+// ---- kilit yardımcıları (gerçek isim yerine anlamsız harf; bulanık)
+function fakeText(seed, len){
+  let s = seed * 9301 + 49297, out = "";
+  for (let i = 0; i < len; i++) { s = (s * 9301 + 49297) % 233280; const c = "aeioulnrstmkdgybzcp"[s % 19]; out += (i && s % 7 === 0) ? " " : c; }
+  return out.charAt(0).toUpperCase() + out.slice(1);
+}
+const chOpen = n => state.showAll || n <= 0 || chReached(n);
+function lockedRow(seed, numLabel, extra){
+  const r = el("div","m locked" + (extra ? " " + extra : ""));
+  r.innerHTML = LOCK_SVG;
+  if (numLabel != null) r.appendChild(el("span","num", numLabel));
+  const b = el("div","body blurred"); b.setAttribute("aria-hidden","true");
+  b.appendChild(el("div","title", fakeText(seed, 10 + seed % 14)));
+  b.appendChild(el("div","fake-line", fakeText(seed + 7, 26 + seed % 20)));
+  r.appendChild(b);
+  return r;
+}
+function lockZone(title, sub, rows, artKey, seedBase){
+  const z = el("div","lock-zone");
+  const inner = el("div","lock-inner blurred"); inner.setAttribute("aria-hidden","true");
+  if (artKey) { const a = el("div"); a.innerHTML = artSVG(artKey); if (a.firstChild) inner.appendChild(a.firstChild); }
+  for (let i = 0; i < Math.min(rows, 4); i++) inner.appendChild(lockedRow(seedBase + i, "···"));
+  z.appendChild(inner);
+  const ov = el("div","lock-over");
+  const ic = el("span","lock-ic"); ic.innerHTML = LOCK_SVG; ov.appendChild(ic);
+  ov.appendChild(el("b", null, title));
+  ov.appendChild(el("small", null, sub));
+  z.appendChild(ov);
+  return z;
+}
+const prevLabel = n => n <= 1 ? "Prolog'u" : CHAPTERS[n-1].label + "'i";
+
 // ---- sekmeler
 const TABS = [["hikaye","Hikâye"],["yan-gorevler","Yan görevler"],["etkinlikler","Etkinlikler"],["surprizler","Sürprizler"]];
 let tab = "hikaye";
@@ -902,7 +941,9 @@ STRANDS.forEach(s => s.items.forEach(([name, play, sum, tip, reward], i) => {
 const sideAvail = o => o.i === 0 || isDone(SIDE.find(x => x.strand === o.strand && x.i === o.i - 1));
 const strandOpen = s => state.showAll || chReached(s.ch);
 const ACT_ITEMS = [];
-ACTS.forEach(g => g.items.forEach(([name, target, desc], i) => ACT_ITEMS.push({id:"a-" + g.key + "-" + i, g, name, target, desc})));
+const ACT_CH = {g100a:[1,1,1,3,3,2,1,1,2,3,4,2], g100b:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2], g100c:[1,1,1],
+  mini:[1,2,1,1,1,1,1,1,1,1,1,1,1,3,2,1,1,1,1,1,1,1,1,3,1,1,1,1,1,2], home:[1,1,1,1,1,1,1,1], money:[1,2,3,3,2,2,1]};
+ACTS.forEach(g => g.items.forEach(([name, target, desc], i) => ACT_ITEMS.push({id:"a-" + g.key + "-" + i, g, name, target, desc, ch:(ACT_CH[g.key]||[])[i] || 1})));
 const EGG_ITEMS = EGGS.map(([name, where, what, reward, ref, when], i) => ({id:"e-" + i, name, where, what, reward, ref, when, r:null}));
 // bölge eşleştirmeleri (yaklaşık)
 const EGG_REGION = ["keys","keys","grassrivers","portgellhorn","vicecity","keys","hamlet","leonard","grassrivers",null,"keys","keys","vicecity","vicecity","vicecity","keys","vicecity","vicecity","lummox","portgellhorn","vicecity","leonard","hamlet","kalaga","keys","portgellhorn"];
@@ -951,7 +992,7 @@ function renderCounters(root){
   root.appendChild(sec);
 }
 function renderBigMap(root){
-  const pins = EGG_ITEMS.filter(e => e.r).map(e => ({r:e.r, kind:"egg"})).concat(STRANDS.filter(strandOpen).map(s => ({r:STRAND_REGION[s.key], kind:"side"})));
+  const pins = EGG_ITEMS.filter(e => e.r && chOpen(e.ch)).map(e => ({r:e.r, kind:"egg"})).concat(STRANDS.filter(strandOpen).map(s => ({r:STRAND_REGION[s.key], kind:"side"})));
   const wrap = el("div","map-wrap");
   const m = el("div"); m.innerHTML = mapSVG({big:true, pins, active:eggRegion}); wrap.appendChild(m);
   const side = el("div","map-side");
@@ -972,6 +1013,8 @@ function renderBigMap(root){
 }
 
 EGG_ITEMS.forEach((e, i) => e.r = EGG_REGION[i] || null);
+const EGG_CH = [1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,2];
+EGG_ITEMS.forEach((e, i) => e.ch = EGG_CH[i] || 1);
 
 function toggleId(id){ if (state.done[id]) delete state.done[id]; else state.done[id] = true; persist(); render(); }
 function checkBtn(id, label, enabled){
@@ -1001,7 +1044,7 @@ function renderSide(root){
   const open = STRANDS.filter(strandOpen);
   const finished = STRANDS.filter(s => s.items.every((_, i) => state.done["s-" + s.key + "-" + i])).length;
   setStats(done + "/" + SIDE.length, "Yan görev", finished + "/" + STRANDS.length, "Biten karakter", Math.round(done / SIDE.length * 100), open.length + " karakter açık");
-  const intro = el("p","tab-intro","Strangers & Freaks: Leonida'nın tuhaf karakterlerinin kendi görev zincirleri. Bir karakter, ilk görevinin geldiği bölüme ulaşınca açılır; zincirdeki sonraki görev, öncekini işaretleyince görünür. Hepsi hikâye bittikten sonra da oynanabiliyor. Strangers & Freaks kupası 8 zincir istiyor; Kirk, Kyle, Yago ve Pilot Pete sayılıyor.");
+  const intro = el("p","tab-intro","Strangers & Freaks: Leonida'nın tuhaf karakterlerinin kendi görev zincirleri. Bir bölümün yan görevleri, hikâyede o bölüme gelince açılır; zincirdeki sonraki görev, öncekini işaretleyince görünür. Hepsi hikâye bittikten sonra da oynanabiliyor. Strangers & Freaks kupası 8 zincir istiyor; sayılan zincirler karakter notunda yazıyor.");
   root.appendChild(intro);
   [1,2,3,4].forEach(chn => {
     const strands = STRANDS.filter(s => s.ch === chn);
@@ -1009,11 +1052,10 @@ function renderSide(root){
     const sec = el("section","chapter");
     const reached = state.showAll || chReached(chn);
     const items = SIDE.filter(o => o.strand.ch === chn);
-    sec.appendChild(sectionHead(CHAPTERS[chn].label, reached ? "Yan görevler" : "• • •", items.filter(isDone).length + "/" + items.length));
+    sec.appendChild(sectionHead(CHAPTERS[chn].label, "Yan görevler", items.filter(isDone).length + "/" + items.length));
     if (!reached) {
-      const lk = el("div","ch-locked"); lk.innerHTML = LOCK_SVG;
-      lk.appendChild(el("span",null,"Hikâyede " + CHAPTERS[chn].label + "'e gelince açılır. " + strands.length + " karakter, " + items.length + " yan görev."));
-      sec.appendChild(lk); root.appendChild(sec); return;
+      sec.appendChild(lockZone(CHAPTERS[chn].label + " yan görevleri kilitli", prevLabel(chn) + " bitirince açılır · " + strands.length + " karakter, " + items.length + " yan görev", 4, null, chn * 70));
+      root.appendChild(sec); return;
     }
     strands.forEach(s => {
       const box = el("div","strand");
@@ -1028,11 +1070,7 @@ function renderSide(root){
       SIDE.filter(o => o.strand === s).forEach(o => {
         const d = isDone(o), av = sideAvail(o), vis = state.showAll || d || av;
         const r = el("div","m opt" + (d ? " done" : vis ? " avail" : " locked"));
-        if (!vis) {
-          r.innerHTML = LOCK_SVG; r.appendChild(el("span","num", String(o.i + 1)));
-          const b = el("div","body"); b.appendChild(el("div","title","Kilitli yan görev")); r.appendChild(b);
-          box.appendChild(r); return;
-        }
+        if (!vis) { box.appendChild(lockedRow(SIDE.indexOf(o) + 11, String(o.i + 1), "opt")); return; }
         r.appendChild(checkBtn(o.id, o.name));
         r.appendChild(el("span","num", String(o.i + 1)));
         const b = el("div","body"); const t = el("div","title"); t.appendChild(el("span","t", o.name));
@@ -1059,6 +1097,7 @@ function renderActs(root){
     sec.appendChild(sectionHead(g.key.startsWith("g100") ? "%100" : "Liste", g.title.replace(/^%100 · /,""), items.filter(isDone).length + "/" + items.length));
     if (g.note) sec.appendChild(el("p","strand-about", g.note));
     items.forEach(a => {
+      if (!chOpen(a.ch) && !isDone(a)) { const lr = lockedRow(ACT_ITEMS.indexOf(a) + 101, null, "act"); lr.querySelector(".fake-line").textContent = ""; const tag = el("span","badge b-opt", CHAPTERS[a.ch].label + "'de açılır"); lr.appendChild(tag); sec.appendChild(lr); return; }
       const r = el("div","m act" + (isDone(a) ? " done" : " avail"));
       r.appendChild(checkBtn(a.id, a.name));
       const b = el("div","body");
@@ -1079,6 +1118,15 @@ function renderEggs(root){
   renderBigMap(root);
   const grid = el("div","eggs");
   EGG_ITEMS.filter(e => !eggRegion || e.r === eggRegion).forEach(e => {
+    if (!chOpen(e.ch) && !isDone(e)) {
+      const c = el("article","egg lockd");
+      const inner = el("div","blurred"); inner.setAttribute("aria-hidden","true");
+      inner.appendChild(el("h3", null, fakeText(EGG_ITEMS.indexOf(e) + 201, 12 + e.name.length % 10)));
+      inner.appendChild(el("p","sum", fakeText(EGG_ITEMS.indexOf(e) + 301, 60)));
+      c.appendChild(inner);
+      const ov = el("div","lock-mini"); ov.innerHTML = LOCK_SVG; ov.appendChild(el("span", null, CHAPTERS[e.ch].label + "'de açılır"));
+      c.appendChild(ov); grid.appendChild(c); return;
+    }
     const c = el("article","egg" + (isDone(e) ? " done" : ""));
     const top = el("div","egg-top");
     top.appendChild(checkBtn(e.id, e.name));
@@ -1162,18 +1210,15 @@ function renderStory(root){
     const mains = items.filter(m => m.main);
     const head = el("div","ch-head");
     head.appendChild(el("span","no", ch.label));
-    head.appendChild(el("h2", null, reached ? ch.name : "• • •"));
+    head.appendChild(el("h2", reached ? null : "blurred", reached ? ch.name : fakeText(ci * 5 + 1, ch.name.length)));
     head.appendChild(el("span","count", mains.filter(isDone).length + "/" + mains.length));
     sec.appendChild(head);
     if (reached) { const a = el("div"); a.innerHTML = artSVG(ch.key); sec.appendChild(a.firstChild); }
     if (!reached) {
-      const lk = el("div","ch-locked"); lk.innerHTML = LOCK_SVG;
-      lk.appendChild(el("span",null,"Bu bölüm henüz kilitli. " + mains.length + " ana görev seni bekliyor."));
-      sec.appendChild(lk);
+      sec.appendChild(lockZone(ch.label + " kilitli", prevLabel(ci) + " bitirince açılır · " + mains.length + " ana görev", 4, ch.key, ci * 40));
     } else {
       items.forEach(m => {
         // kilitli opsiyonelleri hiç gösterme (isim ve sayı spoiler olmasın)
-        if (!m.main && !state.showAll && !isDone(m) && !isAvail(m)) return;
         sec.appendChild(row(m));
       });
     }
