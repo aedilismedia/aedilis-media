@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="GTA VI için spoilersız Türkçe takip defteri: hikâye görevleri, bütün yan görevler (Strangers & Freaks), %100 listesi, etkinlikler ve easter egg'ler.">
+<meta name="description" content="GTA VI için spoilersız Türkçe takip defteri: hikâye görevleri, bütün yan görevler (Strangers & Freaks), %100 listesi, koleksiyon sayaçları, easter egg'ler ve şematik Leonida haritası.">
 <meta property="og:title" content="Leonida Görev Defteri · GTA VI">
 <meta property="og:description" content="GTA VI'nin hikâye görevleri, yan görevleri, etkinlikleri ve easter egg'leri: spoiler yemeden takip et.">
 <meta property="og:type" content="website">
@@ -45,6 +45,7 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+#chapters{width:100%;align-self:stretch}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
 .wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
@@ -155,7 +156,7 @@ h1 span{color:var(--accent)}
 .tab[aria-selected="true"] small{color:inherit;opacity:.75}
 .tab-intro{margin:0;color:var(--muted);font-size:14px;max-width:64ch}
 .strand{display:flex;flex-direction:column;gap:2px;margin-top:10px}
-.strand-head{display:flex;align-items:baseline;gap:10px}
+.strand-head{display:flex;align-items:center;gap:10px}
 .strand-head h3{margin:0;font-family:var(--display);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.01em}
 .strand-head .count{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}
 .strand-about{margin:0 0 4px;font-size:13px;color:var(--muted);max-width:64ch}
@@ -176,6 +177,57 @@ h1 span{color:var(--accent)}
 @media (max-width:480px){
   .tab{font-size:12px;padding:7px 4px}
 }
+/* Çizim ve harita renkleri */
+:root{
+  --sk-dawn1:#f6d7b8; --sk-dawn2:#f2a68a; --sk-sun1:#ffb36b; --sk-sun2:#f0613f; --sk-dusk1:#4b3f72; --sk-dusk2:#e07a5f;
+  --sk-neon1:#1b2f4d; --sk-neon2:#c6427a; --sk-day1:#7fd0e6; --sk-day2:#d8f1f6; --sk-night1:#0c1830; --sk-night2:#2a3e66;
+  --a-sun:#ffe08a; --a-sil:#17323a; --a-sea:#1f7f8c; --a-wave:#8fd3da; --a-win:#ffd36e; --a-winoff:#2c4a52; --a-wall:#c9b8a3; --a-bar:#4a3f36;
+  --a-neon:#ff7fb0; --a-neon2:#5ee6f0; --a-pool:#5fc9de; --a-deck:#efe3cf; --a-moon:#f4f1e6;
+  --m-sea:#d4e9ec; --m-land:#f3efe4; --m-stroke:#9db7b8; --m-lake:#a9d6dc; --m-mtn:#b8c4b4; --m-river:#8cc3cb;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --m-sea:#0f2228; --m-land:#1d3138; --m-stroke:#2f4c53; --m-lake:#173b44; --m-mtn:#2c4440; --m-river:#24515a; --a-deck:#c9bda9; } }
+:root[data-theme="dark"]{ --m-sea:#0f2228; --m-land:#1d3138; --m-stroke:#2f4c53; --m-lake:#173b44; --m-mtn:#2c4440; --m-river:#24515a; --a-deck:#c9bda9; }
+.st-dawn1{stop-color:var(--sk-dawn1)} .st-dawn2{stop-color:var(--sk-dawn2)} .st-sun1{stop-color:var(--sk-sun1)} .st-sun2{stop-color:var(--sk-sun2)}
+.st-dusk1{stop-color:var(--sk-dusk1)} .st-dusk2{stop-color:var(--sk-dusk2)} .st-neon1{stop-color:var(--sk-neon1)} .st-neon2{stop-color:var(--sk-neon2)}
+.st-day1{stop-color:var(--sk-day1)} .st-day2{stop-color:var(--sk-day2)} .st-night1{stop-color:var(--sk-night1)} .st-night2{stop-color:var(--sk-night2)}
+.a-sun{fill:var(--a-sun)} .a-sil{fill:var(--a-sil)} .a-sea{fill:var(--a-sea)} .a-wave{fill:none;stroke:var(--a-wave);stroke-width:1.5;opacity:.6}
+.a-win{fill:var(--a-win)} .a-win-off{fill:var(--a-winoff)} .a-door{fill:var(--a-winoff)} .a-door-on{fill:var(--a-win)}
+.a-wall{fill:var(--a-wall)} .a-wall2{fill:var(--a-bar)} .a-bar{fill:var(--a-bar)} .a-moon{fill:var(--a-moon)} .a-star{fill:var(--a-moon);opacity:.8}
+.a-sign{fill:var(--a-sil);stroke:var(--a-neon);stroke-width:2} .a-signtxt{fill:var(--a-neon);font:700 15px var(--mono);letter-spacing:.12em}
+.a-ground{fill:var(--a-sil)} .a-city{fill:var(--a-sil)} .a-city2{fill:var(--a-sea)} .a-neonline{fill:var(--a-neon);opacity:.75}
+.a-neonline2{stroke:var(--a-neon2);stroke-width:3} .a-pool{fill:var(--a-pool)} .a-deck{fill:var(--a-deck)} .a-poolline{fill:none;stroke:#fff;stroke-width:1.5;opacity:.7}
+.ch-art{display:block;width:100%;height:auto;aspect-ratio:4/1;border-radius:12px;margin:4px 0 6px}
+.hero-art{display:block;width:100%;height:auto;aspect-ratio:5/1;border-radius:14px}
+.m-sea{fill:var(--m-sea)} .m-land{fill:var(--m-land);stroke:var(--m-stroke);stroke-width:1.2} .m-lake{fill:var(--m-lake)}
+.m-mtn{fill:var(--m-mtn)} .m-river{fill:none;stroke:var(--m-river);stroke-width:2;stroke-linecap:round}
+.m-pin{fill:var(--accent);stroke:var(--surface);stroke-width:2} .m-pin2{fill:var(--sea);stroke:var(--surface);stroke-width:2} .m-dot{fill:var(--lock)}
+.m-halo{fill:var(--accent);opacity:.16} .m-lbl{font:600 10px var(--body);fill:var(--ink)} .m-cnt{font:700 10px var(--mono);fill:var(--muted)}
+.m-reg{cursor:pointer;outline:none} .m-reg.on .m-halo{opacity:.4} .m-reg:focus-visible .m-lbl{text-decoration:underline}
+.map-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.map-big{width:100%;height:auto;max-height:520px;border-radius:10px}
+.map-side{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted);min-width:0}
+.map-side h3{margin:0;font-family:var(--display);font-size:22px;text-transform:uppercase;color:var(--ink)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.map-mini{width:64px;height:auto;flex:none;border-radius:8px;border:1px solid var(--line)}
+.egg-body{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:10px;align-items:start}
+.strand-head .map-mini{width:44px;margin-left:8px}
+.counters{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:10px}
+.ctr{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.ctr-top{display:flex;align-items:center;gap:10px}
+.ctr-top b{font-weight:600;flex:1;min-width:0}
+.step{display:flex;align-items:center;gap:4px}
+.step button{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--surface-2);font-weight:700;font-size:16px;padding:0}
+.step input{width:56px;height:32px;text-align:center;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:600 14px var(--mono)}
+.ctr .bar{height:6px}
+.ctr small{color:var(--muted);font-size:12px}
+.ctr .goal{font-family:var(--mono);font-size:11px;color:var(--sea)}
+.ctr .goal.ok{color:var(--ok)}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{font-size:13px;color:var(--sea);border:1px solid var(--line);border-radius:99px;padding:6px 12px;text-decoration:none;background:var(--surface)}
+.tab svg{width:18px;height:18px}
+@media (max-width:620px){ .map-wrap{grid-template-columns:1fr} }
+
 @media (prefers-reduced-motion: reduce){ .bar i{transition:none} }
 </style>
 
@@ -184,6 +236,7 @@ h1 span{color:var(--accent)}
 <div class="wrap">
   <header class="mast">
     <div class="eyebrow">GTA VI · Görevler, yan işler, sürprizler · Spoilersız takip</div>
+    <div id="hero-art"></div>
     <h1>Leonida <span>Görev</span> Defteri</h1>
     <p class="lede">Hikâye görevleri, bütün yan görevler, etkinlikler, %100 listesi ve easter egg'ler tek yerde. Bitirdiğini işaretle, sıradaki açılsın. Henüz gelmediğin yerlerin adları gizli kalır, ayrıntılar sen açana kadar kapalı.</p>
     <div class="stats">
@@ -572,6 +625,117 @@ const EGGS = [
  ["UFO","Kelly County, Starlet Motel'in kuzeybatısı; saat 14.00'ten sonra, yalnız.","Yolda flaşörleri yanan terk edilmiş bir araba görürsün; burnunun baktığı yöne git. Havada süzülen bir kadın ve tepesinde bir UFO var. Işığa yaklaşınca kaçırılıyorsun; partnerin aradığında günlerdir kayıp olduğunu öğreniyorsun. Hikâyenin devamı var.","","Serinin klasik UFO'ları","Bölüm 2"]
 ];
 
+// ---- ÖZGÜN ÇİZİMLER (bu sayfa için çizildi)
+const palm = (x, y, s, cls) => `<g class="${cls||"a-sil"}" transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 C2 -18 3 -38 8 -58 L11 -58 C7 -38 5 -18 4 0 Z"/><path d="M9 -58 C-4 -66 -18 -64 -26 -54 C-14 -60 -4 -60 9 -56 Z"/><path d="M9 -58 C20 -68 34 -66 42 -56 C30 -61 20 -60 10 -56 Z"/><path d="M9 -58 C0 -74 -10 -78 -20 -76 C-8 -72 0 -66 8 -57 Z"/><path d="M10 -58 C18 -76 30 -80 38 -76 C28 -74 20 -68 11 -57 Z"/><path d="M9 -58 C6 -70 8 -82 14 -88 C12 -78 12 -68 11 -57 Z"/></g>`;
+const pine = (x, y, s) => `<g class="a-sil" transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 L-3 0 L-3 -6 L-14 -6 L-4 -18 L-11 -18 L-2 -30 L-8 -30 L0 -44 L8 -30 L2 -30 L11 -18 L4 -18 L14 -6 L3 -6 L3 0 Z"/></g>`;
+const waves = (y, n) => Array.from({length:n}, (_, i) => `<path class="a-wave" d="M${-20 + (i%2)*30} ${y + i*7} q15 -4 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"/>`).join("");
+const sky = (id, a, b) => `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="${a}"/><stop offset="1" class="${b}"/></linearGradient></defs><rect width="640" height="160" fill="url(#${id})"/>`;
+const ART = {
+ pro: () => `${sky("gpro","st-dawn1","st-dawn2")}
+  <circle cx="320" cy="112" r="40" class="a-sun"/>
+  <path class="a-wall" d="M0 0 H640 V160 H0 Z M230 34 H410 V150 H230 Z" fill-rule="evenodd"/>
+  ${[262,298,334,370].map(x => `<rect x="${x}" y="34" width="8" height="116" class="a-bar"/>`).join("")}
+  <rect x="230" y="84" width="180" height="7" class="a-bar"/>
+  <rect x="222" y="146" width="196" height="10" class="a-wall2"/>`,
+ c1: () => `${sky("gc1","st-sun1","st-sun2")}
+  <circle cx="452" cy="104" r="46" class="a-sun"/>
+  <rect y="104" width="640" height="56" class="a-sea"/>${waves(114,6)}
+  <path class="a-sil" d="M96 104 h112 v-34 l-56 -26 l-56 26 Z M110 104 v22 h4 v-22 M190 104 v22 h4 v-22"/>
+  <rect x="128" y="76" width="18" height="16" class="a-win"/><rect x="160" y="76" width="18" height="16" class="a-win"/>
+  <path class="a-sil" d="M230 112 h170 v4 h-170 Z M246 116 v20 h4 v-20 M300 116 v20 h4 v-20 M354 116 v20 h4 v-20"/>
+  ${palm(40,112,1.2)}${palm(70,114,0.9)}${palm(560,112,1.3)}${palm(600,116,0.95)}`,
+ c2: () => `${sky("gc2","st-dusk1","st-dusk2")}
+  <circle cx="110" cy="58" r="22" class="a-moon"/>
+  ${pine(20,130,1.6)}${pine(60,132,1.2)}${pine(588,130,1.7)}${pine(624,132,1.2)}
+  <rect x="150" y="96" width="340" height="40" class="a-sil"/>
+  ${[0,1,2,3,4,5,6,7].map(i => `<rect x="${166+i*40}" y="106" width="16" height="30" class="${i===3?"a-door-on":"a-door"}"/><rect x="${186+i*40}" y="108" width="12" height="10" class="${i%3===0?"a-win":"a-win-off"}"/>`).join("")}
+  <rect x="512" y="40" width="6" height="96" class="a-sil"/>
+  <rect x="478" y="26" width="76" height="30" rx="4" class="a-sign"/>
+  <text x="516" y="47" class="a-signtxt" text-anchor="middle">MOTEL</text>
+  <path class="a-ground" d="M0 136 H640 V160 H0 Z"/>`,
+ c3: () => `${sky("gc3","st-neon1","st-neon2")}
+  ${[[40,70,60],[110,50,46],[166,82,52],[230,36,58],[300,60,44],[352,28,60],[424,66,50],[484,44,54],[548,74,62]].map(([x,h,w]) => `<path class="a-city" d="M${x} 160 V${h+40} h${w*0.2} v-10 h${w*0.6} v10 h${w*0.2} V160 Z"/>` + Array.from({length:4}, (_, r) => `<rect x="${x+w*0.25}" y="${h+60+r*16}" width="${w*0.5}" height="3" class="a-neonline"/>`).join("")).join("")}
+  ${palm(20,160,1.3)}${palm(616,160,1.2)}
+  <path class="a-neonline2" d="M0 150 H640"/>`,
+ c4: () => `${sky("gc4","st-day1","st-day2")}
+  <circle cx="560" cy="40" r="22" class="a-sun"/>
+  <path class="a-city2" d="M420 120 V30 h80 v90 Z"/>
+  ${Array.from({length:6}, (_, r) => `<rect x="430" y="${40+r*13}" width="60" height="5" class="a-win"/>`).join("")}
+  <rect x="0" y="120" width="640" height="40" class="a-deck"/>
+  <rect x="120" y="126" width="260" height="26" rx="13" class="a-pool"/>
+  <path class="a-poolline" d="M140 136 q20 -4 40 0 t40 0 t40 0 t40 0 t40 0"/>
+  ${[60,90,400].map(x => `<path class="a-sil" d="M${x} 130 l26 -8 l4 4 l-24 8 Z M${x+4} 132 v8 M${x+22} 126 v10"/>`).join("")}
+  ${palm(30,122,1.1)}${palm(530,124,1.3)}${palm(600,122,1.0)}`,
+ c5: () => `${sky("gc5","st-night1","st-night2")}
+  ${Array.from({length:24}, (_, i) => `<circle cx="${(i*97)%640}" cy="${(i*37)%70+8}" r="1.4" class="a-star"/>`).join("")}
+  <circle cx="90" cy="44" r="18" class="a-moon"/>
+  ${[[200,30,50],[262,10,64],[338,44,48],[398,22,56],[466,52,44]].map(([x,h,w]) => `<rect x="${x}" y="${h}" width="${w}" height="${160-h}" class="a-city"/>` + Array.from({length:8}, (_, r) => `<rect x="${x+6}" y="${h+10+r*15}" width="${w-12}" height="4" class="${(r+x)%3===0?"a-win":"a-win-off"}"/>`).join("")).join("")}
+  <rect x="262" y="10" width="64" height="12" class="a-win"/>
+  <g class="a-sil" transform="translate(120 70)"><rect x="-18" y="-4" width="30" height="10" rx="5"/><rect x="10" y="-1" width="26" height="3"/><rect x="-30" y="-9" width="56" height="2"/><rect x="-8" y="6" width="2" height="5"/><rect x="2" y="6" width="2" height="5"/><rect x="-14" y="11" width="22" height="2"/></g>`
+};
+const artSVG = key => ART[key] ? `<svg class="ch-art" viewBox="0 0 640 160" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bölüm çizimi">${ART[key]()}</svg>` : "";
+
+// ---- ŞEMATİK LEONIDA HARİTASI (ölçeksiz, kendi çizimimiz)
+const REGIONS = {
+  kalaga:{n:"Mount Kalaga", x:150, y:44},
+  lummox:{n:"Lummox County", x:98, y:82},
+  portgellhorn:{n:"Port Gellhorn", x:58, y:146},
+  ambrosia:{n:"Ambrosia", x:132, y:140},
+  leonard:{n:"Leonard County", x:234, y:176},
+  grassrivers:{n:"Grassrivers", x:170, y:244},
+  vicecity:{n:"Vice City", x:250, y:246},
+  hamlet:{n:"Hamlet", x:214, y:290},
+  keys:{n:"Leonida Keys", x:150, y:344}
+};
+const LAND = "M34 22 L276 18 L282 120 L274 196 L266 262 L250 300 L226 326 L206 318 L188 296 L166 270 L126 228 L92 196 L60 176 L40 150 L30 100 Z";
+const KEYS = [[214,334,10,4],[196,342,12,4],[176,348,10,4],[156,352,12,4],[134,354,10,4],[114,354,9,3],[96,352,8,3],[264,250,6,3]];
+function mapSVG(opts){
+  const o = Object.assign({hi:null, pins:[], big:false, active:null}, opts);
+  const land = `<path d="${LAND}" class="m-land"/>` + KEYS.map(([x,y,rx,ry]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" class="m-land"/>`).join("") +
+    `<ellipse cx="170" cy="170" rx="22" ry="17" class="m-lake"/>` +
+    `<path d="M86 60 l10 -16 l8 10 l8 -14 l12 20 Z" class="m-mtn"/>` +
+    `<path d="M140 210 q10 20 30 26 q20 6 28 26" class="m-river"/>`;
+  let marks = "";
+  if (o.big) {
+    marks += Object.entries(REGIONS).map(([k, r]) => {
+      const pins = o.pins.filter(p => p.r === k);
+      const n = pins.length, eggs = pins.filter(p => p.kind === "egg").length, side = n - eggs;
+      const act = o.active === k ? " on" : "";
+      return `<g class="m-reg${act}" data-r="${k}" tabindex="0" role="button" aria-label="${r.n}: ${eggs} sürpriz, ${side} yan görev karakteri">` +
+        (n ? `<circle cx="${r.x}" cy="${r.y}" r="${9 + Math.min(n,8)}" class="m-halo"/>` : "") +
+        `<circle cx="${r.x}" cy="${r.y}" r="5" class="${eggs ? "m-pin" : side ? "m-pin2" : "m-dot"}"/>` +
+        `<text x="${r.x}" y="${r.y - 12}" class="m-lbl" text-anchor="middle">${r.n}</text>` +
+        (n ? `<text x="${r.x}" y="${r.y + 18}" class="m-cnt" text-anchor="middle">${eggs ? eggs + "★" : ""}${eggs && side ? " " : ""}${side ? side + "●" : ""}</text>` : "") + `</g>`;
+    }).join("");
+  } else if (o.hi && REGIONS[o.hi]) {
+    const r = REGIONS[o.hi];
+    marks += `<circle cx="${r.x}" cy="${r.y}" r="22" class="m-halo"/><circle cx="${r.x}" cy="${r.y}" r="7" class="m-pin"/>`;
+  }
+  const vb = o.big ? "0 0 310 380" : "10 0 290 380";
+  return `<svg class="${o.big ? "map-big" : "map-mini"}" viewBox="${vb}" role="img" aria-label="${o.big ? "Leonida şematik haritası" : (REGIONS[o.hi] ? REGIONS[o.hi].n : "") + " konumu"}"><rect x="0" y="0" width="310" height="380" class="m-sea"/>${land}${marks}</svg>`;
+}
+
+// ---- KOLEKSİYON SAYAÇLARI
+const MAP_LINKS = [["Dexerto interaktif harita","https://www.dexerto.com/wikis/gta-6/interactive-map/"],["GTABase harita","https://www.gtabase.com/gta-6/map/"]];
+// [id, ad, hedef(%100), toplam, açıklama]
+const COUNTERS = [
+ ["cards","Koleksiyon kartları",null,480,"18 sette 480 kart. Bazı kartlar birden fazla yerde çıkabiliyor. Oyunda: İlerleme › Koleksiyonlar › Koleksiyon Kartları."],
+ ["cardsets","Tamamlanan kart setleri",15,18,"%100 için 15 setin tamamı gerekiyor."],
+ ["mags","Dergi, kitap ve çizgi romanlar",null,27,"Aynı yayının kopyaları sayılmıyor. Yan görevlerin içinde de çıkıyor (ör. Andy'nin garajı)."],
+ ["swaps","Kitap takasları",null,7,"Dergilerle birlikte sayılıyor: %100 için 34'ten 30'u yeterli."],
+ ["watches","Lüks saatler",null,34,"Altın ikonlu; çoğu çete operasyonlarında."],
+ ["tattoos","Dövme dergileri (WAiNK)",null,45,"Jason 13, Lucia 15, diğer 17. Saatlerle birlikte 79 stilin 70'i yeterli."],
+ ["flamingos","Kokain flamingoları",100,125,"Siyah-beyaz gagalı olanlar. Vurunca paket düşüyor."],
+ ["wainks","WAiNK noktaları",100,null,"Yakında bir nokta olunca oyun haber veriyor."],
+ ["hoops","Basket potaları",90,100,"Haritada: Keşif › İlgi Noktaları › Basket Potaları."],
+ ["meds","Meditasyonlar",15,18,"10 nokta; iki karakterle ayrı sayılıyor."],
+ ["kenton","Kenton hazine setleri",5,7,"Sualtı keşiflerinin 33'ü için 7 set gerekiyor."],
+ ["vehicles","Taranan araçlar",200,277,"WAiNK ile; tekne ve uçaklar dahil."],
+ ["animals","İncelenen hayvanlar",100,255,"Dürbünle; her kedi ve köpek cinsi ayrı."],
+ ["weapons","Bulunan silahlar",50,66,"Elinde bir kez tutman yeterli."],
+ ["stunts","Akrobasi",300,397,"130 atlayış, 202 köprü altı, 40 binalar arası, 25 base jump."]
+];
+
 // ---- düz liste + kilit ilişkileri
 const FLAT = [];
 CHAPTERS.forEach((ch, ci) => ch.items.forEach(([k,n,name,sum,fl,giver,play,tip]) => {
@@ -585,7 +749,7 @@ for (let i = FLAT.length-1; i >= 0; i--) { FLAT[i].nextMain = nextMain; if (FLAT
 const MAINS = FLAT.filter(m => m.main), OPTS = FLAT.filter(m => !m.main);
 
 // ---- durum
-let state = {done:{}, showSum:false, showAll:false};
+let state = {done:{}, counts:{}, showSum:false, showAll:false};
 let revealed = new Set();
 const LS_KEY = "leonida-gorev-defteri-v1";
 try { const s = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (s && s.done) state = Object.assign(state, s); } catch(e) {}
@@ -603,7 +767,7 @@ function persist(){
   clearTimeout(saveTimer);
   saveTimer = setTimeout(async () => {
     setSync("Kaydediliyor…");
-    try { await remote.set({done:Object.keys(state.done), showSum:state.showSum, showAll:state.showAll, updatedAt:Date.now()}); setSync("Hesabına kaydedildi"); }
+    try { await remote.set({done:Object.keys(state.done), counts:state.counts||{}, showSum:state.showSum, showAll:state.showAll, updatedAt:Date.now()}); setSync("Hesabına kaydedildi"); }
     catch(e) { setSync("Kaydedilemedi, bu tarayıcıda tutuluyor"); }
   }, 600);
 }
@@ -622,7 +786,7 @@ const setSync = t => { document.getElementById("sync").textContent = t; };
     remote = ref;
     if (d && Array.isArray(d.done)) {
       state.done = {}; d.done.forEach(id => state.done[id] = true);
-      state.showSum = !!d.showSum; state.showAll = !!d.showAll;
+      state.showSum = !!d.showSum; state.showAll = !!d.showAll; state.counts = (d.counts && typeof d.counts === "object") ? d.counts : {};
       try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
       render();
     } else if (Object.keys(state.done).length) {
@@ -739,7 +903,75 @@ const sideAvail = o => o.i === 0 || isDone(SIDE.find(x => x.strand === o.strand 
 const strandOpen = s => state.showAll || chReached(s.ch);
 const ACT_ITEMS = [];
 ACTS.forEach(g => g.items.forEach(([name, target, desc], i) => ACT_ITEMS.push({id:"a-" + g.key + "-" + i, g, name, target, desc})));
-const EGG_ITEMS = EGGS.map(([name, where, what, reward, ref, when], i) => ({id:"e-" + i, name, where, what, reward, ref, when}));
+const EGG_ITEMS = EGGS.map(([name, where, what, reward, ref, when], i) => ({id:"e-" + i, name, where, what, reward, ref, when, r:null}));
+// bölge eşleştirmeleri (yaklaşık)
+const EGG_REGION = ["keys","keys","grassrivers","portgellhorn","vicecity","keys","hamlet","leonard","grassrivers",null,"keys","keys","vicecity","vicecity","vicecity","keys","vicecity","vicecity","lummox","portgellhorn","vicecity","leonard","hamlet","kalaga","keys","portgellhorn"];
+const STRAND_REGION = {kirk:"grassrivers", kyle:"portgellhorn", bret:"lummox", moses:"portgellhorn", yago:"vicecity", billy:"portgellhorn", andy:"leonard", yasmani:"vicecity", randy:"vicecity", tyrone:"vicecity", dunk:"portgellhorn", dodos:"vicecity", pete:"leonard"};
+let eggRegion = null;
+const TAB_ICONS = {
+  "hikaye":'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4.5c2.5-1 5-1 7 .5 2-1.5 4.5-1.5 7-.5v11c-2.5-1-5-1-7 .5-2-1.5-4.5-1.5-7-.5z"/><path d="M10 5v11"/></svg>',
+  "yan-gorevler":'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="7" r="2.6"/><circle cx="14" cy="8" r="2.2"/><path d="M2.5 16c.6-3 2.4-4.4 4.5-4.4s3.9 1.4 4.5 4.4M11.5 12.6c.7-.6 1.6-.9 2.5-.9 1.8 0 3.2 1.2 3.7 4.3"/></svg>',
+  "etkinlikler":'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3" width="13" height="14.5" rx="2"/><path d="M6.5 7.5l1.3 1.3 2.4-2.6M6.5 12.5l1.3 1.3 2.4-2.6M12 8h2.5M12 13h2.5"/></svg>',
+  "surprizler":'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5c3.3 0 5.6 4.6 5.6 8.4 0 3.4-2.5 6.1-5.6 6.1s-5.6-2.7-5.6-6.1c0-3.8 2.3-8.4 5.6-8.4z"/><path d="M5 10.5l2.2-1.4 2 1.4 2-1.4 2 1.4 1.8-1.2"/></svg>'
+};
+function setCount(id, v, max){
+  v = Math.max(0, Math.round(Number(v) || 0)); if (max) v = Math.min(v, max);
+  state.counts = state.counts || {};
+  if (v) state.counts[id] = v; else delete state.counts[id];
+  persist(); render();
+}
+function renderCounters(root){
+  const sec = el("section","chapter");
+  sec.appendChild(sectionHead("Sayaç","Koleksiyonlar", null));
+  sec.appendChild(el("p","strand-about","Kart, dergi ve diğer koleksiyonların tam konumları interaktif haritalarda. Bulduklarını buradan say; hedefe ulaşınca yeşile döner."));
+  const links = el("div","links");
+  MAP_LINKS.forEach(([n, u]) => { const a = el("a", null, n + " ↗"); a.href = u; a.target = "_blank"; a.rel = "noopener"; links.appendChild(a); });
+  sec.appendChild(links);
+  const grid = el("div","counters");
+  COUNTERS.forEach(([id, name, goal, total, desc]) => {
+    const v = (state.counts || {})[id] || 0;
+    const c = el("div","ctr");
+    const top = el("div","ctr-top"); top.appendChild(el("b", null, name));
+    const st = el("div","step");
+    const minus = el("button", null, "−"); minus.setAttribute("aria-label", name + " azalt");
+    const inp = document.createElement("input"); inp.type = "number"; inp.min = "0"; if (total) inp.max = String(total); inp.value = String(v); inp.id = "ctr-" + id; inp.setAttribute("aria-label", name);
+    const plus = el("button", null, "+"); plus.setAttribute("aria-label", name + " artır");
+    minus.addEventListener("click", () => setCount(id, v - 1, total));
+    plus.addEventListener("click", () => setCount(id, v + 1, total));
+    inp.addEventListener("change", () => setCount(id, inp.value, total));
+    st.append(minus, inp, plus); top.appendChild(st); c.appendChild(top);
+    const ref = goal || total;
+    if (ref) { const bar = el("div","bar"); const i = el("i"); i.style.width = Math.min(100, v / ref * 100) + "%"; bar.appendChild(i); c.appendChild(bar); }
+    const g = el("span", "goal" + (goal && v >= goal ? " ok" : ""), (total ? v + "/" + total : v + " bulundu") + (goal ? " · %100 için " + goal : ""));
+    c.appendChild(g);
+    c.appendChild(el("small", null, desc));
+    grid.appendChild(c);
+  });
+  sec.appendChild(grid);
+  root.appendChild(sec);
+}
+function renderBigMap(root){
+  const pins = EGG_ITEMS.filter(e => e.r).map(e => ({r:e.r, kind:"egg"})).concat(STRANDS.filter(strandOpen).map(s => ({r:STRAND_REGION[s.key], kind:"side"})));
+  const wrap = el("div","map-wrap");
+  const m = el("div"); m.innerHTML = mapSVG({big:true, pins, active:eggRegion}); wrap.appendChild(m);
+  const side = el("div","map-side");
+  side.appendChild(el("h3", null, eggRegion ? REGIONS[eggRegion].n : "Leonida haritası"));
+  side.appendChild(el("p", null, eggRegion ? "Aşağıda sadece bu bölgedeki sürprizler gösteriliyor. Tümünü görmek için aynı bölgeye tekrar dokun." : "Bir bölgeye dokun, o bölgedeki sürprizler listelensin. Kendi çizdiğimiz şematik bir harita; konumlar bölge düzeyinde ve yaklaşık."));
+  const lg = el("div","legend"); lg.innerHTML = '<span><i style="background:var(--accent)"></i>★ Sürpriz</span><span><i style="background:var(--sea)"></i>● Yan görev karakteri</span>';
+  side.appendChild(lg);
+  const links = el("div","links");
+  MAP_LINKS.forEach(([n, u]) => { const a = el("a", null, n + " ↗"); a.href = u; a.target = "_blank"; a.rel = "noopener"; links.appendChild(a); });
+  side.appendChild(links);
+  wrap.appendChild(side);
+  wrap.querySelectorAll(".m-reg").forEach(g => {
+    const go = () => { const k = g.getAttribute("data-r"); eggRegion = eggRegion === k ? null : k; render(); };
+    g.addEventListener("click", go);
+    g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); go(); } });
+  });
+  root.appendChild(wrap);
+}
+
+EGG_ITEMS.forEach((e, i) => e.r = EGG_REGION[i] || null);
 
 function toggleId(id){ if (state.done[id]) delete state.done[id]; else state.done[id] = true; persist(); render(); }
 function checkBtn(id, label, enabled){
@@ -789,6 +1021,7 @@ function renderSide(root){
       h.appendChild(el("h3",null,s.who));
       const n = s.items.filter((_, i) => state.done["s-" + s.key + "-" + i]).length;
       h.appendChild(el("span","count", n + "/" + s.items.length));
+      if (STRAND_REGION[s.key]) { const mm = el("span"); mm.innerHTML = mapSVG({hi:STRAND_REGION[s.key]}); mm.title = REGIONS[STRAND_REGION[s.key]].n; h.appendChild(mm.firstChild); }
       box.appendChild(h);
       const about = el("p","strand-about", s.about + (s.trophy ? " " + s.trophy : ""));
       box.appendChild(about);
@@ -818,7 +1051,8 @@ function renderActs(root){
   const req = ACT_ITEMS.filter(a => a.g.key.startsWith("g100"));
   const rd = req.filter(isDone).length, all = ACT_ITEMS.filter(isDone).length;
   setStats(rd + "/" + req.length, "%100 maddesi", all + "/" + ACT_ITEMS.length, "Toplam işaret", Math.round(rd / req.length * 100), "%100 ilerlemesi");
-  root.appendChild(el("p","tab-intro","%100 tamamlama listesi, yan etkinlikler, Jason'ın evindeki işler ve para kaynakları. Bunlarda spoiler yok, hepsi açık. Bitirdiklerini işaretle."));
+  root.appendChild(el("p","tab-intro","Koleksiyon sayaçları, %100 tamamlama listesi, yan etkinlikler, Jason'ın evindeki işler ve para kaynakları. Bunlarda spoiler yok, hepsi açık. Bitirdiklerini işaretle."));
+  renderCounters(root);
   ACTS.forEach(g => {
     const sec = el("section","chapter");
     const items = ACT_ITEMS.filter(a => a.g === g);
@@ -842,8 +1076,9 @@ function renderEggs(root){
   const found = EGG_ITEMS.filter(isDone).length;
   setStats(found + "/" + EGG_ITEMS.length, "Bulunan", EGG_ITEMS.filter(e => e.reward).length + "", "Ödüllü sürpriz", Math.round(found / EGG_ITEMS.length * 100), "Keşif");
   root.appendChild(el("p","tab-intro","Easter egg'ler, gizli yerler ve bedava eşyalar. Her kartın ayrıntısı sen açana kadar kapalı; sadece adına bakarak kendin aramak istersen açma. Bulduklarını işaretle."));
+  renderBigMap(root);
   const grid = el("div","eggs");
-  EGG_ITEMS.forEach(e => {
+  EGG_ITEMS.filter(e => !eggRegion || e.r === eggRegion).forEach(e => {
     const c = el("article","egg" + (isDone(e) ? " done" : ""));
     const top = el("div","egg-top");
     top.appendChild(checkBtn(e.id, e.name));
@@ -854,12 +1089,15 @@ function renderEggs(root){
     if (e.reward) tags.appendChild(el("span","badge b-now","Ödül"));
     if (tags.childNodes.length) c.appendChild(tags);
     if (state.showSum || revealed.has(e.id)) {
+      const eb = el("div","egg-body");
       const d = el("div","detail");
       const w = el("p","tip"); w.appendChild(el("b",null,"Nerede ")); w.appendChild(document.createTextNode(e.where)); d.appendChild(w);
       d.appendChild(el("p","sum", e.what));
       if (e.reward) { const p = el("p","meta"); p.textContent = "Ödül: " + e.reward; d.appendChild(p); }
       if (e.ref) { const p = el("p","meta ref"); p.textContent = "Gönderme: " + e.ref; d.appendChild(p); }
-      c.appendChild(d);
+      eb.appendChild(d);
+      if (e.r) { const mm = el("div"); mm.innerHTML = mapSVG({hi:e.r}); mm.title = REGIONS[e.r].n; eb.appendChild(mm.firstChild); }
+      c.appendChild(eb);
     } else {
       const b = el("button","reveal","Yerini ve ne olduğunu göster");
       b.addEventListener("click", () => { revealed.add(e.id); render(); });
@@ -881,6 +1119,7 @@ function renderTabs(){
   TABS.forEach(([k, label]) => {
     const b = el("button","tab");
     b.setAttribute("role","tab"); b.setAttribute("aria-selected", k === tab ? "true" : "false");
+    const ic = el("i"); ic.innerHTML = TAB_ICONS[k]; ic.setAttribute("aria-hidden","true"); b.appendChild(ic);
     b.appendChild(el("span",null,label)); b.appendChild(el("small",null,counts[k]));
     b.addEventListener("click", () => setTab(k));
     nav.appendChild(b);
@@ -888,6 +1127,7 @@ function renderTabs(){
 }
 
 function render(){
+  const ha = document.getElementById("hero-art"); if (ha && !ha.firstChild) ha.innerHTML = artSVG("c1").replace('class="ch-art"','class="hero-art"').replace('id="gc1"','id="ghero"').replace('url(#gc1)','url(#ghero)');
   document.getElementById("t-sum").setAttribute("aria-pressed", state.showSum);
   document.getElementById("t-all").setAttribute("aria-pressed", state.showAll);
   renderTabs();
@@ -925,6 +1165,7 @@ function renderStory(root){
     head.appendChild(el("h2", null, reached ? ch.name : "• • •"));
     head.appendChild(el("span","count", mains.filter(isDone).length + "/" + mains.length));
     sec.appendChild(head);
+    if (reached) { const a = el("div"); a.innerHTML = artSVG(ch.key); sec.appendChild(a.firstChild); }
     if (!reached) {
       const lk = el("div","ch-locked"); lk.innerHTML = LOCK_SVG;
       lk.appendChild(el("span",null,"Bu bölüm henüz kilitli. " + mains.length + " ana görev seni bekliyor."));
@@ -947,7 +1188,7 @@ function bindReset(){
     const slot = document.getElementById("reset-slot"); slot.innerHTML = "";
     const w = el("span","confirm"); w.appendChild(el("span",null,"Tüm işaretler silinsin mi?"));
     const y = el("button","yes","Evet, sıfırla"); const n = el("button","chip","Vazgeç");
-    y.addEventListener("click", () => { state.done = {}; revealed.clear(); persist(); restore(); render(); });
+    y.addEventListener("click", () => { state.done = {}; state.counts = {}; revealed.clear(); persist(); restore(); render(); });
     n.addEventListener("click", restore);
     w.append(y, n); slot.appendChild(w);
   });
