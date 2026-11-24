@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="GTA VI hikâye görevleri için spoilersız Türkçe takip defteri: görevi işaretle, sıradaki açılsın. Her görev için ayrıntılı Türkçe özet ve ipuçları.">
+<meta name="description" content="GTA VI için spoilersız Türkçe takip defteri: hikâye görevleri, bütün yan görevler (Strangers & Freaks), %100 listesi, etkinlikler ve easter egg'ler.">
 <meta property="og:title" content="Leonida Görev Defteri · GTA VI">
-<meta property="og:description" content="GTA VI görevlerini spoiler yemeden takip et: işaretle, sıradaki açılsın.">
+<meta property="og:description" content="GTA VI'nin hikâye görevleri, yan görevleri, etkinlikleri ve easter egg'leri: spoiler yemeden takip et.">
 <meta property="og:type" content="website">
 <link rel="icon" href="/assets/img/site-icon.webp">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -44,6 +44,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
 .wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
@@ -144,6 +145,37 @@ h1 span{color:var(--accent)}
   .m{grid-template-columns:28px 32px minmax(0,1fr)}
   .sync{margin-left:0;width:100%}
 }
+
+/* Sekmeler */
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;border-bottom:1px solid var(--line)}
+.tab{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:600;font-size:14px;min-width:0}
+.tab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tab small{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab[aria-selected="true"] small{color:inherit;opacity:.75}
+.tab-intro{margin:0;color:var(--muted);font-size:14px;max-width:64ch}
+.strand{display:flex;flex-direction:column;gap:2px;margin-top:10px}
+.strand-head{display:flex;align-items:baseline;gap:10px}
+.strand-head h3{margin:0;font-family:var(--display);font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.01em}
+.strand-head .count{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.strand-about{margin:0 0 4px;font-size:13px;color:var(--muted);max-width:64ch}
+.m.act{grid-template-columns:28px minmax(0,1fr)}
+.m.act .sum{color:var(--muted)}
+.eggs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.egg{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.egg.done{border-color:var(--ok)}
+.egg-top{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+.egg h3{margin:0;font-size:16px;line-height:1.3}
+.egg.done h3{color:var(--muted)}
+.egg.done .check{background:var(--ok);border-color:var(--ok);color:#fff}
+.egg.done .check svg{opacity:1}
+.egg-tags{display:flex;gap:6px;flex-wrap:wrap}
+.meta.ref{color:var(--muted)}
+.m .check[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+.m .check[aria-pressed="true"] svg{opacity:1}
+@media (max-width:480px){
+  .tab{font-size:12px;padding:7px 4px}
+}
 @media (prefers-reduced-motion: reduce){ .bar i{transition:none} }
 </style>
 
@@ -151,12 +183,12 @@ h1 span{color:var(--accent)}
 <body>
 <div class="wrap">
   <header class="mast">
-    <div class="eyebrow">GTA VI · Hikâye görevleri · Spoilersız takip</div>
+    <div class="eyebrow">GTA VI · Görevler, yan işler, sürprizler · Spoilersız takip</div>
     <h1>Leonida <span>Görev</span> Defteri</h1>
-    <p class="lede">Bitirdiğin görevi işaretle, sıradaki açılsın. Henüz gelmediğin görevlerin adı ve bölüm başlıkları gizli kalır. Her görevin ayrıntılı özeti, kim verdiği, kiminle oynandığı ve ipuçları sen açana kadar kapalı.</p>
+    <p class="lede">Hikâye görevleri, bütün yan görevler, etkinlikler, %100 listesi ve easter egg'ler tek yerde. Bitirdiğini işaretle, sıradaki açılsın. Henüz gelmediğin yerlerin adları gizli kalır, ayrıntılar sen açana kadar kapalı.</p>
     <div class="stats">
-      <div class="stat"><b id="st-main">0/0</b><small>Ana görev</small></div>
-      <div class="stat"><b id="st-opt">0/0</b><small>Opsiyonel</small></div>
+      <div class="stat"><b id="st-main">0/0</b><small id="st-main-l">Ana görev</small></div>
+      <div class="stat"><b id="st-opt">0/0</b><small id="st-opt-l">Opsiyonel</small></div>
       <div class="stat"><b id="st-pct">%0</b><small id="st-ch">Prolog</small></div>
     </div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
@@ -168,11 +200,13 @@ h1 span{color:var(--accent)}
     </div>
   </header>
 
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Bölümler"></nav>
+
   <section class="next" id="next" aria-live="polite"></section>
 
   <main id="chapters" class="wrap" style="gap:34px"></main>
 
-  <section class="notes">
+  <section class="notes" id="notes">
     <h2>Bilmekte fayda var</h2>
     <ul>
       <li><b>Görev tekrarı yok.</b> Biten görev yeniden oynanamıyor. Her bölümün başında ve sonunda ayrı bir manuel kayıt al.</li>
@@ -186,7 +220,7 @@ h1 span{color:var(--accent)}
     </ul>
   </section>
 
-  <p class="foot">Görev adları, sırası ve ayrıntılar <a href="https://www.gtabase.com/missions/gta-6/" target="_blank" rel="noopener">GTABase</a> rehberlerine dayanır; Türkçe özetler bu sayfa için ayrıca yazıldı. Diyalog içermez. Rockstar ile bağlantısı olmayan bir hayran takip sayfasıdır.</p>
+  <p class="foot">Görev adları, sırası ve ayrıntılar <a href="https://www.gtabase.com/missions/gta-6/" target="_blank" rel="noopener">GTABase</a> ve <a href="https://www.dexerto.com/wikis/gta-6/easter-eggs/" target="_blank" rel="noopener">Dexerto</a> rehberlerine dayanır; Türkçe özetler bu sayfa için ayrıca yazıldı. Diyalog içermez. Rockstar ile bağlantısı olmayan bir hayran takip sayfasıdır.</p>
 </div>
 
 <script>
@@ -342,6 +376,202 @@ const CHAPTERS = [
  ]}
 ];
 
+// ---- YAN GÖREVLER (Strangers & Freaks)
+// strand: {key, who, ch (hangi bölümde açılır: 1-4), about, trophy, items:[[ad, karakter, özet, ipucu, ödül]]}
+const STRANDS = [
+ {key:"kirk", who:"Kirk", ch:1, about:"Skunk Ape'e (Leonida'nın Koca Ayak'ı) takıntılı bir yaratık avcısı.", trophy:"Strangers & Freaks kupasına sayılıyor.", items:[
+  ["Search for the Skunk Ape","JL","Hamlet'teki Skeeter's bar'da Kirk'ün Skunk Ape ilanını oku; Kirk rehberine ekleniyor. Gece Mariana County bataklığında buluşuyorsunuz. Kirk, Mr. Mangrove dediği Koca Ayak benzeri yaratığı dronla arıyor. Onu takip edip yaratığın yuva ve beslenme alanlarını inceliyor, sonunda kısa bir kovalamacaya giriyorsun.","Sadece gece başlıyor; gerekirse yatakta uyuyup zamanı ilerlet. Karanlıkta silah çarkından el fenerini al.","1.000 $"],
+  ["Search for Tree Effigies","JL","Kirk'ün mesajından sonra Pelican Valley bataklığında geniş bir arama alanı açılıyor. Ağaçlara oyulmuş üç tılsımı bulup incele; Kirk bunlarla yaratığın saklandığı yeri üçgenlemeye çalışıyor.","Tılsımlar istediğin sırayla bulunabilir. Alanda üçten fazla tılsım olabiliyor; üçüncüsünü incelediğin an görev bitiyor.",""],
+  ["Help Kirk Find Mr. Mangrove","L","Yalnızca Lucia'yla ve gece oynanıyor, bu yüzden Bölüm 2'den önce gelmiyor. Kirk'ün helikopterinden özel bir uyuşturucu tüfeğiyle yaratığı avlıyor, sonra terk edilmiş bir kulübede onu buluyorsun. Lucia sporları soluyup bayılınca bataklığı hayvanların gözünden gördüğün tuhaf bir bölüm başlıyor. Sonunda Mr. Mangrove'un kaderine sen karar veriyorsun.","Mr. Mangrove'u vurmayı seçersen 10.000 $ alıyorsun; diğer seçimin parası yok.","10.000 $ (seçime bağlı)"]
+ ]},
+ {key:"kyle", who:"Kyle McKittrick", ch:2, about:"Kelly County'de tarım uçağı kullanan, dev çilek hayaliyle yanıp tutuşan bir çiftçi.", trophy:"Strangers & Freaks kupasına sayılıyor.", items:[
+  ["Check Out McKittrick Farm","JL","Starlet Motel resepsiyonunun dışındaki 'pilot aranıyor' ilanı Kyle'ın çiftliğini haritaya ekliyor. Eli yaralı Kyle'ın tarım uçağını kaldırıp tarlasını ilaçlıyorsun, sonra uçağı geri indiriyorsun.","Silah çarkının sol tarafından 'Spray Chemicals'ı seç ve tarlanın üstünde tuşu basılı tut.","400 $"],
+  ["Collect Chemicals for Kyle","JL","Kyle yeni ilacı için Leonard County'deki bir yerleşkeden kimyasal yüklü bir minibüs istiyor. Başındaki Final Chapter çetesi 5.000 $ istiyor: ödeyebilir, pazarlık edebilir ya da minibüsü çalıp kaçabilirsin. Çiftliğe dönünce Kyle'ın kimyasalları dev çilekler için kullandığı ortaya çıkıyor.","Pazarlıkla fiyat 3.000 $'a iniyor. Minibüsteyken kapı açılmazsa araçtan in; yayayken açılıyor.","1.000 $"],
+  ["Buddy?","JL","Kyle'dan garip bir mesaj geliyor ve çiftliği polis kuşatmış. Kimyasallar Kyle'ı bir mutanta dönüştürmüş. Uzak durup olanları izleyebilir ya da polise yardım edip onunla savaşabilirsin. İki farklı son var.","Polis tarafını seçersen 5.000 $ geliyor. Görev Marvel'ın Red Hulk'ına bir gönderme.","5.000 $ (seçime bağlı)"]
+ ]},
+ {key:"bret", who:"Bret Vogel", ch:2, about:"Jason'ın ordudan arkadaşı; 'Killtelligence' adlı tuhaf bir av işi var. Sadece Jason.", trophy:"Kendi kupası var: Fair Game.", items:[
+  ["Veteran Hunted","J","Coffee Break'ten bir süre sonra Bret, Lummox County'ye çağırıyor; Jason yalnız gitmeli. Avcılık eğitimi niteliğinde bir görev: Focus ile koku izini sürüyor, geyiği inceleyip avlıyor ve işleme alanına götürüyorsun. Bret sana özel av tüfeği Killtelligence SM-69'u veriyor.","Kafa ya da kalbe tek atış hayvanı kusursuz tutar. Dürbünle incelediğin her yeni hayvan %100'deki 100 hayvan hedefine sayılıyor.","500 $"],
+  ["Bret's Hunting Decks","J","Bret'in av meydan okumaları başlıyor. Haritada mor av alanları açılıyor; istediği hayvanları avlayıp Jason'la ona götürüyorsun. Toplam 15 hedef destesi var ve hepsi %100 için gerekli.","Av tüfeğini herhangi bir Ammu-Nation silah dolabından geri alabilirsin.",""]
+ ]},
+ {key:"moses", who:"Moses", ch:2, about:"Port Gellhorn'daki tamirci; soru sormadan araba alıyor.", trophy:"", items:[
+  ["Steal Vehicles for Moses","JL","Moses'ın teslim edilecek araç listesi. Her teslimat ayrı bir opsiyonel görev sayılıyor ve %100'deki 100 opsiyonel göreve katkı sağlıyor.","Takip cihazı olmayan ucuz araçlarla başla. Araç satışları %100'deki 200.000 $ araç satışı hedefine de sayılıyor.",""],
+  ["Collect Moses' Gift","JL","Listedeki son aracı teslim edince Moses, dükkânında bir hediye bıraktığını yazıyor. Ana garajın yanındaki küçük garajı aç: içeride artık senin olan benzersiz bir Sultan duruyor.","Arabayı kaydedip saklayabilir ya da satabilirsin.","Moses'ın Sultan'ı"]
+ ]},
+ {key:"yago", who:"Yago", ch:3, about:"Little Cuba'lı genç bir sokak yarışçısı.", trophy:"Strangers & Freaks kupasına sayılıyor.", items:[
+  ["Join a Street Race","JL","Dealer's Choice'tan birkaç dakika sonra Manuel seni bir grup sohbetine ekliyor ve Salton'da bir sokak yarışı işaretleniyor. Üç kiralık arabadan birini seçip yarışıyor, Yago'yla tanışıyorsun.","En pahalı kiralık araba (900 $) kazanmayı çok kolaylaştırıyor; birincilik 3.000 $.","3.000 $'a kadar"],
+  ["Bumper to Bumper","J","Yago, Jason'dan ders almak istiyor. Restoranında buluşup arabasını modifiye ettiriyorsun (masraf Yago'dan), ardından yarış ekibine katılıp yarışıyorsun. Çizgiyi geçer geçmez polis peşine düşüyor.","Sıradaki görev Race Against Yago birkaç oyun günü sonra geliyor ve süreli; telefonunu takip et.","500 $"],
+  ["Brother to Brother","J","Yago bir uyuşturucu alışverişinde yedek istiyor. Buluşma kanlı bir çatışmaya dönüyor; çantayı alıp kaçıyor, devrilen arabasında Yago'ya ulaşıyorsun. Enkazın içinde Yago büyük bir itirafta bulunuyor ve onu kurtarıp kurtarmamak sana kalıyor.","Ancak Race Against Yago'yu da bitirdiysen açılıyor. Çatışmada düşen silahları topla; silah koleksiyonuna sayılıyor.",""]
+ ]},
+ {key:"billy", who:"Billy", ch:3, about:"Thrillbilly Mud Club'daki motorcu ekibinin lideri. İlk iki işi (Thrillbillies, Twist Wrist, Smash, Grab) hikâye listesinde.", trophy:"Kendi kupası var: The Lone Rider.", items:[
+  ["Mall Rats","JL","Billy'nin üçüncü işi Ocean Beach'te. Motorlarla bir otoparktan geçip alışveriş merkezine dalıyor, kuyumcunun vitrinlerini ve kasasını boşaltıyorsunuz. Dışarıda polis bekliyor; Billy'ye yapışıp motorla kaçış minibüsünün arkasına çıkıyorsun.","Yalnız gitmen gerekiyor. Kasa şifresi değişebiliyor; patlayıcıyla da açabilirsin.","12.000 $"],
+  ["The Impaler","JL","Ambrosia'daki polis otoparkının çitinden atlayıp tek siyah-beyaz devriye aracını (Impaler) çalıyorsun. Üç yıldızla kaçıp aracı işaretli tünele bırakıyorsun.","Ambrosia'nın kuzeyindeki tren tüneli polisi atlatmanın en kolay yolu; polis raylarda peşine düşmüyor.",""],
+  ["Hometown Heroes","JL","Billy'nin en büyük işi. Çaldığınız polis aracıyla yarış pistine dalıyor, Lucia'yla pistin kasasını boşaltıyorsun. Final Chapter çetesinin pususu, şeker fabrikasında çatışma ve kaçışla bitiyor.","İki karakter de katılıyor; yalnız gelirsen diğeri açılış sahnesinde katılır.","10.000 $"]
+ ]},
+ {key:"andy", who:"Andy (Cellerica)", ch:3, about:"Lucia'nın eski arkadaşı; 'Manifestick' adlı vape satan Cellerica grubuna kapılmış. Sadece Lucia.", trophy:"Kendi kupası var: Road to Rehabilitation.", items:[
+  ["Climbing the Cellerichain","L","Andy, Lucia'yı Belville'deki yeni evine çağırıp Cellerica'yı tanıtıyor. Aynı adı taşıyan üç kısa teslimat: Waning Sands'deki bir bahçeye paket, kuzey Vice City pazarındaki standa paket ve Ambrosia'da bir eve teslimat.","Andy'nin garajındaki paketin yanında bir koleksiyon dergisi var.",""],
+  ["Pay the Cellerica Fee","L","Andy, gruba katılmak için giriş ücreti istiyor. Gidecek bir yer yok: BuckMe'den Andy'ye 5.000 $ gönder.","Para hikâyenin sonunda geri geliyor.","-5.000 $"],
+  ["Peach!","L","Cellerica kampüsünde tur: Andy grubun hiyerarşisini anlatıyor. Ardından giriş töreni yapılıyor ve kurucu Cecilia, Lucia'yı malikânesine çağırıyor.","Törendeki seçimler hikâyeyi değiştirmiyor; hepsini kabul edip ortamı yumuşatırsan Cecilia övgüyle karşılıyor.",""],
+  ["Read the Label","L","Cecilia, gruptan çalınan bir minibüsü geri istiyor. Kuzey Vice City'de minibüsün başındaki iki kişiyi bayıltıp aracı Belville'deki depoya götürüyorsun.","","1.800 $"],
+  ["Puff Puff Pass","L","Depoda ürünlerin gerçek içeriği ortaya çıkıyor ve Cecilia, Lucia'dan kabul edemeyeceği bir şey istiyor. Lucia reddedince depoda çatışma çıkıyor, ardından Cecilia'yla malikânesinde hesaplaşıyorsun.","Bitirince 5.000 $'lık giriş ücreti de iade ediliyor.","10.000 $ + 5.000 $ iade"]
+ ]},
+ {key:"yasmani", who:"Yasmani", ch:3, about:"Little Cuba'da çalıntı mücevher ve işaretli para alan bir alıcı.", trophy:"", items:[
+  ["Yasmani's ATM Jobs","JL","Yasmani'nin verdiği ilk soygun dizisi: şehirdeki ATM'ler.","",""],
+  ["Yasmani's Payday Loans Jobs","JL","Credit Check'ten sonra açılan maaş avansı dükkânları. Veznedarı tehdit et, tezgâhtaki parayı ve arka odadaki kasayı al, sonra polisten kaç.","Haritada 7 dükkân var; hepsi %100 için gerekli.",""],
+  ["Tail the Security Van","JL","Yasmani bir para nakil aracını izlemeni ve nereye gittiğini görmeni istiyor. Bu iş, banka kasası soygunlarına giden yolu açıyor.","Daha sonra Yasmani nakil aracı ipuçlarını 10.000 $'a satıyor.",""]
+ ]},
+ {key:"randy", who:"Randy", ch:3, about:"Ocean Beach'teki galeriyle lüks araba işi yapan bir satıcı.", trophy:"Kendi kupası var: Supply & Demand.", items:[
+  ["Randy's Wish List","JL","Randy'nin istek listesi: belirli spor arabaları çalıp ona teslim et. Hasarsız teslim edilen araçlar 35.000 $ ve üstü ödüyor.","200.000 $ araç satışı hedefine ulaşmanın en hızlı yolu.","araç başı 35.000 $+"]
+ ]},
+ {key:"tyrone", who:"Tyrone", ch:3, about:"La Perle'deki satıcı; Kitty Litter adlı yeni sentetik uyuşturucuyla savaş açmış.", trophy:"Kendi kupası var: Spin On This!", items:[
+  ["Take Out Kitty Litter","J","Tyrone, Vice City'deki bütün Kitty Litter laboratuvarlarını kapatmak istiyor. Her lab mor bir arama alanı: pembe duman çıkan binayı bul, içeri gir, ekipmanı yok et. Balsero, Rockridge, Crosstown, Decor District, Little Cuba, Salton, Tequesta ve Vice-Dale'de lablar var.","İçerideki propan tüplerini ya da benzin bidonlarını vur, ya da kapıdan molotof at. Balsero'daki şifreli garajın kodu yakındaki bir reklam panosunda yazıyor.","lab başı 2.000–2.500 $"],
+  ["Spin On This","J","Sentetik uyuşturucu işinin ana merkezine son darbe. Tyrone ve Dook'la bir motele gidiyor, gizli laboratuvarı bulmak için resepsiyondan anahtar alıyor, yeraltına inip kazanlara patlayıcı yerleştiriyor ve kaçan Rocky'yi kovalıyorsun.","Lokantaya yaklaşınca doğrudan araca bindiriliyorsun; önceden zırh giy ve uzun bir silah seç.","10.000 $"]
+ ]},
+ {key:"dunk", who:"Dunk", ch:3, about:"Port Gellhorn'daki tanıdık yüz.", trophy:"", items:[
+  ["Dunk's Robbery Tips","JL","Dunk soymaya değer birkaç yer biliyor ve ipuçlarını seninle paylaşıyor.","",""]
+ ]},
+ {key:"dodos", who:"Dodos Rising", ch:3, about:"Hayvanları hayvanat bahçelerinden kurtarmak ve fracking'i durdurmak isteyen radikal bir hayvan hakları grubu.", trophy:"", items:[
+  ["Sisters of the Sea","JL","Catalan Key'deki Vice City Oceanarium önünde protesto yapan Rosebud'la tanış. Birkaç gün sonra gelen mesajla Oceanarium'a gizlice giriyor, bir kristali alıyor, orkaya ulaşıp onu denize taşıyor ve polisten kaçıyorsun.","Protesto haritada mor soru işareti olarak beliriyor, bazen Vice City'ye varmadan bile; haritayı her gün kontrol et.",""],
+  ["Bring Out the Chimp","JL","VCIA'nın güneyindeki otoyol kenarında megafonlu Noah'yla konuş. Noah'nın teknesiyle gece bir maymun laboratuvarına sızıyor, korumaları sessizce etkisiz hale getiriyor, kafesleri fotoğraflıyor ve bir şempanzeyi serbest bırakıyorsun.","Sisters of the Sea'den önce ya da sonra oynanabilir.",""],
+  ["Twin Flames","JL","Tyler ve Steve, Watson Bay'deki bir fracking sahasını durdurmak istiyor. Römorkta portatif tuvaletlerle dolu kamyonu sahaya sürüyor, yangın alarmını çalıştırıp işçileri boşaltıyor ve sondajı geri çekiyorsun.","İlk iki Dodos görevini bitirince açılıyor.",""],
+  ["Dodo, Rise!","L","Grubun finali ve Lucia'ya özel. Emerald Springs hayvanat bahçesinde kuluçka tankındaki çok özel bir yumurtayı çalıyorsun. Yumurtadan çıkan yavruyu besleyip korumak, bir veterinere götürmek ve güvenli bir yere ulaştırmak gerekiyor.","Yumurtanın yeri işaretli değil; zemindeki yeşil Sprunk oklarını takip et, Focus onları vurguluyor.","5.000 $"]
+ ]},
+ {key:"pete", who:"Pilot Pete", ch:4, about:"Hikâyeden tanıdık kaçakçı pilot. Sadece Jason.", trophy:"Strangers & Freaks kupasına sayılıyor.", items:[
+  ["The Last Mile: Passing the Torch","J","Pool Day'den kısa süre sonra Pete arıyor. Leonard County'deki Sundown Private Airfield'da hangarın arka odasından Pete'in özel KZ-59 tüfeğini ve kasasındakileri alıyor, uçağıyla üç noktaya paket atıp Port Gellhorn'un güneyine iniyorsun.","Kasa şifresi 3718.","12.000 $"],
+  ["The Last Mile: Backseat Pilot","J","Port Gellhorn'dan deniz uçağıyla: tedarikçinin yanına suya in, yükle ve iki oyun saati içinde yedi noktaya paket bırak.","Haritadaki büyük kırmızı dairelerden uzak dur; aranma seviyesi ve zaman kaybı demek.","20.000 $"],
+  ["Pete's Deliveries: Southpoint Airfield","J","Mariana County'den başlayan tur. Tedarikçinin tarlasında çatışma çıkıyor; kazanman gerekmiyor, çantayı kapıp havalan. Yedi paketi saat 20.00'dan önce bırak.","","20.000 $"],
+  ["Pete's Deliveries: Avery Allen & Co.","J","Kelly County'deki pistten başla, deniz uçağını tedarikçinin yanına indir ve yedi paketi saat 14.00'ten önce teslim et.","","20.000 $"],
+  ["Deliver Packages","J","Pete'in son turu Leonard County'den. Yedi paketi saat 08.00'den önce bırakınca Pete'in hikâyesi tamamlanıyor.","","20.000 $"]
+ ]}
+];
+
+// ---- ETKİNLİKLER
+// gruplar: {key, title, note, items:[[ad, hedef, açıklama]]}
+const ACTS = [
+ {key:"g100a", title:"%100 · Görevler ve soygunlar", note:"Oyundaki %100 listesi hikâye bitince açılıyor ama öncesinde yaptıkların da sayılıyor. Hiçbir madde kaçırılamaz; hepsi hikâye sonrası da yapılabiliyor.", items:[
+  ["Ana hikâye","Hepsi · %50","Jenerik akana kadar tüm ana görevler."],
+  ["Opsiyonel görevler","100 · %6","Mor ve siyah-pembe ikonlu her yan iş sayılıyor: Moses ve Randy teslimatları, Tyrone'un labları, Cal'ın balık meydan okumaları, meditasyonlar. Oyunda yüzlercesi var, kendiliğinden geçersin."],
+  ["Çete operasyonları","39/39 · %3","Yaklaşınca beliren sarı ikonlar. Bir operasyonun sayılması için içindeki bütün değerli eşyaları toplaman gerekiyor; ikonun üstüne gelince kaç tane olduğu yazıyor."],
+  ["Banka işleri","22/22 · %2","Credit Check'ten sonra açılıyor. Küçük bankalarda kasa çekmecesi ve kasa, büyüklerde ayrıca kasa dairesi gerekiyor."],
+  ["Maaş avansı dükkânları","7/7 · %2","Bankalarla birlikte açılıyor (yeşil el ikonu). Tezgâhtaki para ve arka odadaki kasa."],
+  ["Smash 'N' Grab","34/35 · %2","Rehinciler (Coffee Break sonrası) ve kuyumcular (Yasmani'nin işlerinden sonra). Vitrinlerle birlikte arka odadaki kasayı da boşalt, yoksa sayılmayabilir."],
+  ["Stick Up","50/91 · %2","Market, fast food ve içki dükkânı gibi küçük işletmeler: kasiyere silah doğrult, parayı al, çık."],
+  ["Uyuşturucu satışı","100.000 $ · %2","Çete operasyonlarından ve kokain flamingolarından çıkan malı herhangi bir alıcıya sat."],
+  ["Mücevher satışı","100.000 $ · %2","Kuyumcu soygunlarından gelir; hepsini soyunca kolayca geçersin."],
+  ["İşaretli para satışı","250.000 $ · %2","Banka ve avans dükkânlarından. Tek bir büyük banka kasası 200.000 $'ı geçebiliyor."],
+  ["Kasa daireleri","8/8 · %2","That's Where the Money Is… ile açılıyor. Nakil aracını bankaya kadar izle, kasa açıkken gir. 4 yıldız aranma; kaçış için hızlı motosiklet."],
+  ["Araç satışı","200.000 $ · %2","Moses'a takipsiz araçlar, Bölüm 3'ten itibaren Pay 'n' Spray'lere standart takipli araçlar. En hızlısı Randy'nin listesi."]
+ ]},
+ {key:"g100b", title:"%100 · Keşif ve etkinlikler", note:"Çoğu maddenin hepsini değil bir kısmını yapman yeterli.", items:[
+  ["Kenton hazine setleri","5/7 · %1","Island Dreams'ten sonra Kenton arıyor. Mor sandık ikonlu batıklara dal, metal dedektörle hazineyi çıkar ve Kenton'a götür. Sualtı keşifleri için 7 setin hepsi gerekiyor."],
+  ["Koleksiyon kartı setleri","15/18 · %1","18 sette toplam 480 kart var."],
+  ["WAiNK noktaları","100 · %1","Heykeller, simge yapılar ve manzaralar. Yayayken yakında biri olunca oyun haber veriyor; telefondaki WAiNK ile tara."],
+  ["Sualtı keşifleri","33/33 · %1","Kenton'ın batıkları; 7 seti bitirince bu da tamamlanıyor."],
+  ["Dergi, kitap, çizgi roman","30/34 · %1","27 yayın ve 7 kitap takası birlikte sayılıyor; aynı yayının kopyaları sayılmıyor."],
+  ["Meditasyon","15/18 · %1","10 meditasyon noktası var; Jason ve Lucia'yla ayrı ayrı yapınca iki kez sayılıyor."],
+  ["Kokain flamingoları","100/125 · %1","Siyah-beyaz gagalı pembe bahçe flamingoları. Vurunca içinden kokain paketi düşüyor. Sarı-siyah gagalılar sıradan süs."],
+  ["Özel çalma listeleri","2/2 · %1","Belirli afişleri tarayınca yeni müzik listeleri açılıyor."],
+  ["Stiller","70/79 · %1","WAiNK ile taranan dövme dergileri (Jason, Lucia ve diğerleri) ve çoğunlukla çete operasyonlarında bulunan 34 lüks saat."],
+  ["Benzersiz yarışlar","30/40 · %1","100 metre yaklaşınca beliren mavi ikonlar."],
+  ["Yarış meydan okumaları","10/13 altın · %1","Süre ya da puana göre bronz, gümüş, altın. En kolay 10'unda altın al."],
+  ["Atış poligonları","42/42 altın · %1","Griffin Shooting Range (18) ve Rodgers Ranch (24). İçerideki görevliden 5 $'lık feragat kartı al."],
+  ["Video oyunları","4/4 · %1","Üçü evdeki konsolda, Bang For Your Buck ise sokaktaki atari makinelerinde. Başlatmak yeterli."],
+  ["Bilardo rakipleri","5/7 · %1","Belirli bar ve kafelerde bekliyorlar."],
+  ["Mini golf","2/3 · %1","King Gator Adventure Golf, Frontier Adventure Golf, Dino Golf Challenge. Büyük golf sahaları sayılmıyor."],
+  ["Basket potaları","90/100 · %1","Her potanın yanında top var. Aynı potaya tekrar atmak sayılmıyor."],
+  ["Drone zaman yarışları","42/42 · %1","14 Top Fun Drones noktasında üçer yarış. İlk ikisinde süreyi geçince üçüncüsü açılıyor."],
+  ["Akrobasi","300/397 · %1","130 rampa atlayışı, 202 köprü altından uçuş, 40 binalar arası uçuş, 25 base jump. Köprü altı uçuşları en hızlısı."],
+  ["Meydan okumalar","70/80 · %1","8 kategoride onar tane, en baştan açık. Çoğu kendiliğinden biter; sona bırak."],
+  ["Bret'in hedef desteleri","15/15 · %1","Bret Vogel'in av görevleri; sadece Jason."]
+ ]},
+ {key:"g100c", title:"%100 · Keşif", note:"Baştan beri yaparsan kendiliğinden biter.", items:[
+  ["Araç tarama","200/277 · %1","WAiNK ile geçen araçları tara. Bölgeye göre değişiyor: süper arabalar Ocean Beach otellerinin önünde, kamyonlar Port Gellhorn'da. Tekne ve uçaklar da sayılıyor."],
+  ["Silahlar","50/66 · %1","Her silahı bir kez elinde tutman yeterli. 'Expanded' Ammu-Nation'lar tam yelpaze satıyor."],
+  ["Hayvan inceleme","100/255 · %1","Dürbünle yakınlaş ve tuşu basılı tut; avlaman gerekmiyor. Her kedi ve köpek cinsi, balıklar ve kuşlar ayrı sayılıyor."]
+ ]},
+ {key:"mini", title:"Etkinlikler ve mini oyunlar", note:"Haritada denk geleceğin aktiviteler. Denediklerini işaretle.", items:[
+  ["Balık tutma","","Olta, yem, demir atma ve makara mekaniği. Cal'ın meydan okumaları opsiyonel görev sayılıyor."],
+  ["Avcılık","","Bret Vogel'le açılıyor; tek atışla kusursuz post."],
+  ["Dalış ve hazine avı","","Dalış teçhizatı ve metal dedektörle batıklarda hazine; Kenton satın alıyor."],
+  ["Spor salonu","","Squat, bench press, kettlebell, deadlift. Antrenmanı bitirmezsen kazanım kayboluyor; düzenli çalışmak can ve dayanıklılığı artırıyor."],
+  ["Boks ve dövüş","","Blok, kaçınma ve kontra; kafes dövüşleri de var."],
+  ["Güreş ve arka bahçe güreşi","",""],
+  ["Basketbol","","Haritadaki 100 pota."],
+  ["Bilardo","","7 rakip."],
+  ["Mini golf","","3 saha."],
+  ["Kano","",""],
+  ["Hava botu (airboat)","","Bataklıkların vazgeçilmezi."],
+  ["Jet-ski","",""],
+  ["Deniz yarışları","",""],
+  ["Sokak yarışları","","Yago'nun Hit 'n' Run ekibiyle başlıyor."],
+  ["Arazi yarışları","","Thrillbilly Mud Club'da çamur yarışları."],
+  ["Atış poligonu","","2 poligon, 42 altın madalya."],
+  ["Paraşüt ve base jump","","25 base jump noktası."],
+  ["Drone yarışları","","Top Fun Drones."],
+  ["Meditasyon","","10 nokta; partnerinle birlikte yapınca ilişkiye de iyi geliyor."],
+  ["Araba, motor ve tekne buluşmaları","",""],
+  ["Gece kulüpleri ve dans","",""],
+  ["Striptiz kulüpleri","",""],
+  ["Bar ve içki","","Fazla içersen ekran bulanıklaşıyor."],
+  ["Hayvanat bahçesi","","Emerald Springs; Dodos Rising görevleri de burada bitiyor."],
+  ["Lunapark","",""],
+  ["Video oyunları","","Evdeki konsol ve atari makineleri."],
+  ["Televizyon izlemek","",""],
+  ["Güneşlenmek","",""],
+  ["Sosyal medya","","Telefondaki uygulamalar."],
+  ["Hayvan sevmek","","Starlet Motel'deki üç kediyi sevip beslemek Focus ve profesyonel suç profiline katkı sağlıyor."]
+ ]},
+ {key:"home", title:"Jason'ın evi (Bölüm 1)", note:"Gone Fishing'den sonra Key Lento'daki ev açılıyor. Tadilatlar Lucia'yla ilişkini başlamadan güçlendiriyor.", items:[
+  ["Merdivenleri yenile","","Arabanın park ettiği girişte, eski dış merdivenin yanında tahta yığını var."],
+  ["Yatak odası duvarını bitir","","Yatağın yanındaki vantilatörün dibinde duvar panelleri. Bitirince rengi seçiyorsun: mavi, yeşil ya da şeftali."],
+  ["Arka balkonu onar","","Arka bahçedeki spor alanından yukarı bak; balkonun korkuluğu kırık."],
+  ["Çatıyı yamala","","Merdivenle çatıya çık."],
+  ["Kum torbası as","",""],
+  ["Evdeki spor salonu","","Arka bahçede squat sehpası, bench press ve kettlebell'ler."],
+  ["Evcil yılanı besle","","Jason'ın bir yılanı var."],
+  ["Cal'la konsolda oyna","","Tenebrae Lux ve Street Trash III."]
+ ]},
+ {key:"money", title:"Para, alıcılar ve mülkler", note:"", items:[
+  ["Brian ve Donnie (alıcı)","Bölüm 1","Key Lento'da; en düşük fiyatları veriyorlar."],
+  ["Dunk (alıcı)","Bölüm 2","Port Gellhorn; Slam Dunk'tan sonra. Her şeye düşük fiyat."],
+  ["Tyrone (alıcı)","Bölüm 3","La Perle; uyuşturucuya yüksek fiyat."],
+  ["Yasmani (alıcı)","Bölüm 3","Little Cuba; mücevher ve işaretli paraya yüksek fiyat."],
+  ["Moses (araç alıcısı)","Bölüm 2","Port Gellhorn; sadece araç."],
+  ["8 garajın hepsini al","160.000 $","Daily Driver'dan sonra gelen emlak uygulamasından. En ucuzu Kelly County'deki Mitchell Auto Center (4.000 $). Hepsi 'Little Boxes' kupasını açıyor."],
+  ["Aile Birikimi kademeleri","1.000.000 $","Save for the Future görevi: 5.000, 10.000, 100.000, 500.000 ve 1.000.000 $."]
+ ]}
+];
+
+// ---- SÜRPRİZLER (easter egg'ler ve gizli yerler)
+// [ad, nerede, ne oluyor, ödül, gönderme, ne zaman]
+const EGGS = [
+ ["Askeri üs: Mile Zero Air Station","Leonida Keys'in güneybatısında, Goose Key.","Bölüm 1'den itibaren gidilebilen askeri üs. Ön kapının yanında 'Mile Zero Air Station Southeast' adlı bir akrobasi rampası doğrudan içeri atlatıyor.","","","Bölüm 1"],
+ ["Bedava keskin nişancı tüfeği","Key Lento'da, Nifty Threads Islandwear yakınındaki radyo kulesi; Jason'ın evine yakın.","Kuleye tırmanınca normalde 1.850 $ olan Shrewsbury SM-69 keskin nişancı tüfeğini bedava alıyorsun.","Keskin nişancı tüfeği","","Bölüm 1"],
+ ["Skunk Ape (Koca Ayak)","Grassrivers bataklığı; Cottonmouth Lake'in güneydoğusundaki ormanlık kıyı, Hamlet'in güneyi.","Serisinin en eski gizemlerinden Koca Ayak, Leonida'da Skunk Ape olarak dönüyor. Serbest dolaşımda karşına çıkabiliyor; Kirk'ün yan görevleri de bu yaratık üzerine.","","Koca Ayak efsanesi","Bölüm 1"],
+ ["Arthur Morgan'ın şapkası","Port Gellhorn'un güneyi; önünde Amerikan bayrağı olan mavi evdeki bahçe satışı.","Arka taraftaki kanepede, gitar kutusunun üstünde. Satın alınca iki karakter de takabiliyor.","35 $'lık şapka","Red Dead Redemption 2","Bölüm 2"],
+ ["Dexter'ın dairesi","Washington Island, Vice City; Trinity Apartments (açık mavi, döner merdivenli bina).","İkinci kattaki suya bakan köşe daire dizideki daireye gönderme. Kapı kilitli ama çatıda gizli bir 'çalışma seti' ve yakındaki iskelede başka göndermeler var.","","Dexter","Prolog sonrası"],
+ ["Don't Flush QR kodu","Corsair Key'deki halka açık tuvalet (Leonida'da birkaç tane daha var).","'Stop! Don't Flush' afişindeki QR kodu tara. Gizemli bir kişiyle başlayan ve bir arıtma tesisine uzanan tuhaf bir komplo görevi (The Final Flush) açılıyor.","İşe yarar bir ödül","",""],
+ ["Paskalya yumurtası yuvası","Bluegrass, Hamlet'in hemen kuzeyi; kırmızı-beyaz dev iletişim kulesi.","Çiti atlayıp merdivenle en tepeye tırman (5–8 dakika). Sağ tarafta renkli yumurtalarla dolu bir kuş yuvası var; yaklaşınca bir ara sahne tetikleniyor.","","Easter egg kelimesinin ta kendisi",""],
+ ["Hayalet gemi","Little Hardin Island, Leonard County; St. Lucia deniz feneri.","Gece fenerin ışığına dürbünle bak: iki hayalet kavga ediyor. Kuzeybatıdaki evde şöminedeki mavi kitabı incele. Saat 01.30'da iskeledeki dalış teçhizatlı tekneyle adanın doğu ucuna git: sis çöküyor, deniz dibinde batık bir tekne seni bekliyor.","Benzersiz ödül","",""],
+ ["Dev yengeç","Gullet Marsh, Pelican Valley'in güneybatısı; terk edilmiş araştırma istasyonu.","Bataklığın içindeki tesise tekneyle git (yakındaki fracking kulesi iyi bir işaret). Dev mutant bir yengeç, kilitli odalar, şifreler ve bilgisayardaki ipuçları.","Değerli ödüller","",""],
+ ["Hyde Island avı","Hyde Island; kıyıdan uzak, sadece tekneyle gidiliyor.","Adayı keşfederken bir katilin tuzağına düşüyorsun: silahların alınıyor, boynuna patlayıcı bir tasma takılıyor ve silahlı bir avcıdan kaçarak hayatta kalmaya çalışıyorsun.","Ödüllü","Manhunt ve Testere (Saw)",""],
+ ["Ölümsüz Adam","Güney Key Lento, Donnie'nin karavanı yakınındaki evlerin terasları.","Açık mavi gömlek ve beyaz şort giymiş, sıradan görünen ama ölmeyen bir adam. Kuleden keskin nişancı dürbünüyle terasları tara; başka yerlerde de görüldüğü söyleniyor.","","",""],
+ ["Jet-ski süren köpek","Gambit Bay.","Tekneyle açığa çık, adalardan uzak yerde suya atla ve birkaç dakika bekle. 'Cool Dog' jet-skiyle gelip seni bir sahile götürüyor; onu takip edince bir cüzdan düşürüyor. Köpeklerle oynamak suç profiline de iyi geliyor.","1.218 $","Fort Lauderdale'de gerçekten jet-ski süren köpek Loosy",""],
+ ["Kraken","Gloriana Key'in güneydoğusu, derin açık deniz.","Deniz dibindeki bir batığa sarılmış dev bir ahtapot. Yüzeyden görünmüyor, dalman gerekiyor.","","Kraken efsanesi",""],
+ ["Sahte tünel","Vice Decor District; Fufu mağazasının yaklaşık 160 m güneydoğusu, benzin istasyonuna doğru.","Bir köprünün altından devam eden yol resmedilmiş dev bir duvar resmi. Gerçek tünel gibi görünüyor; içinden geçmeye çalışırsan ne olacağını tahmin edersin.","","Looney Tunes (Road Runner)",""],
+ ["Marbelle Hotel","Güney Crosstown, NW 8th Street; Nine1Nine kulübünün yakını.","Pencereleri kapatılmış, satılık tabelalı terk edilmiş otel. Arka kapıdan girip üst katlara çık: mankenlerle başlayan ürkütücü bir dönüşüm seni bekliyor. Zemin katta kilitli bir kasa da var.","","Silent Hill",""],
+ ["Deniz adamı","Shoeless Keys, Key Lento'nun kuzeybatısı; ıssız bir kumsal.","Pullu kuyruk ve deniz kabuğu üstlükle kamera karşısında poz veren bir influencer. Yaklaşınca tuhaf istekleri var.","","",""],
+ ["Paul Walker'ın arabası","Vespucci Island, Vice Beach; bir villanın kilitli garajı.","Hızlı ve Öfkeli'deki arabanın oyundaki karşılığı: Maibatsu '97 Penumbra FF. Kapıdan girip garajı içeriden aç, arabayı çal ve Pay 'n' Spray'de kaydettir.","Araba (kayıt 6.750 $)","The Fast and the Furious",""],
+ ["Palyaço ve kırmızı balon","Ocean Beach, Haymarket binası.","Resepsiyondan sola, asansörlere git: sol asansörde kırmızı bir balon var. Sağ asansörü çağır, balonlarla dolu geliyor. İçeri girip kapıyı kapatınca ışıklar sönüyor ve bir palyaço belirip kayboluyor.","","Stephen King'in IT'si",""],
+ ["Evcil hayvan mezarlığı","Güney Grayson, Lummox County; SR-73 yakınındaki orman.","Tuhaf hayvan seslerini takip edince gizli bir evcil hayvan mezarlığı buluyorsun. Mezar taşlarını WAiNK ile taramak bir 'Curiosity' koleksiyonu sayılıyor.","","Stephen King'in Pet Sematary'si",""],
+ ["Red Hulk","McKittrick Farm, Frogswater, Kelly County.","Kyle'ın yan görev zincirinin sonu (Yan Görevler sekmesinde).","","Marvel'ın Red Hulk'ı","Bölüm 2"],
+ ["Scarface motel odası","Ocean Beach, Shore Drive; Sunlite Motel.","Saat 12.00–13.00 arasında git. Üst kattaki ilk odanın kapısını dene, balkondan inip otelin önüne dön ve sahneyi izle. Odaya döndüğünde yerde bir silah, nakit ve uyuşturucu var.","Little Friend W-10 hafif makineli","Scarface (1983)",""],
+ ["Oyunda olduğunu bilen adam","Belville, Leonard County; beyaz çitli, önünde iki palmiye olan ev.","San Andreas Definitive Edition'daki gizemli eve benzeyen ev. İçeride oyunda yaşadığını fark etmiş birinin komplo panosu var: kaybolan arabalar, birbirinin aynı yayalar, görünmez sınırlar.","","GTA San Andreas",""],
+ ["Ananas durak","Cicada Avenue, Bluegrass yakını.","Yuvarlak pencereli, yeşil yapraklı dev bir ananas şeklinde otobüs durağı. İçine girilebiliyor.","","SpongeBob",""],
+ ["Uçan soru kutusu","Moreau, Mount Kalaga'nın kuzeyi; Lawton Co. kâğıt fabrikası.","Mor brandanın üstündeki nargileyi kullan, yukarıda beliren uçan kutunun altına geç ve zıpla. Kutu patlayınca iki şapka düşüyor. Yanındaki kilitli kutuda da para var.","J ve L harfli iki şapka + 400 $","Super Mario Bros.",""],
+ ["Tommy Vercetti bulmacası","Key Lento, Badger R&D radyo kulesi.","Kollu, düğmeli ve televizyonlu odada kolu çek, televizyonu aç: ekranda eski Vice City'nin Malibu Club'ı beliriyor. Bu, Leonida'ya yayılmış bir bulmaca zincirinin başlangıcı.","Tommy'nin Hawaii gömleği ve motosikleti","GTA Vice City (2002)",""],
+ ["UFO","Kelly County, Starlet Motel'in kuzeybatısı; saat 14.00'ten sonra, yalnız.","Yolda flaşörleri yanan terk edilmiş bir araba görürsün; burnunun baktığı yöne git. Havada süzülen bir kadın ve tepesinde bir UFO var. Işığa yaklaşınca kaçırılıyorsun; partnerin aradığında günlerdir kayıp olduğunu öğreniyorsun. Hikâyenin devamı var.","","Serinin klasik UFO'ları","Bölüm 2"]
+];
+
 // ---- düz liste + kilit ilişkileri
 const FLAT = [];
 CHAPTERS.forEach((ch, ci) => ch.items.forEach(([k,n,name,sum,fl,giver,play,tip]) => {
@@ -492,7 +722,187 @@ function renderNext(){
   }
 }
 
+// ---- sekmeler
+const TABS = [["hikaye","Hikâye"],["yan-gorevler","Yan görevler"],["etkinlikler","Etkinlikler"],["surprizler","Sürprizler"]];
+let tab = "hikaye";
+function tabFromHash(){ const h = (location.hash || "").replace("#",""); return TABS.some(t => t[0] === h) ? h : null; }
+tab = tabFromHash() || "hikaye";
+window.addEventListener("hashchange", () => { const t = tabFromHash(); if (t && t !== tab) { tab = t; render(); } });
+function setTab(t){ tab = t; try { history.replaceState(null, "", "#" + t); } catch(e) { location.hash = t; } render(); window.scrollTo({top: document.getElementById("tabs").offsetTop - 8, behavior: "smooth"}); }
+
+// yan görev nesneleri
+const SIDE = [];
+STRANDS.forEach(s => s.items.forEach(([name, play, sum, tip, reward], i) => {
+  SIDE.push({id:"s-" + s.key + "-" + i, strand:s, i, name, play, sum, tip, reward, giver:s.who});
+}));
+const sideAvail = o => o.i === 0 || isDone(SIDE.find(x => x.strand === o.strand && x.i === o.i - 1));
+const strandOpen = s => state.showAll || chReached(s.ch);
+const ACT_ITEMS = [];
+ACTS.forEach(g => g.items.forEach(([name, target, desc], i) => ACT_ITEMS.push({id:"a-" + g.key + "-" + i, g, name, target, desc})));
+const EGG_ITEMS = EGGS.map(([name, where, what, reward, ref, when], i) => ({id:"e-" + i, name, where, what, reward, ref, when}));
+
+function toggleId(id){ if (state.done[id]) delete state.done[id]; else state.done[id] = true; persist(); render(); }
+function checkBtn(id, label, enabled){
+  const c = el("button","check"); c.innerHTML = CHECK_SVG;
+  const on = !!state.done[id];
+  c.setAttribute("aria-label", (on ? "İşareti kaldır: " : "Tamamlandı: ") + label);
+  c.setAttribute("aria-pressed", on ? "true" : "false");
+  if (enabled === false && !on) c.disabled = true;
+  c.addEventListener("click", () => toggleId(id));
+  return c;
+}
+function setStats(a, al, b, bl, pct, pl){
+  document.getElementById("st-main").textContent = a; document.getElementById("st-main-l").textContent = al;
+  document.getElementById("st-opt").textContent = b; document.getElementById("st-opt-l").textContent = bl;
+  document.getElementById("st-pct").textContent = "%" + pct; document.getElementById("st-ch").textContent = pl;
+  document.getElementById("bar").style.width = pct + "%";
+}
+function sectionHead(no, title, count){
+  const head = el("div","ch-head");
+  head.appendChild(el("span","no", no)); head.appendChild(el("h2", null, title));
+  if (count != null) head.appendChild(el("span","count", count));
+  return head;
+}
+
+function renderSide(root){
+  const done = SIDE.filter(isDone).length;
+  const open = STRANDS.filter(strandOpen);
+  const finished = STRANDS.filter(s => s.items.every((_, i) => state.done["s-" + s.key + "-" + i])).length;
+  setStats(done + "/" + SIDE.length, "Yan görev", finished + "/" + STRANDS.length, "Biten karakter", Math.round(done / SIDE.length * 100), open.length + " karakter açık");
+  const intro = el("p","tab-intro","Strangers & Freaks: Leonida'nın tuhaf karakterlerinin kendi görev zincirleri. Bir karakter, ilk görevinin geldiği bölüme ulaşınca açılır; zincirdeki sonraki görev, öncekini işaretleyince görünür. Hepsi hikâye bittikten sonra da oynanabiliyor. Strangers & Freaks kupası 8 zincir istiyor; Kirk, Kyle, Yago ve Pilot Pete sayılıyor.");
+  root.appendChild(intro);
+  [1,2,3,4].forEach(chn => {
+    const strands = STRANDS.filter(s => s.ch === chn);
+    if (!strands.length) return;
+    const sec = el("section","chapter");
+    const reached = state.showAll || chReached(chn);
+    const items = SIDE.filter(o => o.strand.ch === chn);
+    sec.appendChild(sectionHead(CHAPTERS[chn].label, reached ? "Yan görevler" : "• • •", items.filter(isDone).length + "/" + items.length));
+    if (!reached) {
+      const lk = el("div","ch-locked"); lk.innerHTML = LOCK_SVG;
+      lk.appendChild(el("span",null,"Hikâyede " + CHAPTERS[chn].label + "'e gelince açılır. " + strands.length + " karakter, " + items.length + " yan görev."));
+      sec.appendChild(lk); root.appendChild(sec); return;
+    }
+    strands.forEach(s => {
+      const box = el("div","strand");
+      const h = el("div","strand-head");
+      h.appendChild(el("h3",null,s.who));
+      const n = s.items.filter((_, i) => state.done["s-" + s.key + "-" + i]).length;
+      h.appendChild(el("span","count", n + "/" + s.items.length));
+      box.appendChild(h);
+      const about = el("p","strand-about", s.about + (s.trophy ? " " + s.trophy : ""));
+      box.appendChild(about);
+      SIDE.filter(o => o.strand === s).forEach(o => {
+        const d = isDone(o), av = sideAvail(o), vis = state.showAll || d || av;
+        const r = el("div","m opt" + (d ? " done" : vis ? " avail" : " locked"));
+        if (!vis) {
+          r.innerHTML = LOCK_SVG; r.appendChild(el("span","num", String(o.i + 1)));
+          const b = el("div","body"); b.appendChild(el("div","title","Kilitli yan görev")); r.appendChild(b);
+          box.appendChild(r); return;
+        }
+        r.appendChild(checkBtn(o.id, o.name));
+        r.appendChild(el("span","num", String(o.i + 1)));
+        const b = el("div","body"); const t = el("div","title"); t.appendChild(el("span","t", o.name));
+        if (!d && av) t.appendChild(el("span","badge b-now","Açık"));
+        if (o.reward) t.appendChild(el("span","badge b-opt", o.reward));
+        b.appendChild(t); summaryBlock(o, b); r.appendChild(b);
+        box.appendChild(r);
+      });
+      sec.appendChild(box);
+    });
+    root.appendChild(sec);
+  });
+}
+
+function renderActs(root){
+  const req = ACT_ITEMS.filter(a => a.g.key.startsWith("g100"));
+  const rd = req.filter(isDone).length, all = ACT_ITEMS.filter(isDone).length;
+  setStats(rd + "/" + req.length, "%100 maddesi", all + "/" + ACT_ITEMS.length, "Toplam işaret", Math.round(rd / req.length * 100), "%100 ilerlemesi");
+  root.appendChild(el("p","tab-intro","%100 tamamlama listesi, yan etkinlikler, Jason'ın evindeki işler ve para kaynakları. Bunlarda spoiler yok, hepsi açık. Bitirdiklerini işaretle."));
+  ACTS.forEach(g => {
+    const sec = el("section","chapter");
+    const items = ACT_ITEMS.filter(a => a.g === g);
+    sec.appendChild(sectionHead(g.key.startsWith("g100") ? "%100" : "Liste", g.title.replace(/^%100 · /,""), items.filter(isDone).length + "/" + items.length));
+    if (g.note) sec.appendChild(el("p","strand-about", g.note));
+    items.forEach(a => {
+      const r = el("div","m act" + (isDone(a) ? " done" : " avail"));
+      r.appendChild(checkBtn(a.id, a.name));
+      const b = el("div","body");
+      const t = el("div","title"); t.appendChild(el("span","t", a.name));
+      if (a.target) t.appendChild(el("span","badge b-opt", a.target));
+      b.appendChild(t);
+      if (a.desc) b.appendChild(el("p","sum", a.desc));
+      r.appendChild(b); sec.appendChild(r);
+    });
+    root.appendChild(sec);
+  });
+}
+
+function renderEggs(root){
+  const found = EGG_ITEMS.filter(isDone).length;
+  setStats(found + "/" + EGG_ITEMS.length, "Bulunan", EGG_ITEMS.filter(e => e.reward).length + "", "Ödüllü sürpriz", Math.round(found / EGG_ITEMS.length * 100), "Keşif");
+  root.appendChild(el("p","tab-intro","Easter egg'ler, gizli yerler ve bedava eşyalar. Her kartın ayrıntısı sen açana kadar kapalı; sadece adına bakarak kendin aramak istersen açma. Bulduklarını işaretle."));
+  const grid = el("div","eggs");
+  EGG_ITEMS.forEach(e => {
+    const c = el("article","egg" + (isDone(e) ? " done" : ""));
+    const top = el("div","egg-top");
+    top.appendChild(checkBtn(e.id, e.name));
+    const h = el("h3",null,e.name); top.appendChild(h);
+    c.appendChild(top);
+    const tags = el("div","egg-tags");
+    if (e.when) tags.appendChild(el("span","badge b-opt", e.when));
+    if (e.reward) tags.appendChild(el("span","badge b-now","Ödül"));
+    if (tags.childNodes.length) c.appendChild(tags);
+    if (state.showSum || revealed.has(e.id)) {
+      const d = el("div","detail");
+      const w = el("p","tip"); w.appendChild(el("b",null,"Nerede ")); w.appendChild(document.createTextNode(e.where)); d.appendChild(w);
+      d.appendChild(el("p","sum", e.what));
+      if (e.reward) { const p = el("p","meta"); p.textContent = "Ödül: " + e.reward; d.appendChild(p); }
+      if (e.ref) { const p = el("p","meta ref"); p.textContent = "Gönderme: " + e.ref; d.appendChild(p); }
+      c.appendChild(d);
+    } else {
+      const b = el("button","reveal","Yerini ve ne olduğunu göster");
+      b.addEventListener("click", () => { revealed.add(e.id); render(); });
+      c.appendChild(b);
+    }
+    grid.appendChild(c);
+  });
+  root.appendChild(grid);
+}
+
+function renderTabs(){
+  const nav = document.getElementById("tabs"); nav.innerHTML = "";
+  const counts = {
+    "hikaye": MAINS.filter(isDone).length + "/" + MAINS.length,
+    "yan-gorevler": SIDE.filter(isDone).length + "/" + SIDE.length,
+    "etkinlikler": ACT_ITEMS.filter(isDone).length + "/" + ACT_ITEMS.length,
+    "surprizler": EGG_ITEMS.filter(isDone).length + "/" + EGG_ITEMS.length
+  };
+  TABS.forEach(([k, label]) => {
+    const b = el("button","tab");
+    b.setAttribute("role","tab"); b.setAttribute("aria-selected", k === tab ? "true" : "false");
+    b.appendChild(el("span",null,label)); b.appendChild(el("small",null,counts[k]));
+    b.addEventListener("click", () => setTab(k));
+    nav.appendChild(b);
+  });
+}
+
 function render(){
+  document.getElementById("t-sum").setAttribute("aria-pressed", state.showSum);
+  document.getElementById("t-all").setAttribute("aria-pressed", state.showAll);
+  renderTabs();
+  const story = tab === "hikaye";
+  document.getElementById("next").hidden = !story;
+  document.getElementById("notes").hidden = !story;
+  const root = document.getElementById("chapters"); root.innerHTML = "";
+  if (tab === "yan-gorevler") return renderSide(root);
+  if (tab === "etkinlikler") return renderActs(root);
+  if (tab === "surprizler") return renderEggs(root);
+  renderStory(root);
+}
+function renderStory(root){
+  document.getElementById("st-main-l").textContent = "Ana görev";
+  document.getElementById("st-opt-l").textContent = "Opsiyonel";
   // istatistik
   const md = MAINS.filter(isDone).length, od = OPTS.filter(isDone).length;
   document.getElementById("st-main").textContent = md + "/" + MAINS.length;
@@ -502,12 +912,9 @@ function render(){
   const cur = MAINS.find(m => !isDone(m));
   document.getElementById("st-ch").textContent = cur ? CHAPTERS[cur.ci].label : "Final geçildi";
   document.getElementById("bar").style.width = pct + "%";
-  document.getElementById("t-sum").setAttribute("aria-pressed", state.showSum);
-  document.getElementById("t-all").setAttribute("aria-pressed", state.showAll);
 
   renderNext();
 
-  const root = document.getElementById("chapters"); root.innerHTML = "";
   CHAPTERS.forEach((ch, ci) => {
     const sec = el("section","chapter");
     const reached = state.showAll || chReached(ci);
